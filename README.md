@@ -1,5 +1,3 @@
-# README
-
 # Prosebot
 
 Prosebot is a template-based natural language generation application. Throughout the last years, [ZOS](http://www.zos.pt) has been developing Prosebot, alongside their collaboration with [FEUP](https://sigarra.up.pt/feup/pt/web_page.inicial), as part of the [zerozero.pt](zerozero.pt) project.
@@ -21,11 +19,11 @@ Currently, Prosebot has full support for the following languages:
 - European Portuguese
 - Spanish
 
-However, new languages can be added by the community. On how to add new languages to the system, please read the following [tutorial](/U3MeevaCSfqVzWgV15qP4Q).
+However, new languages can be added by the community. On how to add new languages to the system, please read the following [tutorial](https://github.com/zerozeropt/prosebot/wiki/How-to-add-a-new-language).
 
 # The components
 
-The Prosebot system is composed of the following components as depicted [here](/1zDYKIoGTt-69ZmxaKRg_g):
+The Prosebot system is composed of the following components as depicted [here](https://github.com/zerozeropt/prosebot/wiki/prosebot/Architecture):
 - Prosebot (generator and validator): the PHP natural language generator and templates validation algorithm;
 - Prosebot Editor: a copy of the template files and API for their management;
 - Templates Management Platform: a React JS user-friendly interface for helping on the management of the templates.
@@ -61,7 +59,7 @@ npm start
 
 # Documentation
 
-For more details regarding architecture, descriptions and tutorials, please read the [Prosebot Documentation](/UCbtXGhIQDGOfqFHk1FWyQ).
+For more details regarding architecture, descriptions and tutorials, please read the [Prosebot Documentation](https://github.com/zerozeropt/prosebot/wiki/Prosebot-Documentation).
 
 # License
 
