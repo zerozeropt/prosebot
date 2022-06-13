@@ -33,7 +33,7 @@ header('Content-Type: text/html; charset=utf8');
 		<meta name="Keywords" content="">
 		<meta name="Description" content="">
 		<title>Document</title>
-		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<style>
 			li {
 				list-style-type: none;
@@ -48,7 +48,7 @@ header('Content-Type: text/html; charset=utf8');
 				<select name="lang">
 				<?php 
 					foreach (get_globals()["languages"] as $lang_key => $value) {
-						echo "<option value=\"".$lang_key."\" ".($_GET["lang"] == $lang_key ? "selected" : "").">".$value."</option>";
+						echo "<option value=\"".$lang_key."\" ".(isset($_GET["lang"]) && $_GET["lang"] == $lang_key ? "selected" : "").">".$value."</option>";
 					}
 				?>
 				</select>

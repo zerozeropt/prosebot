@@ -34,7 +34,7 @@ if (!empty($_GET["context"])) {
 				}
 				?>
 			</select>
-			<a href="contexts/<?php echo $_GET["context"] ?>/index.php">
+			<a href="contexts/<?php echo isset($_GET["context"]) ? $_GET["context"] : "" ?>/index.php">
 				<input type="submit" value="Go">
 			</a>
 		</div>
