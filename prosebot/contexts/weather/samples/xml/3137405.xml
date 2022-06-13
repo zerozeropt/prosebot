@@ -1,0 +1,23 @@
+<?xml-model type="application/xml"?>
+<current>
+    <city id="3137405" name="Sortland">
+        <coord lon="15.4162" lat="68.6949" />
+        <country>NO</country>
+        <timezone>7200</timezone>
+        <sun rise="2022-05-09T01:05:22" set="2022-05-09T20:44:14" />
+    </city>
+    <temperature value="4.96" min="3.94" max="4.98" unit="celsius" />
+    <feels_like value="1.91" unit="celsius" />
+    <humidity value="98" unit="%" />
+    <pressure value="1006" unit="hPa" />
+    <wind>
+        <speed value="3.83" unit="m/s" name="Gentle Breeze" />
+        <gusts value="7.67" />
+        <direction value="189" code="S" name="South" />
+    </wind>
+    <clouds value="100" name="overcast clouds" />
+    <visibility value="1790" />
+    <precipitation value="0.37" mode="rain" unit="1h" />
+    <weather number="500" value="light rain" icon="10d" />
+    <lastupdate value="2022-05-09T18:58:34" />
+</current>

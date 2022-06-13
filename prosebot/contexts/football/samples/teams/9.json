@@ -1,0 +1,24 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "9",
+            "NAME": "Futebol Clube do Porto",
+            "SHORT_NAME": "FC Porto",
+            "SHORT_NAME_ARRAY": {
+                "pt": "FC Porto"
+            },
+            "FOUNDATION": "1893-09-28",
+            "COUNTRY": "Portugal",
+            "COUNTRYID": "1",
+            "PRESIDENT": "Jorge Nuno de Lima Pinto da Costa",
+            "CITY": "Porto",
+            "REGIONID": "1",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "Drag\u00f5es",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "1"
+        }
+    }
+}

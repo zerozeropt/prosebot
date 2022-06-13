@@ -1,0 +1,24 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "50",
+            "NAME": "Real Madrid Club de F\u00fatbol",
+            "SHORT_NAME": "Real Madrid",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Real Madrid"
+            },
+            "FOUNDATION": "1902-03-06",
+            "COUNTRY": "Espanha",
+            "COUNTRYID": "12",
+            "PRESIDENT": "Florentino P\u00e9rez",
+            "CITY": "Madrid",
+            "REGIONID": "209",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "merengues",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "1"
+        }
+    }
+}

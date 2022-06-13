@@ -1,0 +1,42 @@
+{
+    "data": {
+        "SUMMARYTOTAL": {
+            "games": {
+                "163": "2",
+                "167": "4",
+                "0": "6"
+            },
+            "vict_1": {
+                "163": "2",
+                "167": "3",
+                "0": "5"
+            },
+            "vict_2": {
+                "163": "0",
+                "167": "0",
+                "0": "0"
+            },
+            "draws": {
+                "163": "0",
+                "167": "1",
+                "0": "1"
+            }
+        },
+        "ALLMATCHES": [
+            {
+                "SCORED": "3",
+                "CONCEDED": "0",
+                "hometeam_id": "996",
+                "awayteam_id": "811",
+                "competition": "WC2022 UEFA"
+            },
+            {
+                "SCORED": "0",
+                "CONCEDED": "1",
+                "hometeam_id": "811",
+                "awayteam_id": "996",
+                "competition": "WC2022 UEFA"
+            }
+        ]
+    }
+}

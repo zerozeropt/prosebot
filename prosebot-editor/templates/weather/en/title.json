@@ -1,0 +1,34 @@
+{
+    "entry_point": [
+        {
+            "text": "A {template.main_title%types} in {city}",
+            "condition": ""
+        }
+    ],
+    "main_title": [
+        {
+            "text": "cloudy",
+            "condition": "#arg.is_cloudy"
+        },
+        {
+            "text": "day of snow",
+            "condition": "#arg.is_snowy"
+        },
+        {
+            "text": "day with blue sky",
+            "condition": "#arg.is_clear"
+        },
+        {
+            "text": "stormy day",
+            "condition": "#arg.is_stormy"
+        },
+        {
+            "text": "rainy day",
+            "condition": "#arg.is_rainy"
+        },
+        {
+            "text": "day of poor visibility",
+            "condition": "#arg.is_atmosphere"
+        }
+    ]
+}

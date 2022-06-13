@@ -1,0 +1,23 @@
+<?xml-model type="application/xml"?>
+<current>
+    <city id="5879092" name="Alaska">
+        <coord lon="-150.0003" lat="64.0003" />
+        <country>US</country>
+        <timezone>-28800</timezone>
+        <sun rise="2022-05-09T13:05:17" set="2022-05-10T06:47:37" />
+    </city>
+    <temperature value="-0.27" min="-0.27" max="-0.27" unit="celsius" />
+    <feels_like value="-6.03" unit="celsius" />
+    <humidity value="89" unit="%" />
+    <pressure value="1011" unit="hPa" />
+    <wind>
+        <speed value="6.48" unit="m/s" name="Moderate breeze" />
+        <gusts value="12.32" />
+        <direction value="250" code="WSW" name="West-southwest" />
+    </wind>
+    <clouds value="100" name="overcast clouds" />
+    <visibility value="1382" />
+    <precipitation mode="no" />
+    <weather number="600" value="light snow" icon="13d" />
+    <lastupdate value="2022-05-09T18:59:11" />
+</current>

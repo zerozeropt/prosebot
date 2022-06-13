@@ -1,0 +1,34 @@
+{
+    "entry_point": [
+        {
+            "text": "Na cidade {de%city} {city}, em {country}, o tempo foi de {template.weather%types}.",
+            "condition": ""
+        }
+    ],
+    "weather": [
+        {
+            "text": "nuvens",
+            "condition": "#arg.is_cloudy"
+        },
+        {
+            "text": "céu limpo",
+            "condition": "#arg.is_clear"
+        },
+        {
+            "text": "tempestade",
+            "condition": "#arg.is_stormy"
+        },
+        {
+            "text": "chuva",
+            "condition": "#arg.is_rainy"
+        },
+        {
+            "text": "neve",
+            "condition": "#arg.is_snowy"
+        },
+        {
+            "text": "condições atmosféricas adversas",
+            "condition": "#arg.is_atmosphere"
+        }
+    ]
+}

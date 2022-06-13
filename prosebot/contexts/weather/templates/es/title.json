@@ -1,0 +1,34 @@
+{
+    "entry_point": [
+        {
+            "text": "Día {template.main_title%types} en {city}",
+            "condition": ""
+        }
+    ],
+    "main_title": [
+        {
+            "text": "con nubes",
+            "condition": "#arg.is_cloudy"
+        },
+        {
+            "text": "de nieve",
+            "condition": "#arg.is_snowy"
+        },
+        {
+            "text": "de cielo despejado",
+            "condition": "#arg.is_clear"
+        },
+        {
+            "text": "de tormenta",
+            "condition": "#arg.is_stormy"
+        },
+        {
+            "text": "lluvioso",
+            "condition": "#arg.is_rainy"
+        },
+        {
+            "text": "de baja visibilidad",
+            "condition": "#arg.is_atmosphere"
+        }
+    ]
+}

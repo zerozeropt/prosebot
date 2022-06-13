@@ -1,0 +1,49 @@
+{
+    "coord": {
+        "lon": 15.4162,
+        "lat": 68.6949
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 4.92,
+        "feels_like": 1.93,
+        "temp_min": 3.94,
+        "temp_max": 4.98,
+        "pressure": 1006,
+        "humidity": 98,
+        "sea_level": 1006,
+        "grnd_level": 1006
+    },
+    "visibility": 2133,
+    "wind": {
+        "speed": 3.71,
+        "deg": 185,
+        "gust": 6.97
+    },
+    "rain": {
+        "1h": 0.27
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1652119656,
+    "sys": {
+        "type": 1,
+        "id": 1669,
+        "country": "NO",
+        "sunrise": 1652058322,
+        "sunset": 1652129054
+    },
+    "timezone": 7200,
+    "id": 3137405,
+    "name": "Sortland",
+    "cod": 200
+}

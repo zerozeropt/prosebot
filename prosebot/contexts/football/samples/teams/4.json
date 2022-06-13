@@ -1,0 +1,24 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "4",
+            "NAME": "Sport Lisboa e Benfica",
+            "SHORT_NAME": "Benfica",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Benfica"
+            },
+            "FOUNDATION": "1904-02-28",
+            "COUNTRY": "Portugal",
+            "COUNTRYID": "1",
+            "PRESIDENT": "Rui Costa",
+            "CITY": "Lisboa",
+            "REGIONID": "2",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "encarnados",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "1"
+        }
+    }
+}

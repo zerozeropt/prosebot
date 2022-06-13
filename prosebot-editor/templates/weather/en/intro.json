@@ -1,0 +1,34 @@
+{
+    "entry_point": [
+        {
+            "text": "In the city of {city}, in {country}, {template.weather%types}.",
+            "condition": ""
+        }
+    ],
+    "weather": [
+        {
+            "text": "there were many clouds in the sky",
+            "condition": "#arg.is_cloudy"
+        },
+        {
+            "text": "it was a sunny day with blue sky",
+            "condition": "#arg.is_clear"
+        },
+        {
+            "text": "a huge storm emerged",
+            "condition": "#arg.is_stormy"
+        },
+        {
+            "text": "everyone needed an umbrella",
+            "condition": "#arg.is_rainy"
+        },
+        {
+            "text": "the kids enjoyed is free time building snow men and playing",
+            "condition": "#arg.is_snowy"
+        },
+        {
+            "text": "there were severe adverse atmospheric conditions",
+            "condition": "#arg.is_atmosphere"
+        }
+    ]
+}

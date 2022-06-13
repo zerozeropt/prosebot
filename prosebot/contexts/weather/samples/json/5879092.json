@@ -1,0 +1,47 @@
+{
+    "coord": {
+        "lon": -150.0003,
+        "lat": 64.0003
+    },
+    "weather": [
+        {
+            "id": 600,
+            "main": "Snow",
+            "description": "light snow",
+            "icon": "13d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": -0.63,
+        "feels_like": -6.56,
+        "temp_min": -0.63,
+        "temp_max": -0.63,
+        "pressure": 1011,
+        "humidity": 91,
+        "sea_level": 1011,
+        "grnd_level": 958
+    },
+    "visibility": 662,
+    "wind": {
+        "speed": 6.63,
+        "deg": 244,
+        "gust": 12.81
+    },
+    "snow": {
+        "1h": 0.31
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1652120349,
+    "sys": {
+        "country": "US",
+        "sunrise": 1652101517,
+        "sunset": 1652165257
+    },
+    "timezone": -28800,
+    "id": 5879092,
+    "name": "Alaska",
+    "cod": 200
+}

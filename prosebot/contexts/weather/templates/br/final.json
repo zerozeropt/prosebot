@@ -1,0 +1,22 @@
+{
+    "entry_point": [
+        {
+            "text": "Está a ser portanto um dia bastante {template.temperature%main}.",
+            "condition": ""
+        }
+    ],
+    "temperature": [
+        {
+            "text": "quente",
+            "condition": "#arg.is_hot"
+        },
+        {
+            "text": "frio",
+            "condition": "#arg.is_cold"
+        },
+        {
+            "text": "ameno",
+            "condition": "#arg.is_neutral"
+        }
+    ]
+}

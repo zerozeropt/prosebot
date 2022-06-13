@@ -1,0 +1,1631 @@
+{
+    "data": {
+        "INFO": {
+            "id": "8613676",
+            "senior": 1,
+            "gender": "1",
+            "date": "2022-04-26 20:00:00",
+            "half": "",
+            "full_time": "1",
+            "neutral_field": "0",
+            "id_home_team": "86",
+            "name_home_team": "Manchester City",
+            "type_home_team": "0",
+            "id_away_team": "50",
+            "type_away_team": "0",
+            "name_away_team": "Real Madrid",
+            "home_goals": "4",
+            "away_goals": "3",
+            "home_pen_goals": "0",
+            "away_pen_goals": "0",
+            "referee": "Istv\u00e1n Kov\u00e1cs",
+            "id_stage": "149477",
+            "name_stage": "MF",
+            "duration_int": "45",
+            "phase_type": "elim2",
+            "phase_num_hands": "2",
+            "phase_winner": "86",
+            "stadium": "Etihad Stadium",
+            "local": "Manchester",
+            "stadium_capacity": "55097",
+            "winner": "1",
+            "hand": "1",
+            "competition": "Liga dos Campe\u00f5es",
+            "competition_name": {
+                "pt": "Liga dos Campe\u00f5es",
+                "de": "Champions League",
+                "en": "Champions League",
+                "es": "Champions League",
+                "fr": "Ligue des Champions",
+                "it": "Champions League",
+                "uk": "Champions League",
+                "us": "Champions League"
+            },
+            "competition_gender_feminine": "1",
+            "competition_known_as": "champions",
+            "competition_gender_feminine_known_as": "1",
+            "competition_number_known_as": "",
+            "edition_id": "155920",
+            "crowd": "52217",
+            "extra_time": ""
+        },
+        "LEAGUE": "LC 2021\/22",
+        "STADIUM": "Etihad Stadium",
+        "DATETIME": "2022-04-26 20-00-00",
+        "FINALRESULT": "4-3",
+        "HOMEGOALS": "4",
+        "AWAYGOALS": "3",
+        "POINTSHOME": 0,
+        "CLASSIFHOME_PRE": 0,
+        "CLASSIFHOME_POS": 0,
+        "POINTSAWAY": 0,
+        "CLASSIFAWAY_PRE": 0,
+        "CLASSIFAWAY_POS": 0,
+        "FIXTURE": "0",
+        "MATCHREPORT": {
+            "edition": {
+                "id": "155920"
+            },
+            "game": {
+                "id": "8613676",
+                "fk_home_team": "86",
+                "fk_away_team": "50"
+            },
+            "home_players": {
+                "starters": [
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "136885",
+                        "abrev": "Ederson Moraes",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "36",
+                        "fk_player_parents": "16",
+                        "fk_player": "195615",
+                        "abrev": "John Stones",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "155270",
+                        "abrev": "R\u00faben Dias",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "197669",
+                        "abrev": "Aymeric Laporte",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "31",
+                        "fk_player": "364550",
+                        "abrev": "Oleksandr Zinchenko",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "74' ",
+                        "position": "2",
+                        "sassists": "1"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "331348",
+                        "abrev": "Rodri Hern\u00e1ndez",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "5",
+                        "fk_player": "97908",
+                        "abrev": "Kevin De Bruyne",
+                        "goals": "2' ",
+                        "sgoals": "1",
+                        "assists": "11' ",
+                        "position": "3",
+                        "sassists": "1"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "74953",
+                        "abrev": "Bernardo Silva",
+                        "goals": "74' ",
+                        "sgoals": "1",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "3",
+                        "fk_player": "147899",
+                        "abrev": "Riyad Mahrez",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "2' ",
+                        "position": "4",
+                        "sassists": "1"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "83",
+                        "fk_player_parents": "6",
+                        "fk_player": "408264",
+                        "abrev": "Gabriel Jesus",
+                        "goals": "11' ",
+                        "sgoals": "1",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "480209",
+                        "abrev": "Phil Foden",
+                        "goals": "53' ",
+                        "sgoals": "1",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ],
+                "benched": [
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "127",
+                        "fk_player": "195022",
+                        "abrev": "Zack Steffen",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "1480",
+                        "abrev": "Scott Carson",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "659018",
+                        "abrev": "Conrad Egan-Riley",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "15",
+                        "fk_player": "149014",
+                        "abrev": "Nathan Ak\u00e9",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "711061",
+                        "abrev": "Luke Mbete-Tatu",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "36",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "11012",
+                        "abrev": "Fernandinho",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "53' ",
+                        "position": "3",
+                        "sassists": "1"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "5",
+                        "fk_player": "771370",
+                        "abrev": "Rom\u00e9o Lavia",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "659019",
+                        "abrev": "Cole Palmer",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "642686",
+                        "abrev": "James McAtee",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "2",
+                        "fk_player": "107739",
+                        "abrev": "Ilkay Gundogan",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "83",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "122506",
+                        "abrev": "Raheem Sterling",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "86",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "16",
+                        "fk_player": "254140",
+                        "abrev": "Jack Grealish",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ]
+            },
+            "away_players": {
+                "starters": [
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "5",
+                        "fk_player": "95628",
+                        "abrev": "Thibaut Courtois",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "134833",
+                        "abrev": "Dani Carvajal",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "484829",
+                        "abrev": "\u00c9der Milit\u00e3o",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "46",
+                        "fk_player_parents": "188",
+                        "fk_player": "108400",
+                        "abrev": "David Alaba",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "14",
+                        "fk_player": "454010",
+                        "abrev": "Ferland Mendy",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "33' 55' ",
+                        "position": "2",
+                        "sassists": "2"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "133",
+                        "fk_player": "383442",
+                        "abrev": "Fede Valverde",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "2",
+                        "fk_player": "43004",
+                        "abrev": "Toni Kroos",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "79",
+                        "fk_player_parents": "8",
+                        "fk_player": "26872",
+                        "abrev": "Luka Modric",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "70",
+                        "fk_player_parents": "6",
+                        "fk_player": "556364",
+                        "abrev": "Rodrygo",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "14",
+                        "fk_player": "12913",
+                        "abrev": "Karim Benzema",
+                        "goals": "33' 82' (g.p.)",
+                        "sgoals": "2",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "0",
+                        "min_out": "88",
+                        "fk_player_parents": "6",
+                        "fk_player": "547737",
+                        "abrev": "Vin\u00edcius J\u00fanior",
+                        "goals": "55' ",
+                        "sgoals": "1",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ],
+                "suplentes": [
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "31",
+                        "fk_player": "511884",
+                        "abrev": "Andriy Lunin",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "737063",
+                        "abrev": "Toni Fuidias",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "219770",
+                        "abrev": "Lucas V\u00e1zquez",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "364215",
+                        "abrev": "Jes\u00fas Vallejo",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "46",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "134747",
+                        "abrev": "Nacho Fern\u00e1ndez",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "30693",
+                        "abrev": "Marcelo",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "95621",
+                        "abrev": "Casemiro",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "123058",
+                        "abrev": "Isco ",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "79",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "402708",
+                        "abrev": "Dani Ceballos ",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "70",
+                        "min_out": "0",
+                        "fk_player_parents": "14",
+                        "fk_player": "696119",
+                        "abrev": "Eduardo Camavinga",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "88",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "409083",
+                        "abrev": "Marco Asensio",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "50",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "23",
+                        "fk_player": "34961",
+                        "abrev": "Gareth Bale",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ]
+            },
+            "coach_home": {
+                "id": "658",
+                "abrev": "Pep Guardiola"
+            },
+            "coach_away": {
+                "id": "101",
+                "abrev": "Carlo Ancelotti"
+            }
+        },
+        "PLAYERSTATS": [
+            {
+                "player_id": "12913",
+                "player_total_goals": "41",
+                "player_total_consec_match_scoring": "1",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "26872",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "43004",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "95628",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "108400",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "134747",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "134833",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "383442",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "402708",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "409083",
+                "player_total_goals": "11",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "454010",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "484829",
+                "player_total_goals": "2",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "547737",
+                "player_total_goals": "18",
+                "player_total_consec_match_scoring": "1",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "556364",
+                "player_total_goals": "4",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "696119",
+                "player_total_goals": "2",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "11012",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "74953",
+                "player_total_goals": "13",
+                "player_total_consec_match_scoring": "3",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "97908",
+                "player_total_goals": "15",
+                "player_total_consec_match_scoring": "1",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "122506",
+                "player_total_goals": "14",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "136885",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "147899",
+                "player_total_goals": "23",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "155270",
+                "player_total_goals": "2",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "195615",
+                "player_total_goals": "2",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "197669",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "331348",
+                "player_total_goals": "4",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "364550",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "408264",
+                "player_total_goals": "12",
+                "player_total_consec_match_scoring": "2",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "480209",
+                "player_total_goals": "13",
+                "player_total_consec_match_scoring": "2",
+                "club_country_id": 0
+            }
+        ],
+        "EVENTS": [
+            {
+                "fk_player": "97908",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "2",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "4",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "147899",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "2",
+                "minute_extra": "0",
+                "type": "24"
+            },
+            {
+                "fk_player": "408264",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "11",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "2",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "97908",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "11",
+                "minute_extra": "0",
+                "type": "24"
+            },
+            {
+                "fk_player": "454010",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "33",
+                "minute_extra": "0",
+                "type": "24"
+            },
+            {
+                "fk_player": "12913",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "33",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "3",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "11012",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "36",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "195615",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "36",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "108400",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "46",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "134747",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "46",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "480209",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "53",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "4",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "11012",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "53",
+                "minute_extra": "0",
+                "type": "24"
+            },
+            {
+                "fk_player": "0",
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "658",
+                "minute": "54",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "454010",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "55",
+                "minute_extra": "0",
+                "type": "24"
+            },
+            {
+                "fk_player": "547737",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "55",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "2",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "556364",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "70",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "696119",
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "70",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "364550",
+                "fk_team": "86",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "74",
+                "minute_extra": "0",
+                "type": "24"
+            },
+            {
+                "fk_player": "74953",
+                "fk_team": "86",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "74",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "3",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "402708",
+                "fk_team": "50",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "79",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "26872",
+                "fk_team": "50",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "79",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "11012",
+                "fk_team": "86",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "81",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "12913",
+                "fk_team": "50",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "82",
+                "minute_extra": "0",
+                "type": "3",
+                "goal_gp": "1",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "2",
+                "goal_origin": "1"
+            },
+            {
+                "fk_player": "408264",
+                "fk_team": "86",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "83",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "122506",
+                "fk_team": "86",
+                "opponent_descr": "Real Madrid",
+                "fk_coach": "0",
+                "minute": "83",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "409083",
+                "fk_team": "50",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "88",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "547737",
+                "fk_team": "50",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "88",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "134747",
+                "fk_team": "50",
+                "opponent_descr": "Manchester City",
+                "fk_coach": "0",
+                "minute": "90",
+                "minute_extra": "3",
+                "type": "1"
+            }
+        ],
+        "MATCHSTATS": [
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "shot",
+                "type": "18",
+                "value": "11.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "shot",
+                "type": "18",
+                "value": "16.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "foul",
+                "type": "19",
+                "value": "5.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "foul",
+                "type": "19",
+                "value": "11.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "corner",
+                "type": "20",
+                "value": "3.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "corner",
+                "type": "20",
+                "value": "5.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "offs",
+                "type": "21",
+                "value": "2.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "offs",
+                "type": "21",
+                "value": "3.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "shotgo",
+                "type": "47",
+                "value": "5.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "shotgo",
+                "type": "47",
+                "value": "6.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "ballpo",
+                "type": "48",
+                "value": "40.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "ballpo",
+                "type": "48",
+                "value": "60.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "passok",
+                "type": "53",
+                "value": "335.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "passok",
+                "type": "53",
+                "value": "543.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "totpas",
+                "type": "54",
+                "value": "415.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "totpas",
+                "type": "54",
+                "value": "614.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "gksave",
+                "type": "56",
+                "value": "1.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "gksave",
+                "type": "56",
+                "value": "2.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "shotof",
+                "type": "58",
+                "value": "6.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "shotof",
+                "type": "58",
+                "value": "10.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "goalKi",
+                "type": "59",
+                "value": "7.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "goalKi",
+                "type": "59",
+                "value": "4.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "wontac",
+                "type": "60",
+                "value": "9.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "wontac",
+                "type": "60",
+                "value": "16.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "totalC",
+                "type": "61",
+                "value": "78.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "totalC",
+                "type": "61",
+                "value": "79.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "totalT",
+                "type": "62",
+                "value": "13.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "totalT",
+                "type": "62",
+                "value": "16.00"
+            },
+            {
+                "fk_team": "50",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "key": "shotbl",
+                "type": "63",
+                "value": "1.00"
+            },
+            {
+                "fk_team": "86",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "key": "shotbl",
+                "type": "63",
+                "value": "3.00"
+            }
+        ],
+        "EDITIONSTATS": {
+            "TOP_EDITION_TEAM": [],
+            "TOP_EDITION_MATCH": [],
+            "TOP_EDITION_HOME_TEAM": [],
+            "TOP_EDITION_AWAY_TEAM": []
+        },
+        "EDITIONNEGATIVESTATS": {
+            "TOP_EDITION_TEAM": [],
+            "TOP_EDITION_MATCH": [],
+            "TOP_EDITION_HOME_TEAM": [],
+            "TOP_EDITION_AWAY_TEAM": []
+        },
+        "FORMHOME": {
+            "1": {
+                "state": "V",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "2": {
+                "state": "V",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "3": {
+                "state": "D",
+                "descr_edition": "FA Cup 21\/22"
+            },
+            "4": {
+                "state": "E",
+                "descr_edition": "LC 2021\/22"
+            },
+            "5": {
+                "state": "E",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "6": {
+                "state": "V",
+                "descr_edition": "LC 2021\/22"
+            }
+        },
+        "FORMAWAY": {
+            "1": {
+                "state": "V",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "2": {
+                "state": "V",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "3": {
+                "state": "D",
+                "descr_edition": "LC 2021\/22"
+            },
+            "4": {
+                "state": "V",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "5": {
+                "state": "V",
+                "descr_edition": "LC 2021\/22"
+            },
+            "6": {
+                "state": "V",
+                "descr_edition": "Liga Santander 21\/22"
+            }
+        },
+        "NEXTHOME": {
+            "1": {
+                "fixture": "35",
+                "id": "8016814",
+                "fk_opponent": "84",
+                "opponent_descr": "Leeds United",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "2": {
+                "fixture": "0",
+                "id": "8613678",
+                "fk_opponent": "50",
+                "opponent_descr": "Real Madrid",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "LC 2021\/22"
+            },
+            "3": {
+                "fixture": "36",
+                "id": "8016830",
+                "fk_opponent": "89",
+                "opponent_descr": "Newcastle",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "4": {
+                "fixture": "33",
+                "id": "8016801",
+                "fk_opponent": "1135",
+                "opponent_descr": "Wolverhampton",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "5": {
+                "fixture": "37",
+                "id": "8016840",
+                "fk_opponent": "94",
+                "opponent_descr": "West Ham",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "Premier League 2021\/22"
+            },
+            "6": {
+                "fixture": "38",
+                "id": "8016850",
+                "fk_opponent": "76",
+                "opponent_descr": "Aston Villa",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Premier League 2021\/22"
+            }
+        },
+        "NEXTAWAY": {
+            "1": {
+                "fixture": "34",
+                "id": "8033621",
+                "fk_opponent": "43",
+                "opponent_descr": "Espanyol",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "2": {
+                "fixture": "0",
+                "id": "8613678",
+                "fk_opponent": "86",
+                "opponent_descr": "Manchester City",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "LC 2021\/22"
+            },
+            "3": {
+                "fixture": "35",
+                "id": "8033627",
+                "fk_opponent": "39",
+                "opponent_descr": "Atl\u00e9tico Madrid",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "4": {
+                "fixture": "36",
+                "id": "8033640",
+                "fk_opponent": "2570",
+                "opponent_descr": "Levante",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "5": {
+                "fixture": "37",
+                "id": "8033652",
+                "fk_opponent": "2554",
+                "opponent_descr": "C\u00e1diz",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "Liga Santander 21\/22"
+            },
+            "6": {
+                "fixture": "38",
+                "id": "8033660",
+                "fk_opponent": "49",
+                "opponent_descr": "Real Betis",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Liga Santander 21\/22"
+            }
+        },
+        "CURIOSITY": {
+            "PRE_MATCH_HOME": {
+                "vict": "6",
+                "draws": "2",
+                "loss": "2",
+                "consecutive_vict": "0",
+                "consecutive_draws": "0",
+                "consecutive_loss": "0",
+                "consecutive_without_lose": "4",
+                "consecutive_without_win": "1",
+                "consecutive_matches_without_conced": "4"
+            },
+            "POS_MATCH_HOME": {
+                "vict": "7",
+                "draws": "2",
+                "loss": "2",
+                "consecutive_vict": "1",
+                "consecutive_draws": "0",
+                "consecutive_loss": "0",
+                "consecutive_without_lose": "5",
+                "consecutive_without_win": "0"
+            },
+            "PRE_MATCH_AWAY": {
+                "vict": "7",
+                "draws": "0",
+                "loss": "3",
+                "consecutive_vict": "0",
+                "consecutive_draws": "0",
+                "consecutive_loss": "1",
+                "consecutive_without_lose": "0",
+                "consecutive_without_win": "1"
+            },
+            "POS_MATCH_AWAY": {
+                "vict": "7",
+                "draws": "0",
+                "loss": "4",
+                "consecutive_vict": "0",
+                "consecutive_draws": "0",
+                "consecutive_loss": "2",
+                "consecutive_without_lose": "0",
+                "consecutive_without_win": "2"
+            }
+        }
+    }
+}

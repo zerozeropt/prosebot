@@ -1,0 +1,23 @@
+<?xml-model type="application/xml"?>
+<current>
+    <city id="2267095" name="Leiria">
+        <coord lon="-8.8071" lat="39.7436" />
+        <country>PT</country>
+        <timezone>3600</timezone>
+        <sun rise="2022-05-09T05:26:45" set="2022-05-09T19:36:37" />
+    </city>
+    <temperature value="17.56" min="14.38" max="21.53" unit="celsius" />
+    <feels_like value="17.54" unit="celsius" />
+    <humidity value="83" unit="%" />
+    <pressure value="1021" unit="hPa" />
+    <wind>
+        <speed value="2.33" unit="m/s" name="Light breeze" />
+        <gusts value="4.27" />
+        <direction value="326" code="NW" name="Northwest" />
+    </wind>
+    <clouds value="70" name="broken clouds" />
+    <visibility value="10000" />
+    <precipitation mode="no" />
+    <weather number="803" value="broken clouds" icon="04d" />
+    <lastupdate value="2022-05-09T19:10:44" />
+</current>

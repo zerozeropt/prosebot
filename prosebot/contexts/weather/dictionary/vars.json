@@ -1,0 +1,94 @@
+{
+    "properties": {
+        "condition": [
+            "#arg.is_atmosphere",
+            "#arg.is_neutral",
+            "#arg.is_stormy",
+            "#arg.is_cloudy",
+            "#arg.is_clear",
+            "#arg.is_snowy",
+            "#arg.is_rainy",
+            "#arg.is_cold",
+            "#arg.is_hot"
+        ],
+        "text": [
+            "city",
+            "country",
+            "types",
+            "clouds",
+            "wind",
+            "main"
+        ]
+    },
+    "entities": {
+        "#arg": "any",
+        "types": "WeatherTypesData_properties",
+        "entities_properties": {
+            "WeatherTypesData_properties": [
+                "main",
+                "description"
+            ],
+            "CloudsValuesData_properties": [
+                "percentage"
+            ],
+            "WindValuesData_properties": [
+                "speed",
+                "degree"
+            ],
+            "MainValuesData_properties": [
+                "temperature",
+                "min_temperature",
+                "max_temperature",
+                "pressure",
+                "humidity"
+            ]
+        },
+        "clouds": "CloudsValuesData_properties",
+        "wind": "WindValuesData_properties",
+        "main": "MainValuesData_properties"
+    },
+    "connectors": {
+        "br": [
+            "a",
+            "de",
+            "em",
+            "o",
+            "por",
+            "cardinal",
+            "cardinal_fem",
+            "ordinal",
+            "ordinal_fem",
+            "ordinal_fem_num",
+            "ordinal_num"
+        ],
+        "en": [
+            "was",
+            "cardinal",
+            "ordinal_num"
+        ],
+        "es": [
+            "a",
+            "de",
+            "el",
+            "cardinal",
+            "cardinal_fem",
+            "ordinal",
+            "ordinal_fem",
+            "ordinal_fem_num",
+            "ordinal_num"
+        ],
+        "pt": [
+            "a",
+            "de",
+            "em",
+            "o",
+            "por",
+            "cardinal",
+            "cardinal_fem",
+            "ordinal",
+            "ordinal_fem",
+            "ordinal_fem_num",
+            "ordinal_num"
+        ]
+    }
+}

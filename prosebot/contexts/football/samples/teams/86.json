@@ -1,0 +1,24 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "86",
+            "NAME": "Manchester City Football Club",
+            "SHORT_NAME": "Manchester City",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Manchester City"
+            },
+            "FOUNDATION": "1880-11-18",
+            "COUNTRY": "Inglaterra",
+            "COUNTRYID": "16",
+            "PRESIDENT": "Khaldoon Al Mubarak",
+            "CITY": "Manchester",
+            "REGIONID": "463",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "0"
+        }
+    }
+}

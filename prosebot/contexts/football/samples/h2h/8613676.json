@@ -1,0 +1,34 @@
+{
+    "data": {
+        "SUMMARYTOTAL": {
+            "games": {
+                "27": "6",
+                "0": "6"
+            },
+            "vict_1": {
+                "27": "2",
+                "0": "2"
+            },
+            "vict_2": {
+                "27": "2",
+                "0": "2"
+            }
+        },
+        "ALLMATCHES": [
+            {
+                "SCORED": "1",
+                "CONCEDED": "3",
+                "hometeam_id": "50",
+                "awayteam_id": "86",
+                "competition": "LC 2021\/22"
+            },
+            {
+                "SCORED": "3",
+                "CONCEDED": "4",
+                "hometeam_id": "86",
+                "awayteam_id": "50",
+                "competition": "LC 2021\/22"
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "entry_point": [
+        {
+            "text": "En la ciudad de {city}, en {country}, el tiempo {template.weather%types}.",
+            "condition": ""
+        }
+    ],
+    "weather": [
+        {
+            "text": "estaba nublado",
+            "condition": "#arg.is_cloudy"
+        },
+        {
+            "text": "era claro",
+            "condition": "#arg.is_clear"
+        },
+        {
+            "text": "era tormentoso",
+            "condition": "#arg.is_stormy"
+        },
+        {
+            "text": "era de lluvia",
+            "condition": "#arg.is_rainy"
+        },
+        {
+            "text": "era de nieve",
+            "condition": "#arg.is_snowy"
+        },
+        {
+            "text": "desfavorable",
+            "condition": "#arg.is_atmosphere"
+        }
+    ]
+}

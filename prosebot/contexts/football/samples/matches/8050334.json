@@ -1,0 +1,1842 @@
+{
+    "data": {
+        "INFO": {
+            "id": "8050334",
+            "senior": 1,
+            "gender": "1",
+            "date": "2022-05-07 18:00:00",
+            "half": "",
+            "full_time": "1",
+            "neutral_field": "0",
+            "id_home_team": "4",
+            "name_home_team": "Benfica",
+            "type_home_team": "0",
+            "id_away_team": "9",
+            "type_away_team": "0",
+            "name_away_team": "FC Porto",
+            "home_goals": "0",
+            "away_goals": "1",
+            "home_pen_goals": "0",
+            "away_pen_goals": "0",
+            "referee": "Lu\u00eds Godinho",
+            "id_stage": "150343",
+            "name_stage": "J33",
+            "duration_int": "45",
+            "phase_type": "campeonato",
+            "phase_num_hands": "2",
+            "phase_winner": 0,
+            "stadium": "Est\u00e1dio do Sport Lisboa e Benfica",
+            "local": "Lisboa",
+            "stadium_capacity": "64642",
+            "winner": "2",
+            "hand": "0",
+            "competition": "Liga Portuguesa",
+            "competition_name": {
+                "pt": "Liga Portuguesa",
+                "de": "Portugiesische Liga",
+                "en": "Primeira Liga",
+                "es": "Liga Portuguesa",
+                "fr": "Ligue Portugaise",
+                "it": "Liga Portoghese",
+                "uk": "Primeira Liga",
+                "us": "Primeira Liga"
+            },
+            "competition_gender_feminine": "0",
+            "competition_known_as": "",
+            "competition_gender_feminine_known_as": "0",
+            "competition_number_known_as": "",
+            "edition_id": "156405",
+            "crowd": "42256",
+            "extra_time": ""
+        },
+        "LEAGUE": "Liga Portugal bwin 21\/22",
+        "STADIUM": "Est\u00e1dio do Sport Lisboa e Benfica",
+        "DATETIME": "2022-05-07 18-00-00",
+        "FINALRESULT": "0-1",
+        "HOMEGOALS": "0",
+        "AWAYGOALS": "1",
+        "POINTSHOME": "71",
+        "CLASSIFHOME_PRE": "3",
+        "CLASSIFHOME_POS": "3",
+        "POINTSAWAY": "88",
+        "CLASSIFAWAY_PRE": "1",
+        "CLASSIFAWAY_POS": "1",
+        "FIXTURE": "33",
+        "MATCHREPORT": {
+            "edition": {
+                "id": "156405"
+            },
+            "game": {
+                "id": "8050334",
+                "fk_home_team": "4",
+                "fk_away_team": "9"
+            },
+            "home_players": {
+                "starters": [
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "197",
+                        "fk_player": "197106",
+                        "abrev": "Odysseas Vlachodimos",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "134600",
+                        "abrev": "Gilberto",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "5",
+                        "fk_player": "32809",
+                        "abrev": "Jan Vertonghen",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "4",
+                        "fk_player": "67588",
+                        "abrev": "Nicol\u00e1s Otamendi",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "214579",
+                        "abrev": "\u00c1lex Grimaldo",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "60",
+                        "fk_player_parents": "1",
+                        "fk_player": "368221",
+                        "abrev": "Gil Dias",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "2",
+                        "fk_player": "395624",
+                        "abrev": "Julian Weigl",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "20",
+                        "fk_player": "29772",
+                        "abrev": "Adel Taarabt",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "72",
+                        "fk_player_parents": "188",
+                        "fk_player": "287013",
+                        "abrev": "Valentino L\u00e1zaro",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "133",
+                        "fk_player": "606157",
+                        "abrev": "Darwin N\u00fa\u00f1ez",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "0",
+                        "min_out": "72",
+                        "fk_player_parents": "1",
+                        "fk_player": "428376",
+                        "abrev": "Gon\u00e7alo Ramos",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ],
+                "benched": [
+                    {
+                        "fk_team": "4",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "168622",
+                        "abrev": "Helton Leite",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "74377",
+                        "abrev": "Andr\u00e9 Almeida",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "681311",
+                        "abrev": "Morato",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "489055",
+                        "abrev": "Paulo Bernardo",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "14",
+                        "fk_player": "197672",
+                        "abrev": "Soualiho Meit\u00e9",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "72",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "56560",
+                        "abrev": "Jo\u00e3o M\u00e1rio",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "155479",
+                        "abrev": "Tiago Gouveia",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "60",
+                        "min_out": "0",
+                        "fk_player_parents": "212",
+                        "fk_player": "102379",
+                        "abrev": "Haris Seferovic",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "4",
+                        "min_in": "72",
+                        "min_out": "0",
+                        "fk_player_parents": "31",
+                        "fk_player": "414421",
+                        "abrev": "Roman Yaremchuk",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ]
+            },
+            "away_players": {
+                "starters": [
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "284406",
+                        "abrev": "Diogo Costa",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "421283",
+                        "abrev": "Jo\u00e3o M\u00e1rio",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "130",
+                        "abrev": "Pepe",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "146",
+                        "fk_player": "235670",
+                        "abrev": "Chancel Mbemba",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "169",
+                        "fk_player": "526053",
+                        "abrev": "Zaidu Sanusi",
+                        "goals": "90+4' ",
+                        "sgoals": "1",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "474258",
+                        "abrev": "Pep\u00ea",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "90+4' ",
+                        "position": "3",
+                        "sassists": "1"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "210",
+                        "fk_player": "348694",
+                        "abrev": "Marko Grujic",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "87",
+                        "fk_player_parents": "1",
+                        "fk_player": "421284",
+                        "abrev": "Vitinha",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "276060",
+                        "abrev": "Ot\u00e1vio",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "86",
+                        "fk_player_parents": "67",
+                        "fk_player": "408631",
+                        "abrev": "Mehdi Taremi",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "0",
+                        "min_out": "64",
+                        "fk_player_parents": "6",
+                        "fk_player": "513007",
+                        "abrev": "Evanilson",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ],
+                "benched": [
+                    {
+                        "fk_team": "9",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "4",
+                        "fk_player": "36533",
+                        "abrev": "Agust\u00edn Marches\u00edn",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "1",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "74943",
+                        "abrev": "F\u00e1bio Cardoso",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "274164",
+                        "abrev": "Wendell",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "2",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "87",
+                        "min_out": "0",
+                        "fk_player_parents": "97",
+                        "fk_player": "367964",
+                        "abrev": "Stephen Eust\u00e1quio",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "421287",
+                        "abrev": "F\u00e1bio Vieira",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "284011",
+                        "abrev": "Bruno Costa",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "3",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "999",
+                        "min_out": "0",
+                        "fk_player_parents": "1",
+                        "fk_player": "318154",
+                        "abrev": "Francisco Concei\u00e7\u00e3o",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "86",
+                        "min_out": "0",
+                        "fk_player_parents": "12",
+                        "fk_player": "450417",
+                        "abrev": "Toni Mart\u00ednez",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    },
+                    {
+                        "fk_team": "9",
+                        "min_in": "64",
+                        "min_out": "0",
+                        "fk_player_parents": "6",
+                        "fk_player": "505790",
+                        "abrev": "Wenderson Galeno",
+                        "goals": "",
+                        "sgoals": "0",
+                        "assists": "",
+                        "position": "4",
+                        "sassists": "0"
+                    }
+                ]
+            },
+            "coach_home": {
+                "id": "8068",
+                "abrev": "N\u00e9lson Ver\u00edssimo"
+            },
+            "coach_away": {
+                "id": "2053",
+                "abrev": "S\u00e9rgio Concei\u00e7\u00e3o"
+            }
+        },
+        "PLAYERSTATS": [
+            {
+                "player_id": "130",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "235670",
+                "player_total_goals": "2",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "276060",
+                "player_total_goals": "5",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "284406",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "348694",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "367964",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "408631",
+                "player_total_goals": "24",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "421283",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "421284",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "450417",
+                "player_total_goals": "7",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "505790",
+                "player_total_goals": "11",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "513007",
+                "player_total_goals": "21",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "526053",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "1",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "474258",
+                "player_total_goals": "6",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "29772",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "32809",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "56560",
+                "player_total_goals": "4",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "67588",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "102379",
+                "player_total_goals": "5",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "134600",
+                "player_total_goals": "4",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "197106",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "214579",
+                "player_total_goals": "6",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "287013",
+                "player_total_goals": "0",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "368221",
+                "player_total_goals": "1",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "395624",
+                "player_total_goals": "3",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "414421",
+                "player_total_goals": "9",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "428376",
+                "player_total_goals": "8",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            },
+            {
+                "player_id": "606157",
+                "player_total_goals": "34",
+                "player_total_consec_match_scoring": "0",
+                "club_country_id": 0
+            }
+        ],
+        "EVENTS": [
+            {
+                "fk_player": "368221",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "16",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "428376",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "24",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "348694",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "30",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "130",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "40",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "606157",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "53",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "368221",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "60",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "102379",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "60",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "287013",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "62",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "513007",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "64",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "505790",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "64",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "67588",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "71",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "56560",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "72",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "287013",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "72",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "414421",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "72",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "428376",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "72",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "56560",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "82",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "395624",
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "fk_coach": "0",
+                "minute": "85",
+                "minute_extra": "0",
+                "type": "1"
+            },
+            {
+                "fk_player": "450417",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "86",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "408631",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "86",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "367964",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "87",
+                "minute_extra": "0",
+                "type": "4"
+            },
+            {
+                "fk_player": "421284",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "87",
+                "minute_extra": "0",
+                "type": "5"
+            },
+            {
+                "fk_player": "526053",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "90",
+                "minute_extra": "4",
+                "type": "3",
+                "goal_gp": "0",
+                "goal_og": "0",
+                "goal_zone": "2",
+                "goal_body": "3",
+                "goal_origin": "5"
+            },
+            {
+                "fk_player": "474258",
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "fk_coach": "0",
+                "minute": "90",
+                "minute_extra": "4",
+                "type": "24"
+            }
+        ],
+        "MATCHSTATS": [
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "shot",
+                "type": "18",
+                "value": "10.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "shot",
+                "type": "18",
+                "value": "10.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "foul",
+                "type": "19",
+                "value": "23.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "foul",
+                "type": "19",
+                "value": "18.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "corner",
+                "type": "20",
+                "value": "5.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "corner",
+                "type": "20",
+                "value": "3.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "offs",
+                "type": "21",
+                "value": "4.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "offs",
+                "type": "21",
+                "value": "1.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "shotgo",
+                "type": "47",
+                "value": "3.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "shotgo",
+                "type": "47",
+                "value": "5.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "ballpo",
+                "type": "48",
+                "value": "63.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "ballpo",
+                "type": "48",
+                "value": "37.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "passok",
+                "type": "53",
+                "value": "424.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "passok",
+                "type": "53",
+                "value": "218.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "totpas",
+                "type": "54",
+                "value": "526.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "totpas",
+                "type": "54",
+                "value": "313.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "gksave",
+                "type": "56",
+                "value": "4.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "gksave",
+                "type": "56",
+                "value": "2.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "shotof",
+                "type": "58",
+                "value": "7.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "shotof",
+                "type": "58",
+                "value": "5.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "wontac",
+                "type": "60",
+                "value": "12.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "wontac",
+                "type": "60",
+                "value": "10.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "totalC",
+                "type": "61",
+                "value": "97.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "totalC",
+                "type": "61",
+                "value": "91.00"
+            },
+            {
+                "fk_team": "4",
+                "fk_opponent": "9",
+                "opponent_descr": "FC Porto",
+                "key": "shotbl",
+                "type": "63",
+                "value": "2.00"
+            },
+            {
+                "fk_team": "9",
+                "fk_opponent": "4",
+                "opponent_descr": "Benfica",
+                "key": "shotbl",
+                "type": "63",
+                "value": "3.00"
+            }
+        ],
+        "EDITIONSTATS": {
+            "TOP_EDITION_TEAM": [
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "723.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "647.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "164.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "77.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "36.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "34.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "30.00"
+                },
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "26.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "14.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "14.00"
+                },
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "11.00"
+                },
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "11.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "9.00"
+                }
+            ],
+            "TOP_EDITION_MATCH": [
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "1074.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "923.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "284.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "100.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "53.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "52.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "45.00"
+                },
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "32.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "19.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "18.00"
+                },
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "14.00"
+                },
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "13.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "12.00"
+                }
+            ],
+            "TOP_EDITION_HOME_TEAM": [
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "723.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "636.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "144.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "75.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "27.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "25.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "23.00"
+                },
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "20.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "13.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "13.00"
+                },
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "9.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "8.00"
+                },
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "6.00"
+                }
+            ],
+            "TOP_EDITION_AWAY_TEAM": [
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "702.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "622.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "132.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "73.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "28.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "27.00"
+                },
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "26.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "24.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "12.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "11.00"
+                },
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "7.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "4.00"
+                },
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "4.00"
+                }
+            ]
+        },
+        "EDITIONNEGATIVESTATS": {
+            "TOP_EDITION_TEAM": [
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "0.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "0.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "0.00"
+                },
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "0.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "0.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "0.00"
+                },
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "0.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "0.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "3.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "23.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "31.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "36.00"
+                },
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "63.00"
+                }
+            ],
+            "TOP_EDITION_MATCH": [
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "0.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "0.00"
+                },
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "0.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "1.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "1.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "2.00"
+                },
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "5.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "10.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "12.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "77.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "100.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "300.00"
+                },
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "358.00"
+                }
+            ],
+            "TOP_EDITION_HOME_TEAM": [
+                {
+                    "key": "gksave",
+                    "type": "56",
+                    "value": "0.00"
+                },
+                {
+                    "key": "shotbl",
+                    "type": "63",
+                    "value": "0.00"
+                },
+                {
+                    "key": "offs",
+                    "type": "21",
+                    "value": "0.00"
+                },
+                {
+                    "key": "shotof",
+                    "type": "58",
+                    "value": "1.00"
+                },
+                {
+                    "key": "corner",
+                    "type": "20",
+                    "value": "1.00"
+                },
+                {
+                    "key": "foul",
+                    "type": "19",
+                    "value": "3.00"
+                },
+                {
+                    "key": "shotgo",
+                    "type": "47",
+                    "value": "3.00"
+                },
+                {
+                    "key": "shot",
+                    "type": "18",
+                    "value": "5.00"
+                },
+                {
+                    "key": "wontac",
+                    "type": "60",
+                    "value": "7.00"
+                },
+                {
+                    "key": "totalC",
+                    "type": "61",
+                    "value": "36.00"
+                },
+                {
+                    "key": "ballpo",
+                    "type": "48",
+                    "value": "39.00"
+                },
+                {
+                    "key": "passok",
+                    "type": "53",
+                    "value": "269.00"
+                },
+                {
+                    "key": "totpas",
+                    "type": "54",
+                    "value": "295.00"
+                }
+            ],
+            "TOP_EDITION_AWAY_TEAM": []
+        },
+        "FORMHOME": {
+            "1": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "2": {
+                "state": "E",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "3": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "4": {
+                "state": "E",
+                "descr_edition": "LC 2021\/22"
+            },
+            "5": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "6": {
+                "state": "D",
+                "descr_edition": "LC 2021\/22"
+            }
+        },
+        "FORMAWAY": {
+            "1": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "2": {
+                "state": "D",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "3": {
+                "state": "V",
+                "descr_edition": "Ta\u00e7a Portugal 21\/22"
+            },
+            "4": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "5": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "6": {
+                "state": "V",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            }
+        },
+        "NEXTHOME": {
+            "1": {
+                "fixture": "34",
+                "id": "8050368",
+                "fk_opponent": "13",
+                "opponent_descr": "Pa\u00e7os de Ferreira",
+                "where": "away",
+                "neutral_field": "0",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            }
+        },
+        "NEXTAWAY": {
+            "1": {
+                "fixture": "34",
+                "id": "8050382",
+                "fk_opponent": "1734",
+                "opponent_descr": "Estoril Praia",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Liga Portugal bwin 21\/22"
+            },
+            "2": {
+                "fixture": "0",
+                "id": "8652489",
+                "fk_opponent": "4336",
+                "opponent_descr": "CD Tondela",
+                "where": "away",
+                "neutral_field": "1",
+                "descr_edition": "Ta\u00e7a Portugal 21\/22"
+            },
+            "3": {
+                "fixture": "0",
+                "id": "8665769",
+                "fk_opponent": "4336",
+                "opponent_descr": "CD Tondela",
+                "where": "home",
+                "neutral_field": "0",
+                "descr_edition": "Superta\u00e7a 2022"
+            }
+        },
+        "CURIOSITY": {
+            "PRE_MATCH_HOME": {
+                "vict": "22",
+                "draws": "5",
+                "loss": "5",
+                "consecutive_vict": "1",
+                "consecutive_draws": "0",
+                "consecutive_loss": "0",
+                "consecutive_without_lose": "4",
+                "consecutive_without_win": "0",
+                "consecutive_matches_without_conced": "3"
+            },
+            "POS_MATCH_HOME": {
+                "vict": "22",
+                "draws": "5",
+                "loss": "6",
+                "consecutive_vict": "0",
+                "consecutive_draws": "0",
+                "consecutive_loss": "1",
+                "consecutive_without_lose": "0",
+                "consecutive_without_win": "1"
+            },
+            "PRE_MATCH_AWAY": {
+                "vict": "27",
+                "draws": "4",
+                "loss": "1",
+                "consecutive_vict": "1",
+                "consecutive_draws": "0",
+                "consecutive_loss": "0",
+                "consecutive_without_lose": "1",
+                "consecutive_without_win": "0"
+            },
+            "POS_MATCH_AWAY": {
+                "vict": "28",
+                "draws": "4",
+                "loss": "1",
+                "consecutive_vict": "2",
+                "consecutive_draws": "0",
+                "consecutive_loss": "0",
+                "consecutive_without_lose": "2",
+                "consecutive_without_win": "0"
+            }
+        }
+    }
+}

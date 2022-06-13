@@ -1,0 +1,26 @@
+{
+    "entry_point": [
+        {
+            "text": "{template.main}.<br>{template.clouds}.<br>{template.wind}.",
+            "condition": ""
+        }
+    ],
+    "main": [
+        {
+            "text": "The current temperature in the city is {main.temperature}º, the maximum and minimum values for the day are {main.max_temperature}º and {main.min_temperature}º.<br>The humidity and pressure values are {main.humidity}% and {main.pressure}hPa, respectively.",
+            "condition": ""
+        }
+    ],
+    "clouds": [
+        {
+            "text": "A percentage of {clouds.percentage}% of clouds in the sky.",
+            "condition": ""
+        }
+    ],
+    "wind": [
+        {
+            "text": "Wind blowing at a speed of {wind.speed}m/s and with a direction of {wind.degree}º.",
+            "condition": ""
+        }
+    ]
+}

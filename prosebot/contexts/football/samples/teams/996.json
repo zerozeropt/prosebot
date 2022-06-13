@@ -1,0 +1,32 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "996",
+            "NAME": "Association of Football Federations of Azerbaijan",
+            "SHORT_NAME": "Azerbaij\u00e3o",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Azerbaij\u00e3o",
+                "uk": "Azerbaijan",
+                "de": "Aserbaidschan",
+                "fr": "Azerba\u00efdjan",
+                "es": "Azerbaiy\u00e1n",
+                "br": "Azerbaij\u00e3o",
+                "it": "Azerbaigian",
+                "en": "Azerbaijan",
+                "us": "Azerbaijan"
+            },
+            "FOUNDATION": "1992-03-01",
+            "COUNTRY": "Azerbaij\u00e3o",
+            "COUNTRYID": "189",
+            "PRESIDENT": "R\u00f6vn&#601;q Abdullayev",
+            "CITY": "Baku",
+            "REGIONID": "0",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "0"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "entry_point": [
+        {
+            "text": "So it's been a pretty {template.temperature%main} day.",
+            "condition": ""
+        }
+    ],
+    "temperature": [
+        {
+            "text": "hot",
+            "condition": "#arg.is_hot"
+        },
+        {
+            "text": "cold",
+            "condition": "#arg.is_cold"
+        },
+        {
+            "text": "mild",
+            "condition": "#arg.is_neutral"
+        }
+    ]
+}

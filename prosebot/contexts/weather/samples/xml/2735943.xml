@@ -1,0 +1,23 @@
+<?xml-model type="application/xml"?>
+<current>
+    <city id="2735943" name="Porto">
+        <coord lon="-8.611" lat="41.1496" />
+        <country>PT</country>
+        <timezone>3600</timezone>
+        <sun rise="2022-05-09T05:22:42" set="2022-05-09T19:39:06" />
+    </city>
+    <temperature value="20.71" min="16.47" max="22.24" unit="celsius" />
+    <feels_like value="20.64" unit="celsius" />
+    <humidity value="69" unit="%" />
+    <pressure value="1019" unit="hPa" />
+    <wind>
+        <speed value="3.09" unit="m/s" name="Light breeze" />
+        <gusts />
+        <direction value="300" code="WNW" name="West-northwest" />
+    </wind>
+    <clouds value="0" name="clear sky" />
+    <visibility value="10000" />
+    <precipitation mode="no" />
+    <weather number="800" value="clear sky" icon="01d" />
+    <lastupdate value="2022-05-09T18:50:38" />
+</current>

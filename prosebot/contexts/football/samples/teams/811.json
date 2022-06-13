@@ -1,0 +1,32 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "811",
+            "NAME": "Federa\u00e7\u00e3o Portuguesa de Futebol",
+            "SHORT_NAME": "Portugal",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Portugal",
+                "uk": "Portugal",
+                "de": "Portugal",
+                "fr": "Portugal",
+                "es": "Portugal",
+                "br": "Portugal",
+                "it": "Portogallo",
+                "en": "Portugal",
+                "us": "Portugal"
+            },
+            "FOUNDATION": "1914-03-31",
+            "COUNTRY": "Portugal",
+            "COUNTRYID": "1",
+            "PRESIDENT": "Fernando Gomes",
+            "CITY": "Oeiras",
+            "REGIONID": "0",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "portugueses",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "1"
+        }
+    }
+}
