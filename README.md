@@ -1,10 +1,10 @@
 # Prosebot
 
-Prosebot is a template-based natural language generation application. Throughout the last years, [ZOS](http://www.zos.pt) has been developing Prosebot, alongside their collaboration with [FEUP](https://sigarra.up.pt/feup/pt/web_page.inicial), as part of the [zerozero.pt](zerozero.pt) project.
+Prosebot is a template-based natural language generation application. Throughout the last years, [ZOS](http://www.zos.pt) has been developing Prosebot, alongside their collaboration with [FEUP](https://sigarra.up.pt/feup/pt/web_page.inicial), as part of the [zerozero.pt](https://www.zerozero.pt) project.
 
-It started as a generator of matches’ summaries from sports data extracted from [zerozero.pt](zerozero.pt) database in an automatic efficient way and it is already being used by [zerozero.pt](zerozero.pt)’s empowered users to automatically generate summaries for football matches that range from amateur to professional leagues, from senior footballers to the young football academies.
+It started as a generator of matches’ summaries from sports data extracted from [zerozero.pt](https://www.zerozero.pt) database in an automatic efficient way and it is already being used by [zerozero.pt](https://www.zerozero.pt)’s empowered users to automatically generate summaries for football matches that range from amateur to professional leagues, from senior footballers to the young football academies.
 
-As a result of a dissertation project led by Nuno Cardoso ([LinkedIn](https://www.linkedin.com/in/nmtc01/), [GitHub](https://github.com/nmtc01)) at FEUP, in collaboration with [zerozero.pt](zerozero.pt), Prosebot is now an open-source system, which can be explored by the community. The system had yet a generalization of context, making it possible for users to introduce new domains and templates. The current version available has a fully operational football context for generating summaries of matches and a dummy context example for weather reporting.
+As a result of a dissertation project led by Nuno Cardoso ([LinkedIn](https://www.linkedin.com/in/nmtc01/), [GitHub](https://github.com/nmtc01)) at FEUP, in collaboration with [zerozero.pt](https://www.zerozero.pt), Prosebot is now an open-source system, which can be explored by the community. The system had yet a generalization of context, making it possible for users to introduce new domains and templates. The current version available has a fully operational football context for generating summaries of matches and a dummy context example for weather reporting.
 
 # Contexts Available
 
