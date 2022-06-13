@@ -906,7 +906,7 @@ class TemplatesValidator
 			return;
 
 		if ($this->check_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language}))
-			$this->throw_error_bad_token($path, $connector, "expecting connector");
+			$this->throw_error_bad_token($path, $connector, "connector not defined");
 
 		// Push to connectors list
 		if ($this->get_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language}))
