@@ -2,9 +2,9 @@
 
 Prosebot is a template-based natural language generation application. Throughout the last years, [ZOS](http://www.zos.pt) has been developing Prosebot, alongside their collaboration with [FEUP](https://sigarra.up.pt/feup/pt/web_page.inicial), as part of the [zerozero.pt](https://www.zerozero.pt) project.
 
-It started as a generator of matches’ summaries from sports data extracted from [zerozero.pt](https://www.zerozero.pt) database in an automatic efficient way and it is already being used by [zerozero.pt](https://www.zerozero.pt)’s empowered users to automatically generate summaries for football matches that range from amateur to professional leagues, from senior footballers to the young football academies.
+It started as a generator of matches’ summaries from sports data extracted from the [zerozero.pt](https://www.zerozero.pt) database. The system is already being used by [zerozero.pt](https://www.zerozero.pt)’s empowered users to automatically generate summaries for football matches that range from amateur to professional leagues, from senior footballers to the young football academies.
 
-As a result of a dissertation project led by Nuno Cardoso ([LinkedIn](https://www.linkedin.com/in/nmtc01/), [GitHub](https://github.com/nmtc01)) at FEUP, in collaboration with [zerozero.pt](https://www.zerozero.pt), Prosebot is now an open-source system, which can be explored by the community. The system had yet a generalization of context, making it possible for users to introduce new domains and templates. The current version available has a fully operational football context for generating summaries of matches and a dummy context example for weather reporting.
+As a result of a dissertation project led by Nuno Cardoso ([LinkedIn](https://www.linkedin.com/in/nmtc01/), [GitHub](https://github.com/nmtc01)) at FEUP, in collaboration with [zerozero.pt](https://www.zerozero.pt), Prosebot is now an open-source system that the community can explore. The system achieved yet a context generalization, making it possible for users to introduce new domains and templates. The current version available has a fully operational football context for generating summaries of matches and a dummy context example for weather reporting.
 
 # Contexts Available
 
@@ -19,14 +19,14 @@ Currently, Prosebot has full support for the following languages:
 - European Portuguese
 - Spanish
 
-However, new languages can be added by the community. On how to add new languages to the system, please read the following [tutorial](https://github.com/zerozeropt/prosebot/wiki/How-to-add-a-new-language).
+However, new languages can be added by the community. Please read the following [tutorial](https://github.com/zerozeropt/prosebot/wiki/How-to-add-a-new-language) on how to add new languages to the system.
 
 # The components
 
 The Prosebot system is composed of the following components as depicted [here](https://github.com/zerozeropt/prosebot/wiki/prosebot/Architecture):
 - Prosebot (generator and validator): the PHP natural language generator and templates validation algorithm;
 - Prosebot Editor: a copy of the template files and API for their management;
-- Templates Management Platform: a React JS user-friendly interface for helping with the management of the templates.
+- Templates Management Platform: a React JS user-friendly interface for helping manage of the templates.
 
 # Get started
 
@@ -59,7 +59,7 @@ npm start
 
 # Documentation
 
-For more details regarding architecture, descriptions and tutorials, please read the [Prosebot Documentation](https://github.com/zerozeropt/prosebot/wiki/Prosebot-Documentation).
+For more details regarding architecture, descriptions, and tutorials, please read the [Prosebot Documentation](https://github.com/zerozeropt/prosebot/wiki/Prosebot-Documentation).
 
 # License
 
