@@ -26,7 +26,7 @@ However, new languages can be added by the community. On how to add new language
 The Prosebot system is composed of the following components as depicted [here](https://github.com/zerozeropt/prosebot/wiki/prosebot/Architecture):
 - Prosebot (generator and validator): the PHP natural language generator and templates validation algorithm;
 - Prosebot Editor: a copy of the template files and API for their management;
-- Templates Management Platform: a React JS user-friendly interface for helping on the management of the templates.
+- Templates Management Platform: a React JS user-friendly interface for helping with the management of the templates.
 
 # Get started
 
