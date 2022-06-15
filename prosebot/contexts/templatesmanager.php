@@ -283,6 +283,9 @@ abstract class TemplatesManager
 			$result = preg_replace("/,? *\.+/", '.', $result);
 			$result = preg_replace("/\.+/", '.', $result);
 			$result = preg_replace("/\n +/", "\n", $result);
+			$result = preg_replace("/,\s*,/", ',', $result);
+			$result = preg_replace("/\.\s*\./", '.', $result);
+			$result = preg_replace("/\s+\./", '.', $result);
 			$result = trim($result);
 			
 			//tokenize sentences
@@ -292,20 +295,31 @@ abstract class TemplatesManager
 			//capitalize first letter
 			foreach ($result as &$sentence) {
 				if ($sentence != "") {
-					$index = 0;
+					$has_italic = false;
+					$has_hyperlink = false;
 
-					// Check if is italic
-					if (preg_match('/^<i>.+<\/i>/u',$sentence))
-						$index = 3;
+					$after_tags = $sentence;
+					preg_match('/(^<a.*?>)(.*<\/a>.*$)/u', $sentence, $after_a_tag_array);
+					if (count($after_a_tag_array) > 2) {
+						$after_tags = $after_a_tag_array[2];
+						$has_hyperlink = true;
+					}
+					preg_match('/(^<i>)(.*<\/i>.*$)/u', trim($after_tags), $after_i_tag_array);
+					if (count($after_i_tag_array) > 2) {
+						$after_tags = $after_i_tag_array[2];
+						$has_italic = true;
+					}
 
-					$first_char = mb_substr($sentence, $index, 1, 'UTF-8');
-					$sentence[$index] = mb_strtoupper($first_char, 'UTF-8');
+					$trimmed_str = trim($after_tags);
+					$first_char = mb_substr($trimmed_str, 0, 1, 'UTF-8');
+					$prev_chars = $has_hyperlink ? $after_a_tag_array[1] : "";
+					$prev_chars .= $has_italic ? $after_i_tag_array[1] : "";
+					$pos_chars = mb_substr($trimmed_str, 1, strlen($trimmed_str), 'UTF-8');
+					$sentence = $prev_chars . mb_strtoupper($first_char, 'UTF-8') . $pos_chars;
 				}
 			}
 
 			$result = implode(" ", $result);
-
-			$result = preg_replace("/ *\./", ".", $result);
 			$result = str_replace(static::$escape_period, ".", $result);
 			$result = trim($result);
 			$result = str_replace(static::$escape_period, ".", $result);
