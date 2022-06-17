@@ -1,1 +1,491 @@
-{"entry_point":[{"text":"{template.score}. {template.teams_form} {template.best_player}. {template.decisive_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.","condition":"!has_decisive_player"},{"text":"{template.score}. {template.teams_form} {template.decisive_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.","condition":"has_decisive_player"}],"score":[{"text":"{winner.name} {template.defeated} {loser.name} {template.commentary} el {weekday}, {final_score}, {template.fixture}","condition":"final_score_diff\u003E0"},{"text":"{template.fixture}, {winner.name} {template.defeated} {loser.name}, {final_score}, {template.extra} el {weekday}","condition":"final_score_diff\u003E0"},{"text":"El partido entre {winner.name} y {loser.name} el {weekday} termin\u00f3 con un empate {template.match_adjective}, {final_score}, {template.fixture}","condition":"final_score_diff==0"},{"text":"{winner.name} y {loser.name} empataron en partido {template.match_adjective} el {weekday}, {final_score}, {template.fixture}","condition":"final_score_diff==0"},{"text":"{winner.name} y {loser.name} se dividieron los puntos en un partido {template.match_adjective} el {weekday}, {final_score}, {template.fixture}","condition":"final_score_diff==0"},{"text":"El {weekday} {winner.name} y {loser.name} se dividieron los puntos en un partido {template.match_adjective}, {final_score}, {template.fixture}","condition":"final_score_diff==0"},{"text":"{template.fixture}, {winner.name} y {loser.name} se dividieron los puntos el {weekday}, {final_score}","condition":"final_score_diff==0"},{"text":"El {weekday} {winner.name} y {loser.name} se dividieron los puntos, {final_score}, {template.fixture}","condition":"final_score_diff==0"},{"text":"{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.commentary} el {weekday}, {final_score}","condition":"final_score_diff\u003E0"},{"text":"{template.pen_score}","condition":"extra_time==\"PEN\""},{"text":"{template.normal_score}","condition":"extra_time!=\"PEN\""}],"defeated":[{"text":"derrot&oacute;","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"gan&oacute;","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"se impuso al","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"gole\u00f3","condition":"final_score_diff\u003E3"},{"text":"atropell&oacute;","condition":"final_score_diff\u003E3"},{"text":"tumb&oacute; al","condition":"final_score_diff\u003E0  || extra_time==\"PEN\""},{"text":"destroz&oacute;","condition":"final_score_diff\u003E3"},{"text":"arroll&oacute;","condition":"final_score_diff\u003E3"}],"commentary":[{"text":"en una {template.match_adjective} victoria","condition":"final_score_diff!=0"},{"text":"en una victoria {template.win_adjective}","condition":"final_score_diff!=0"},{"text":"en un triunfo {template.win_adjective}","condition":"final_score_diff!=0"}],"match_adjective":[{"text":"sin goles","condition":"match_goals==0"},{"text":"emocionante","condition":"match_goals\u003E5 && final_score_diff\u003C2"},{"text":"extraordinaria","condition":"match_goals\u003E6 || final_score_diff\u003E4"},{"text":"con lo justo","condition":"final_score_diff==1"},{"text":"muy equilibrado","condition":"match_goals\u003E5 && final_score_diff\u003C2"},{"text":"autoritaria","condition":"match_goals\u003E6 || final_score_diff\u003E4"},{"text":"equilibrada","condition":"final_score_diff==1"}],"win_adjective":[{"text":"fenomenal","condition":"match_goals\u003E5 || final_score_diff\u003E3"},{"text":"arrasadora","condition":"match_goals\u003E5 || final_score_diff\u003E3"},{"text":"espectacular","condition":"match_goals\u003E5 || final_score_diff\u003E3"},{"text":"arrolladora","condition":"match_goals\u003E5 || final_score_diff\u003E3"},{"text":"demoledora","condition":"match_goals\u003E5 || final_score_diff\u003E3"}],"teams_form":[{"text":"Ambos {home_team.name} y {away_team.name} han realizado su primer juego en la competici\u00f3n.","condition":"first_competition_game"},{"text":"En esta competici&oacute;n, {template.team_form%home_team}, y {template.team_form%away_team}.","condition":"!first_competition_game && is_league"},{"text":"Tanto {el%home_team.name} {home_team.name} como {el%away_team.name} {away_team.name} realizaban su primer partido en la competici&oacute;n.&nbsp;.","condition":"first_competition_game == 1"},{"text":"Llegan a esta jornada, {template.team_form%home_team}, y {template.team_form%away_team}.","condition":"!first_competition_game && is_league"},{"text":"Llegan a este partido, {template.team_form%home_team}, y {template.team_form%away_team}.","condition":"!first_competition_game && is_league"},{"text":"En esta competici&oacute;n, ambos los equipos llegaban de {template.form_type%home_team}.","condition":"same_competition_form_sequence && is_league"},{"text":"En la ida {el%prev_match_winner.name} {prev_match_winner.name} hab&iacute;a ganado {el%prev_match_loser.name} {prev_match_loser.name}, {prev_match_score}.","condition":"is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff!=0"},{"text":"En la ida los equipos hab&iacute;an empatado, {prev_match_score}.","condition":"is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"}],"team_form":[{"text":"curiosamente, {el%#arg.name} {#arg.name} {s:llegaba|p:llegaban%#arg.name} tambi&eacute;n de {template.form_type%#arg}","condition":"same_competition_form_sequence && #arg.is_away_team"},{"text":"{EL%#arg.name} {#arg.name} {s:llegaba|p:llegaban%#arg.name} de {template.form_type%#arg}","condition":"#arg.competition_form_sequence_bool"},{"text":"{El%#arg.name} {#arg.name} realizaba su primer partido en la competici&oacute;n.","condition":"!#arg.competition_form_sequence_bool"}],"form_type":[{"text":"{CARDINAL_FEM%#arg.competition_form_sequence} victorias","condition":"#arg.is_competition_winning_sequence && #arg.competition_form_sequence\u003E1"},{"text":"{CARDINAL_FEM%#arg.competition_form_sequence} victorias consecutivas","condition":"#arg.is_competition_winning_sequence && #arg.competition_form_sequence\u003E1"},{"text":"una racha de {ORDINAL_FEM%#arg.competition_form_sequence} victorias consecutivas","condition":"#arg.is_competition_winning_sequence && #arg.competition_form_sequence\u003E1"},{"text":"una racha de {ORDINAL%#arg.competition_form_sequence} empates consecutivos","condition":"#arg.is_competition_drawing_sequence && #arg.competition_form_sequence\u003E1"},{"text":"un empate","condition":"#arg.is_competition_drawing_sequence && #arg.competition_form_sequence==1"},{"text":"{CARDINAL_FEM%#arg.competition_form_sequence} derrotas","condition":"#arg.is_competition_losing_sequence && #arg.competition_form_sequence\u003E1"},{"text":"{CARDINAL_FEM%#arg.competition_form_sequence} derrotas consecutivas","condition":"#arg.is_competition_losing_sequence && #arg.competition_form_sequence\u003E1"},{"text":"una racha de {ORDINAL_FEM%#arg.competition_form_sequence} derrotas consecutivas","condition":"#arg.is_competition_losing_sequence && #arg.competition_form_sequence\u003E1"},{"text":"una derrota","condition":"#arg.is_competition_losing_sequence && #arg.competition_form_sequence==1"},{"text":"{CARDINAL%#arg.competition_form_sequence} empates consecutivos","condition":"#arg.is_competition_drawing_sequence && #arg.competition_form_sequence\u003E1"},{"text":"{CARDINAL%#arg.competition_form_sequence} empates","condition":"#arg.is_competition_drawing_sequence && #arg.competition_form_sequence\u003E1"},{"text":"una victoria","condition":"#arg.is_competition_winning_sequence && #arg.competition_form_sequence==1"}],"best_player":[{"text":"{best_player.name} se destac\u00f3","condition":"has_best_player"},{"text":"{best_player.name} hizo un gran partido","condition":"has_best_player"},{"text":"{best_player.name} hizo una grande exhibici\u00f3n","condition":"has_best_player"},{"text":"{best_player.name} fue la figura del partido","condition":"has_best_player"},{"text":"{best_player.name} fue {f:decisiva|m:decisivo%decisive_player.name_gender}","condition":"has_best_player"},{"text":"{best_player.name} foi el gran destaque del partido.","condition":"has_best_player"},{"text":"{best_player.name} se exhibi&oacute;","condition":"has_best_player"},{"text":"{best_player.name} fue el MVP","condition":"has_best_player"},{"text":"{best_player.name} se luci&oacute;","condition":"has_best_player"},{"text":"{best_player.name} firm&oacute; una gran actuaci&oacute;n&nbsp;{template.best_player_contribution}","condition":"has_best_player"},{"text":"{best_player.name} firm&oacute; un partidazo {template.best_player_contribution}","condition":"has_best_player"}],"fixture":[{"text":"en partido para la {ORDINAL_FEM%fixture} jornada","condition":"is_league"},{"text":"en partido para la jornada {fixture}","condition":"is_league"},{"text":"en la jornada {fixture}","condition":"is_league"},{"text":"en la {ORDINAL_FEM%fixture} jornada","condition":"is_league"},{"text":"en partido de la {ORDINAL_FEM%fixture} jornada {DE%competition.name} {competition.name}","condition":"is_league"},{"text":"en partido de la jornada {fixture} {DE%competition.name} {competition.name}","condition":"is_league"},{"text":"en la jornada {fixture} {DE%competition.name} {competition.name}","condition":"is_league"},{"text":"en la {ORDINAL_FEM%fixture} jornada {DE%competition.name} {competition.name}","condition":"is_league"},{"text":"en partido de {template.stage} {DE%competition.name} {competition.name}","condition":"!is_league"}],"stage":[{"text":"a la final","condition":"is_final"},{"text":"a las semifinales","condition":"is_semi_final"},{"text":"a los octavos de final","condition":"is_round_of_16"},{"text":"a los cuartos de final","condition":"is_quarter_final"},{"text":"a {stage}","condition":"is_group_stage"},{"text":"a la gran final","condition":"is_final"}],"best_player_contribution":[{"text":"con {template.goals%best_player} {template.best_player_connector%best_player} {template.assists%best_player}","condition":"has_best_player"}],"best_player_connector":[{"text":"y","condition":"#arg.player_goals \u003E 0 && #arg.player_assists \u003E 0"},{"text":"as&iacute; como","condition":"#arg.player_goals \u003E 0 && #arg.player_assists \u003E 0"}],"goals":[{"text":"{#arg.goals} goles","condition":"#arg.player_goals \u003E 1"},{"text":"{#arg.goals} gol","condition":"#arg.player_goals == 1"}],"assists":[{"text":"{#arg.assists} asistencias","condition":"#arg.player_assists \u003E 1"},{"text":"{#arg.assists} asistencia","condition":"#arg.player_assists == 1"}],"match_stat_intro":[{"text":"En este partido {template.match_stat%match_stat}.","condition":"has_match_stat && fixture \u003E 5"}],"match_stat":[{"text":"el r&eacute;cord de disparos en la temporada se rompi&oacute;, con {#arg.value} disparos","condition":"#arg.is_positive && #arg.key==\"shot\""},{"text":"solo se registraron {#arg.value} tiros, el n&uacute;mero m&aacute;s bajo de esta temporada","condition":"!#arg.is_positive && #arg.key==\"shot\""},{"text":"se bati&oacute; el r&eacute;cord de tiros a puerta esta temporada, con {#arg.value} disparos","condition":"#arg.is_positive && #arg.key==\"shotgo\""},{"text":"Se hicieron apenas {#arg.value} disparos a la porteria, el n&uacute;mero m&aacute;s bajo en la temporada","condition":"!#arg.is_positive && #arg.key==\"shotgo\""},{"text":"se bati&oacute; el r&eacute;cord de saques de esquina, con un total de {#arg.value}","condition":"#arg.is_positive && #arg.key==\"corner\""},{"text":"hubo apenas {#arg.value} {s:c&oacute;rner|p:c&oacute;rneres%#arg.value}, el n&uacute;mero m&aacute;s bajo esta temporada","condition":"!#arg.is_positive && #arg.key==\"corner\""}],"streak":[{"text":", rompiendo una racha de {#arg.winningless_streak} partidos sin ganar,&nbsp;","condition":"#arg.winningless_streak \u003E 3"},{"text":", alargando una racha de {#arg.lossless_streak} partidos sin perder,","condition":"#arg.lossless_streak \u003E 3"}],"pen_score":[],"normal_score":[{"text":"{el%winner.name} {winner.name} {template.defeated} {el%loser.name} {loser.name} {template.streak%winner} {template.commentary}, el {weekday} {weekday}, {final_score}, {template.fixture}","condition":"final_score_diff\u003E0"},{"text":"{template.fixture}, {EL%winner.name} {winner.name} {template.defeated} {EL%loser.name} {loser.name} {template.streak%winner}, {final_score}, {template.extra} el {weekday} {weekday}","condition":"final_score_diff\u003E0"},{"text":"El partido entre {el%winner.name} {winner.name} y {el%loser.name} {loser.name}, {template.fixture}, el {weekday} {weekday}, termin&oacute; empatado {template.match_adjective}, {final_score}","condition":"final_score_diff==0"},{"text":"{el%winner.name} {winner.name} y {el%loser.name} {loser.name} empataron su partido {template.match_adjective}, el {weekday} {weekday}, {final_score}, {template.fixture}","condition":"final_score_diff==0"},{"text":"{el%winner.name} {winner.name} y {el%loser.name} {loser.name} no pasaron del empate&nbsp;{template.match_adjective} {final_score}, el {weekday} {weekday}","condition":"final_score_diff==0"}],"starters":[{"text":"Entre los titulares {s:estuvo|p:estiveron%starter_players} {starter_players}.","condition":"starters"}],"benched":[{"text":"{benched_players} no {s:sali&oacute;|p:salieron%benched_players} del banquillo.","condition":"benched"}],"decisive_player":[{"text":"{decisive_player.name} fue {f:decisiva|m:decisivo%decisive_player.name_gender} {template.decisive_player_contribution}","condition":"has_decisive_player"}],"decisive_player_contribution":[{"text":"con {template.goals%decisive_player} {template.best_player_connector%decisive_player} {template.assists%decisive_player}","condition":"has_decisive_player"}]}
+{
+    "entry_point": [
+        {
+            "text": "{template.score}. {template.teams_form} {template.best_player}. {template.decisive_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.",
+            "condition": "!has_decisive_player"
+        },
+        {
+            "text": "{template.score}. {template.teams_form} {template.decisive_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.",
+            "condition": "has_decisive_player"
+        }
+    ],
+    "score": [
+        {
+            "text": "{winner.name} {template.defeated} {loser.name} {template.commentary} el {weekday}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name}, {final_score}, el {weekday}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "El partido entre {winner.name} y {loser.name} el {weekday} terminó con un empate {template.match_adjective}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{winner.name} y {loser.name} empataron en partido {template.match_adjective} el {weekday}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{winner.name} y {loser.name} se dividieron los puntos en un partido {template.match_adjective} el {weekday}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "El {weekday} {winner.name} y {loser.name} se dividieron los puntos en un partido {template.match_adjective}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{template.fixture}, {winner.name} y {loser.name} se dividieron los puntos el {weekday}, {final_score}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "El {weekday} {winner.name} y {loser.name} se dividieron los puntos, {final_score}, {template.fixture}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.commentary} el {weekday}, {final_score}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{template.pen_score}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{template.normal_score}",
+            "condition": "extra_time!=\"PEN\""
+        }
+    ],
+    "defeated": [
+        {
+            "text": "derrotó",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "ganó",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "se impuso al",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "goleó",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "atropelló",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "tumbó al",
+            "condition": "final_score_diff>0  || extra_time==\"PEN\""
+        },
+        {
+            "text": "destrozó",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "arrolló",
+            "condition": "final_score_diff>3"
+        }
+    ],
+    "commentary": [
+        {
+            "text": "en una {template.match_adjective} victoria",
+            "condition": "final_score_diff!=0"
+        },
+        {
+            "text": "en una victoria {template.win_adjective}",
+            "condition": "final_score_diff!=0"
+        },
+        {
+            "text": "en un triunfo {template.win_adjective}",
+            "condition": "final_score_diff!=0"
+        }
+    ],
+    "match_adjective": [
+        {
+            "text": "sin goles",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "emocionante",
+            "condition": "match_goals>5 && final_score_diff<2"
+        },
+        {
+            "text": "extraordinaria",
+            "condition": "match_goals>6 || final_score_diff>4"
+        },
+        {
+            "text": "con lo justo",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "muy equilibrado",
+            "condition": "match_goals>5 && final_score_diff<2"
+        },
+        {
+            "text": "autoritaria",
+            "condition": "match_goals>6 || final_score_diff>4"
+        },
+        {
+            "text": "equilibrada",
+            "condition": "final_score_diff==1"
+        }
+    ],
+    "win_adjective": [
+        {
+            "text": "fenomenal",
+            "condition": "match_goals>5 || final_score_diff>3"
+        },
+        {
+            "text": "arrasadora",
+            "condition": "match_goals>5 || final_score_diff>3"
+        },
+        {
+            "text": "espectacular",
+            "condition": "match_goals>5 || final_score_diff>3"
+        },
+        {
+            "text": "arrolladora",
+            "condition": "match_goals>5 || final_score_diff>3"
+        },
+        {
+            "text": "demoledora",
+            "condition": "match_goals>5 || final_score_diff>3"
+        }
+    ],
+    "teams_form": [
+        {
+            "text": "Ambos {home_team.name} y {away_team.name} han realizado su primer juego en la competición.",
+            "condition": "first_competition_game"
+        },
+        {
+            "text": "En esta competición, {template.team_form%home_team}, y {template.team_form%away_team}.",
+            "condition": "!first_competition_game && is_league"
+        },
+        {
+            "text": "Tanto {el%home_team.name} {home_team.name} como {el%away_team.name} {away_team.name} realizaban su primer partido en la competición. .",
+            "condition": "first_competition_game == 1"
+        },
+        {
+            "text": "Llegan a esta jornada, {template.team_form%home_team}, y {template.team_form%away_team}.",
+            "condition": "!first_competition_game && is_league"
+        },
+        {
+            "text": "Llegan a este partido, {template.team_form%home_team}, y {template.team_form%away_team}.",
+            "condition": "!first_competition_game && is_league"
+        },
+        {
+            "text": "En esta competición, ambos los equipos llegaban de {template.form_type%home_team}.",
+            "condition": "same_competition_form_sequence && is_league"
+        },
+        {
+            "text": "En la ida {el%prev_match_winner.name} {prev_match_winner.name} había ganado {el%prev_match_loser.name} {prev_match_loser.name}, {prev_match_score}.",
+            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff!=0"
+        },
+        {
+            "text": "En la ida los equipos habían empatado, {prev_match_score}.",
+            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"
+        }
+    ],
+    "team_form": [
+        {
+            "text": "curiosamente, {el%#arg.name} {#arg.name} {s:llegaba|p:llegaban%#arg.name} también de {template.form_type%#arg}",
+            "condition": "same_competition_form_sequence && #arg.is_away_team"
+        },
+        {
+            "text": "{EL%#arg.name} {#arg.name} {s:llegaba|p:llegaban%#arg.name} de {template.form_type%#arg}",
+            "condition": "#arg.competition_form_sequence_bool"
+        },
+        {
+            "text": "{El%#arg.name} {#arg.name} realizaba su primer partido en la competición.",
+            "condition": "!#arg.competition_form_sequence_bool"
+        }
+    ],
+    "form_type": [
+        {
+            "text": "{CARDINAL_FEM%#arg.competition_form_sequence} victorias",
+            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "{CARDINAL_FEM%#arg.competition_form_sequence} victorias consecutivas",
+            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "una racha de {ORDINAL_FEM%#arg.competition_form_sequence} victorias consecutivas",
+            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "una racha de {ORDINAL%#arg.competition_form_sequence} empates consecutivos",
+            "condition": "#arg.is_competition_drawing_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "un empate",
+            "condition": "#arg.is_competition_drawing_sequence && #arg.competition_form_sequence==1"
+        },
+        {
+            "text": "{CARDINAL_FEM%#arg.competition_form_sequence} derrotas",
+            "condition": "#arg.is_competition_losing_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "{CARDINAL_FEM%#arg.competition_form_sequence} derrotas consecutivas",
+            "condition": "#arg.is_competition_losing_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "una racha de {ORDINAL_FEM%#arg.competition_form_sequence} derrotas consecutivas",
+            "condition": "#arg.is_competition_losing_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "una derrota",
+            "condition": "#arg.is_competition_losing_sequence && #arg.competition_form_sequence==1"
+        },
+        {
+            "text": "{CARDINAL%#arg.competition_form_sequence} empates consecutivos",
+            "condition": "#arg.is_competition_drawing_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "{CARDINAL%#arg.competition_form_sequence} empates",
+            "condition": "#arg.is_competition_drawing_sequence && #arg.competition_form_sequence>1"
+        },
+        {
+            "text": "una victoria",
+            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence==1"
+        }
+    ],
+    "best_player": [
+        {
+            "text": "{best_player.name} se destacó",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} hizo un gran partido",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} hizo una grande exhibición",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} fue la figura del partido",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} fue {f:decisiva|m:decisivo%decisive_player.name_gender}",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} foi el gran destaque del partido.",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} se exhibió",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} fue el MVP",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} se lució",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} firmó una gran actuación {template.best_player_contribution}",
+            "condition": "has_best_player"
+        },
+        {
+            "text": "{best_player.name} firmó un partidazo {template.best_player_contribution}",
+            "condition": "has_best_player"
+        }
+    ],
+    "fixture": [
+        {
+            "text": "en partido para la {ORDINAL_FEM%fixture} jornada",
+            "condition": "is_league"
+        },
+        {
+            "text": "en partido para la jornada {fixture}",
+            "condition": "is_league"
+        },
+        {
+            "text": "en la jornada {fixture}",
+            "condition": "is_league"
+        },
+        {
+            "text": "en la {ORDINAL_FEM%fixture} jornada",
+            "condition": "is_league"
+        },
+        {
+            "text": "en partido de la {ORDINAL_FEM%fixture} jornada {DE%competition.name} {competition.name}",
+            "condition": "is_league"
+        },
+        {
+            "text": "en partido de la jornada {fixture} {DE%competition.name} {competition.name}",
+            "condition": "is_league"
+        },
+        {
+            "text": "en la jornada {fixture} {DE%competition.name} {competition.name}",
+            "condition": "is_league"
+        },
+        {
+            "text": "en la {ORDINAL_FEM%fixture} jornada {DE%competition.name} {competition.name}",
+            "condition": "is_league"
+        },
+        {
+            "text": "en partido de {template.stage} {DE%competition.name} {competition.name}",
+            "condition": "!is_league"
+        }
+    ],
+    "stage": [
+        {
+            "text": "a la final",
+            "condition": "is_final"
+        },
+        {
+            "text": "a las semifinales",
+            "condition": "is_semi_final"
+        },
+        {
+            "text": "a los octavos de final",
+            "condition": "is_round_of_16"
+        },
+        {
+            "text": "a los cuartos de final",
+            "condition": "is_quarter_final"
+        },
+        {
+            "text": "a {stage}",
+            "condition": "is_group_stage"
+        },
+        {
+            "text": "a la gran final",
+            "condition": "is_final"
+        }
+    ],
+    "best_player_contribution": [
+        {
+            "text": "con {template.goals%best_player} {template.best_player_connector%best_player} {template.assists%best_player}",
+            "condition": "has_best_player"
+        }
+    ],
+    "best_player_connector": [
+        {
+            "text": "y",
+            "condition": "#arg.player_goals > 0 && #arg.player_assists > 0"
+        },
+        {
+            "text": "así como",
+            "condition": "#arg.player_goals > 0 && #arg.player_assists > 0"
+        }
+    ],
+    "goals": [
+        {
+            "text": "{#arg.goals} goles",
+            "condition": "#arg.player_goals > 1"
+        },
+        {
+            "text": "{#arg.goals} gol",
+            "condition": "#arg.player_goals == 1"
+        }
+    ],
+    "assists": [
+        {
+            "text": "{#arg.assists} asistencias",
+            "condition": "#arg.player_assists > 1"
+        },
+        {
+            "text": "{#arg.assists} asistencia",
+            "condition": "#arg.player_assists == 1"
+        }
+    ],
+    "match_stat_intro": [
+        {
+            "text": "En este partido {template.match_stat%match_stat}.",
+            "condition": "has_match_stat && fixture > 5"
+        }
+    ],
+    "match_stat": [
+        {
+            "text": "el récord de disparos en la temporada se rompió, con {#arg.value} disparos",
+            "condition": "#arg.is_positive && #arg.key==\"shot\""
+        },
+        {
+            "text": "solo se registraron {#arg.value} tiros, el número más bajo de esta temporada",
+            "condition": "!#arg.is_positive && #arg.key==\"shot\""
+        },
+        {
+            "text": "se batió el récord de tiros a puerta esta temporada, con {#arg.value} disparos",
+            "condition": "#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": "Se hicieron apenas {#arg.value} disparos a la porteria, el número más bajo en la temporada",
+            "condition": "!#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": "se batió el récord de saques de esquina, con un total de {#arg.value}",
+            "condition": "#arg.is_positive && #arg.key==\"corner\""
+        },
+        {
+            "text": "hubo apenas {#arg.value} {s:córner|p:córneres%#arg.value}, el número más bajo esta temporada",
+            "condition": "!#arg.is_positive && #arg.key==\"corner\""
+        }
+    ],
+    "streak": [
+        {
+            "text": ", rompiendo una racha de {#arg.winningless_streak} partidos sin ganar, ",
+            "condition": "#arg.winningless_streak > 3"
+        },
+        {
+            "text": ", alargando una racha de {#arg.lossless_streak} partidos sin perder,",
+            "condition": "#arg.lossless_streak > 3"
+        }
+    ],
+    "pen_score": [],
+    "normal_score": [
+        {
+            "text": "{el%winner.name} {winner.name} {template.defeated} {el%loser.name} {loser.name} {template.streak%winner} {template.commentary}, el {weekday} {weekday}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{template.fixture}, {EL%winner.name} {winner.name} {template.defeated} {EL%loser.name} {loser.name} {template.streak%winner}, {final_score}, el {weekday} {weekday}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "El partido entre {el%winner.name} {winner.name} y {el%loser.name} {loser.name}, {template.fixture}, el {weekday} {weekday}, terminó empatado {template.match_adjective}, {final_score}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} empataron su partido {template.match_adjective}, el {weekday} {weekday}, {final_score}, {template.fixture}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} no pasaron del empate {template.match_adjective} {final_score}, el {weekday} {weekday}",
+            "condition": "final_score_diff==0"
+        }
+    ],
+    "starters": [
+        {
+            "text": "Entre los titulares {s:estuvo|p:estiveron%starter_players} {starter_players}.",
+            "condition": "starters"
+        }
+    ],
+    "benched": [
+        {
+            "text": "{benched_players} no {s:salió|p:salieron%benched_players} del banquillo.",
+            "condition": "benched"
+        }
+    ],
+    "decisive_player": [
+        {
+            "text": "{decisive_player.name} fue {f:decisiva|m:decisivo%decisive_player.name_gender} {template.decisive_player_contribution}",
+            "condition": "has_decisive_player"
+        }
+    ],
+    "decisive_player_contribution": [
+        {
+            "text": "con {template.goals%decisive_player} {template.best_player_connector%decisive_player} {template.assists%decisive_player}",
+            "condition": "has_decisive_player"
+        }
+    ]
+}

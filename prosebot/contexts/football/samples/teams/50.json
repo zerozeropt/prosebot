@@ -2,7 +2,7 @@
     "data": {
         "PROFILE": {
             "ID": "50",
-            "NAME": "Real Madrid Club de F\u00fatbol",
+            "NAME": "Real Madrid Club de Fútbol",
             "SHORT_NAME": "Real Madrid",
             "SHORT_NAME_ARRAY": {
                 "pt": "Real Madrid"
@@ -10,7 +10,7 @@
             "FOUNDATION": "1902-03-06",
             "COUNTRY": "Espanha",
             "COUNTRYID": "12",
-            "PRESIDENT": "Florentino P\u00e9rez",
+            "PRESIDENT": "Florentino Pérez",
             "CITY": "Madrid",
             "REGIONID": "209",
             "REGION2ID": "0",

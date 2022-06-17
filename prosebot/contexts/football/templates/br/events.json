@@ -1,1 +1,624 @@
-{"goal":[{"text":"{scorer.name} marcou para {O%team.name} {team.name} {template.time}, {template.assisted}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":""},{"text":"{o%scorer} {scorer.name} fez o gol solit&aacute;rio da partida para {O%team.name} {team.name} {template.time}, {template.assisted}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goals==1"},{"text":"{o%scorer.name} {scorer.name} inaugurou o marcador para {O%team.name} {team.name} {template.time}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{O%team.name} {team.name} {s:ampliou|p:ampliaram%team.name} a vantagem {template.time}, {template.goal_type}, com um gol {de%scorer} {scorer.name}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff\u003E0"},{"text":"{o%scorer.name} {scorer.name} ampliou a vantagem {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff\u003E0"},{"text":"Vencendo por {team_goals_diff} gols, {o%scorer.name} {scorer.name} fez mais um para {o%team.name} {team.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff\u003E1"},{"text":"{o%scorer.name} {scorer.name} diminuiu a diferen&ccedil;a {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff\u003C-1"},{"text":"{o%scorer.name} {scorer.name}, {template.scorer_commentary_commas%scorer} empatou o jogo {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff==-1"},{"text":"{template.time}, {O%team.name} {team.name} {s:aumentou|p:aumentaram%team.name} {template.again_advantage} o placar, com gol de {o%scorer.name}&nbsp;{scorer.name}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff\u003E0"},{"text":"Em um lance infeliz, {o%scorer.name} {scorer.name} marcou um gol contra {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"is_own_goal"},{"text":"{o%scorer.name} {scorer.name} marcou o gol que garantiu a vit&oacute;ria para {o%team.name} {team.name}, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==match_goals && team_goals_diff==0"},{"text":"{o%scorer.name} {scorer.name} selou o placar final, {final_score}.\u003C\/p\u003E\r\n","condition":"match_goal==match_goals && match_goals\u003E1"},{"text":"O placar da partida foi inaugurado {por%scorer.name} {scorer.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{o%scorer.name} {scorer.name} inaugurou o placar, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{o%scorer.name} {scorer.name} decretou o placar final, {template.goal_type}{template.time}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==match_goals && match_goals\u003E1"},{"text":"Na frente do placar por {team_goals_diff} gols, {o%scorer.name} {scorer.name} marcou outro para {o%team.name} {team.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goals_diff\u003E1"},{"text":"{o%scorer.name} {scorer.name} inaugurou o marcador, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{o%scorer.name} {scorer.name} fez o primeiro gol da partida, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{template.time},&nbsp;{o%scorer.name} {scorer.name} fez o segundo gol para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goal==2"},{"text":"{template.time}, {o%scorer.position} {scorer.position} fechou o placar, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==match_goals && match_goals\u003E3"},{"text":"Em um lance de azar, {o%scorer.name} {scorer.name} fez um gol contra {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"is_own_goal"},{"text":"{template.time}, {o%scorer.name} {scorer.name} marcou {template.goal_again} para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":""},{"text":"O primeiro gol do jogo foi marcado {por%scorer.name} {scorer.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{o%scorer.name} {scorer.name} abriu o placar, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{template.time}, {o%scorer.name} {scorer.name} marcou o &uacute;nico gol para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goals==1"},{"text":"{template.time}, {o%scorer.name} {scorer.name} completou {template.goal_status}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"player_goal==player_goals && player_goal\u003E2"},{"text":"{template.time}, {o%scorer.name} {scorer.name} abriu o placar para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==1 && match_goals\u003E1"},{"text":"{template.time}, {o%scorer.name} {scorer.name}&nbsp;marcou o segundo gol para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"team_goal==2"},{"text":"{template.time}, {o%scorer.name} {scorer.name} marcou o &uacute;ltimo gol da partida, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.\u003C\/p\u003E\r\n","condition":"match_goal==match_goals && match_goals\u003E3"}],"commentary_scorer":[{"text":"Foi o {ORDINAL%#arg.season_goals} gol {de%#arg.name} {#arg.name} na temporada.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"},{"text":"Com este gol, {#arg.name} chegou ao&nbsp;{ORDINAL%#arg.season_goals} na temporada.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"},{"text":"{#arg.name} fez o seu {ORDINAL%#arg.season_goals} na temporada.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"},{"text":"Com o gol marcado, {#arg.name} atingiu a marca de {CARDINAL%#arg.season_goals} na temporada.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"},{"text":"Com o gol, {#arg.name} alcan&ccedil;ou um total {CARDINAL%#arg.season_goals} na temporada.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"},{"text":"{O%#arg.name} {#arg.name} j&aacute; marca h&aacute; {#arg.consecutive_matches_scoring} jogos consecutivos.\u003C\/p\u003E\r\n","condition":"#arg.consecutive_matches_scoring \u003E 2 && #arg.player_goals == #arg.player_goal"},{"text":"{O%#arg.name} {#arg.name} j&aacute; balan&ccedil;a as redes h&aacute; {#arg.consecutive_matches_scoring} partidas seguidas.\u003C\/p\u003E\r\n","condition":"#arg.consecutive_matches_scoring \u003E 2 && #arg.player_goals == #arg.player_goal"},{"text":"{O%#arg.name} {#arg.name} j&aacute; marca h&aacute; {#arg.consecutive_matches_scoring} partidas seguidas.\u003C\/p\u003E\r\n","condition":"#arg.consecutive_matches_scoring \u003E 2 && #arg.player_goals == #arg.player_goal"},{"text":"Com o gol, {O%#arg.name} {#arg.name} chega a {#arg.consecutive_matches_scoring} jogos consecutivos balan&ccedil;ando as redes.\u003C\/p\u003E\r\n","condition":"#arg.consecutive_matches_scoring \u003E 2 && #arg.player_goals == #arg.player_goal"},{"text":"{O%#arg.name} {#arg.name} marcou o seu {ORDINAL%#arg.season_goals} neste ano.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"},{"text":"Este &eacute; o&nbsp;{#arg.consecutive_matches_scoring} jogos seguido que&nbsp;{#arg.name} balan&ccedil;a as redes.\u003C\/p\u003E\r\n","condition":"#arg.consecutive_matches_scoring \u003E 2 && #arg.player_goals == #arg.player_goal"},{"text":"Este &eacute; o {ORDINAL%#arg.season_goals} tento anotado {por%#arg.name} {#arg.name} na temporada.\u003C\/p\u003E\r\n","condition":"#arg.report_num_goals"}],"goal_again":[{"text":"{template.again}","condition":"player_goal\u003E1"},{"text":"ainda mais\u003C\/p\u003E\r\n","condition":"player_goal\u003E1"},{"text":"mais uma vez\u003C\/p\u003E\r\n","condition":"player_goal\u003E1"},{"text":"novamente\u003C\/p\u003E\r\n","condition":"player_goal\u003E1"},{"text":"outra vez\u003C\/p\u003E\r\n","condition":"player_goal\u003E1"},{"text":"de novo\u003C\/p\u003E\r\n","condition":"player_goal\u003E1"}],"scorer_commentary_commas":[{"text":"que havia entrado aos {#arg.minute_in} minutos","condition":"#arg.is_first_mention && #arg.minute_in\u003E0"},{"text":"que saiu do banco aos {#arg.minute_in} minutos\u003C\/p\u003E\r\n","condition":"#arg.is_first_mention && #arg.minute_in\u003E0"},{"text":"que entrou em campo aos {#arg.minute_in} minutos\u003C\/p\u003E\r\n","condition":"#arg.is_first_mention && #arg.minute_in\u003E0"},{"text":"que deixou o banco aos {#arg.minute_in} minutos\u003C\/p\u003E\r\n","condition":"#arg.is_first_mention && #arg.minute_in\u003E0"},{"text":"que foi chamado ao jogo aos {#arg.minute_in} minutos\u003C\/p\u003E\r\n","condition":"#arg.is_first_mention && #arg.minute_in\u003E0"}],"again_advantage":[{"text":"{template.again}","condition":"team_goals_diff\u003E1"}],"goal_status":[{"text":"tr&ecirc;s gols em no jogo\u003C\/p\u003E\r\n","condition":"player_goal==3"},{"text":"quatro gols no jogo\u003C\/p\u003E\r\n","condition":"player_goal==4"},{"text":"cinco gols no jogo\u003C\/p\u003E\r\n","condition":"player_goal==5"},{"text":"hat-trick\u003C\/p\u003E\r\n","condition":"player_goal==3"}],"assisted":[{"text":"assistido {por%assist_maker.name} {assist_maker.name}","condition":"has_assist"},{"text":"com passe {de%assist_maker.name} {assist_maker.name}","condition":"has_assist"},{"text":"ap\u00f3s toque {de%assist_maker.name} {assist_maker.name}","condition":"has_assist && is_running_ball_goal"},{"text":"depois de uma assist&ecirc;ncia {de%assist_maker.name} {assist_maker.name}\u003C\/p\u003E\r\n","condition":"has_assist && is_running_ball_goal"},{"text":"ap&oacute;s uma assist&ecirc;ncia {de%assist_maker.name} {assist_maker.name}\u003C\/p\u003E\r\n","condition":"has_assist && is_running_ball_goal"},{"text":"com uma assist&ecirc;ncia {de%assist_maker.name} {assist_maker.name}\u003C\/p\u003E\r\n","condition":"has_assist && is_running_ball_goal"}],"goal_type":[{"text":"ap&oacute;s cobran&ccedil;a de escanteio\u003C\/p\u003E\r\n","condition":"is_corner_goal"},{"text":"de p\u00eanalti","condition":"is_penalty_goal"},{"text":"ap\u00f3s cobran\u00e7a de falta","condition":"is_direct_freekick_goal"},{"text":"na sobra do p\u00eanalti","condition":"is_penalty_rebound_goal"},{"text":"fez um gol ol&iacute;mpico\u003C\/p\u003E\r\n","condition":"is_direct_corner_goal"},{"text":"de cabe\u00e7a {template.zone_goal}","condition":"is_running_ball_goal && is_head_goal"},{"text":"depois de bater de p&eacute; direito {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_right_foot_goal"},{"text":"depois de bater de p&eacute; esquerdo {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_left_foot_goal"},{"text":"","condition":"goal_type"},{"text":"no rebote do p&ecirc;nalti\u003C\/p\u003E\r\n","condition":"is_penalty_rebound_goal"},{"text":"com um chute de p&eacute; esquerdo&nbsp;{template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_left_foot_goal"},{"text":"com um chute de p&eacute; direito {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_right_foot_goal"},{"text":"com um chute de p&eacute; direito&nbsp;{template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_right_foot_goal"},{"text":"com chute de p&eacute; esquerdo {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_left_foot_goal"},{"text":"ap&oacute;s concluir de p&eacute; direito {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_right_foot_goal"},{"text":"ap&oacute;s concluir de p&eacute; esquerdo {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_left_foot_goal"},{"text":"em finaliza&ccedil;&atilde;o de p&eacute; direito {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_right_foot_goal"},{"text":"em finaliza&ccedil;&atilde;o de p&eacute; esquerdo {template.zone_goal}\u003C\/p\u003E\r\n","condition":"is_running_ball_goal && is_left_foot_goal"},{"text":"em uma cobran&ccedil;a de falta\u003C\/p\u003E\r\n","condition":"is_direct_freekick_goal"},{"text":"depois de converter a cobran&ccedil;a de um p&ecirc;nalti\u003C\/p\u003E\r\n","condition":"is_penalty_goal"}],"zone_goal":[{"text":"","condition":"zone_goal"},{"text":"de fora da &aacute;rea\u003C\/p\u003E\r\n","condition":"is_outside_box_goal"},{"text":"de dentro da \u00e1rea","condition":"is_inside_box_goal"},{"text":"de longe\u003C\/p\u003E\r\n","condition":"is_outside_box_goal"}],"time":[{"text":"no minuto {minute}","condition":""},{"text":"aos {minute} minutos","condition":"minute\u003E1"},{"text":"aos {minute}\u003C\/p\u003E\r\n","condition":"minute\u003E1"},{"text":"quando o rel&oacute;gio assinalava os {minute} minutos\u003C\/p\u003E\r\n","condition":""},{"text":"na reta final da partida\u003C\/p\u003E\r\n","condition":"minute\u003E85"},{"text":", j&aacute; pr&oacute;ximo do fim do jogo\u003C\/p\u003E\r\n","condition":"minute\u003E85"},{"text":"j\u00e1 nos acr\u00e9scimos","condition":"minute==90 && minute_extra\u003E0"},{"text":"nos acr\u00e9scimos","condition":"minute==90 && minute_extra\u003E0"},{"text":"pouco antes do intervalo","condition":"minute\u003E41 && minute\u003C46"},{"text":"j&aacute; depois dos 45 minutos\u003C\/p\u003E\r\n","condition":"minute==45 && minute_extra\u003E0"},{"text":"j\u00e1 depois do tempo regulamentar","condition":"minute==90 && minute_extra\u003E0"},{"text":"logo no in\u00edcio da partida","condition":"minute\u003C5"},{"text":"na volta do intervalo","condition":"minute\u003E45 && minute\u003C50"},{"text":"quando o rel&oacute;gio marcava os {minute} minutos\u003C\/p\u003E\r\n","condition":""},{"text":"nos minutos finais\u003C\/p\u003E\r\n","condition":"minute\u003E85"},{"text":"pr&oacute;ximo do apito final\u003C\/p\u003E\r\n","condition":"minute\u003E85"},{"text":"no apagar das luzes\u003C\/p\u003E\r\n","condition":"minute\u003E85"},{"text":"quando a bola mal havia come&ccedil;ado a rolar\u003C\/p\u003E\r\n","condition":"minute\u003C5"}],"red_card":[{"text":"{template.direct_red_card%player}","condition":"!is_second_yellow"},{"text":"{template.second_yellow_card%player}","condition":"is_second_yellow"}],"substitution":[{"text":"A entrada de {player.name},&nbsp;{template.time}, foi decisiva no jogo.\u003C\/p\u003E\r\n","condition":"is_gamechanger"},{"text":"{template.time}, {player.name} entrou no jogo.\u003C\/p\u003E\r\n","condition":"is_relevant_player==1"},{"text":"{template.time}, {player.name} foi substitu&iacute;do.\u003C\/p\u003E\r\n","condition":"is_relevant_player==2"},{"text":"A entrada de {player.name},&nbsp;{template.time}, mudou os rumos do jogo.\u003C\/p\u003E\r\n","condition":"is_gamechanger"},{"text":"{template.time}, {player.name}, que viria a ser {f:decisiva|m:decisivo%decisive_player.name_gender}, entrou na partida.\u003C\/p\u003E\r\n","condition":"is_gamechanger"},{"text":"&nbsp;{player.name} acabou por ser substitu&iacute;do&nbsp;{template.time}.\u003C\/p\u003E\r\n","condition":"is_relevant_player==2"},{"text":"{player.name} entrou em campo {template.time}.\u003C\/p\u003E\r\n","condition":"is_relevant_player==1"},{"text":"&nbsp;{player.name} deixou o campo {template.time}.\u003C\/p\u003E\r\n","condition":"is_relevant_player==2"}],"half-time":[],"final-time":[],"penalty_missed":[{"text":"{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} desperdi\u00e7ar p\u00eanalti.","condition":"!penalty_defend"},{"text":"{template.time}, {player.name} teve nos p\u00e9s oportunidade de ouro para marcar, mas desperdi\u00e7ou o p\u00eanalti.","condition":"!penalty_defend"},{"text":"{template.time}, {player.name} desperdi\u00e7ou p\u00eanalti.","condition":"!penalty_defend"},{"text":"{template.time}, {player.name} poderia ter marcado {por%team.name} {team.name}, mas {goalkeeper.name} defendeu a penalidade.\u003C\/p\u003E\r\n","condition":"penalty_defend"},{"text":"{template.time}, {player.name} cobrou o p\u00eanalti, mas parou em {goalkeeper.name}.","condition":"penalty_defend"},{"text":"{template.time}, {goalkeeper.name} defendeu p\u00eanalti, cobrado por {player.name}.","condition":"penalty_defend"},{"text":"{template.time}, {player.name} assumiu a responsabilidade da cobran&ccedil;a, mas perdeu o p&ecirc;nalti.\u003C\/p\u003E\r\n","condition":"!penalty_defend"},{"text":"{template.time}, {player.name} n&atilde;o conseguiu converter o p&ecirc;nalti.\u003C\/p\u003E\r\n","condition":"!penalty_defend"},{"text":"{template.time}, {player.name} perdeu o p&ecirc;nalti.\u003C\/p\u003E\r\n","condition":"!penalty_defend"}],"again":[{"text":"ainda mais","condition":""},{"text":"mais uma vez","condition":""},{"text":"novamente","condition":""},{"text":"outra vez\u003C\/p\u003E\r\n","condition":""}],"half_time":[{"text":"O primeiro tempo chegou ao fim sem gols.","condition":"total_goals==0"},{"text":"A etapa inicial terminou em 0 a 0.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"O placar n&atilde;o foi inaugurado nos primeiros 45 minutos de partida.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"Sem abrir o placar, as equipes foram para o vesti&aacute;rio.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"Com o placar zerado, as equipes seguiram para o vesti&aacute;rio.\u003C\/p\u003E\r\n","condition":"total_goals==0"}],"final_time":[{"text":"O segundo tempo n&atilde;o foi diferente do primeiro, com a partida chegando ao fim sem gols.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"Assim como na primeira etapa, a segunda n&atilde;o teve gols e o jogo terminou em 0 a 0.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"Na etapa complementar, os times seguiram sem conseguir inaugurar o placar e o jogo n&atilde;o saiu do 0 a 0.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"Apesar da tentativa de ambas equipes, o 0 a 0 insistiu em permanecer no placar at&eacute; o fim do jogo.\u003C\/p\u003E\r\n","condition":"total_goals==0"},{"text":"Sem o placar ser inaugurado, os times ouviram o apito final do &aacute;rbitro.\u003C\/p\u003E\r\n","condition":"total_goals==0"}],"direct_red_card":[{"text":"{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} ser expulso com vermelho direto.","condition":""},{"text":"{template.time},&nbsp;{o%player.name} {player.name} foi expulso ao ver o cart&atilde;o vermelho.\u003C\/p\u003E\r\n","condition":""},{"text":"{template.time}, {player.name} deixou o time com um a menos, depois de receber o cart\u00e3o vermelho.","condition":"#arg.minute_in \u003E 0"},{"text":"{template.time}, {player.name} deixou a partida ap&oacute;s receber o cart&atilde;o vermelho.\u003C\/p\u003E\r\n","condition":""},{"text":"{template.time}, {o%team.name} {team.name} ficou em desvantagem depois de ver {player.name} ser expulso.\u003C\/p\u003E\r\n","condition":"#arg.minute_in \u003E 0"}],"second_yellow_card":[{"text":"{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} ser expulso ao receber o segundo amarelo.","condition":""},{"text":"O t&eacute;cnico&nbsp;{player.name} foi expulso {template.time}.\u003C\/p\u003E\r\n&nbsp;\u003C\/p\u003E\r\n&nbsp;\u003C\/p\u003E\r\n","condition":"#arg.is_coach"},{"text":"Ap&oacute;s receber o segundo amarelo&nbsp;{template.time}, {player.name} foi expulso e deixou&nbsp;{o%team.name} {team.name} em inferioridade num&eacute;rica.\u003C\/p\u003E\r\n","condition":"!#arg.is_coach && #arg.minute_in \u003E 0"}]}
+{
+    "goal": [
+        {
+            "text": "{scorer.name} marcou para {O%team.name} {team.name} {template.time}, {template.assisted}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": ""
+        },
+        {
+            "text": "{o%scorer} {scorer.name} fez o gol solitário da partida para {O%team.name} {team.name} {template.time}, {template.assisted}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goals==1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} inaugurou o marcador para {O%team.name} {team.name} {template.time}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{O%team.name} {team.name} {s:ampliou|p:ampliaram%team.name} a vantagem {template.time}, {template.goal_type}, com um gol {de%scorer} {scorer.name}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff>0"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} ampliou a vantagem {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff>0"
+        },
+        {
+            "text": "Vencendo por {team_goals_diff} gols, {o%scorer.name} {scorer.name} fez mais um para {o%team.name} {team.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff>1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} diminuiu a diferença {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff<-1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name}, {template.scorer_commentary_commas%scorer} empatou o jogo {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff==-1"
+        },
+        {
+            "text": "{template.time}, {O%team.name} {team.name} {s:aumentou|p:aumentaram%team.name} {template.again_advantage} o placar, com gol de {o%scorer.name} {scorer.name}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff>0"
+        },
+        {
+            "text": "Em um lance infeliz, {o%scorer.name} {scorer.name} marcou um gol contra {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "is_own_goal"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} marcou o gol que garantiu a vitória para {o%team.name} {team.name}, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==match_goals && team_goals_diff==0"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} selou o placar final, {final_score}.",
+            "condition": "match_goal==match_goals && match_goals>1"
+        },
+        {
+            "text": "O placar da partida foi inaugurado {por%scorer.name} {scorer.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} inaugurou o placar, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} decretou o placar final, {template.goal_type}{template.time}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==match_goals && match_goals>1"
+        },
+        {
+            "text": "Na frente do placar por {team_goals_diff} gols, {o%scorer.name} {scorer.name} marcou outro para {o%team.name} {team.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goals_diff>1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} inaugurou o marcador, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} fez o primeiro gol da partida, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} fez o segundo gol para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goal==2"
+        },
+        {
+            "text": "{template.time}, {o%scorer.position} {scorer.position} fechou o placar, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==match_goals && match_goals>3"
+        },
+        {
+            "text": "Em um lance de azar, {o%scorer.name} {scorer.name} fez um gol contra {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "is_own_goal"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} marcou {template.goal_again} para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": ""
+        },
+        {
+            "text": "O primeiro gol do jogo foi marcado {por%scorer.name} {scorer.name} {template.time}, {template.goal_type}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{o%scorer.name} {scorer.name} abriu o placar, {template.goal_type} {template.time}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} marcou o único gol para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goals==1"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} completou {template.goal_status}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "player_goal==player_goals && player_goal>2"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} abriu o placar para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==1 && match_goals>1"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} marcou o segundo gol para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "team_goal==2"
+        },
+        {
+            "text": "{template.time}, {o%scorer.name} {scorer.name} marcou o último gol da partida, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "condition": "match_goal==match_goals && match_goals>3"
+        }
+    ],
+    "commentary_scorer": [
+        {
+            "text": "Foi o {ORDINAL%#arg.season_goals} gol {de%#arg.name} {#arg.name} na temporada.",
+            "condition": "#arg.report_num_goals"
+        },
+        {
+            "text": "Com este gol, {#arg.name} chegou ao {ORDINAL%#arg.season_goals} na temporada.",
+            "condition": "#arg.report_num_goals"
+        },
+        {
+            "text": "{#arg.name} fez o seu {ORDINAL%#arg.season_goals} na temporada.",
+            "condition": "#arg.report_num_goals"
+        },
+        {
+            "text": "Com o gol marcado, {#arg.name} atingiu a marca de {CARDINAL%#arg.season_goals} na temporada.",
+            "condition": "#arg.report_num_goals"
+        },
+        {
+            "text": "Com o gol, {#arg.name} alcançou um total {CARDINAL%#arg.season_goals} na temporada.",
+            "condition": "#arg.report_num_goals"
+        },
+        {
+            "text": "{O%#arg.name} {#arg.name} já marca há {#arg.consecutive_matches_scoring} jogos consecutivos.",
+            "condition": "#arg.consecutive_matches_scoring > 2 && #arg.player_goals == #arg.player_goal"
+        },
+        {
+            "text": "{O%#arg.name} {#arg.name} já balança as redes há {#arg.consecutive_matches_scoring} partidas seguidas.",
+            "condition": "#arg.consecutive_matches_scoring > 2 && #arg.player_goals == #arg.player_goal"
+        },
+        {
+            "text": "{O%#arg.name} {#arg.name} já marca há {#arg.consecutive_matches_scoring} partidas seguidas.",
+            "condition": "#arg.consecutive_matches_scoring > 2 && #arg.player_goals == #arg.player_goal"
+        },
+        {
+            "text": "Com o gol, {O%#arg.name} {#arg.name} chega a {#arg.consecutive_matches_scoring} jogos consecutivos balançando as redes.",
+            "condition": "#arg.consecutive_matches_scoring > 2 && #arg.player_goals == #arg.player_goal"
+        },
+        {
+            "text": "{O%#arg.name} {#arg.name} marcou o seu {ORDINAL%#arg.season_goals} neste ano.",
+            "condition": "#arg.report_num_goals"
+        },
+        {
+            "text": "Este é o {#arg.consecutive_matches_scoring} jogos seguido que {#arg.name} balança as redes.",
+            "condition": "#arg.consecutive_matches_scoring > 2 && #arg.player_goals == #arg.player_goal"
+        },
+        {
+            "text": "Este é o {ORDINAL%#arg.season_goals} tento anotado {por%#arg.name} {#arg.name} na temporada.",
+            "condition": "#arg.report_num_goals"
+        }
+    ],
+    "goal_again": [
+        {
+            "text": "{template.again}",
+            "condition": "player_goal>1"
+        },
+        {
+            "text": "ainda mais",
+            "condition": "player_goal>1"
+        },
+        {
+            "text": "mais uma vez",
+            "condition": "player_goal>1"
+        },
+        {
+            "text": "novamente",
+            "condition": "player_goal>1"
+        },
+        {
+            "text": "outra vez",
+            "condition": "player_goal>1"
+        },
+        {
+            "text": "de novo",
+            "condition": "player_goal>1"
+        }
+    ],
+    "scorer_commentary_commas": [
+        {
+            "text": "que havia entrado aos {#arg.minute_in} minutos",
+            "condition": "#arg.is_first_mention && #arg.minute_in>0"
+        },
+        {
+            "text": "que saiu do banco aos {#arg.minute_in} minutos",
+            "condition": "#arg.is_first_mention && #arg.minute_in>0"
+        },
+        {
+            "text": "que entrou em campo aos {#arg.minute_in} minutos",
+            "condition": "#arg.is_first_mention && #arg.minute_in>0"
+        },
+        {
+            "text": "que deixou o banco aos {#arg.minute_in} minutos",
+            "condition": "#arg.is_first_mention && #arg.minute_in>0"
+        },
+        {
+            "text": "que foi chamado ao jogo aos {#arg.minute_in} minutos",
+            "condition": "#arg.is_first_mention && #arg.minute_in>0"
+        }
+    ],
+    "again_advantage": [
+        {
+            "text": "{template.again}",
+            "condition": "team_goals_diff>1"
+        }
+    ],
+    "goal_status": [
+        {
+            "text": "três gols em no jogo",
+            "condition": "player_goal==3"
+        },
+        {
+            "text": "quatro gols no jogo",
+            "condition": "player_goal==4"
+        },
+        {
+            "text": "cinco gols no jogo",
+            "condition": "player_goal==5"
+        },
+        {
+            "text": "hat-trick",
+            "condition": "player_goal==3"
+        }
+    ],
+    "assisted": [
+        {
+            "text": "assistido {por%assist_maker.name} {assist_maker.name}",
+            "condition": "has_assist"
+        },
+        {
+            "text": "com passe {de%assist_maker.name} {assist_maker.name}",
+            "condition": "has_assist"
+        },
+        {
+            "text": "após toque {de%assist_maker.name} {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "depois de uma assistência {de%assist_maker.name} {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "após uma assistência {de%assist_maker.name} {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "com uma assistência {de%assist_maker.name} {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        }
+    ],
+    "goal_type": [
+        {
+            "text": "após cobrança de escanteio",
+            "condition": "is_corner_goal"
+        },
+        {
+            "text": "de pênalti",
+            "condition": "is_penalty_goal"
+        },
+        {
+            "text": "após cobrança de falta",
+            "condition": "is_direct_freekick_goal"
+        },
+        {
+            "text": "na sobra do pênalti",
+            "condition": "is_penalty_rebound_goal"
+        },
+        {
+            "text": "fez um gol olímpico",
+            "condition": "is_direct_corner_goal"
+        },
+        {
+            "text": "de cabeça {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_head_goal"
+        },
+        {
+            "text": "depois de bater de pé direito {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_right_foot_goal"
+        },
+        {
+            "text": "depois de bater de pé esquerdo {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_left_foot_goal"
+        },
+        {
+            "text": "",
+            "condition": "goal_type"
+        },
+        {
+            "text": "no rebote do pênalti",
+            "condition": "is_penalty_rebound_goal"
+        },
+        {
+            "text": "com um chute de pé esquerdo {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_left_foot_goal"
+        },
+        {
+            "text": "com um chute de pé direito {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_right_foot_goal"
+        },
+        {
+            "text": "com um chute de pé direito {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_right_foot_goal"
+        },
+        {
+            "text": "com chute de pé esquerdo {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_left_foot_goal"
+        },
+        {
+            "text": "após concluir de pé direito {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_right_foot_goal"
+        },
+        {
+            "text": "após concluir de pé esquerdo {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_left_foot_goal"
+        },
+        {
+            "text": "em finalização de pé direito {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_right_foot_goal"
+        },
+        {
+            "text": "em finalização de pé esquerdo {template.zone_goal}",
+            "condition": "is_running_ball_goal && is_left_foot_goal"
+        },
+        {
+            "text": "em uma cobrança de falta",
+            "condition": "is_direct_freekick_goal"
+        },
+        {
+            "text": "depois de converter a cobrança de um pênalti",
+            "condition": "is_penalty_goal"
+        }
+    ],
+    "zone_goal": [
+        {
+            "text": "",
+            "condition": "zone_goal"
+        },
+        {
+            "text": "de fora da área",
+            "condition": "is_outside_box_goal"
+        },
+        {
+            "text": "de dentro da área",
+            "condition": "is_inside_box_goal"
+        },
+        {
+            "text": "de longe",
+            "condition": "is_outside_box_goal"
+        }
+    ],
+    "time": [
+        {
+            "text": "no minuto {minute}",
+            "condition": ""
+        },
+        {
+            "text": "aos {minute} minutos",
+            "condition": "minute>1"
+        },
+        {
+            "text": "aos {minute}",
+            "condition": "minute>1"
+        },
+        {
+            "text": "quando o relógio assinalava os {minute} minutos",
+            "condition": ""
+        },
+        {
+            "text": "na reta final da partida",
+            "condition": "minute>85"
+        },
+        {
+            "text": ", já próximo do fim do jogo",
+            "condition": "minute>85"
+        },
+        {
+            "text": "já nos acréscimos",
+            "condition": "minute==90 && minute_extra>0"
+        },
+        {
+            "text": "nos acréscimos",
+            "condition": "minute==90 && minute_extra>0"
+        },
+        {
+            "text": "pouco antes do intervalo",
+            "condition": "minute>41 && minute<46"
+        },
+        {
+            "text": "já depois dos 45 minutos",
+            "condition": "minute==45 && minute_extra>0"
+        },
+        {
+            "text": "já depois do tempo regulamentar",
+            "condition": "minute==90 && minute_extra>0"
+        },
+        {
+            "text": "logo no início da partida",
+            "condition": "minute<5"
+        },
+        {
+            "text": "na volta do intervalo",
+            "condition": "minute>45 && minute<50"
+        },
+        {
+            "text": "quando o relógio marcava os {minute} minutos",
+            "condition": ""
+        },
+        {
+            "text": "nos minutos finais",
+            "condition": "minute>85"
+        },
+        {
+            "text": "próximo do apito final",
+            "condition": "minute>85"
+        },
+        {
+            "text": "no apagar das luzes",
+            "condition": "minute>85"
+        },
+        {
+            "text": "quando a bola mal havia começado a rolar",
+            "condition": "minute<5"
+        }
+    ],
+    "red_card": [
+        {
+            "text": "{template.direct_red_card%player}",
+            "condition": "!is_second_yellow"
+        },
+        {
+            "text": "{template.second_yellow_card%player}",
+            "condition": "is_second_yellow"
+        }
+    ],
+    "substitution": [
+        {
+            "text": "A entrada de {player.name}, {template.time}, foi decisiva no jogo.",
+            "condition": "is_gamechanger"
+        },
+        {
+            "text": "{template.time}, {player.name} entrou no jogo.",
+            "condition": "is_relevant_player==1"
+        },
+        {
+            "text": "{template.time}, {player.name} foi substituído.",
+            "condition": "is_relevant_player==2"
+        },
+        {
+            "text": "A entrada de {player.name}, {template.time}, mudou os rumos do jogo.",
+            "condition": "is_gamechanger"
+        },
+        {
+            "text": "{template.time}, {player.name}, que viria a ser {f:decisiva|m:decisivo%decisive_player.name_gender}, entrou na partida.",
+            "condition": "is_gamechanger"
+        },
+        {
+            "text": "{player.name} acabou por ser substituído {template.time}.",
+            "condition": "is_relevant_player==2"
+        },
+        {
+            "text": "{player.name} entrou em campo {template.time}.",
+            "condition": "is_relevant_player==1"
+        },
+        {
+            "text": "{player.name} deixou o campo {template.time}.",
+            "condition": "is_relevant_player==2"
+        }
+    ],
+    "half-time": [],
+    "final-time": [],
+    "penalty_missed": [
+        {
+            "text": "{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} desperdiçar pênalti.",
+            "condition": "!penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} teve nos pés oportunidade de ouro para marcar, mas desperdiçou o pênalti.",
+            "condition": "!penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} desperdiçou pênalti.",
+            "condition": "!penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} poderia ter marcado {por%team.name} {team.name}, mas {goalkeeper.name} defendeu a penalidade.",
+            "condition": "penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} cobrou o pênalti, mas parou em {goalkeeper.name}.",
+            "condition": "penalty_defend"
+        },
+        {
+            "text": "{template.time}, {goalkeeper.name} defendeu pênalti, cobrado por {player.name}.",
+            "condition": "penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} assumiu a responsabilidade da cobrança, mas perdeu o pênalti.",
+            "condition": "!penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} não conseguiu converter o pênalti.",
+            "condition": "!penalty_defend"
+        },
+        {
+            "text": "{template.time}, {player.name} perdeu o pênalti.",
+            "condition": "!penalty_defend"
+        }
+    ],
+    "again": [
+        {
+            "text": "ainda mais",
+            "condition": ""
+        },
+        {
+            "text": "mais uma vez",
+            "condition": ""
+        },
+        {
+            "text": "novamente",
+            "condition": ""
+        },
+        {
+            "text": "outra vez",
+            "condition": ""
+        }
+    ],
+    "half_time": [
+        {
+            "text": "O primeiro tempo chegou ao fim sem gols.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "A etapa inicial terminou em 0 a 0.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "O placar não foi inaugurado nos primeiros 45 minutos de partida.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "Sem abrir o placar, as equipes foram para o vestiário.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "Com o placar zerado, as equipes seguiram para o vestiário.",
+            "condition": "total_goals==0"
+        }
+    ],
+    "final_time": [
+        {
+            "text": "O segundo tempo não foi diferente do primeiro, com a partida chegando ao fim sem gols.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "Assim como na primeira etapa, a segunda não teve gols e o jogo terminou em 0 a 0.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "Na etapa complementar, os times seguiram sem conseguir inaugurar o placar e o jogo não saiu do 0 a 0.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "Apesar da tentativa de ambas equipes, o 0 a 0 insistiu em permanecer no placar até o fim do jogo.",
+            "condition": "total_goals==0"
+        },
+        {
+            "text": "Sem o placar ser inaugurado, os times ouviram o apito final do árbitro.",
+            "condition": "total_goals==0"
+        }
+    ],
+    "direct_red_card": [
+        {
+            "text": "{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} ser expulso com vermelho direto.",
+            "condition": ""
+        },
+        {
+            "text": "{template.time}, {o%player.name} {player.name} foi expulso ao ver o cartão vermelho.",
+            "condition": ""
+        },
+        {
+            "text": "{template.time}, {player.name} deixou o time com um a menos, depois de receber o cartão vermelho.",
+            "condition": "#arg.minute_in > 0"
+        },
+        {
+            "text": "{template.time}, {player.name} deixou a partida após receber o cartão vermelho.",
+            "condition": ""
+        },
+        {
+            "text": "{template.time}, {o%team.name} {team.name} ficou em desvantagem depois de ver {player.name} ser expulso.",
+            "condition": "#arg.minute_in > 0"
+        }
+    ],
+    "second_yellow_card": [
+        {
+            "text": "{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} ser expulso ao receber o segundo amarelo.",
+            "condition": ""
+        },
+        {
+            "text": "O técnico {player.name} foi expulso {template.time}.",
+            "condition": "#arg.is_coach"
+        },
+        {
+            "text": "Após receber o segundo amarelo {template.time}, {player.name} foi expulso e deixou {o%team.name} {team.name} em inferioridade numérica.",
+            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+        }
+    ]
+}

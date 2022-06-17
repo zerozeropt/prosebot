@@ -1,1 +1,236 @@
-{"entry_point":[{"text":"{template.competition} {template.main_title}\u003C\/p\u003E\r\n","condition":""}],"defeated":[{"text":"defeat\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"beat\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"thump\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"thrash\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E3"},{"text":"ease past\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E3"},{"text":"cruise past\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E3"},{"text":"hammer\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E3"}],"pen_winner":[{"text":"{pen_winner.name} {template.defeated} {pen_loser.name} on penalties\u003C\/p\u003E\r\n","condition":""},{"text":"{pen_winner.name} {template.defeated} {pen_loser.name} after a penalty shootout\u003C\/p\u003E\r\n","condition":""}],"main_title":[{"text":"{template.pen_winner}","condition":"extra_time==\"PEN\""},{"text":"{template.normal_title}","condition":"extra_time!=\"PEN\" && !is_elim_game"},{"text":"{template.knockouts_title}","condition":"extra_time!=\"PEN\" && is_elim_game"}],"normal_title":[{"text":"{winner.name} defeat {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} beat {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} with a tremendous win\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} with absolute dominance\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2 && dominance "},{"text":"{winner.name} with complete control\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Draw in the clash between {winner.name} and {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"Game between {winner.name} and {loser.name} ended in a stalemate\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"Points shared between {winner.name} and {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"{winner.name} defeat {loser.name} at home\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"{loser.name} defeated by {winner.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} thrash {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"{loser.name} thrashed by {winner.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"{winner.name} and {loser.name} did not go beyond a tie\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"{winner.name} beat {loser.name} with a thriller\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"\u003Cp\u003E\r\n\t{winner.name} cruise past {loser.name}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"\u003Cp\u003E\r\n\t{winner.name} cruise past {loser.name}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} apply a heavy defeat to {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} beat {loser.name} with a massive win\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} defeated {loser.name} by {final_score}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} edged past {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"},{"text":"{winner.name} and {loser.name} share points\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"{loser.name} defeated at home against {winner.name}\u003C\/p\u003E\r\n","condition":"!home_win"},{"text":"{winner.name} hosted and defeated {loser.name}\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"\u003Cp\u003E\r\n\t{winner.name} hammer {loser.name}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"\u003Cp\u003E\r\n\t{winner.name} hammer {loser.name}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"\u003Cp\u003E\r\n\t{loser.name} edged out by {winner.name}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"!home_win"}],"competition":[{"text":"{competition.name}:\u003C\/p\u003E\r\n","condition":"!is_mens || !is_senior"}],"knockouts_title":[{"text":"{knockouts_winner.name} beat {knockouts_loser.name} and win the competition\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"Despite the draw, {knockouts_winner.name} beat {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0 && !is_final"},{"text":"Despite the defeat, {knockouts_winner.name} knock out {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"{knockouts_winner.name} knock out {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} beat {knockouts_loser.name} and win the {competition.name}\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"{knockouts_winner.name} overcome {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} send {knockouts_loser.name} packing\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} crush {knockouts_loser.name}&#39;s {competition.name} dreams\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"\u003Cdiv\u003E\r\n\t{knockouts_winner.name} move on to the next round of {competition.name}\u003C\/div\u003E\r\n\u003Cdiv\u003E\r\n\t&nbsp;\u003C\/div\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} progress despite the defeat\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"{knockouts_winner.name} humble {knockouts_loser.name}&nbsp;\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_loser.name}&nbsp;humbled by&nbsp;{knockouts_winner.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} progress at expense of {knockouts_loser.name}&nbsp;\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"Despite the defeat, {knockouts_winner.name} end {knockouts_loser.name}&#39;s {competition.name} dreams\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"Despite the draw, {knockouts_winner.name} progress to the next round of {competition.name}\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"}]}
+{
+    "entry_point": [
+        {
+            "text": "{template.competition} {template.main_title}",
+            "condition": ""
+        }
+    ],
+    "defeated": [
+        {
+            "text": "defeat",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "beat",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "thump",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "thrash",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "ease past",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "cruise past",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "hammer",
+            "condition": "final_score_diff>3"
+        }
+    ],
+    "pen_winner": [
+        {
+            "text": "{pen_winner.name} {template.defeated} {pen_loser.name} on penalties",
+            "condition": ""
+        },
+        {
+            "text": "{pen_winner.name} {template.defeated} {pen_loser.name} after a penalty shootout",
+            "condition": ""
+        }
+    ],
+    "main_title": [
+        {
+            "text": "{template.pen_winner}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{template.normal_title}",
+            "condition": "extra_time!=\"PEN\" && !is_elim_game"
+        },
+        {
+            "text": "{template.knockouts_title}",
+            "condition": "extra_time!=\"PEN\" && is_elim_game"
+        }
+    ],
+    "normal_title": [
+        {
+            "text": "{winner.name} defeat {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} beat {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} with a tremendous win",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} with absolute dominance",
+            "condition": "final_score_diff>2 && dominance "
+        },
+        {
+            "text": "{winner.name} with complete control",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Draw in the clash between {winner.name} and {loser.name}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Game between {winner.name} and {loser.name} ended in a stalemate",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Points shared between {winner.name} and {loser.name}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{winner.name} defeat {loser.name} at home",
+            "condition": "home_win"
+        },
+        {
+            "text": "{loser.name} defeated by {winner.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} thrash {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{loser.name} thrashed by {winner.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} and {loser.name} did not go beyond a tie",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{winner.name} beat {loser.name} with a thriller",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} cruise past {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} cruise past {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} apply a heavy defeat to {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} beat {loser.name} with a massive win",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} defeated {loser.name} by {final_score}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} edged past {loser.name}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "{winner.name} and {loser.name} share points",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{loser.name} defeated at home against {winner.name}",
+            "condition": "!home_win"
+        },
+        {
+            "text": "{winner.name} hosted and defeated {loser.name}",
+            "condition": "home_win"
+        },
+        {
+            "text": "{winner.name} hammer {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} hammer {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{loser.name} edged out by {winner.name}",
+            "condition": "!home_win"
+        }
+    ],
+    "competition": [
+        {
+            "text": "{competition.name}:",
+            "condition": "!is_mens || !is_senior"
+        }
+    ],
+    "knockouts_title": [
+        {
+            "text": "{knockouts_winner.name} beat {knockouts_loser.name} and win the competition",
+            "condition": "is_final"
+        },
+        {
+            "text": "Despite the draw, {knockouts_winner.name} beat {knockouts_loser.name}",
+            "condition": "final_score_diff==0 && !is_final"
+        },
+        {
+            "text": "Despite the defeat, {knockouts_winner.name} knock out {knockouts_loser.name}",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} knock out {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} beat {knockouts_loser.name} and win the {competition.name}",
+            "condition": "is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} overcome {knockouts_loser.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} send {knockouts_loser.name} packing",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} crush {knockouts_loser.name}'s {competition.name} dreams",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} move on to the next round of {competition.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} progress despite the defeat",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} humble {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_loser.name} humbled by {knockouts_winner.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} progress at expense of {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "Despite the defeat, {knockouts_winner.name} end {knockouts_loser.name}'s {competition.name} dreams",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "Despite the draw, {knockouts_winner.name} progress to the next round of {competition.name}",
+            "condition": "loser_moves_on && !is_final"
+        }
+    ]
+}

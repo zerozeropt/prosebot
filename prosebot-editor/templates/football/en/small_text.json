@@ -1,56 +1,56 @@
 {
     "entry_point": [
         {
-            "text": "{template.score}. {template.teams_form}. {template.best_player}.\u003C\/p\u003E\r\n",
+            "text": "{template.score}. {template.teams_form}. {template.best_player}.",
             "condition": ""
         },
         {
-            "text": "{template.score}. {template.starters} {template.benched}\u003C\/p\u003E\r\n",
+            "text": "{template.score}. {template.starters} {template.benched}",
             "condition": ""
         }
     ],
     "score": [
         {
-            "text": "{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
+            "text": "{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "extra_time==\"PEN\""
         },
         {
-            "text": "{template.normal_score} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
+            "text": "{template.normal_score} {template.red_card%winner} {template.red_card%loser}",
             "condition": "extra_time!=\"PEN\""
         }
     ],
     "defeated": [
         {
-            "text": "beat\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "beat",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "edged past\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "edged past",
+            "condition": "final_score_diff>0"
         },
         {
             "text": "defeated",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "\u003Cp\u003E\r\n\tedged out\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "edged out",
+            "condition": "final_score_diff>0"
         },
         {
             "text": "crushed",
-            "condition": "final_score_diff\u003E3"
+            "condition": "final_score_diff>3"
         },
         {
-            "text": "prevailed\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0  || extra_time==\"PEN\""
+            "text": "prevailed",
+            "condition": "final_score_diff>0  || extra_time==\"PEN\""
         },
         {
-            "text": "hammered\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E3"
+            "text": "hammered",
+            "condition": "final_score_diff>3"
         },
         {
-            "text": "\u003Cp\u003E\r\n\teased past\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E3"
+            "text": "eased past",
+            "condition": "final_score_diff>3"
         }
     ],
     "draw_adjective": [
@@ -61,27 +61,27 @@
     ],
     "match_adjective": [
         {
-            "text": "in an exciting win\u003C\/p\u003E\r\n",
-            "condition": "match_goals\u003E5 && final_score_diff\u003C2"
+            "text": "in an exciting win",
+            "condition": "match_goals>5 && final_score_diff<2"
         },
         {
-            "text": "in an extraordinary win\u003C\/p\u003E\r\n",
-            "condition": "match_goals\u003E6 || final_score_diff\u003E4"
+            "text": "in an extraordinary win",
+            "condition": "match_goals>6 || final_score_diff>4"
         },
         {
             "text": "in a close win",
             "condition": "final_score_diff==1"
         },
         {
-            "text": "in an extraordinary turnaround\u003C\/p\u003E\r\n",
+            "text": "in an extraordinary turnaround",
             "condition": "has_turn_around"
         },
         {
-            "text": "in an entertaining clash\u003C\/p\u003E\r\n",
-            "condition": "match_goals\u003E5 && final_score_diff\u003C2"
+            "text": "in an entertaining clash",
+            "condition": "match_goals>5 && final_score_diff<2"
         },
         {
-            "text": "in a hard-fought win\u003C\/p\u003E\r\n",
+            "text": "in a hard-fought win",
             "condition": "final_score_diff==1"
         }
     ],
@@ -113,32 +113,32 @@
     ],
     "red_card": [
         {
-            "text": "{#arg.name} finished the game with {#arg.final_players} players.\u003C\/p\u003E\r\n",
+            "text": "{#arg.name} finished the game with {#arg.final_players} players.",
             "condition": "#arg.has_red_card"
         },
         {
-            "text": "{#arg.name} ended the game with {#arg.final_players} players.\u003C\/p\u003E\r\n",
+            "text": "{#arg.name} ended the game with {#arg.final_players} players.",
             "condition": "#arg.has_red_card"
         },
         {
-            "text": "{#arg.name} finished the game with {#arg.final_players} men.\u003C\/p\u003E\r\n",
+            "text": "{#arg.name} finished the game with {#arg.final_players} men.",
             "condition": "#arg.has_red_card"
         },
         {
-            "text": "{#arg.name} ended the game with {#arg.final_players} men.\u003C\/p\u003E\r\n",
+            "text": "{#arg.name} ended the game with {#arg.final_players} men.",
             "condition": "#arg.has_red_card"
         }
     ],
     "commentary": [],
     "starters": [
         {
-            "text": "Amongst the starting XI {starter_players} were.\u003C\/p\u003E\r\n",
+            "text": "Amongst the starting XI {starter_players} were.",
             "condition": "starters"
         }
     ],
     "benched": [
         {
-            "text": "{benched_players} did not come off the bench.\u003C\/p\u003E\r\n",
+            "text": "{benched_players} did not come off the bench.",
             "condition": "benched"
         }
     ],
@@ -150,53 +150,53 @@
     "team_stat": [],
     "pen_score": [
         {
-            "text": "{pen_winner.name} {template.defeated} {pen_loser.name} on {weekday}, winning {pen_score} on penalties after the game had finished {final_score}.\u003C\/p\u003E\r\n",
+            "text": "{pen_winner.name} {template.defeated} {pen_loser.name} on {weekday}, winning {pen_score} on penalties after the game had finished {final_score}.",
             "condition": ""
         }
     ],
     "normal_score": [
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective} on {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective} on {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "the game between {winner.name} and {loser.name} on {weekday} ended in a draw, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
+            "text": "the game between {winner.name} and {loser.name} on {weekday} ended in a draw, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} and {loser.name} drew {template.draw_adjective} {final_score} on {weekday}. {template.goals} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
+            "text": "{winner.name} and {loser.name} drew {template.draw_adjective} {final_score} on {weekday}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, {template.extra} on {weekday}. {template.goals} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, on {weekday}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective} on {weekday}, {final_score}. {template.goals}\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective} on {weekday}, {final_score}. {template.goals}",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, {template.extra} on {weekday}. {template.goals}\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, on {weekday}. {template.goals}",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "The match between {winner.name} and {loser.name} on {weekday} ended in a {template.draw_adjective} {final_score} draw. {template.goals}\u003C\/p\u003E\r\n",
+            "text": "The match between {winner.name} and {loser.name} on {weekday} ended in a {template.draw_adjective} {final_score} draw. {template.goals}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} and {loser.name} played out a {template.draw_adjective}&nbsp;{final_score} on {weekday}. {template.goals}\u003C\/p\u003E\r\n",
+            "text": "{winner.name} and {loser.name} played out a {template.draw_adjective} {final_score} on {weekday}. {template.goals}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.streak%winner} {template.match_adjective} on {weekday}, {final_score}. {template.goals}\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "{winner.name} {template.defeated} {loser.name} {template.streak%winner} {template.match_adjective} on {weekday}, {final_score}. {template.goals}",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {template.extra} on {weekday}. {template.goals}\u003C\/p\u003E\r\n",
-            "condition": "final_score_diff\u003E0"
+            "text": "{winner.name} {template.defeated} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, on {weekday}. {template.goals}",
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} and {loser.name} played out a {template.draw_adjective} draw on {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}\u003C\/p\u003E\r\n",
+            "text": "{winner.name} and {loser.name} played out a {template.draw_adjective} draw on {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "final_score_diff==0"
         }
     ]

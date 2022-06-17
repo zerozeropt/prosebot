@@ -1,1 +1,148 @@
-{"entry_point":[{"text":"Divis\u00e3o de pontos {template.draw}","condition":"final_score_diff==0"},{"text":"Vit&oacute;ria apertada {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"},{"text":"Vit&oacute;ria confort&aacute;vel {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==2"},{"text":"Goleada {template.win} {template.draw}","condition":"final_score_diff\u003E2"},{"text":"{loser.name} {f:surpreendida|m:surpreendido%loser.name} em casa\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"Surpresa nos dom&iacute;nios {de%loser.name} {loser.name}\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"{template.pen}\u003C\/p\u003E\r\n","condition":"extra_time==\"PEN\""},{"text":"{template.normal}\u003C\/p\u003E\r\n","condition":"extra_time!=\"PEN\""},{"text":"{loser.name} {f:surpreendida|m:surpreendido%loser.name} dentro de casa\u003C\/p\u003E\r\n","condition":"has_suprise"}],"draw":[{"text":", num jogo sem gols","condition":"match_goals==0"},{"text":"em um confronto equilibrado\u003C\/p\u003E\r\n","condition":"match_goals==2"},{"text":"num jogo com {match_goals} gols","condition":"match_goals\u003E3"},{"text":"em uma chuva de gols\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":", num jogo com o placar zerado\u003C\/p\u003E\r\n","condition":"match_goals==0"},{"text":"num jogo animado\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"com direito a chuva de gols\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":", num jogo morno\u003C\/p\u003E\r\n","condition":"match_goals==0"},{"text":"em um festival de gols\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"em um confronto movimentado\u003C\/p\u003E\r\n","condition":"match_goals==2"}],"win":[{"text":"dentro de casa\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"do time da casa\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"em casa\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"do time visitante\u003C\/p\u003E\r\n","condition":"!home_win"}],"pen":[{"text":"Jogo s&oacute; foi decidido nos pen&aacute;ltis\u003C\/p\u003E\r\n","condition":""},{"text":"Vencedor definido nas penalidades\u003C\/p\u003E\r\n","condition":""}],"normal":[{"text":"Goleada {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Atropelo {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Vit&oacute;ria f&aacute;cil {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Vit&oacute;ria mai&uacute;scula {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Vit&oacute;ria confortavel {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff==2"},{"text":"{loser.name} {f:surpreendida|m:surpreendido%loser.name} em casa\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"Em casa, {de%loser.name} {loser.name} foi surpreendido\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"Surpresa no {stadium} em {local}\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"Vit&oacute;ria apertada {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"}]}
+{
+    "entry_point": [
+        {
+            "text": "Divisão de pontos {template.draw}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Vitória apertada {template.win} {template.draw}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "Vitória confortável {template.win} {template.draw}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "Goleada {template.win} {template.draw}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{loser.name} {f:surpreendida|m:surpreendido%loser.name} em casa",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "Surpresa nos domínios {de%loser.name} {loser.name}",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "{template.pen}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{template.normal}",
+            "condition": "extra_time!=\"PEN\""
+        },
+        {
+            "text": "{loser.name} {f:surpreendida|m:surpreendido%loser.name} dentro de casa",
+            "condition": "has_suprise"
+        }
+    ],
+    "draw": [
+        {
+            "text": ", num jogo sem gols",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "em um confronto equilibrado",
+            "condition": "match_goals==2"
+        },
+        {
+            "text": "num jogo com {match_goals} gols",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "em uma chuva de gols",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": ", num jogo com o placar zerado",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "num jogo animado",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "com direito a chuva de gols",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": ", num jogo morno",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "em um festival de gols",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "em um confronto movimentado",
+            "condition": "match_goals==2"
+        }
+    ],
+    "win": [
+        {
+            "text": "dentro de casa",
+            "condition": "home_win"
+        },
+        {
+            "text": "do time da casa",
+            "condition": "home_win"
+        },
+        {
+            "text": "em casa",
+            "condition": "home_win"
+        },
+        {
+            "text": "do time visitante",
+            "condition": "!home_win"
+        }
+    ],
+    "pen": [
+        {
+            "text": "Jogo só foi decidido nos penáltis",
+            "condition": ""
+        },
+        {
+            "text": "Vencedor definido nas penalidades",
+            "condition": ""
+        }
+    ],
+    "normal": [
+        {
+            "text": "Goleada {template.win}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Atropelo {template.win}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Vitória fácil {template.win}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Vitória maiúscula {template.win}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Vitória confortavel {template.win}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "{loser.name} {f:surpreendida|m:surpreendido%loser.name} em casa",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "Em casa, {de%loser.name} {loser.name} foi surpreendido",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "Surpresa no {stadium} em {local}",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "Vitória apertada {template.win}",
+            "condition": "final_score_diff==1"
+        }
+    ]
+}

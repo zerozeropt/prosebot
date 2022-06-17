@@ -1,1 +1,279 @@
-{"entry_point":[{"text":"{winner.name} derrot\u00f3  {loser.name}","condition":"final_score_diff\u003E0"},{"text":"{winner.name} venci\u00f3 {loser.name}","condition":"final_score_diff\u003E0"},{"text":"{winner.name} con victoria estruendosa","condition":"final_score_diff\u003E4"},{"text":"Dominio total del {winner.name}","condition":"final_score_diff\u003E2"},{"text":"{winner.name} con dominio absoluto","condition":"final_score_diff\u003E2"},{"text":"{winner.name} con control total","condition":"final_score_diff\u003E2"},{"text":"Empate en el encuentro entre {winner.name} y {loser.name}","condition":"final_score_diff==0"},{"text":"El duelo entre {winner.name} y {loser.name} no fue m\u00e1s que un empate","condition":"final_score_diff==0"},{"text":"Igualdad entre {winner.name} y {loser.name}","condition":"final_score_diff==0"},{"text":"{template.competition} {template.main_title}\u003C\/p\u003E\r\n","condition":""}],"defeated":[{"text":"derrot&oacute;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""}],"pen_winner":[{"text":"\u003Cp\u003E\n\t{pen_winner.name} {template.defeated} {pen_loser.name} en la tanta de penaltis\u003C\/p\u003E\n","condition":""},{"text":"{pen_winner.name} se impuso al {pen_loser.name} en la tanda de penaltis\u003C\/p\u003E\r\n","condition":""}],"main_title":[{"text":"{template.pen_winner}","condition":"extra_time==\"PEN\""},{"text":"{template.normal_title}","condition":"extra_time!=\"PEN\" && !is_elim_game"},{"text":"{template.knockouts_title}","condition":"extra_time!=\"PEN\" && is_elim_game"}],"normal_title":[{"text":"{winner.name} derrot&oacute; {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} gan&oacute; {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} con una victoria demoledora\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} con un dominio absoluto\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2 && dominance "},{"text":"{winner.name} con control total\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Empate en el partido entre {winner.name} y {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"{winner.name} y {loser.name} no pasaron del empate\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"Empate entre {winner.name} y {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"{winner.name} bati&oacute; {loser.name}&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} venci&oacute; {loser.name} en casa\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"{loser.name} derrotado por {el%winner.name} {winner.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} gole&oacute; {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"{loser.name} goleado por {el%winner.name} {winner.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"{winner.name} gana {loser.name} con goleada\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"Triunfo del {winner.name} {winner.name} ante {el%loser.name} {loser.name} con goleada incluida\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"{winner.name} arroll&oacute; {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} Impone una derrota pesada al&nbsp;{loser.name} {loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} derrota {loser.name} con goleada pesada\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E4"},{"text":"{winner.name} se impuso al {loser.name} {loser.name}&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0"},{"text":"{winner.name} recebi&oacute; y derrot&oacute; al {loser.name} {loser.name}\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"{winner.name} triunf&oacute; en casa del {loser.name} {loser.name}\u003C\/p\u003E\r\n","condition":"!home_win"},{"text":"{winner.name} gan&oacute; en su campo al {loser.name} {loser.name}\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"{loser.name} derrotado en casa ante el {winner.name} {winner.name}\u003C\/p\u003E\r\n","condition":"!home_win"}],"competition":[],"knockouts_title":[{"text":"{knockouts_winner.name} supera {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} derrota {knockouts_loser.name} y gana la competici&oacute;n\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"A pesar del empate, {knockouts_winner.name} supera {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0 && !is_final"},{"text":"A pesar de la derrota, {knockouts_winner.name} supera {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"{knockouts_winner.name} gana y supera {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} elimina {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} tumba {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} sigue adelante en {competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} deja por el camino al {knockouts_loser.name} {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"!is_final"},{"text":"{knockouts_winner.name} gana y elimina {knockouts_loser.name} {de%competition.name}&nbsp;{competition.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"\u003Cdiv\u003E\r\n\t{knockouts_winner.name} sigue adelante en {competition.name} {competition.name}\u003C\/div\u003E\r\n\u003Cdiv\u003E\r\n\t&nbsp;\u003C\/div\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} gana y elimina {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} derrota y elimina {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} gana y tumba {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"{knockouts_winner.name} gana para seguir adelante {de%competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"Triunfo clasifica {knockouts_winner.name} {de%competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"\u003Cdiv\u003E\r\n\t{knockouts_winner.name} elimina {knockouts_loser.name} {de%competition.name} {competition.name}\u003C\/div\u003E\r\n\u003Cdiv\u003E\r\n\t&nbsp;\u003C\/div\u003E\r\n","condition":"winner_moves_on && !is_final"},{"text":"Triunfo {de%knockouts_loser.name} {knockouts_loser.name} no fue suficiente para evitar la eliminaci&oacute;n\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"{knockouts_winner.name} sigue adelante a pesar de la derrota\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"{knockouts_winner.name} avanza en la {de%competition.name} {competition.name} a pesar de la derrota\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"A pesar de la derrota, {knockouts_winner.name} elimina {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"loser_moves_on && !is_final"},{"text":"Despu&eacute;s de un empate,&nbsp;{knockouts_winner.name} supera {knockouts_loser.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0 && !is_final"},{"text":"Igualdad dio la clasificaci&oacute;n {de%knockouts_winner.name}&nbsp;{knockouts_winner.name}\u003C\/p\u003E\r\n","condition":"final_score_diff==0 && !is_final"},{"text":"{knockouts_winner.name} elimina {knockouts_loser.name} despu&eacute;s de un empate\u003C\/p\u003E\r\n","condition":"final_score_diff==0 && !is_final"},{"text":"{knockouts_winner.name} sigue adelante {knockouts_loser.name} despu&eacute;s de un empate\u003C\/p\u003E\r\n","condition":"final_score_diff==0 && !is_final"},{"text":"{knockouts_winner.name} derrota {knockouts_loser.name} y gana {competition.name}\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"{knockouts_winner.name} se impone {knockouts_loser.name} para ganar {competition.name}\u003C\/p\u003E\r\n","condition":"is_final"}]}
+{
+    "entry_point": [
+        {
+            "text": "{winner.name} derrotó  {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} venció {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} con victoria estruendosa",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "Dominio total del {winner.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} con dominio absoluto",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} con control total",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Empate en el encuentro entre {winner.name} y {loser.name}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "El duelo entre {winner.name} y {loser.name} no fue más que un empate",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Igualdad entre {winner.name} y {loser.name}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{template.competition} {template.main_title}",
+            "condition": ""
+        }
+    ],
+    "defeated": [
+        {
+            "text": "derrotó",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        }
+    ],
+    "pen_winner": [
+        {
+            "text": "{pen_winner.name} {template.defeated} {pen_loser.name} en la tanta de penaltis",
+            "condition": ""
+        },
+        {
+            "text": "{pen_winner.name} se impuso al {pen_loser.name} en la tanda de penaltis",
+            "condition": ""
+        }
+    ],
+    "main_title": [
+        {
+            "text": "{template.pen_winner}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{template.normal_title}",
+            "condition": "extra_time!=\"PEN\" && !is_elim_game"
+        },
+        {
+            "text": "{template.knockouts_title}",
+            "condition": "extra_time!=\"PEN\" && is_elim_game"
+        }
+    ],
+    "normal_title": [
+        {
+            "text": "{winner.name} derrotó {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} ganó {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} con una victoria demoledora",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} con un dominio absoluto",
+            "condition": "final_score_diff>2 && dominance "
+        },
+        {
+            "text": "{winner.name} con control total",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Empate en el partido entre {winner.name} y {loser.name}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{winner.name} y {loser.name} no pasaron del empate",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Empate entre {winner.name} y {loser.name}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{winner.name} batió {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} venció {loser.name} en casa",
+            "condition": "home_win"
+        },
+        {
+            "text": "{loser.name} derrotado por {el%winner.name} {winner.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} goleó {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{loser.name} goleado por {el%winner.name} {winner.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} gana {loser.name} con goleada",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Triunfo del {winner.name} {winner.name} ante {el%loser.name} {loser.name} con goleada incluida",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} arrolló {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} Impone una derrota pesada al {loser.name} {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} derrota {loser.name} con goleada pesada",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} se impuso al {loser.name} {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} recebió y derrotó al {loser.name} {loser.name}",
+            "condition": "home_win"
+        },
+        {
+            "text": "{winner.name} triunfó en casa del {loser.name} {loser.name}",
+            "condition": "!home_win"
+        },
+        {
+            "text": "{winner.name} ganó en su campo al {loser.name} {loser.name}",
+            "condition": "home_win"
+        },
+        {
+            "text": "{loser.name} derrotado en casa ante el {winner.name} {winner.name}",
+            "condition": "!home_win"
+        }
+    ],
+    "competition": [],
+    "knockouts_title": [
+        {
+            "text": "{knockouts_winner.name} supera {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} derrota {knockouts_loser.name} y gana la competición",
+            "condition": "is_final"
+        },
+        {
+            "text": "A pesar del empate, {knockouts_winner.name} supera {knockouts_loser.name}",
+            "condition": "final_score_diff==0 && !is_final"
+        },
+        {
+            "text": "A pesar de la derrota, {knockouts_winner.name} supera {knockouts_loser.name}",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} gana y supera {knockouts_loser.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} elimina {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} tumba {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} sigue adelante en {competition.name} {competition.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} deja por el camino al {knockouts_loser.name} {knockouts_loser.name}",
+            "condition": "!is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} gana y elimina {knockouts_loser.name} {de%competition.name} {competition.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} sigue adelante en {competition.name} {competition.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} gana y elimina {knockouts_loser.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} derrota y elimina {knockouts_loser.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} gana y tumba {knockouts_loser.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} gana para seguir adelante {de%competition.name} {competition.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "Triunfo clasifica {knockouts_winner.name} {de%competition.name} {competition.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} elimina {knockouts_loser.name} {de%competition.name} {competition.name}",
+            "condition": "winner_moves_on && !is_final"
+        },
+        {
+            "text": "Triunfo {de%knockouts_loser.name} {knockouts_loser.name} no fue suficiente para evitar la eliminación",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} sigue adelante a pesar de la derrota",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} avanza en la {de%competition.name} {competition.name} a pesar de la derrota",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "A pesar de la derrota, {knockouts_winner.name} elimina {knockouts_loser.name}",
+            "condition": "loser_moves_on && !is_final"
+        },
+        {
+            "text": "Después de un empate, {knockouts_winner.name} supera {knockouts_loser.name}",
+            "condition": "final_score_diff==0 && !is_final"
+        },
+        {
+            "text": "Igualdad dio la clasificación {de%knockouts_winner.name} {knockouts_winner.name}",
+            "condition": "final_score_diff==0 && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} elimina {knockouts_loser.name} después de un empate",
+            "condition": "final_score_diff==0 && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} sigue adelante {knockouts_loser.name} después de un empate",
+            "condition": "final_score_diff==0 && !is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} derrota {knockouts_loser.name} y gana {competition.name}",
+            "condition": "is_final"
+        },
+        {
+            "text": "{knockouts_winner.name} se impone {knockouts_loser.name} para ganar {competition.name}",
+            "condition": "is_final"
+        }
+    ]
+}

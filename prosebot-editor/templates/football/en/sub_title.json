@@ -1,1 +1,192 @@
-{"entry_point":[{"text":"{template.normal}\u003C\/p\u003E\r\n","condition":"extra_time!=\"PEN\""},{"text":"{template.pen}\u003C\/p\u003E\r\n","condition":"extra_time==\"PEN\""},{"text":"{loser.name} were surprised at their place\u003C\/p\u003E\r\n","condition":"has_suprise"}],"draw":[{"text":"in a game with no goals","condition":"match_goals==0"},{"text":"in a emotional game","condition":"match_goals==2"},{"text":"in a game with {match_goals} goals","condition":"match_goals\u003E3"},{"text":"in goal rain","condition":"match_goals\u003E3"},{"text":"in a stalemate\u003C\/p\u003E\r\n","condition":"match_goals==0"},{"text":"in an exciting encounter\u003C\/p\u003E\r\n","condition":"match_goals==2"},{"text":"in an eventful game that saw {match_goals} goals\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"a match which saw {match_goals} goals\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"in a pulsating game\u003C\/p\u003E\r\n","condition":"match_goals==2"},{"text":"a high-scoring contest\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"\u003Cp\u003E\r\n\tafter ended in a goalless draw&nbsp;\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"match_goals==0"},{"text":"in a thrilling tussle\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"\u003Cp\u003E\r\n\tafter a goalless draw\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"match_goals==0"},{"text":"in a well-contested game\u003C\/p\u003E\r\n","condition":"match_goals==2"},{"text":"\u003Cp\u003E\r\n\tafter a nil-nil\u003C\/p\u003E\r\n","condition":"match_goals==0"},{"text":"in a game packed with goals\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"full of goalmouth action\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"in a goal-fest\u003C\/p\u003E\r\n","condition":"match_goals\u003E3"},{"text":"\u003Cp\u003E\r\n\tin a scoreless draw&nbsp;\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"match_goals==0"}],"win":[{"text":"away","condition":"!home_win"},{"text":"of the hosts\u003C\/p\u003E\r\n","condition":"home_win"},{"text":"from the visitors\u003C\/p\u003E\r\n","condition":"!home_win"},{"text":"at home\u003C\/p\u003E\r\n","condition":"home_win"}],"pen":[{"text":"The game was only decided after a penalty shoot-out\u003C\/p\u003E\r\n","condition":"extra_time==\"PEN\""}],"normal":[{"text":"\u003Cp\u003E\r\n\timpressive win {template.win} {template.draw}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff==2"},{"text":"{loser.name} was surprised on his ground\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"shared the spoils {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"narrow victory {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"},{"text":"edgy win {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"},{"text":"comfortable win {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff==2"},{"text":"goal-fest {template.win}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"a shock result at {loser.name}\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"narrow victory {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"},{"text":"win by a fine margin {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==1"},{"text":"easy win {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==2"},{"text":"score tied {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff==0"},{"text":"high-scoring contest {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"},{"text":"scores level at the end of the contest. {template.draw}\u003C\/p\u003E\r\n","condition":"decisive_goal_stoppage_time && final_score_diff==0"},{"text":"win at the end of the 90 minutes {template.win} {template.draw}\u003C\/p\u003E\r\n","condition":"decisive_goal_stoppage_time && final_score_diff==1"},{"text":"shock result at {stadium} in {local}\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"{loser.name} were surprised at their place\u003C\/p\u003E\r\n","condition":"has_suprise"},{"text":"\u003Cp\u003E\r\n\teasy win {template.win} {template.draw}\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E2"}]}
+{
+    "entry_point": [
+        {
+            "text": "{template.normal}",
+            "condition": "extra_time!=\"PEN\""
+        },
+        {
+            "text": "{template.pen}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{loser.name} were surprised at their place",
+            "condition": "has_suprise"
+        }
+    ],
+    "draw": [
+        {
+            "text": "in a game with no goals",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "in a emotional game",
+            "condition": "match_goals==2"
+        },
+        {
+            "text": "in a game with {match_goals} goals",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "in goal rain",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "in a stalemate",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "in an exciting encounter",
+            "condition": "match_goals==2"
+        },
+        {
+            "text": "in an eventful game that saw {match_goals} goals",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "a match which saw {match_goals} goals",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "in a pulsating game",
+            "condition": "match_goals==2"
+        },
+        {
+            "text": "a high-scoring contest",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "after ended in a goalless draw",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "in a thrilling tussle",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "after a goalless draw",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "in a well-contested game",
+            "condition": "match_goals==2"
+        },
+        {
+            "text": "after a nil-nil",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "in a game packed with goals",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "full of goalmouth action",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "in a goal-fest",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "in a scoreless draw",
+            "condition": "match_goals==0"
+        }
+    ],
+    "win": [
+        {
+            "text": "away",
+            "condition": "!home_win"
+        },
+        {
+            "text": "of the hosts",
+            "condition": "home_win"
+        },
+        {
+            "text": "from the visitors",
+            "condition": "!home_win"
+        },
+        {
+            "text": "at home",
+            "condition": "home_win"
+        }
+    ],
+    "pen": [
+        {
+            "text": "The game was only decided after a penalty shoot-out",
+            "condition": "extra_time==\"PEN\""
+        }
+    ],
+    "normal": [
+        {
+            "text": "impressive win {template.win} {template.draw}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "{loser.name} was surprised on his ground",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "shared the spoils {template.draw}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "narrow victory {template.win}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "edgy win {template.win}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "comfortable win {template.win}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "goal-fest {template.win}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "a shock result at {loser.name}",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "narrow victory {template.win} {template.draw}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "win by a fine margin {template.win} {template.draw}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "easy win {template.win} {template.draw}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "score tied {template.draw}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "high-scoring contest {template.win} {template.draw}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "scores level at the end of the contest. {template.draw}",
+            "condition": "decisive_goal_stoppage_time && final_score_diff==0"
+        },
+        {
+            "text": "win at the end of the 90 minutes {template.win} {template.draw}",
+            "condition": "decisive_goal_stoppage_time && final_score_diff==1"
+        },
+        {
+            "text": "shock result at {stadium} in {local}",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "{loser.name} were surprised at their place",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "easy win {template.win} {template.draw}",
+            "condition": "final_score_diff>2"
+        }
+    ]
+}

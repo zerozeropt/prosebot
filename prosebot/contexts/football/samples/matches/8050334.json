@@ -18,14 +18,14 @@
             "away_goals": "1",
             "home_pen_goals": "0",
             "away_pen_goals": "0",
-            "referee": "Lu\u00eds Godinho",
+            "referee": "Luís Godinho",
             "id_stage": "150343",
             "name_stage": "J33",
             "duration_int": "45",
             "phase_type": "campeonato",
             "phase_num_hands": "2",
             "phase_winner": 0,
-            "stadium": "Est\u00e1dio do Sport Lisboa e Benfica",
+            "stadium": "Estádio do Sport Lisboa e Benfica",
             "local": "Lisboa",
             "stadium_capacity": "64642",
             "winner": "2",
@@ -50,7 +50,7 @@
             "extra_time": ""
         },
         "LEAGUE": "Liga Portugal bwin 21\/22",
-        "STADIUM": "Est\u00e1dio do Sport Lisboa e Benfica",
+        "STADIUM": "Estádio do Sport Lisboa e Benfica",
         "DATETIME": "2022-05-07 18-00-00",
         "FINALRESULT": "0-1",
         "HOMEGOALS": "0",
@@ -118,7 +118,7 @@
                         "min_out": "0",
                         "fk_player_parents": "4",
                         "fk_player": "67588",
-                        "abrev": "Nicol\u00e1s Otamendi",
+                        "abrev": "Nicolás Otamendi",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -183,7 +183,7 @@
                         "min_out": "72",
                         "fk_player_parents": "188",
                         "fk_player": "287013",
-                        "abrev": "Valentino L\u00e1zaro",
+                        "abrev": "Valentino Lázaro",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -196,7 +196,7 @@
                         "min_out": "0",
                         "fk_player_parents": "133",
                         "fk_player": "606157",
-                        "abrev": "Darwin N\u00fa\u00f1ez",
+                        "abrev": "Darwin Nú\u00f1ez",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -209,7 +209,7 @@
                         "min_out": "72",
                         "fk_player_parents": "1",
                         "fk_player": "428376",
-                        "abrev": "Gon\u00e7alo Ramos",
+                        "abrev": "Gonçalo Ramos",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -237,7 +237,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "74377",
-                        "abrev": "Andr\u00e9 Almeida",
+                        "abrev": "André Almeida",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -276,7 +276,7 @@
                         "min_out": "0",
                         "fk_player_parents": "14",
                         "fk_player": "197672",
-                        "abrev": "Soualiho Meit\u00e9",
+                        "abrev": "Soualiho Meité",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -289,7 +289,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "56560",
-                        "abrev": "Jo\u00e3o M\u00e1rio",
+                        "abrev": "João Mário",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -358,7 +358,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "421283",
-                        "abrev": "Jo\u00e3o M\u00e1rio",
+                        "abrev": "João Mário",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -410,7 +410,7 @@
                         "min_out": "0",
                         "fk_player_parents": "6",
                         "fk_player": "474258",
-                        "abrev": "Pep\u00ea",
+                        "abrev": "Pepê",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "90+4' ",
@@ -449,7 +449,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "276060",
-                        "abrev": "Ot\u00e1vio",
+                        "abrev": "Otávio",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -490,7 +490,7 @@
                         "min_out": "0",
                         "fk_player_parents": "4",
                         "fk_player": "36533",
-                        "abrev": "Agust\u00edn Marches\u00edn",
+                        "abrev": "Agustín Marchesín",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -503,7 +503,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "74943",
-                        "abrev": "F\u00e1bio Cardoso",
+                        "abrev": "Fábio Cardoso",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -529,7 +529,7 @@
                         "min_out": "0",
                         "fk_player_parents": "97",
                         "fk_player": "367964",
-                        "abrev": "Stephen Eust\u00e1quio",
+                        "abrev": "Stephen Eustáquio",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -542,7 +542,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "421287",
-                        "abrev": "F\u00e1bio Vieira",
+                        "abrev": "Fábio Vieira",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -568,7 +568,7 @@
                         "min_out": "0",
                         "fk_player_parents": "1",
                         "fk_player": "318154",
-                        "abrev": "Francisco Concei\u00e7\u00e3o",
+                        "abrev": "Francisco Conceição",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -581,7 +581,7 @@
                         "min_out": "0",
                         "fk_player_parents": "12",
                         "fk_player": "450417",
-                        "abrev": "Toni Mart\u00ednez",
+                        "abrev": "Toni Martínez",
                         "goals": "",
                         "sgoals": "0",
                         "assists": "",
@@ -605,11 +605,11 @@
             },
             "coach_home": {
                 "id": "8068",
-                "abrev": "N\u00e9lson Ver\u00edssimo"
+                "abrev": "Nélson Veríssimo"
             },
             "coach_away": {
                 "id": "2053",
-                "abrev": "S\u00e9rgio Concei\u00e7\u00e3o"
+                "abrev": "Sérgio Conceição"
             }
         },
         "PLAYERSTATS": [
@@ -1740,7 +1740,7 @@
             },
             "3": {
                 "state": "V",
-                "descr_edition": "Ta\u00e7a Portugal 21\/22"
+                "descr_edition": "Taça Portugal 21\/22"
             },
             "4": {
                 "state": "V",
@@ -1760,7 +1760,7 @@
                 "fixture": "34",
                 "id": "8050368",
                 "fk_opponent": "13",
-                "opponent_descr": "Pa\u00e7os de Ferreira",
+                "opponent_descr": "Paços de Ferreira",
                 "where": "away",
                 "neutral_field": "0",
                 "descr_edition": "Liga Portugal bwin 21\/22"
@@ -1783,7 +1783,7 @@
                 "opponent_descr": "CD Tondela",
                 "where": "away",
                 "neutral_field": "1",
-                "descr_edition": "Ta\u00e7a Portugal 21\/22"
+                "descr_edition": "Taça Portugal 21\/22"
             },
             "3": {
                 "fixture": "0",
@@ -1792,7 +1792,7 @@
                 "opponent_descr": "CD Tondela",
                 "where": "home",
                 "neutral_field": "0",
-                "descr_edition": "Superta\u00e7a 2022"
+                "descr_edition": "Supertaça 2022"
             }
         },
         "CURIOSITY": {

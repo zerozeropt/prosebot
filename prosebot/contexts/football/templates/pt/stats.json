@@ -1,1 +1,318 @@
-{"home_team_stats":[],"away_team_stats":[],"match_stats":[],"ballpo":[{"text":"obteve o melhor registo de posse de bola de todas as equipas esta \u00e9poca, com {stat_val}%","condition":"is_stat_positive && is_stat_global"},{"text":"obteve o seu melhor registo de posse de bola esta \u00e9poca, com {stat_val}%","condition":"is_stat_positive && !is_stat_global"},{"text":"obteve o pior registo de posse de bola de todas as equipas esta \u00e9poca, com {stat_val}%","condition":"!is_stat_positive && is_stat_global"},{"text":"obteve o seu pior registo de posse de bola esta \u00e9poca, com {stat_val}%","condition":"!is_stat_positive && !is_stat_global"}],"shots":[],"totpas":[{"text":"foram registados {stat_val} passes, o maior n\u00famero esta \u00e9poca","condition":"!has_stat_team && is_stat_positive"},{"text":"conseguiu estabelecer um recorde global de {stat_val} passes","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"conseguiu estabelecer um recorde pessoal de {stat_val} passes","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"fez apenas {stat_val} passes, batendo o pior registo na competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"fez o seu pior n\u00famero de passes, com {stat_val}","condition":"has_stat_team && !is_stat_positive && !is_stat_global"},{"text":"foram registados apenas {stat_val} passes, o n\u00famero mais baixo esta \u00e9poca","condition":"!has_stat_team && !is_stat_positive"}],"faltas":[{"text":"tournou-se o menos faltoso esta \u00e9poca, com {stat_val} faltas","condition":"!has_stat_team && !is_stat_positive"},{"text":"tornou-se o mais faltoso esta \u00e9poca, com {stat_val} faltas","condition":"!has_stat_team && is_stat_positive"},{"text":"sofreu {stat_val} faltas, o m\u00e1ximo de toda a competi\u00e7\u00e3o","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"sofreu {stat_val} faltas, o seu m\u00e1ximo at\u00e9 agora","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"sofreu apenas {stat_val} faltas, o m\u00ednimo de toda a competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"sofreu apenas {stat_val} faltas, o seu m\u00ednimo at\u00e9 agora","condition":"has_stat_team && !is_stat_positive && !is_stat_global"}],"foul":[{"text":"cometeu o maior n\u00famero de faltas da \u00e9poca com um total de {stat_val}","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"cometeu o menor n\u00famero de faltas da \u00e9poca com apenas {stat_val}","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"cometeu o seu maior n\u00famero de faltas da \u00e9poca com um total de {stat_val}","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"cometeu o seu menor n\u00famero de faltas da \u00e9poca com apenas {stat_val}","condition":"has_stat_team && !is_stat_positive && !is_stat_global"},{"text":"registaram-se {stat_val} faltas, tornando-se a partida mais faltosa da \u00e9poca","condition":"!has_stat_team && is_stat_positive"},{"text":"registaram-se apenas {stat_val} faltas, o n\u00famero mais baixo na competi\u00e7\u00e3o","condition":"!has_stat_team && !is_stat_positive"}],"corner":[{"text":"foram batidos apenas {stat_val} cantos, o n\u00famero mais baixo esta \u00e9poca","condition":"!has_stat_team && is_stat_positive"},{"text":"foi batido o recorde de cantos batidos, com um total de {stat_val}","condition":"!has_stat_team && is_stat_positive"},{"text":"bateu o recorde de cantos batidos na competi\u00e7\u00e3o, com um total de {stat_val}","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"bateu o seu recorde de cantos batidos na competi\u00e7\u00e3o, com um total de {stat_val}","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"bateu apenas {stat_val} cantos, o n\u00famero mais baixo de toda a competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"bateu apenas {stat_val} cantos, o seu n\u00famero mais baixo na competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && !is_stat_global"},{"text":"foram batidos apenas {stat_val} cantos, o menor registo desta \u00e9poca","condition":"!has_stat_team && !is_stat_positive"}],"offs":[{"text":"registou-se o menor n\u00famero de foras-de-jogo - {stat_val}","condition":"!has_stat_team && !is_stat_positive"},{"text":"registou-se o maior n\u00famero de foras-de-jogo - {stat_val}","condition":"!has_stat_team && is_stat_positive"},{"text":"incorreu em fora-de-jogo {stat_val} vezes, o valor mais elevado at\u00e9 agora em toda a competi\u00e7\u00e3o","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"incorreu em fora-de-jogo {stat_val} vezes, o seu valor mais elevado na competi\u00e7\u00e3o","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"incorreu em fora-de-jogo {stat_val} vezes, sendo o n\u00famero mais baixo em toda a competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"incorreu em fora-de-jogo {stat_val} vezes, sendo o seu melhor registo na competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && !is_stat_global"}],"shot":[{"text":"demonstrou uma veia rematadora, estabelendo um recorde na competi\u00e7\u00e3o de {stat_val} remates","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"demonstrou uma veia rematadora, estabelendo um recorde pessoal de {stat_val} remates","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"fez apenas {stat_val} remates, o pior registado na competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"fez apenas {stat_val} remates, o seu pior n\u00famero esta \u00e9poca","condition":"has_stat_team && !is_stat_positive && !is_stat_global"},{"text":"foi batido o recorde de remates na \u00e9poca, com {stat_val} remates","condition":"!has_stat_team && is_stat_positive"},{"text":"foram registados apenas {stat_val} remates, o n\u00famero mais baixo desta \u00e9poca","condition":"!has_stat_team && !is_stat_positive"}],"winningless_streak":[{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos sem ganhar","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"},{"text":"\u003Cp\u003E\n\tEstendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos sem ganhar\u003C\/p\u003E\n","condition":"post_curiosity_val \u003E 3"}],"losing_streak":[{"text":"Estendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos a perder\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos a perder","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"}],"winning_streak":[{"text":"Estendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos a vencer\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos a vencer","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"}],"drawing_streak":[{"text":"Estendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos a empatar\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos a empatar","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"}],"lossless_streak":[{"text":"Estendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos sem perder\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos sem perder","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"}],"no_goals_conceded_streak":[{"text":"Estendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos sem sofrer golos\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos sem sofrer golos","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"},{"text":"Ao deixar a baliza a zeros, aumentou para&nbsp;{post_curiosity_val} jogos sem sofrer\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Voltou a sofrer depois de uma sequ&ecirc;ncia de&nbsp;{pre_curiosity_val}&nbsp;jogos com a folha limpa\u003C\/p\u003E\r\n","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"}],"goals_scored_streak":[{"text":"Estendeu uma sequ&ecirc;ncia de {post_curiosity_val} jogos a marcar golos\u003C\/p\u003E\r\n","condition":"post_curiosity_val \u003E 3"},{"text":"Quebrou uma sequ\u00eancia de {pre_curiosity_val} jogos a marcar golos","condition":"pre_curiosity_val \u003E 3 && post_curiosity_val == 0"}],"shotgo":[{"text":"demonstrou uma veia rematadora, estabelendo um recorde na competi\u00e7\u00e3o de {stat_val} remates \u00e0 baliza","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"demonstrou uma veia rematadora, estabelendo um recorde pessoal de {stat_val} remates \u00e0 baliza","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"fez apenas {stat_val} remates \u00e0 baliza, o pior registado na competi\u00e7\u00e3o","condition":"has_stat_team && !is_stat_positive && is_stat_global"},{"text":"fez apenas {stat_val} remates \u00e0 baliza, o seu pior n\u00famero esta \u00e9poca","condition":"has_stat_team && !is_stat_positive && !is_stat_global"},{"text":"foi batido o recorde de remates \u00e0 baliza na \u00e9poca, com {stat_val} remates","condition":"!has_stat_team && is_stat_positive"},{"text":"foram registados apenas {stat_val} remates \u00e0 baliza, o n\u00famero mais baixo desta \u00e9poca","condition":"!has_stat_team && !is_stat_positive"}],"gksave":[{"text":"bateu o seu recorde de defesas na \u00e9poca, com {#arg.value} defesas","condition":"has_stat_team && is_stat_positive && !is_stat_global"},{"text":"registou apenas {#arg.value} defesas, o seu n\u00famero mais baixo desta \u00e9poca","condition":"has_stat_team && !is_stat_positive && !is_stat_global"},{"text":"bateu o recorde de defesas na \u00e9poca, com {#arg.value} defesas","condition":"has_stat_team && is_stat_positive && is_stat_global"},{"text":"registou apenas {#arg.value} defesas, o n\u00famero mais baixo desta \u00e9poca","condition":"has_stat_team && !is_stat_positive && is_stat_global"}],"games_without_winning":[{"text":"Perdeu pontos pela primeira vez","condition":"pre_curiosity_val == 0 && post_curiosity_val \u003E 0"}],"losses":[{"text":"Perdeu o primeiro jogo na competi\u00e7\u00e3o","condition":"pre_curiosity_val == 0 && post_curiosity_val \u003E 0"}]}
+{
+    "home_team_stats": [],
+    "away_team_stats": [],
+    "match_stats": [],
+    "ballpo": [
+        {
+            "text": "obteve o melhor registo de posse de bola de todas as equipas esta época, com {stat_val}%",
+            "condition": "is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "obteve o seu melhor registo de posse de bola esta época, com {stat_val}%",
+            "condition": "is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "obteve o pior registo de posse de bola de todas as equipas esta época, com {stat_val}%",
+            "condition": "!is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "obteve o seu pior registo de posse de bola esta época, com {stat_val}%",
+            "condition": "!is_stat_positive && !is_stat_global"
+        }
+    ],
+    "shots": [],
+    "totpas": [
+        {
+            "text": "foram registados {stat_val} passes, o maior número esta época",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "conseguiu estabelecer um recorde global de {stat_val} passes",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "conseguiu estabelecer um recorde pessoal de {stat_val} passes",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "fez apenas {stat_val} passes, batendo o pior registo na competição",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "fez o seu pior número de passes, com {stat_val}",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "foram registados apenas {stat_val} passes, o número mais baixo esta época",
+            "condition": "!has_stat_team && !is_stat_positive"
+        }
+    ],
+    "faltas": [
+        {
+            "text": "tournou-se o menos faltoso esta época, com {stat_val} faltas",
+            "condition": "!has_stat_team && !is_stat_positive"
+        },
+        {
+            "text": "tornou-se o mais faltoso esta época, com {stat_val} faltas",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "sofreu {stat_val} faltas, o máximo de toda a competição",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "sofreu {stat_val} faltas, o seu máximo até agora",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "sofreu apenas {stat_val} faltas, o mínimo de toda a competição",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "sofreu apenas {stat_val} faltas, o seu mínimo até agora",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        }
+    ],
+    "foul": [
+        {
+            "text": "cometeu o maior número de faltas da época com um total de {stat_val}",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "cometeu o menor número de faltas da época com apenas {stat_val}",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "cometeu o seu maior número de faltas da época com um total de {stat_val}",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "cometeu o seu menor número de faltas da época com apenas {stat_val}",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "registaram-se {stat_val} faltas, tornando-se a partida mais faltosa da época",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "registaram-se apenas {stat_val} faltas, o número mais baixo na competição",
+            "condition": "!has_stat_team && !is_stat_positive"
+        }
+    ],
+    "corner": [
+        {
+            "text": "foram batidos apenas {stat_val} cantos, o número mais baixo esta época",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "foi batido o recorde de cantos batidos, com um total de {stat_val}",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "bateu o recorde de cantos batidos na competição, com um total de {stat_val}",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "bateu o seu recorde de cantos batidos na competição, com um total de {stat_val}",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "bateu apenas {stat_val} cantos, o número mais baixo de toda a competição",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "bateu apenas {stat_val} cantos, o seu número mais baixo na competição",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "foram batidos apenas {stat_val} cantos, o menor registo desta época",
+            "condition": "!has_stat_team && !is_stat_positive"
+        }
+    ],
+    "offs": [
+        {
+            "text": "registou-se o menor número de foras-de-jogo - {stat_val}",
+            "condition": "!has_stat_team && !is_stat_positive"
+        },
+        {
+            "text": "registou-se o maior número de foras-de-jogo - {stat_val}",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "incorreu em fora-de-jogo {stat_val} vezes, o valor mais elevado até agora em toda a competição",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "incorreu em fora-de-jogo {stat_val} vezes, o seu valor mais elevado na competição",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "incorreu em fora-de-jogo {stat_val} vezes, sendo o número mais baixo em toda a competição",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "incorreu em fora-de-jogo {stat_val} vezes, sendo o seu melhor registo na competição",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        }
+    ],
+    "shot": [
+        {
+            "text": "demonstrou uma veia rematadora, estabelendo um recorde na competição de {stat_val} remates",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "demonstrou uma veia rematadora, estabelendo um recorde pessoal de {stat_val} remates",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "fez apenas {stat_val} remates, o pior registado na competição",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "fez apenas {stat_val} remates, o seu pior número esta época",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "foi batido o recorde de remates na época, com {stat_val} remates",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "foram registados apenas {stat_val} remates, o número mais baixo desta época",
+            "condition": "!has_stat_team && !is_stat_positive"
+        }
+    ],
+    "winningless_streak": [
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos sem ganhar",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        },
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos sem ganhar",
+            "condition": "post_curiosity_val > 3"
+        }
+    ],
+    "losing_streak": [
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos a perder",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos a perder",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        }
+    ],
+    "winning_streak": [
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos a vencer",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos a vencer",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        }
+    ],
+    "drawing_streak": [
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos a empatar",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos a empatar",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        }
+    ],
+    "lossless_streak": [
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos sem perder",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos sem perder",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        }
+    ],
+    "no_goals_conceded_streak": [
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos sem sofrer golos",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos sem sofrer golos",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        },
+        {
+            "text": "Ao deixar a baliza a zeros, aumentou para {post_curiosity_val} jogos sem sofrer",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Voltou a sofrer depois de uma sequência de {pre_curiosity_val} jogos com a folha limpa",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        }
+    ],
+    "goals_scored_streak": [
+        {
+            "text": "Estendeu uma sequência de {post_curiosity_val} jogos a marcar golos",
+            "condition": "post_curiosity_val > 3"
+        },
+        {
+            "text": "Quebrou uma sequência de {pre_curiosity_val} jogos a marcar golos",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        }
+    ],
+    "shotgo": [
+        {
+            "text": "demonstrou uma veia rematadora, estabelecendo um recorde na competição de {stat_val} remates à baliza",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "demonstrou uma veia rematadora, estabelendo um recorde pessoal de {stat_val} remates à baliza",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "fez apenas {stat_val} remates à baliza, o pior registado na competição",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "fez apenas {stat_val} remates à baliza, o seu pior número esta época",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "foi batido o recorde de remates à baliza na época, com {stat_val} remates",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "foram registados apenas {stat_val} remates à baliza, o número mais baixo desta época",
+            "condition": "!has_stat_team && !is_stat_positive"
+        }
+    ],
+    "gksave": [
+        {
+            "text": "bateu o seu recorde de defesas na época, com {#arg.value} defesas",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "registou apenas {#arg.value} defesas, o seu número mais baixo desta época",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "bateu o recorde de defesas na época, com {#arg.value} defesas",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "registou apenas {#arg.value} defesas, o número mais baixo desta época",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        }
+    ],
+    "games_without_winning": [
+        {
+            "text": "Perdeu pontos pela primeira vez",
+            "condition": "pre_curiosity_val == 0 && post_curiosity_val > 0"
+        }
+    ],
+    "losses": [
+        {
+            "text": "Perdeu o primeiro jogo na competição",
+            "condition": "pre_curiosity_val == 0 && post_curiosity_val > 0"
+        }
+    ]
+}

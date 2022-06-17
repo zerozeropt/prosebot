@@ -1,1 +1,254 @@
-{"entry_point":[{"text":"{template.stats} {template.classification} {template.next_games}\u003C\/p\u003E\r\n","condition":"is_league && !is_last_match_day"},{"text":"{template.stats} {template.knockouts_result} {template.next_games}\u003C\/p\u003E\r\n","condition":"!is_league"},{"text":"{template.stats} {template.classification}.\u003C\/p\u003E\r\n","condition":"is_league && is_last_match_day"}],"classification":[{"text":"\u003Cp\u003E\n\tCom o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} pontos, enquanto {O%team_worst_after.name} {team_worst_after.name} {s:encontra|p:encontram%team_worst_after.name}-se na {ORDINAL_FEM%team_worst_after.pos_classification} posi&ccedil;&atilde;o, {team_worst_after.points} pontos.\u003C\/p\u003E\n","condition":"has_classification"},{"text":"Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} pontos. {O%team_worst_after.name} {team_worst_after.name}, por sua vez, fica na {ORDINAL_FEM%team_worst_after.pos_classification} posi&ccedil;&atilde;o, {team_worst_after.points} pontos.\u003C\/p\u003E\r\n","condition":"has_classification"}],"classification_content":[{"text":"{@edition_link} tabela\u003C\/a\u003E","condition":""},{"text":"{@edition_link} classifica&ccedil;&atilde;o geral\u003C\/a\u003E\u003C\/p\u003E\r\n","condition":""}],"next_games":[{"text":"{template.intro_next_games}, {template.next_location%winner}, enquanto {template.next_location%loser}.","condition":"!next_game_same_teams && has_next_competition_game"},{"text":"{template.intro_next_games}, {template.next_location%winner}. Por sua vez, {template.next_location%loser}.","condition":"!next_game_same_teams && has_next_competition_game"},{"text":"{template.intro_next_games}, {template.next_location%winner}, j&aacute; {template.next_location%loser}.\u003C\/p\u003E\r\n","condition":"!next_game_same_teams && has_next_competition_game"},{"text":"{template.intro_next_games}, {template.next_location%winner}\u003C\/p\u003E\r\n","condition":"next_game_same_teams && has_next_competition_game"}],"intro_next_games":[{"text":"No pr&oacute;ximo jogo {de%competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":""},{"text":"Na pr&oacute;xima rodada&nbsp;{de%competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":""},{"text":"Quanto &agrave; pr&oacute;xima rodada&nbsp;{de%competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":""},{"text":"Na sequ&ecirc;ncida {de%competition.name} {competition.name}\u003C\/p\u003E\r\n","condition":""}],"next_location":[{"text":"\u003Cp\u003E\r\n\t{O%#arg.name} {#arg.name} {#arg.@next_competition_match_link} {template.next_location_content%#arg}&lt;\/a&gt;\u003C\/p\u003E\r\n\u003Cp\u003E\r\n\t&nbsp;\u003C\/p\u003E\r\n","condition":""}],"next_location_content":[{"text":"enfrenta {o%#arg.next_opponent_competition} {#arg.next_opponent_competition} fora de casa.\u003C\/p\u003E\r\n","condition":"#arg.is_next_competition_away"},{"text":"encara {o%#arg.next_opponent_competition} {#arg.next_opponent_competition} fora de casa.\u003C\/p\u003E\r\n","condition":"#arg.is_next_competition_away"},{"text":"visita{s:|p:m%#arg.name} a casa {DE%#arg.next_opponent_competition} {#arg.next_opponent_competition}","condition":"#arg.is_next_competition_away"},{"text":"recebe{s:|p:m%#arg.name} {O%#arg.next_opponent_competition} {#arg.next_opponent_competition}","condition":"#arg.is_next_competition_home"},{"text":"visita{s:|p:m%#arg.name} {O%#arg.next_opponent_competition} {#arg.next_opponent_competition}","condition":"#arg.is_next_competition_away"},{"text":"joga{s:|p:m%#arg.name} em casa contra {#arg.next_opponent_competition}\u003C\/p\u003E\r\n","condition":"#arg.is_next_competition_home"},{"text":"joga{s:|p:m%#arg.name} fora contra {#arg.next_opponent_competition}\u003C\/p\u003E\r\n","condition":"#arg.is_next_competition_away"},{"text":"desafia {o%#arg.next_opponent_competition} {#arg.next_opponent_competition} fora de casa\u003C\/p\u003E\r\n","condition":"#arg.is_next_competition_away"}],"next_game_loser":[],"competition_winner":[],"stats":[{"text":"{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}. {template.loser_stat_intro%loser_stat} {template.loser_stat%loser_stat}.\u003C\/p\u003E\r\n","condition":"has_winner_stat && has_loser_stat && fixture \u003E 5 && final_score_diff != 0"},{"text":"{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}.\u003C\/p\u003E\r\n","condition":"has_winner_stat && !has_loser_stat && fixture \u003E 5"},{"text":"{template.loser_stat_intro%loser_stat}, {template.loser_stat%loser_stat}.\u003C\/p\u003E\r\n","condition":"has_loser_stat && !has_winner_stat && fixture \u003E 5"},{"text":"Neste jogo, {template.winner_stat%winner_stat}, enquanto que {template.loser_stat%loser_stat}.\u003C\/p\u003E\r\n","condition":"has_winner_stat && has_loser_stat && fixture \u003E 5 && final_score_diff == 0"}],"winner_stat_intro":[{"text":"Apesar da vit&oacute;ria,\u003C\/p\u003E\r\n","condition":"!#arg.is_positive && final_score_diff \u003E 0"},{"text":"Mesmo com a vit&oacute;ria,\u003C\/p\u003E\r\n","condition":"!#arg.is_positive && final_score_diff \u003E 0"},{"text":"Apesar do empate,\u003C\/p\u003E\r\n","condition":"#arg.is_positive && final_score_diff == 0"},{"text":"Com o empate,\u003C\/p\u003E\r\n","condition":"!#arg.is_positive && final_score_diff == 0"}],"loser_stat_intro":[{"text":"Apesar da derrota,\u003C\/p\u003E\r\n","condition":"#arg.is_positive && final_score_diff \u003E 0"},{"text":"Mesmo com a derrota,\u003C\/p\u003E\r\n","condition":"#arg.is_positive && final_score_diff \u003E 0"},{"text":"Apesar do empate,\u003C\/p\u003E\r\n","condition":"#arg.is_positive && final_score_diff == 0"},{"text":"Mesmo com o empate,\u003C\/p\u003E\r\n","condition":"#arg.is_positive && final_score_diff == 0"}],"winner_stat":[{"text":"{o%winner.name} {winner.name} {template.team_stat%#arg}\u003C\/p\u003E\r\n","condition":""}],"loser_stat":[{"text":"{o%loser.name} {loser.name} {template.team_stat%#arg}\u003C\/p\u003E\r\n","condition":""}],"team_stat":[{"text":", com grande volume no ataque, bateu o seu recorde de chutes a gol, com {#arg.value} chutes\u003C\/p\u003E\r\n","condition":"#arg.is_positive && #arg.key==\"shotgo\""},{"text":", muito presente no campo de ataque, quebrou o seu recorde de chutes a gol na temporada, com {#arg.value} chutes\u003C\/p\u003E\r\n","condition":"#arg.is_positive && #arg.key==\"shotgo\""},{"text":", com dificuldade de criar oportunidades, chutou a gol apenas {#arg.value} vezes, o seu menor n&uacute;mero nesta temporada\u003C\/p\u003E\r\n","condition":"!#arg.is_positive && #arg.key==\"shotgo\""},{"text":", em jogo que foi muito exigido no setor defensivo, bateu seu recorde de defesas na temporada, com {#arg.value} defesas\u003C\/p\u003E\r\n","condition":"#arg.is_positive && #arg.key==\"gksave\""},{"text":", com amplo dom&iacute;nio do meio de campo, teve o maior dom&iacute;nio da posse de bola na temporada, com {#arg.value}%\u003C\/p\u003E\r\n","condition":"#arg.is_positive && #arg.key==\"ballpo\""},{"text":"bateu o seu recorde de chutes na temporada, com {#arg.value} chutes\u003C\/p\u003E\r\n","condition":"#arg.is_positive && #arg.key==\"shot\""}],"next_game_connector":[{"text":". Por sua vez,\u003C\/p\u003E\r\n","condition":"has_home_team_next_match && has_away_team_next_match"},{"text":", enquanto isso\u003C\/p\u003E\r\n","condition":"has_home_team_next_match && has_away_team_next_match"},{"text":", j&aacute;\u003C\/p\u003E\r\n","condition":"has_home_team_next_match && has_away_team_next_match"}],"knockouts_result":[{"text":"Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} conquista{s:|p:m%knockouts_winner.name} a competi&ccedil;&atilde;o.\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} vence{s:|p:m%knockouts_winner.name} a competi&ccedil;&atilde;o.\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"Com o resultado, {O%knockouts_winner.name} {knockouts_winner.name} segue{s:|p:m%knockouts_winner.name} em frente na competi&ccedil;&atilde;o.\u003C\/p\u003E\r\n","condition":"!is_final && is_elim_game"},{"text":"Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} fica com o trof&eacute;u da competi&ccedil;&atilde;o.\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} &eacute; o campe&atilde;o da competi&ccedil;&atilde;o.\u003C\/p\u003E\r\n","condition":"is_final"},{"text":"Gra&ccedil;as a este resultado, {O%knockouts_winner.name} {knockouts_winner.name} elimina {O%knockouts_loser.name} {knockouts_loser.name} da competi&ccedil;&atilde;o.\u003C\/p\u003E\r\n","condition":"!is_final && is_elim_game"},{"text":"Com o resultado, {O%knockouts_winner.name} {knockouts_winner.name} segue em frente na&nbsp;{competition.name}, equanto&nbsp;{O%knockouts_loser.name} {knockouts_loser.name} est&aacute; eliminado.\u003C\/p\u003E\r\n","condition":"!is_final && is_elim_game"},{"text":"O resultado deixa {O%knockouts_loser.name} {knockouts_loser.name} fora da competi&ccedil;&atilde;o.&nbsp;{O%knockouts_winner.name} {knockouts_winner.name} segue para a pr&oacute;xima fase.\u003C\/p\u003E\r\n","condition":"!is_final && is_elim_game"}]}
+{
+    "entry_point": [
+        {
+            "text": "{template.stats} {template.classification} {template.next_games}",
+            "condition": "is_league && !is_last_match_day"
+        },
+        {
+            "text": "{template.stats} {template.knockouts_result} {template.next_games}",
+            "condition": "!is_league"
+        },
+        {
+            "text": "{template.stats} {template.classification}.",
+            "condition": "is_league && is_last_match_day"
+        }
+    ],
+    "classification": [
+        {
+            "text": "Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} pontos, enquanto {O%team_worst_after.name} {team_worst_after.name} {s:encontra|p:encontram%team_worst_after.name}-se na {ORDINAL_FEM%team_worst_after.pos_classification} posição, {team_worst_after.points} pontos.",
+            "condition": "has_classification"
+        },
+        {
+            "text": "Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} pontos. {O%team_worst_after.name} {team_worst_after.name}, por sua vez, fica na {ORDINAL_FEM%team_worst_after.pos_classification} posição, {team_worst_after.points} pontos.",
+            "condition": "has_classification"
+        }
+    ],
+    "classification_content": [
+        {
+            "text": "{@edition_link} tabela<\/a>",
+            "condition": ""
+        },
+        {
+            "text": "{@edition_link} classificação geral<\/a>",
+            "condition": ""
+        }
+    ],
+    "next_games": [
+        {
+            "text": "{template.intro_next_games}, {template.next_location%winner}, enquanto {template.next_location%loser}.",
+            "condition": "!next_game_same_teams && has_next_competition_game"
+        },
+        {
+            "text": "{template.intro_next_games}, {template.next_location%winner}. Por sua vez, {template.next_location%loser}.",
+            "condition": "!next_game_same_teams && has_next_competition_game"
+        },
+        {
+            "text": "{template.intro_next_games}, {template.next_location%winner}, já {template.next_location%loser}.",
+            "condition": "!next_game_same_teams && has_next_competition_game"
+        },
+        {
+            "text": "{template.intro_next_games}, {template.next_location%winner}",
+            "condition": "next_game_same_teams && has_next_competition_game"
+        }
+    ],
+    "intro_next_games": [
+        {
+            "text": "No próximo jogo {de%competition.name} {competition.name}",
+            "condition": ""
+        },
+        {
+            "text": "Na próxima rodada {de%competition.name} {competition.name}",
+            "condition": ""
+        },
+        {
+            "text": "Quanto à próxima rodada {de%competition.name} {competition.name}",
+            "condition": ""
+        },
+        {
+            "text": "Na sequêncida {de%competition.name} {competition.name}",
+            "condition": ""
+        }
+    ],
+    "next_location": [
+        {
+            "text": "{O%#arg.name} {#arg.name} {#arg.@next_competition_match_link} {template.next_location_content%#arg}<\/a>",
+            "condition": ""
+        }
+    ],
+    "next_location_content": [
+        {
+            "text": "enfrenta {o%#arg.next_opponent_competition} {#arg.next_opponent_competition} fora de casa.",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "encara {o%#arg.next_opponent_competition} {#arg.next_opponent_competition} fora de casa.",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "visita{s:|p:m%#arg.name} a casa {DE%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "recebe{s:|p:m%#arg.name} {O%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_home"
+        },
+        {
+            "text": "visita{s:|p:m%#arg.name} {O%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "joga{s:|p:m%#arg.name} em casa contra {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_home"
+        },
+        {
+            "text": "joga{s:|p:m%#arg.name} fora contra {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "desafia {o%#arg.next_opponent_competition} {#arg.next_opponent_competition} fora de casa",
+            "condition": "#arg.is_next_competition_away"
+        }
+    ],
+    "next_game_loser": [],
+    "competition_winner": [],
+    "stats": [
+        {
+            "text": "{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}. {template.loser_stat_intro%loser_stat} {template.loser_stat%loser_stat}.",
+            "condition": "has_winner_stat && has_loser_stat && fixture > 5 && final_score_diff != 0"
+        },
+        {
+            "text": "{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}.",
+            "condition": "has_winner_stat && !has_loser_stat && fixture > 5"
+        },
+        {
+            "text": "{template.loser_stat_intro%loser_stat}, {template.loser_stat%loser_stat}.",
+            "condition": "has_loser_stat && !has_winner_stat && fixture > 5"
+        },
+        {
+            "text": "Neste jogo, {template.winner_stat%winner_stat}, enquanto que {template.loser_stat%loser_stat}.",
+            "condition": "has_winner_stat && has_loser_stat && fixture > 5 && final_score_diff == 0"
+        }
+    ],
+    "winner_stat_intro": [
+        {
+            "text": "Apesar da vitória,",
+            "condition": "!#arg.is_positive && final_score_diff > 0"
+        },
+        {
+            "text": "Mesmo com a vitória,",
+            "condition": "!#arg.is_positive && final_score_diff > 0"
+        },
+        {
+            "text": "Apesar do empate,",
+            "condition": "#arg.is_positive && final_score_diff == 0"
+        },
+        {
+            "text": "Com o empate,",
+            "condition": "!#arg.is_positive && final_score_diff == 0"
+        }
+    ],
+    "loser_stat_intro": [
+        {
+            "text": "Apesar da derrota,",
+            "condition": "#arg.is_positive && final_score_diff > 0"
+        },
+        {
+            "text": "Mesmo com a derrota,",
+            "condition": "#arg.is_positive && final_score_diff > 0"
+        },
+        {
+            "text": "Apesar do empate,",
+            "condition": "#arg.is_positive && final_score_diff == 0"
+        },
+        {
+            "text": "Mesmo com o empate,",
+            "condition": "#arg.is_positive && final_score_diff == 0"
+        }
+    ],
+    "winner_stat": [
+        {
+            "text": "{o%winner.name} {winner.name} {template.team_stat%#arg}",
+            "condition": ""
+        }
+    ],
+    "loser_stat": [
+        {
+            "text": "{o%loser.name} {loser.name} {template.team_stat%#arg}",
+            "condition": ""
+        }
+    ],
+    "team_stat": [
+        {
+            "text": ", com grande volume no ataque, bateu o seu recorde de chutes a gol, com {#arg.value} chutes",
+            "condition": "#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": ", muito presente no campo de ataque, quebrou o seu recorde de chutes a gol na temporada, com {#arg.value} chutes",
+            "condition": "#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": ", com dificuldade de criar oportunidades, chutou a gol apenas {#arg.value} vezes, o seu menor número nesta temporada",
+            "condition": "!#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": ", em jogo que foi muito exigido no setor defensivo, bateu seu recorde de defesas na temporada, com {#arg.value} defesas",
+            "condition": "#arg.is_positive && #arg.key==\"gksave\""
+        },
+        {
+            "text": ", com amplo domínio do meio de campo, teve o maior domínio da posse de bola na temporada, com {#arg.value}%",
+            "condition": "#arg.is_positive && #arg.key==\"ballpo\""
+        },
+        {
+            "text": "bateu o seu recorde de chutes na temporada, com {#arg.value} chutes",
+            "condition": "#arg.is_positive && #arg.key==\"shot\""
+        }
+    ],
+    "next_game_connector": [
+        {
+            "text": ". Por sua vez,",
+            "condition": "has_home_team_next_match && has_away_team_next_match"
+        },
+        {
+            "text": ", enquanto isso",
+            "condition": "has_home_team_next_match && has_away_team_next_match"
+        },
+        {
+            "text": ", já",
+            "condition": "has_home_team_next_match && has_away_team_next_match"
+        }
+    ],
+    "knockouts_result": [
+        {
+            "text": "Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} conquista{s:|p:m%knockouts_winner.name} a competição.",
+            "condition": "is_final"
+        },
+        {
+            "text": "Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} vence{s:|p:m%knockouts_winner.name} a competição.",
+            "condition": "is_final"
+        },
+        {
+            "text": "Com o resultado, {O%knockouts_winner.name} {knockouts_winner.name} segue{s:|p:m%knockouts_winner.name} em frente na competição.",
+            "condition": "!is_final && is_elim_game"
+        },
+        {
+            "text": "Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} fica com o troféu da competição.",
+            "condition": "is_final"
+        },
+        {
+            "text": "Com este resultado, {O%knockouts_winner.name} {knockouts_winner.name} é o campeão da competição.",
+            "condition": "is_final"
+        },
+        {
+            "text": "Graças a este resultado, {O%knockouts_winner.name} {knockouts_winner.name} elimina {O%knockouts_loser.name} {knockouts_loser.name} da competição.",
+            "condition": "!is_final && is_elim_game"
+        },
+        {
+            "text": "Com o resultado, {O%knockouts_winner.name} {knockouts_winner.name} segue em frente na {competition.name}, equanto {O%knockouts_loser.name} {knockouts_loser.name} está eliminado.",
+            "condition": "!is_final && is_elim_game"
+        },
+        {
+            "text": "O resultado deixa {O%knockouts_loser.name} {knockouts_loser.name} fora da competição. {O%knockouts_winner.name} {knockouts_winner.name} segue para a próxima fase.",
+            "condition": "!is_final && is_elim_game"
+        }
+    ]
+}

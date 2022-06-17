@@ -1,1 +1,163 @@
-{"entry_point":[{"text":"{template.score}. {template.starters} {template.benched}","condition":""}],"score":[{"text":"{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}","condition":"extra_time==\"PEN\""},{"text":"{template.normal_score} {template.goals} {template.red_card%winner} {template.red_card%loser}","condition":"extra_time!=\"PEN\""}],"defeated":[{"text":"derrotou","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"bateu","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"triunfou sobre","condition":"final_score_diff\u003E0 || extra_time==\"PEN\""},{"text":"atropelou\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E3"},{"text":"venceu\u003C\/p\u003E\r\n","condition":"final_score_diff\u003E0  || extra_time==\"PEN\""},{"text":"cilindrou","condition":"final_score_diff\u003E3"},{"text":"goleou","condition":"final_score_diff\u003E3"}],"draw_adjective":[{"text":"sem golos","condition":"match_goals==0"}],"match_adjective":[{"text":"numa empolgante vit\u00f3ria","condition":"match_goals\u003E5"},{"text":"numa extraordin\u00e1ria vit\u00f3ria","condition":"match_goals\u003E6 || final_score_diff\u003E4"},{"text":"numa apertada vit\u00f3ria","condition":"final_score_diff==1"},{"text":"numa extraordin\u00e1ria reviravolta","condition":"has_turn_around"}],"goals":[{"text":"{template.home_team_goals}, enquanto {template.away_team_goals}.\u003C\/p\u003E\r\n","condition":"match_goals!=0 && home_team_goal && away_team_goal"},{"text":"{template.home_team_goals}.","condition":"match_goals!=0 && home_team_goal && !away_team_goal"},{"text":"{template.away_team_goals}.","condition":"match_goals!=0 && !home_team_goal && away_team_goal"}],"home_team_goals":[{"text":"{o%home_team.name} {home_team.name} {s:marcou|p:marcaram%home_team.name} por {home_goals}","condition":""}],"away_team_goals":[{"text":"{o%away_team.name} {away_team.name} {s:marcou|p:marcaram%away_team.name} por {away_goals}","condition":""}],"red_card":[{"text":"{o%#arg.name} {#arg.name} terminou o jogo com {#arg.final_players} jogadores.","condition":"#arg.has_red_card"},{"text":"{o%#arg.name} {#arg.name} terminou o jogo reduzido a {#arg.final_players} jogadores.","condition":"#arg.has_red_card"}],"commentary":[],"starters":[{"text":"Entre os titulares {s:esteve|p:estiveram%starter_players} {starter_players}.","condition":"starters"}],"benched":[{"text":"{benched_players} n\u00e3o {s:saiu|p:sa\u00edram%benched_players} do banco.","condition":"benched"}],"match_stat_intro":[],"match_stat":[],"streak":[],"home_team_stat":[],"away_team_stat":[],"team_stat":[],"pen_score":[{"text":"{o%pen_winner.name} {pen_winner.name} {template.defeated} {o%pen_loser.name} {pen_loser.name}, {EM%weekday} {weekday}, com um resultado de {pen_score} nas grandes penalidades, ap\u00f3s terminar o tempo regulamentar com {final_score}.","condition":""}],"normal_score":[{"text":"{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.match_adjective} {EM%weekday} {weekday}, {final_score}.","condition":"final_score_diff\u003E0"},{"text":"A partida entre {o%winner.name} {winner.name} e {o%loser.name} {loser.name} {EM%weekday} {weekday} terminou num empate {template.draw_adjective}, {final_score}.","condition":"final_score_diff==0"},{"text":"{o%winner.name} {winner.name} e {o%loser.name} {loser.name} empataram a sua partida {template.draw_adjective} {EM%weekday} {weekday}, {final_score}.","condition":"final_score_diff==0"},{"text":"{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner} {template.match_adjective} {EM%weekday} {weekday}, {final_score}.","condition":"final_score_diff\u003E0"},{"text":"{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {template.extra} {EM%weekday} {weekday}.","condition":"final_score_diff\u003E0"},{"text":"{o%winner.name} {winner.name} e {o%loser.name} {loser.name} empataram a sua partida {template.draw_adjective} {EM%weekday} {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}","condition":"final_score_diff==0"},{"text":"{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {template.extra} {EM%weekday} {weekday}.","condition":"final_score_diff\u003E0"}]}
+{
+    "entry_point": [
+        {
+            "text": "{template.score}. {template.starters} {template.benched}",
+            "condition": ""
+        }
+    ],
+    "score": [
+        {
+            "text": "{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{template.normal_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "extra_time!=\"PEN\""
+        }
+    ],
+    "defeated": [
+        {
+            "text": "derrotou",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "bateu",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "triunfou sobre",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "atropelou",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "venceu",
+            "condition": "final_score_diff>0  || extra_time==\"PEN\""
+        },
+        {
+            "text": "cilindrou",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "goleou",
+            "condition": "final_score_diff>3"
+        }
+    ],
+    "draw_adjective": [
+        {
+            "text": "sem golos",
+            "condition": "match_goals==0"
+        }
+    ],
+    "match_adjective": [
+        {
+            "text": "numa empolgante vitória",
+            "condition": "match_goals>5"
+        },
+        {
+            "text": "numa extraordinária vitória",
+            "condition": "match_goals>6 || final_score_diff>4"
+        },
+        {
+            "text": "numa apertada vitória",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "numa extraordinária reviravolta",
+            "condition": "has_turn_around"
+        }
+    ],
+    "goals": [
+        {
+            "text": "{template.home_team_goals}, enquanto {template.away_team_goals}.",
+            "condition": "match_goals!=0 && home_team_goal && away_team_goal"
+        },
+        {
+            "text": "{template.home_team_goals}.",
+            "condition": "match_goals!=0 && home_team_goal && !away_team_goal"
+        },
+        {
+            "text": "{template.away_team_goals}.",
+            "condition": "match_goals!=0 && !home_team_goal && away_team_goal"
+        }
+    ],
+    "home_team_goals": [
+        {
+            "text": "{o%home_team.name} {home_team.name} {s:marcou|p:marcaram%home_team.name} por {home_goals}",
+            "condition": ""
+        }
+    ],
+    "away_team_goals": [
+        {
+            "text": "{o%away_team.name} {away_team.name} {s:marcou|p:marcaram%away_team.name} por {away_goals}",
+            "condition": ""
+        }
+    ],
+    "red_card": [
+        {
+            "text": "{o%#arg.name} {#arg.name} terminou o jogo com {#arg.final_players} jogadores.",
+            "condition": "#arg.has_red_card"
+        },
+        {
+            "text": "{o%#arg.name} {#arg.name} terminou o jogo reduzido a {#arg.final_players} jogadores.",
+            "condition": "#arg.has_red_card"
+        }
+    ],
+    "commentary": [],
+    "starters": [
+        {
+            "text": "Entre os titulares {s:esteve|p:estiveram%starter_players} {starter_players}.",
+            "condition": "starters"
+        }
+    ],
+    "benched": [
+        {
+            "text": "{benched_players} não {s:saiu|p:saíram%benched_players} do banco.",
+            "condition": "benched"
+        }
+    ],
+    "match_stat_intro": [],
+    "match_stat": [],
+    "streak": [],
+    "home_team_stat": [],
+    "away_team_stat": [],
+    "team_stat": [],
+    "pen_score": [
+        {
+            "text": "{o%pen_winner.name} {pen_winner.name} {template.defeated} {o%pen_loser.name} {pen_loser.name}, {EM%weekday} {weekday}, com um resultado de {pen_score} nas grandes penalidades, após terminar o tempo regulamentar com {final_score}.",
+            "condition": ""
+        }
+    ],
+    "normal_score": [
+        {
+            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.match_adjective} {EM%weekday} {weekday}, {final_score}.",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "A partida entre {o%winner.name} {winner.name} e {o%loser.name} {loser.name} {EM%weekday} {weekday} terminou num empate {template.draw_adjective}, {final_score}.",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{o%winner.name} {winner.name} e {o%loser.name} {loser.name} empataram a sua partida {template.draw_adjective} {EM%weekday} {weekday}, {final_score}.",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner} {template.match_adjective} {EM%weekday} {weekday}, {final_score}.",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {EM%weekday} {weekday}.",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{o%winner.name} {winner.name} e {o%loser.name} {loser.name} empataram a sua partida {template.draw_adjective} {EM%weekday} {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {EM%weekday} {weekday}.",
+            "condition": "final_score_diff>0"
+        }
+    ]
+}
