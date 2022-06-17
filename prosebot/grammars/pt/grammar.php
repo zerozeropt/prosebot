@@ -100,7 +100,7 @@ class GrammarPT extends Grammar
 
 		$div = pow(10, $exp);
 		$left = static::$cardinals[intdiv($int, $div) * $div];
-		$right = static::get_cardinal($int % $div, $min_val, $exp - 1);
+		$right = static::get_cardinal($int % $div, $gender, $min_val, $exp - 1);
 
 		return $left . ($left === "" ? "" : static::$st_connector) . $right;
 	}

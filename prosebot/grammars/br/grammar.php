@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/../grammars.php');
+require_once(__DIR__ . '/../grammars.php');
 
 /**
  * Class to handle language grammar structures in Brazilian Portuguese
@@ -18,7 +18,7 @@ class GrammarBR extends Grammar
 	/**
 	 * Get standard connector
 	 * @return string Standard connector for Brazilian Portuguese expressions
-     */
+	 */
 	public static function get_st_connector()
 	{
 		return static::$st_connector;
@@ -75,8 +75,8 @@ class GrammarBR extends Grammar
 	 * @param int        $min_val Minimum value to evaluate
 	 * @param int        $exp     Exponent
 	 * @return string Full written cardinal number
-     */
-	private static function get_cardinal($int, $gender, $min_val=0, $exp=2)
+	 */
+	private static function get_cardinal($int, $gender, $min_val = 0, $exp = 2)
 	{
 		if ($int < $min_val || $int >= 1000)
 			return "";
@@ -93,13 +93,12 @@ class GrammarBR extends Grammar
 				if ($gender === NameGender::FEMALE)
 					return $res[1];
 				return $res[0];
-			}
-			else return $res;
+			} else return $res;
 		}
 
-		$div = pow(10,$exp);
-		$left = static::$cardinals[intdiv($int,$div) * $div];
-		$right = static::get_cardinal($int%$div, $min_val, $exp-1);
+		$div = pow(10, $exp);
+		$left = static::$cardinals[intdiv($int, $div) * $div];
+		$right = static::get_cardinal($int % $div, $gender, $min_val, $exp - 1);
 
 		return $left . ($left === "" ? "" : static::$st_connector) . $right;
 	}
@@ -110,11 +109,11 @@ class GrammarBR extends Grammar
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Cardinal number
 	 * @return string Full written cardinal number
-     */
+	 */
 	public static function cardinal($gender, $number, $text)
 	{
 		$num = intval($text);
-		$left_int = intdiv($num,1000);
+		$left_int = intdiv($num, 1000);
 		$right_int = $num % 1000;
 
 		$left = "";
@@ -137,7 +136,7 @@ class GrammarBR extends Grammar
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Cardinal number
 	 * @return string Full written cardinal number in feminine form
-     */
+	 */
 	public static function cardinal_fem($gender, $number, $text)
 	{
 		return static::cardinal(NameGender::FEMALE, $number, $text);
@@ -185,7 +184,7 @@ class GrammarBR extends Grammar
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
 	 * @return string Full written ordinal number
-     */
+	 */
 	public static function ordinal($gender, $number, $text)
 	{
 		$num = intval($text);
@@ -193,7 +192,7 @@ class GrammarBR extends Grammar
 		$iter = 0;
 
 		while ($num > 0) {
-			$current = static::$ordinals[$num%10 * (pow(10,$iter))];
+			$current = static::$ordinals[$num % 10 * (pow(10, $iter))];
 
 			if ($current !== "") {
 				if ($gender == NameGender::FEMALE)
@@ -218,7 +217,7 @@ class GrammarBR extends Grammar
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
 	 * @return string Full written ordinal number in feminine form
-     */
+	 */
 	public static function ordinal_fem($gender, $number, $text)
 	{
 		return static::ordinal(NameGender::FEMALE, $number, $text);
@@ -230,7 +229,7 @@ class GrammarBR extends Grammar
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
 	 * @return string Full ordinal number in "nº/nª(s)" form
-     */
+	 */
 	public static function ordinal_num($gender, $number, $text)
 	{
 		$num = intval($text);
@@ -251,7 +250,7 @@ class GrammarBR extends Grammar
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
 	 * @return string Full ordinal number in "nª(s)" form
-     */
+	 */
 	public static function ordinal_fem_num($gender, $number, $text)
 	{
 		return static::ordinal_num(NameGender::FEMALE, $number, $text);
@@ -280,7 +279,7 @@ class GrammarBR extends Grammar
 	/**
 	 * Get list of connectors
 	 * @return array List of connectors
-     */
+	 */
 	public static function get_connectors()
 	{
 		return static::$connectors;
