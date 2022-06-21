@@ -379,8 +379,6 @@
             "condition": "is_gamechanger"
         }
     ],
-    "half-time": [],
-    "final-time": [],
     "penalty_missed": [
         {
             "text": "{template.time}, {team.name} saw {player.name} miss a penalty.",

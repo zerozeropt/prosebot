@@ -1,7 +1,7 @@
 {
     "entry_point": [
         {
-            "text": "{template.score}. {template.teams_form}. {template.best_player}.",
+            "text": "{template.score}. {template.starters} {template.benched}",
             "condition": ""
         }
     ],

@@ -627,11 +627,11 @@ abstract class TemplatesManager
 	 */
 	protected function points($arg1, $arg2)
 	{
-		//calculate points per diversity normal in rage (45-75)
+		//calculate points per diversity normal in range (45-75)
 		$diversity = $arg1;
 		$diversity_points = ($diversity - 40) / 30;
 
-		//calculate points per max sentence length, ideal is 25, nromal in rage (15-35)
+		//calculate points per max sentence length, ideal is 25, normal in range (15-35)
 		$length = $arg2;
 		$length_points = 1 - (abs($length - 25) / 10);
 

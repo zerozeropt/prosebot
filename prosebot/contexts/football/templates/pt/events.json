@@ -543,8 +543,6 @@
             "condition": "is_relevant_player==1"
         }
     ],
-    "half-time": [],
-    "final-time": [],
     "penalty_missed": [
         {
             "text": "{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} falhar uma grande penalidade.",

@@ -339,8 +339,6 @@
             "condition": "is_relevant_player==1"
         }
     ],
-    "half-time": [],
-    "final-time": [],
     "penalty_missed": [
         {
             "text": "{template.time}, {el%team.name} {team.name} {s:vio|p:vieron%team.name} {player.name} fallar una penalización.",
