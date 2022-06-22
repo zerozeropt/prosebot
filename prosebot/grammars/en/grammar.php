@@ -55,8 +55,6 @@ class GrammarEN extends Grammar
 	 * @var array
 	 */
 	private static $connectors = array(
-		// Name => [Singular Male, Singular Female, Neutral, Plural Male, Plural Female]
-		"was" => ["was", "was", "was", "were", "were"],
 		// Name => function
 		"cardinal" => "cardinal",
 		"ordinal_num" => "ordinal_num"
