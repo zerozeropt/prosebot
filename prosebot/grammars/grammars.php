@@ -164,7 +164,7 @@ abstract class Grammar
 	{
 		foreach ($elems as $elem) {
 			$tmp = explode(":", $elem);
-			if (count($tmp) == 2 && static::evaluate_elem($tmp[0], $gender, $number))
+			if ((count($tmp) == 2 || count($tmp) == 3) && static::evaluate_elem($tmp[0], $gender, $number))
 				return $tmp[1];
 		}
 		return null;

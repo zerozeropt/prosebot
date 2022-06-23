@@ -876,22 +876,30 @@ class TemplatesValidator
 	private function is_property_sp_fm($path, $entity)
 	{
 		$entity_array = preg_split('/\|/u', $entity);
-		if (count($entity_array) != 2)
+		if (count($entity_array) != 2 && count($entity_array) != 3)
 			return false;
 		
 		$has_singular = preg_match('/^s:(.(?![:]))*$/u', $entity_array[0]);
 		$has_plural = preg_match('/^p:(.(?![:]))+$/u', $entity_array[1]);
+		$incorrect_form_sp = ($has_singular + $has_plural) == 1;
+
 		$has_f = preg_match('/^f:(.(?![:]))+$/u', $entity_array[0]);
 		$has_m = preg_match('/^m:(.(?![:]))+$/u', $entity_array[1]);
-		$incorrect_form_sp = ($has_singular + $has_plural) == 1;
-		$incorrect_form_fm = ($has_f + $has_m) == 1;
+		$has_n = 0;
+		$incorrect_form_fm = false;
+		if (count($entity_array) == 3) {
+			$has_n = preg_match('/^n:(.(?![:]))+$/u', $entity_array[2]);
+			$incorrect_form_fm = ($has_f + $has_m + $has_n) == 1 || ($has_f + $has_m + $has_n) == 2;
+		}
+		else $incorrect_form_fm = ($has_f + $has_m) == 1;
+		
 		if ($incorrect_form_sp)
 			$this->throw_error_bad_token($path, $entity, "should be s:string|p:string");
 		if ($incorrect_form_fm)
-			$this->throw_error_bad_token($path, $entity, "should be f:string|m:string");
+			$this->throw_error_bad_token($path, $entity, "should be f:string|m:string(|n:string)");
 
 		$is_singular_plural = ($has_singular + $has_plural) == 2;
-		$is_f_m = ($has_f + $has_m) == 2;
+		$is_f_m = ($has_f + $has_m + $has_n) == 2 || ($has_f + $has_m + $has_n) == 3;
 		return $is_singular_plural || $is_f_m;
 	}
 

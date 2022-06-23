@@ -1553,7 +1553,7 @@ class MatchData extends MainEntityData
 	{
 		$decisive_possibilities = array();
 		foreach ($this->events as $idx => $event) {
-			// if it is a not own goal
+			// if it is not own goal
 			if ($this->is_goal_event($idx) && !$event->get_own_goal()) {
 				$factor = 1.0;
 
@@ -1577,7 +1577,7 @@ class MatchData extends MainEntityData
 				$this->players[$key]->set_decisive_impact($value);
 			}
 
-			// get max score and return it if distinctive enough
+			// get max score and return it if is distinctive enough
 			$max_key = array_keys($decisive_possibilities, max($decisive_possibilities))[0];
 			if ($decisive_possibilities[$max_key] >= 1.5) {
 				return $max_key;
