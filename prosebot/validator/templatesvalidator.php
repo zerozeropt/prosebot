@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__.'/../utils.php');
-require_once(__DIR__.'/../global_vars.php');
-require_once(__DIR__."/../contexts/entities.php");
+require_once(__DIR__ . '/../utils.php');
+require_once(__DIR__ . '/../global_vars.php');
+require_once(__DIR__ . "/../contexts/entities.php");
 
 /**
  * Class to validate writing correction of templates
@@ -23,7 +23,7 @@ class TemplatesValidator
 		$this->templates_array = [];
 		$this->language = $language;  // language of the template to validate
 		$this->context = $context;
-		$this->dictionary = __DIR__."/../contexts/".$context."/dictionary/vars.json";
+		$this->dictionary = __DIR__ . "/../contexts/" . $context . "/dictionary/vars.json";
 		$this->unused_templates = [];					// to generate warnings of unused templates with hierarchy
 		$this->templates_queue = [];					// queue of templates to be parsed next		
 		$this->valid_templates = [];					// all templates
@@ -32,18 +32,12 @@ class TemplatesValidator
 		$this->get_entities = false;					// get entities in file
 		$this->file_name = "";							// name of the file being evaluated
 		$this->vars_array = Utils::json_validate('{
-			"properties":{
+			"properties": {
 				"text": [],
 				"condition": []
 			},
-			"entities":{},
-			"connectors":{
-				"br": [],
-				"en": [],
-				"es": [],
-				"fr": [],
-				"pt": []
-			}
+			"entities": {},
+			"connectors": []
 		}'); // to print obtained entities, when get_entities = true
 	}
 
@@ -92,7 +86,7 @@ class TemplatesValidator
 	}
 
 	/**
-	 * Validate everything - option 1
+	 * Validate everything - setting 1
 	 * @param bool $has_hierarchy Whether it follows a hierarchic structure
 	 */
 	public function validate_full($has_hierarchy)
@@ -102,7 +96,7 @@ class TemplatesValidator
 	}
 
 	/**
-	 * Validate everything except if entities are defined - option 2
+	 * Validate everything except if entities are defined - setting 2
 	 * @param bool $has_hierarchy Whether it follows a hierarchic structure
 	 */
 	public function validate_no_entities_check($has_hierarchy)
@@ -112,7 +106,7 @@ class TemplatesValidator
 	}
 
 	/**
-	 * Validate everything except if entities are defined and get entities list - option 3.
+	 * Validate everything except if entities are defined and get entities list - setting 3.
 	 * Print entities.
 	 * @param bool $has_hierarchy Whether it follows a hierarchic structure
 	 */
@@ -121,29 +115,56 @@ class TemplatesValidator
 		$this->get_entities = true;
 		$this->validate_no_entities_check($has_hierarchy);
 
+		if ($this->file_name !== "") {
+			$length = strlen($this->file_name);
+			echo "<br>--------------------<br>";
+			echo mb_substr($this->file_name, 0, $length > 3 ? $length - 3 : $length) . "<br>";
+			echo "--------------------<br>";
+		}
+
 		echo "<br>Conditions:<br>";
-		foreach($this->vars_array->properties->condition as $property)
-			echo "-- ".$property."<br>";
+		foreach ($this->vars_array->properties->condition as $property)
+			echo "-- " . $property . "<br>";
 
 		echo "<br>Properties:<br>";
-		foreach($this->vars_array->properties->text as $property)
-			echo "-- ".$property."<br>";
+		foreach ($this->vars_array->properties->text as $property)
+			echo "-- " . $property . "<br>";
 
 		echo "<br>Entities:<br>";
-		foreach($this->vars_array->entities as $entity => $properties) {
-			echo "-- ".$entity."<br>";
+		foreach ($this->vars_array->entities as $entity => $properties) {
+			echo "-- " . $entity . "<br>";
 			foreach ($properties as $property)
-				echo "&nbsp;&nbsp;&nbsp;&nbsp;.".$property."<br>";
+				echo "&nbsp;&nbsp;&nbsp;&nbsp;." . $property . "<br>";
 		}
-		
+
 		echo "<br>Connectors:<br>";
-		echo $this->language.":<br>";
-		foreach($this->vars_array->connectors->{$this->language} as $connector)
-			echo "-- ".$connector."<br>";
+		echo $this->language . ":<br>";
+		foreach ($this->vars_array->connectors as $connector)
+			echo "-- " . $connector . "<br>";
 	}
 
 	/**
-	 * Validate input text and condition - option 4
+	 * Execute one of the methods of validation available
+	 * @param string $option		One of the execution methods
+	 * @param bool 	 $has_hierarchy Whether it follows a hierarchic structure
+	 */
+	public function execution_method($option, $has_hierarchy)
+	{
+		switch ($option) {
+			case "no_entites":
+				$this->validate_no_entities_check($has_hierarchy);
+				break;
+			case "get_entities":
+				$this->validate_get_entities($has_hierarchy);
+				break;
+			default:
+				$this->validate_full($has_hierarchy);
+				break;
+		}
+	}
+
+	/**
+	 * Validate input text and condition - action 2
 	 * @param string $text      Text
 	 * @param string $condition Condition
 	 */
@@ -156,13 +177,13 @@ class TemplatesValidator
 	}
 
 	/**
-	 * Validate all template files in the system - option 5
-	 * @param bool $has_hierarchy Whether it follows a hierarchic structure
+	 * Validate all template files in the system - action 3
+	 * @param bool 	 $has_hierarchy Whether it follows a hierarchic structure
+	 * @param string $option		One of the execution methods
 	 */
-	public function validate_all_files($has_hierarchy)
+	public function validate_all_files($has_hierarchy, $option)
 	{
-		$this->set_vars($this->dictionary);
-		$dir = __DIR__."/../contexts/".$this->context."/templates/".$this->language."/";
+		$dir = __DIR__ . "/../contexts/" . $this->context . "/templates/" . $this->language . "/";
 		$templates = scandir($dir);
 		if ($templates === false) {
 			echo "Warning: Directory is empty<br>";
@@ -170,25 +191,24 @@ class TemplatesValidator
 		}
 
 		// For each template
-		foreach($templates as $template_name) {
+		foreach ($templates as $template_name) {
 			// Skip . and ..
 			if ($template_name == "." || $template_name == "..")
 				continue;
 			// Validate file
 			try {
-				$this->file_name = "[".$template_name."] -> ";
-				$this->set_file_path($dir.$template_name);
-				$this->validate_template($has_hierarchy);
-			}
-			catch(Exception $e) {
+				$this->file_name = "[" . $template_name . "] -> ";
+				$this->set_file_path($dir . $template_name);
+				$this->execution_method($option, $has_hierarchy);
+			} catch (Exception $e) {
 				// If error, throw exception with file name 
-				throw new Exception("[".$template_name."] -> ".$e->getMessage());
+				throw new Exception("[" . $template_name . "] -> " . $e->getMessage());
 			}
 		}
 	}
 
 	/**
-	 * Validate input text and condition and return status - option 6
+	 * Validate input text and condition and return status - action 5
 	 * @param object $template Template composed of text and condition properties
 	 */
 	public function validate_template_get_status($template)
@@ -200,11 +220,10 @@ class TemplatesValidator
 		try {
 			$this->validate_text("", $template->text);
 			$this->validate_condition("", $template->condition);
-		}
-		catch (Exception $e) {
+		} catch (Exception $e) {
 			$status[0] = 0;
 			$status[1] = $e->getMessage();
-			echo $status[1]."<br>";
+			echo $status[1] . "<br>";
 		}
 
 		return $status;
@@ -229,7 +248,7 @@ class TemplatesValidator
 
 		// Print unused templates as warnings
 		foreach ($this->unused_templates as $unused_key)
-			echo $this->file_name."Warning: \"$unused_key\" defined but never used.<br>";
+			echo $this->file_name . "Warning: \"$unused_key\" defined but never used.<br>";
 	}
 
 	/**
@@ -250,8 +269,8 @@ class TemplatesValidator
 		// Get current value
 		$current_value = $this->templates_array->{$current_key};
 		// Validate current element
-		$this->validate_element($path."[".$current_key."]", $current_value);
-		
+		$this->validate_element($path . "[" . $current_key . "]", $current_value);
+
 		// Remove current template from arrays
 		$removed_unused_key = array_search($current_key, $this->unused_templates);
 		if ($removed_unused_key !== false)
@@ -259,7 +278,7 @@ class TemplatesValidator
 		$removed_template_key = array_search($current_key, $this->templates_queue);
 		if ($removed_template_key !== false)
 			array_splice($this->templates_queue, $removed_template_key, 1);
-		
+
 		// For each template in queue start a new recursion
 		foreach ($this->templates_queue as $key)
 			$this->validate_tree($path, $key);
@@ -272,13 +291,13 @@ class TemplatesValidator
 	private function validate_object($path)
 	{
 		// For each template
-		foreach($this->valid_templates as $current_key) {
+		foreach ($this->valid_templates as $current_key) {
 			// Get value
 			$current_value = $this->templates_array->{$current_key};
 			// Validate element
-			$this->validate_element($path."[".$current_key."]", $current_value);
+			$this->validate_element($path . "[" . $current_key . "]", $current_value);
 		}
-		
+
 		// Clear unused templates, no warnings, no hierarchy
 		$this->unused_templates = [];
 	}
@@ -291,8 +310,8 @@ class TemplatesValidator
 	private function validate_element($path, $element)
 	{
 		$count = 0;
-		foreach($element as $template){
-			$path_elem = $path."[".$count."]";
+		foreach ($element as $template) {
+			$path_elem = $path . "[" . $count . "]";
 
 			// An element must have text and condition keys
 			if (!isset($template->text))
@@ -318,12 +337,12 @@ class TemplatesValidator
 		$path .= "[text]";
 
 		// Validate links
-		if (preg_match('/@.+link/u',$text) && !preg_match('/@.*link.*<\/a>/u',$text))
+		if (preg_match('/@.+link/u', $text) && !preg_match('/@.*link.*<\/a>/u', $text))
 			$this->throw_error_bad_link($path, $text, "missing closing hyperlink with </a>");
 
 		// Split text through {tokens}
 		$text_array = preg_split('/({(.*?)})/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
-		
+
 		// No tokens, regular string
 		if (count($text_array) < 2) {
 			$this->regular_string($path, $text);
@@ -444,7 +463,7 @@ class TemplatesValidator
 		if (count($variables) == 2) {
 			$this->is_connector_defined($path, $variables[0]);
 			$this->is_property_defined($path, $variables[1], self::TEXT_TYPE);
-		} 
+		}
 		// On @link....</a> format
 		else if (strlen($variables[0]) > 1 && mb_substr($variables[0], 0, 1) == "@") {
 			$link = mb_substr($variables[0], 1);
@@ -488,7 +507,7 @@ class TemplatesValidator
 
 		// Push to queue if in list of not used and not in queue already
 		if (in_array($variables[0], $this->unused_templates) && !in_array($variables[0], $this->templates_queue))
-			array_push($this->templates_queue, $variables[0]);	
+			array_push($this->templates_queue, $variables[0]);
 	}
 
 	/**
@@ -524,8 +543,8 @@ class TemplatesValidator
 		$function_array = preg_split("/%/", $token_function);
 		if (count($function_array) > 2)
 			$this->throw_error_bad_token($path, $token_function, "too many % functions");
-		
-		return $function_array;	
+
+		return $function_array;
 	}
 
 	/**
@@ -649,9 +668,9 @@ class TemplatesValidator
 		// Too many expression signs
 		if (count($express_array) > 2)
 			$this->throw_error_bad_boolean($path, $expression);
-		
+
 		// For each side of expression
-		foreach($express_array as $expr) {
+		foreach ($express_array as $expr) {
 			$exp = trim($expr);
 			// If not a number or a string
 			if (!preg_match('/(?<![\w\d\W])-?([0-9]|".*")+$/u', $exp))
@@ -675,7 +694,7 @@ class TemplatesValidator
 			if (preg_match('/(?<![\w\d\W])-?([0-9]|".*")+$/u', $express))
 				$this->throw_error_bad_condition($path, $express, "\"!\" sign should be followed by a variable");
 		}
-		
+
 		// If not a number
 		if (!preg_match('/(?<![\w\d\W])-?([0-9])+$/u', $express))
 			$this->validate_arithmetic($path, $express); // entity.property
@@ -690,7 +709,7 @@ class TemplatesValidator
 	{
 		// Split through +, -, %, /
 		$operands = preg_split("/ \+ | - |\s?%\s?|\s?\/\s?|\s?\*\s?/", $arithmetic_expression, -1, PREG_SPLIT_NO_EMPTY);
-		
+
 		// For each operand
 		foreach ($operands as $operand) {
 			// If not a number
@@ -711,7 +730,7 @@ class TemplatesValidator
 		$nr_args = count($condition_array);
 		if ($nr_args > 2 || $condition == "") // Too many dots
 			$this->throw_error_bad_condition($path, $condition, "not in \"variable.variable\" format");
-		
+
 		if ($nr_args == 2) // #arg.property
 			$this->is_arg_condition_defined($path, $condition_array[0], $condition_array[1]);
 		else { // property - no dots
@@ -729,7 +748,7 @@ class TemplatesValidator
 	{
 		if ($variable == "")
 			$this->throw_error_bad_variable($path, "empty variable");
-		
+
 		if (!preg_match('/(?<![\w\d\W])(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?![\w\d\W])/u', $variable))
 			$this->throw_error_bad_variable($path, $variable);
 	}
@@ -743,9 +762,9 @@ class TemplatesValidator
 	{
 		if ($variable == "")
 			$this->throw_error_bad_variable($path, "empty variable");
-		
+
 		if (!preg_match('/(?<![\w\d\W])[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable))
-			echo $this->file_name."Warning: ".$path." - Invalid variable name: \"$variable\"<br>";
+			echo $this->file_name . "Warning: " . $path . " - Invalid variable name: \"$variable\"<br>";
 	}
 
 	/**
@@ -757,7 +776,7 @@ class TemplatesValidator
 	{
 		if ($variable == "")
 			$this->throw_error_bad_variable($path, "empty variable");
-		
+
 		if (!preg_match('/(?<![\w\d\W])([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable))
 			$this->throw_error_bad_variable($path, $variable);
 	}
@@ -773,8 +792,8 @@ class TemplatesValidator
 		$this->validate_variable($path, $property);
 		if ($this->check_entities)
 			if ($type == self::TEXT_TYPE && !in_array($property, $this->vars_array->properties->{$type}))
-				$this->throw_error_bad_token($path, $property, "property not defined for [".$type."]");
-		
+				$this->throw_error_bad_token($path, $property, "property not defined for [" . $type . "]");
+
 		// Push to properties list
 		if ($this->get_entities && !in_array($property, $this->vars_array->properties->{$type}))
 			array_push($this->vars_array->properties->{$type}, $property);
@@ -788,14 +807,14 @@ class TemplatesValidator
 	 */
 	private function is_arg_condition_defined($path, $entity, $property)
 	{
-		$full_condition = $entity.".".$property;
+		$full_condition = $entity . "." . $property;
 		if ($entity !== "#arg")
 			$this->throw_error_bad_condition($path, $full_condition, "not in #arg.property format");
 		$this->validate_variable($path, $property);
 		if ($this->check_entities)
 			if (!in_array($full_condition, $this->vars_array->properties->condition))
 				$this->throw_error_bad_token($path, $full_condition, "#arg.property not defined");
-		
+
 		// Push to properties list
 		if ($this->get_entities && !in_array($full_condition, $this->vars_array->properties->condition))
 			array_push($this->vars_array->properties->condition, $full_condition);
@@ -835,7 +854,7 @@ class TemplatesValidator
 
 			// enitity not specified (= #arg)
 			if ($entity == "#arg") {
-				foreach($this->vars_array->entities->entities_properties as $key => $properties) {
+				foreach ($this->vars_array->entities->entities_properties as $key => $properties) {
 					if (in_array($property, $properties)) {
 						$has_error = false;
 						break;
@@ -848,9 +867,9 @@ class TemplatesValidator
 
 			// if error, throw exception
 			if ($has_error)
-				$this->throw_error_bad_construct($path, $entity.".".$property, $entity." does not have property \"".$property."\"");
+				$this->throw_error_bad_construct($path, $entity . "." . $property, $entity . " does not have property \"" . $property . "\"");
 		}
-		
+
 		// Push to entity.properties list
 		if ($this->get_entities && property_exists($this->vars_array->entities, $entity) && !in_array($property, $this->vars_array->entities->{$entity}))
 			array_push($this->vars_array->entities->{$entity}, $property);
@@ -865,7 +884,7 @@ class TemplatesValidator
 	{
 		$this->validate_template_variable($path, $template);
 		if (!in_array($template, $this->valid_templates) && $this->check_templates)
-			echo $this->file_name."Warning: ".$path." - Wrong token construction: \"{".$template."}\", template not defined<br>";
+			echo $this->file_name . "Warning: " . $path . " - Wrong token construction: \"{" . $template . "}\", template not defined<br>";
 	}
 
 	/**
@@ -878,7 +897,7 @@ class TemplatesValidator
 		$entity_array = preg_split('/\|/u', $entity);
 		if (count($entity_array) != 2 && count($entity_array) != 3)
 			return false;
-		
+
 		$has_singular = preg_match('/^s:(.(?![:]))*$/u', $entity_array[0]);
 		$has_plural = preg_match('/^p:(.(?![:]))+$/u', $entity_array[1]);
 		$incorrect_form_sp = ($has_singular + $has_plural) == 1;
@@ -890,9 +909,8 @@ class TemplatesValidator
 		if (count($entity_array) == 3) {
 			$has_n = preg_match('/^n:(.(?![:]))+$/u', $entity_array[2]);
 			$incorrect_form_fm = ($has_f + $has_m + $has_n) == 1 || ($has_f + $has_m + $has_n) == 2;
-		}
-		else $incorrect_form_fm = ($has_f + $has_m) == 1;
-		
+		} else $incorrect_form_fm = ($has_f + $has_m) == 1;
+
 		if ($incorrect_form_sp)
 			$this->throw_error_bad_token($path, $entity, "should be s:string|p:string");
 		if ($incorrect_form_fm)
@@ -917,8 +935,8 @@ class TemplatesValidator
 			$this->throw_error_bad_token($path, $connector, "connector not defined");
 
 		// Push to connectors list
-		if ($this->get_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language}))
-			array_push($this->vars_array->connectors->{$this->language}, strtolower($connector));
+		if ($this->get_entities && !in_array(strtolower($connector), $this->vars_array->connectors))
+			array_push($this->vars_array->connectors, strtolower($connector));
 	}
 
 	/**
@@ -930,7 +948,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_missing_text($path)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Missing \"text\" key on element");
+		throw new Exception("<b>Error:</b> " . $path . " - Missing \"text\" key on element");
 	}
 
 	/**
@@ -939,7 +957,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_missing_condition($path)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Missing \"condition\" key on element");
+		throw new Exception("<b>Error:</b> " . $path . " - Missing \"condition\" key on element");
 	}
 
 	/**
@@ -950,7 +968,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_missing_bracket($path, $bracket, $chunk)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Missing \"".$bracket."\" on chunk \"".$chunk."\"");
+		throw new Exception("<b>Error:</b> " . $path . " - Missing \"" . $bracket . "\" on chunk \"" . $chunk . "\"");
 	}
 
 	/**
@@ -961,7 +979,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_expected_found($path, $expected, $found)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Expected \"".$expected."\", found \"".$found."\"");
+		throw new Exception("<b>Error:</b> " . $path . " - Expected \"" . $expected . "\", found \"" . $found . "\"");
 	}
 
 	/**
@@ -972,7 +990,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_token($path, $token, $explanation)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Wrong token construction: \"{".$token."}\", ".$explanation);
+		throw new Exception("<b>Error:</b> " . $path . " - Wrong token construction: \"{" . $token . "}\", " . $explanation);
 	}
 
 	/**
@@ -983,7 +1001,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_construct($path, $construct, $explanation)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Wrong construction: \"{".$construct."}\", ".$explanation);
+		throw new Exception("<b>Error:</b> " . $path . " - Wrong construction: \"{" . $construct . "}\", " . $explanation);
 	}
 
 	/**
@@ -994,7 +1012,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_condition($path, $condition, $explanation)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Wrong condition construction: \"{".$condition."}\", ".$explanation);
+		throw new Exception("<b>Error:</b> " . $path . " - Wrong condition construction: \"{" . $condition . "}\", " . $explanation);
 	}
 
 	/**
@@ -1004,7 +1022,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_variable($path, $variable)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Invalid variable name: \"".$variable."\"");
+		throw new Exception("<b>Error:</b> " . $path . " - Invalid variable name: \"" . $variable . "\"");
 	}
 
 	/**
@@ -1014,7 +1032,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_boolean($path, $express)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Wrong boolean expression construction: \"".$express."\"");
+		throw new Exception("<b>Error:</b> " . $path . " - Wrong boolean expression construction: \"" . $express . "\"");
 	}
 
 	/**
@@ -1025,7 +1043,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_link($path, $link, $explanation)
 	{
-		throw new Exception("<b>Error:</b> ".$path." - Wrong link construction: \"".$link."\", ".$explanation);
+		throw new Exception("<b>Error:</b> " . $path . " - Wrong link construction: \"" . $link . "\", " . $explanation);
 	}
 
 	/**
@@ -1035,69 +1053,68 @@ class TemplatesValidator
 	public static function generate_dictionary($context)
 	{
 		$main_entity = get_globals()["main_entities_classes"][$context];
-		require_once(__DIR__."/../contexts/".$context."/managers/propertiesmanager.php");
-		require_once(__DIR__."/../contexts/".$context."/entities/".$main_entity[1].".php");
+		require_once(__DIR__ . "/../contexts/" . $context . "/managers/propertiesmanager.php");
+		require_once(__DIR__ . "/../contexts/" . $context . "/entities/" . $main_entity[1] . ".php");
 
 		$dictionary = array();
 		$properties_manager = "PropertiesManager" . ucfirst($context);
 		$properties_manager::construct_properties();
-        $properties_conditions = array_map(
-            function ($property) {
-                return $property->name;
-            },
-            $properties_manager::get_template_properties()
-        );
-        $properties_arg_conditions = array_map(
-            function ($property) {
-                return $property->name;
-            },
-            $properties_manager::get_template_arg_properties()
-        );
+		$properties_conditions = array_map(
+			function ($property) {
+				return $property->name;
+			},
+			$properties_manager::get_template_properties()
+		);
+		$properties_arg_conditions = array_map(
+			function ($property) {
+				return $property->name;
+			},
+			$properties_manager::get_template_arg_properties()
+		);
 		$dictionary["properties"]["condition"] = array_merge($properties_conditions, $properties_arg_conditions);
-		
-        $dictionary["entities"] = [];
-        $dictionary["properties"]["text"] = [];
+
+		$dictionary["entities"] = [];
+		$dictionary["properties"]["text"] = [];
 		$dictionary["entities"]["#arg"] = "any";
-        $entities = $main_entity[0]::get_entities_list();
-        foreach($entities as $entity_name => $entity_getter) {
+		$entities = $main_entity[0]::get_entities_list();
+		foreach ($entities as $entity_name => $entity_getter) {
 			switch (get_class($entity_getter)) {
 				case EntityGetterManager::class:
 				case EntityGetterFlat::class: {
-					array_push($dictionary["properties"]["text"], $entity_name);
-					break;
-				}
+						array_push($dictionary["properties"]["text"], $entity_name);
+						break;
+					}
 				case EntityGetterSub::class: {
-					array_push($dictionary["properties"]["text"], $entity_name);
-					$dictionary["entities"][$entity_name] = $entity_getter->classname."_properties";
-                    $dictionary["entities"]["entities_properties"][$entity_getter->classname."_properties"] = [];
-					$entities_list = $entity_getter->classname::get_entities_list();
-                    foreach ($entities_list as $prop_entity_name => $prop_entity_getter)
-                        array_push($dictionary["entities"]["entities_properties"][$entity_getter->classname."_properties"], $prop_entity_name);
-					break;
-				}
+						array_push($dictionary["properties"]["text"], $entity_name);
+						$dictionary["entities"][$entity_name] = $entity_getter->classname . "_properties";
+						$dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"] = [];
+						$entities_list = $entity_getter->classname::get_entities_list();
+						foreach ($entities_list as $prop_entity_name => $prop_entity_getter)
+							array_push($dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"], $prop_entity_name);
+						break;
+					}
 			}
-        }
+		}
 
-		$grammars = scandir(__DIR__."/../grammars");
-        foreach ($grammars as $lang) {
+		$grammars = scandir(__DIR__ . "/../grammars");
+		foreach ($grammars as $lang) {
 
 			if (!in_array($lang, array_keys(get_globals()["languages"])))
 				continue;
 
-			require_once(__DIR__."/../grammars/".$lang."/grammar.php");
+			require_once(__DIR__ . "/../grammars/" . $lang . "/grammar.php");
 			$grammar_class_name = "Grammar" . strtoupper($lang);
 
-            $dictionary["connectors"][$lang] = array_map(
-                function ($connector) {
-                    return $connector;
-                },
-                array_keys($grammar_class_name::get_connectors())
-            );
-        }
+			$dictionary["connectors"][$lang] = array_map(
+				function ($connector) {
+					return $connector;
+				},
+				array_keys($grammar_class_name::get_connectors())
+			);
+		}
 
-        // Write file
-        $dictionary_file = fopen(__DIR__."/../contexts/".$context."/dictionary/vars.json", "w");
-        fwrite($dictionary_file, json_encode($dictionary));
+		// Write file
+		$dictionary_file = fopen(__DIR__ . "/../contexts/" . $context . "/dictionary/vars.json", "w");
+		fwrite($dictionary_file, json_encode($dictionary));
 	}
 }
-?>
