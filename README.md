@@ -59,7 +59,7 @@ npm start
 
 # Documentation
 
-For more details regarding architecture, descriptions, and tutorials, please read the [Prosebot Documentation](https://github.com/zerozeropt/prosebot/wiki/Prosebot-Documentation).
+For more details regarding architecture, descriptions, and tutorials, please read the [Prosebot Documentation](https://github.com/zerozeropt/prosebot/wiki/Home).
 
 # License
 
