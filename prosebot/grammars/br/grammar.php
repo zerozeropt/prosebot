@@ -267,7 +267,7 @@ class GrammarBR extends Grammar
 		"em" => ["no", "na", "em", "nos", "nas"],
 		"o" => ["o", "a", "", "os", "as"],
 		"por" => ["pelo", "pela", "por", "pelos", "pelas"],
-		// Name => function
+		// Name => linguistic_function
 		"cardinal" => "cardinal",
 		"cardinal_fem" => "cardinal_fem",
 		"ordinal" => "ordinal",

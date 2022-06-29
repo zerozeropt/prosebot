@@ -55,7 +55,7 @@ class GrammarEN extends Grammar
 	 * @var array
 	 */
 	private static $connectors = array(
-		// Name => function
+		// Name => linguistic_function
 		"cardinal" => "cardinal",
 		"ordinal_num" => "ordinal_num"
 	);

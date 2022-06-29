@@ -275,7 +275,7 @@ class GrammarES extends Grammar
 		"a" => ["al", "a", "a", "a los", "a las"],
 		"de" => ["del", "de la", "de", "de los", "de las"],
 		"el" => ["el", "la", "", "los", "las"],
-		// Name => function
+		// Name => linguistic_function
 		"cardinal" => "cardinal",
 		"cardinal_fem" => "cardinal_fem",
 		"ordinal" => "ordinal",
