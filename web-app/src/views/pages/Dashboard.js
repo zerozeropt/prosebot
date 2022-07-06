@@ -25,6 +25,7 @@ const Dashboard = () => {
   const [templates, setTemplates] = useState([]);
   const [activeFileIndex, setActiveFileIndex] = useState(-1);
   const [activeTemplateFile, setActiveTemplateFile] = useState();
+  const [activeTemplateKey, setActiveTemplateKey] = useState("");
   const [addedTemplate, setAddedTemplate] = useState(false);
   const [addedTemplateKey, setAddedTemplateKey] = useState("template");
   const [isAddMode, setIsAddMode] = useState(false);
@@ -283,6 +284,10 @@ const Dashboard = () => {
       })
   }
 
+  const onOpenTemplateKey = (tkeyName) => {
+    setActiveTemplateKey(tkeyName != activeTemplateKey ? tkeyName : "");
+  }
+
   return (
     <CRow>
       <CCol xs={9}>
@@ -320,6 +325,7 @@ const Dashboard = () => {
                 {Object.keys(activeTemplateFile).map((template, i) => {
                   return (
                     <TemplateKey
+                      opened={activeTemplateKey === template}
                       activeContext={activeContext}
                       activeLanguage={activeLanguage}
                       key={`template-key-${template}-${i}`}
@@ -327,6 +333,7 @@ const Dashboard = () => {
                       color={colors[i % colors.length]}
                       activeTemplateFile={activeTemplateFile}
                       addedTemplate={addedTemplate}
+                      onOpenTemplateKey={onOpenTemplateKey}
                       onEditTemplateKey={onEditTemplateKey}
                       setAddedTemplate={setAddedTemplate}
                       onSaveEditTemplate={onSaveEditTemplate}

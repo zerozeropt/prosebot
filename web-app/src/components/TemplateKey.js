@@ -15,19 +15,20 @@ import {
 import Template from './Template';
 
 const TemplateKey = ({
+    opened,
     activeContext,
     activeLanguage,
     tkey,
     color,
     activeTemplateFile,
     addedTemplate,
+    onOpenTemplateKey,
     onEditTemplateKey,
     setAddedTemplate,
     onSaveEditTemplate,
     onDeleteTemplate
 }) => {
     const [tmpKey, setTmpKey] = useState(tkey);
-    const [opened, setOpened] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     const [deleteModal, openModal] = useState(false);
 
@@ -40,7 +41,7 @@ const TemplateKey = ({
                             className='w-100 rounded-right'
                             style={{ backgroundColor: color, border: color, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
                             onClick={() => {
-                                setOpened(!opened);
+                                onOpenTemplateKey(tkey);
                                 setAddedTemplate(false);
                             }}
                         >
@@ -58,7 +59,7 @@ const TemplateKey = ({
                             <CDropdownMenu>
                                 <CDropdownItem
                                     onClick={() => {
-                                        setOpened(false);
+                                        onOpenTemplateKey("");
                                         setIsEditMode(true);
                                     }}
                                 >
@@ -102,6 +103,7 @@ const TemplateKey = ({
                             condition={key["condition"]}
                             onSaveEditTemplate={onSaveEditTemplate}
                             onDeleteTemplate={onDeleteTemplate}
+                            onOpenTemplateKey={onOpenTemplateKey}
                         />
                     )
                 })}

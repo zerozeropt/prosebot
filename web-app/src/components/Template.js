@@ -18,15 +18,16 @@ const Template = ({
     mode = false,
     onSaveEditTemplate,
     setAddedTemplate = () => { },
-    onDeleteTemplate = () => { }
+    onDeleteTemplate = () => { },
+    onOpenTemplateKey = () => { }
 }) => {
     const [isEditMode, setMode] = useState(mode);
     const [deleteModal, openModal] = useState(false);
-    const [tmpText, setTmpText] = useState(text);
-    const [tmpCondition, setTmpCondition] = useState(condition);
     const [showValidation, setShowValidation] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
     const [saveAnyway, setSaveAnyway] = useState(false);
+    const [tmpText, setTmpText] = useState(text);
+    const [tmpCondition, setTmpCondition] = useState(condition);
 
     const onSave = () => {
         setMode(false);
@@ -65,12 +66,36 @@ const Template = ({
         setShowValidation(false);
     }
 
+    const buildTokens = (text) => {
+        const textArray = text.split(/({template\..+?})/);
+        const str = textArray.map((substr, i) => {
+            if (/({template\..+?})/.test(substr)) {
+                const endIndex = substr.search(/%|}/);
+                const tkeyName = substr.substring(10, endIndex)
+                return (
+                    <CButton
+                        size='sm'
+                        key={i}
+                        color="secondary"
+                        style={{backgroundColor: "#ffba91", cursor: "pointer", border: "#ffba91"}}
+                        onClick={() => onOpenTemplateKey(tkeyName)}
+                    >
+                        {substr}
+                    </CButton>
+                );
+            }
+            return substr;
+        }); 
+
+        return str;
+    }
+
     return (
         <CCard className={"mb-4"}>
             {!isEditMode && (
                 <>
                     <CCardBody>
-                        {tmpText}
+                        {buildTokens(tmpText)}
                     </CCardBody>
                     <CCardFooter>
                         <CRow>
