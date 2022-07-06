@@ -15,11 +15,11 @@
     ],
     "classification": [
         {
-            "text": "Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} pontos, enquanto {O%team_worst_after.name} {team_worst_after.name} {s:encontra|p:encontram%team_worst_after.name}-se na {ORDINAL_FEM%team_worst_after.pos_classification} posição, {team_worst_after.points} pontos.",
+            "text": "Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} {s:ponto|p:pontos%team_best_after.points}, enquanto {O%team_worst_after.name} {team_worst_after.name} {s:encontra|p:encontram%team_worst_after.name}-se na {ORDINAL_FEM%team_worst_after.pos_classification} posição, {team_worst_after.points} {s:ponto|p:pontos%team_worst_after.points}.",
             "condition": "has_classification"
         },
         {
-            "text": "Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} pontos. {O%team_worst_after.name} {team_worst_after.name}, por sua vez, fica na {ORDINAL_FEM%team_worst_after.pos_classification} posição, {team_worst_after.points} pontos.",
+            "text": "Com o resultado, {O%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupam%team_best_after.name} o {ORDINAL%team_best_after.pos_classification} lugar na {template.classification_content}, com {team_best_after.points} {s:ponto|p:pontos%team_best_after.points}. {O%team_worst_after.name} {team_worst_after.name}, por sua vez, fica na {ORDINAL_FEM%team_worst_after.pos_classification} posição, {team_worst_after.points} {s:ponto|p:pontos%team_worst_after.points}.",
             "condition": "has_classification"
         }
     ],

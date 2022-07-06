@@ -15,7 +15,7 @@
     ],
     "classification": [
         {
-            "text": "After the result {team_best_after.name} are {ORDINAL_NUM%team_best_after.pos_classification} in the {template.classification_content}, with {team_best_after.points} points, while {team_worst_after.name} sit {ORDINAL_NUM%team_worst_after.pos_classification} place, with {team_worst_after.points} points.",
+            "text": "After the result {team_best_after.name} are {ORDINAL_NUM%team_best_after.pos_classification} in the {template.classification_content}, with {team_best_after.points} {s:point|p:points%team_best_after.points}, while {team_worst_after.name} sit {ORDINAL_NUM%team_worst_after.pos_classification} place, with {team_worst_after.points} {s:point|p:points%team_worst_after.points}.",
             "condition": "has_classification"
         }
     ],

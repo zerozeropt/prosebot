@@ -15,15 +15,15 @@
     ],
     "classification": [
         {
-            "text": "Tras este resultado {EL%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupan%team_best_after.name} el {ORDINAL%team_best_after.pos_classification} lugar en la {template.classification_content}, {team_best_after.points} puntos, {EL%team_worst_after.name} {team_worst_after.name} se {s:queda|p:quedan%team_worst_after.name} en {ORDINAL_FEM%team_worst_after.pos_classification} posición, {team_worst_after.points} puntos.",
+            "text": "Tras este resultado {EL%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupan%team_best_after.name} el {ORDINAL%team_best_after.pos_classification} lugar en la {template.classification_content}, {team_best_after.points} {s:punto|p:puntos%team_best_after.points}, {EL%team_worst_after.name} {team_worst_after.name} se {s:queda|p:quedan%team_worst_after.name} en {ORDINAL_FEM%team_worst_after.pos_classification} posición, {team_worst_after.points} {s:punto|p:puntos%team_worst_after.points}.",
             "condition": "has_classification"
         },
         {
-            "text": "Con este resultado {EL%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupan%team_best_after.name} el {ORDINAL%team_best_after.pos_classification} lugar en la {template.classification_content}, {team_best_after.points} puntos, {EL%team_worst_after.name} {team_worst_after.name} se {s:queda|p:quedan%team_worst_after.name} en {ORDINAL_FEM%team_worst_after.pos_classification} posición, {team_worst_after.points} puntos.",
+            "text": "Con este resultado {EL%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupan%team_best_after.name} el {ORDINAL%team_best_after.pos_classification} lugar en la {template.classification_content}, {team_best_after.points} {s:punto|p:puntos%team_best_after.points}, {EL%team_worst_after.name} {team_worst_after.name} se {s:queda|p:quedan%team_worst_after.name} en {ORDINAL_FEM%team_worst_after.pos_classification} posición, {team_worst_after.points} {s:punto|p:puntos%team_worst_after.points}.",
             "condition": "has_classification"
         },
         {
-            "text": "Después de este resultado {EL%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupan%team_best_after.name} el {ORDINAL%team_best_after.pos_classification} lugar en la {template.classification_content}, {team_best_after.points} puntos, {EL%team_worst_after.name} {team_worst_after.name} se {s:queda|p:quedan%team_worst_after.name} en {ORDINAL_FEM%team_worst_after.pos_classification} posición, {team_worst_after.points} puntos.",
+            "text": "Después de este resultado {EL%team_best_after.name} {team_best_after.name} {s:ocupa|p:ocupan%team_best_after.name} el {ORDINAL%team_best_after.pos_classification} lugar en la {template.classification_content}, {team_best_after.points} {s:punto|p:puntos%team_best_after.points}, {EL%team_worst_after.name} {team_worst_after.name} se {s:queda|p:quedan%team_worst_after.name} en {ORDINAL_FEM%team_worst_after.pos_classification} posición, {team_worst_after.points} {s:punto|p:puntos%team_worst_after.points}.",
             "condition": "has_classification"
         }
     ],
