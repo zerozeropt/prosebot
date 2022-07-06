@@ -1,7 +1,7 @@
 {
     "entry_point": [
         {
-            "text": "{template.stats} {template.classification}.",
+            "text": "{template.stats} {template.classification}",
             "condition": "is_league && is_last_match_day"
         },
         {
@@ -125,6 +125,14 @@
         {
             "text": "Somando ao empate, ",
             "condition": "!#arg.is_positive && final_score_diff == 0"
+        },
+        {
+            "text": "Para além da vitória,",
+            "condition": "#arg.is_positive && final_score_diff > 0"
+        },
+        {
+            "text": "Para além do empate,",
+            "condition": "#arg.is_positive && final_score_diff == 0"
         }
     ],
     "loser_stat_intro": [

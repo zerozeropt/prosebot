@@ -164,7 +164,7 @@
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, on {weekday}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, {template.extra} on {weekday}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "final_score_diff>0"
         },
         {
@@ -172,7 +172,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, on {weekday}. {template.goals}",
+            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective}, {final_score}, {template.extra} on {weekday}. {template.goals}",
             "condition": "final_score_diff>0"
         },
         {
@@ -188,7 +188,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, on {weekday}. {template.goals}",
+            "text": "{winner.name} {template.defeated} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {template.extra} on {weekday}. {template.goals}",
             "condition": "final_score_diff>0"
         },
         {

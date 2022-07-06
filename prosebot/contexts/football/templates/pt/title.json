@@ -253,7 +253,7 @@
             "condition": "loser_moves_on && !is_final"
         },
         {
-            "text": "{knockouts_winner.name} avança na {competition.name} apesar da derrota",
+            "text": "{knockouts_winner.name} avança na {de%competition.name} {competition.name} apesar da derrota",
             "condition": "loser_moves_on && !is_final"
         },
         {

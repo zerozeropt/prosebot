@@ -23,7 +23,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name}, {final_score}, on {weekday}, {template.fixture}",
+            "text": "{winner.name} {template.defeated} {loser.name}, {final_score}, {template.extra} on {weekday}, {template.fixture}",
             "condition": "final_score_diff>0"
         },
         {
@@ -62,6 +62,18 @@
         },
         {
             "text": "eased past",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "hammered",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "thumped",
+            "condition": "final_score_diff>3"
+        },
+        {
+            "text": "walloped",
             "condition": "final_score_diff>3"
         }
     ],
@@ -129,6 +141,14 @@
     ],
     "teams_form": [
         {
+            "text": "Na primeira mão {o%prev_match_winner.name} {prev_match_winner.name} tinha vencido {o%prev_match_loser.name} {prev_match_loser.name}, {prev_match_score}.",
+            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff!=0"
+        },
+        {
+            "text": "Na primeira mão as equipas tinham empatado, {prev_match_score}.",
+            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"
+        },
+        {
             "text": "In this competition, {template.team_form%home_team}, and {template.team_form%away_team}.",
             "condition": "!first_competition_game && is_league"
         },
@@ -137,7 +157,7 @@
             "condition": "first_competition_game"
         },
         {
-            "text": "Both {home_team.name} and {away_team.name} made their first game in the competition.",
+            "text": "Both {home_team.name} and {away_team.name} played their first game in the competition.",
             "condition": "first_competition_game == 1"
         },
         {
@@ -145,7 +165,7 @@
             "condition": "first_competition_game == 0 && is_league"
         },
         {
-            "text": "Before this matchday, {template.team_form%home_team}, and {template.team_form%away_team}.",
+            "text": "Coming into the contest, {template.team_form%home_team}, and {template.team_form%away_team}.",
             "condition": "first_competition_game == 0 && is_league"
         },
         {
@@ -163,6 +183,10 @@
         {
             "text": "The first leg fixture ended in a {prev_match_score} draw.",
             "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"
+        },
+        {
+            "text": "To this matchweek, {template.team_form%home_team}, and {template.team_form%away_team}.",
+            "condition": "first_competition_game == 0 && is_league"
         }
     ],
     "team_form": [
@@ -241,7 +265,7 @@
     ],
     "fixture": [
         {
-            "text": "in a game relating to mathweek {fixture}.",
+            "text": "in a game relating to matchweek {fixture}.",
             "condition": "is_league"
         },
         {
@@ -253,11 +277,11 @@
             "condition": "is_league"
         },
         {
-            "text": "relating to matchweek {fixture} of {competition.name}",
+            "text": "relating to matchweek {fixture} of the {competition.name}",
             "condition": "is_league"
         },
         {
-            "text": "in a match relating {template.stage} of {competition.name}",
+            "text": "in a match relating {template.stage} of the {competition.name}",
             "condition": "!is_league"
         },
         {
@@ -265,7 +289,7 @@
             "condition": "is_league"
         },
         {
-            "text": "relating to matchday {fixture} of {competition.name}",
+            "text": "on to matchday {fixture} of the {competition.name}",
             "condition": "is_league"
         }
     ],
@@ -375,13 +399,13 @@
     ],
     "pen_score": [
         {
-            "text": "{pen_winner.name} beat {pen_loser.name}, after a {pen_score} in a penalty shoot-out, {template.fixture}. The game ended {final_score}, on {weekday}",
+            "text": "{pen_winner.name} beat  {pen_loser.name}, after a {pen_score} in a penalty shoot-out, {template.fixture}. The game ended {final_score}, on {weekday}",
             "condition": ""
         }
     ],
     "normal_score": [
         {
-            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.streak%winner}, {final_score}, on {weekday}",
+            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.streak%winner}, {final_score}, {template.extra} on {weekday}",
             "condition": "final_score_diff>0"
         },
         {

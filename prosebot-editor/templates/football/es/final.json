@@ -5,7 +5,7 @@
             "condition": "is_league && !is_last_match_day"
         },
         {
-            "text": "{template.stats} {template.classification}.",
+            "text": "{template.stats} {template.classification}",
             "condition": "is_league && is_last_match_day"
         },
         {

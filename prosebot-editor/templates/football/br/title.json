@@ -177,7 +177,7 @@
             "condition": "loser_moves_on && !is_final"
         },
         {
-            "text": "Apesar da vitória, {knockouts_loser.name} cai para {o%knockouts_winner.name} {knockouts_winner.name} {em%competition.name} {competition.name}<br\/>",
+            "text": "Apesar da vitória, {knockouts_loser.name} cai para {o%knockouts_winner.name} {knockouts_winner.name} {em%competition.name} {competition.name}",
             "condition": "loser_moves_on && !is_final"
         },
         {

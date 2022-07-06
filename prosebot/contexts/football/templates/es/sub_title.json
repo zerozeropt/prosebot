@@ -1,28 +1,12 @@
 {
     "entry_point": [
         {
-            "text": "División de puntos {template.draw}",
-            "condition": "final_score_diff==0"
+            "text": "{template.normal}",
+            "condition": "extra_time!=\"PEN\""
         },
         {
-            "text": "Victoria tangencial {template.win} {template.draw}",
-            "condition": "final_score_diff==1"
-        },
-        {
-            "text": "Victoria cómoda {template.win} {template.draw}",
-            "condition": "final_score_diff==2"
-        },
-        {
-            "text": "Goleada  {template.win} {template.draw}",
-            "condition": "final_score_diff>2"
-        },
-        {
-            "text": "{loser.name} {f:sorprendida|m:sorprendido%loser.name} sorprendida en su terreno",
-            "condition": "has_suprise"
-        },
-        {
-            "text": "La sorpresa en el terreno de {el%loser.name} {loser.name}",
-            "condition": "has_suprise"
+            "text": "{template.pen}",
+            "condition": "extra_time==\"PEN\""
         }
     ],
     "draw": [
@@ -53,6 +37,36 @@
             "condition": "!home_win"
         }
     ],
-    "pen": [],
-    "normal": []
+    "pen": [
+        {
+            "text": "El partido se decidió en los penaltis",
+            "condition": ""
+        }
+    ],
+    "normal": [
+        {
+            "text": "Igualdad en el marcador {template.draw}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Victoria tangencial {template.win} {template.draw}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "Victoria cómoda {template.win} {template.draw}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "Goleada {template.win} {template.draw}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{loser.name} {f:sorprendida|m:sorprendido%loser.name} sorprendida en su terreno",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "La sorpresa en el terreno de {el%loser.name} {loser.name}",
+            "condition": "has_suprise"
+        }
+    ]
 }

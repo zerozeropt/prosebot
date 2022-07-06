@@ -255,35 +255,35 @@
     ],
     "gksave": [
         {
-            "text": "bateu o seu recorde de defesas na temporada, com {#arg.value} defesas",
+            "text": "bateu o seu recorde de defesas na temporada, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "quebrou o seu recorde de defesas na temporada, com {#arg.value} defesas",
+            "text": "quebrou o seu recorde de defesas na temporada, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "fez apenas {#arg.value} defesas, o seu menor número nesta temporada",
+            "text": "fez apenas {stat_val} defesas, o seu menor número nesta temporada",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "bateu o recorde de defesas na temporada, com {#arg.value} defesas",
+            "text": "bateu o recorde de defesas na temporada, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "quebrou o recorde de defesas na temporada, com {#arg.value} defesas",
+            "text": "quebrou o recorde de defesas na temporada, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "estabeleceu o maior número de defesas na temporada, com {#arg.value} defesas",
+            "text": "estabeleceu o maior número de defesas na temporada, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "com somente {#arg.value} defesas, teve o menor número nesta temporada",
+            "text": "com somente {stat_val} defesas, teve o menor número nesta temporada",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "em grande atuação defensiva, quebrou o seu recorde de defesas na temporada, com {#arg.value} defesas",
+            "text": "em grande atuação defensiva, quebrou o seu recorde de defesas na temporada, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         }
     ],

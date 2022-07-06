@@ -261,7 +261,7 @@
     ],
     "shotgo": [
         {
-            "text": "demonstrou uma veia rematadora, estabelecendo um recorde na competição de {stat_val} remates à baliza",
+            "text": "demonstrou uma veia rematadora, estabelendo um recorde na competição de {stat_val} remates à baliza",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
@@ -287,19 +287,19 @@
     ],
     "gksave": [
         {
-            "text": "bateu o seu recorde de defesas na época, com {#arg.value} defesas",
+            "text": "bateu o seu recorde de defesas na época, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "registou apenas {#arg.value} defesas, o seu número mais baixo desta época",
+            "text": "registou apenas {stat_val} defesas, o seu número mais baixo desta época",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "bateu o recorde de defesas na época, com {#arg.value} defesas",
+            "text": "bateu o recorde de defesas na época, com {stat_val} defesas",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "registou apenas {#arg.value} defesas, o número mais baixo desta época",
+            "text": "registou apenas {stat_val} defesas, o número mais baixo desta época",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         }
     ],

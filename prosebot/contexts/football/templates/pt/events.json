@@ -133,7 +133,7 @@
             "condition": "match_goal==1 && match_goals>1"
         },
         {
-            "text": "{template.time}, {scorer.name} abriu o marcador para {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}",
+            "text": "{template.time}, {scorer.name} abriu o marcador para o {O%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}",
             "condition": "match_goal==1 && match_goals>1"
         },
         {
@@ -372,7 +372,7 @@
         },
         {
             "text": "",
-            "condition": ""
+            "condition": "goal_type"
         },
         {
             "text": "através da marcação de um pontapé de canto",
@@ -543,6 +543,8 @@
             "condition": "is_relevant_player==1"
         }
     ],
+    "half-time": [],
+    "final-time": [],
     "penalty_missed": [
         {
             "text": "{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} falhar uma grande penalidade.",

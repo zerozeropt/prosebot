@@ -105,11 +105,11 @@ class EntitiesManagerFootballES extends EntitiesManagerFootball
 
 	private static $day_name = array(
 		WeekDay::SUNDAY => ["domingo", NameGender::MALE, NameNumber::SINGULAR],
-		WeekDay::MONDAY => ["lunes", NameGender::FEMALE, NameNumber::SINGULAR],
-		WeekDay::TUESDAY => ["martes", NameGender::FEMALE, NameNumber::SINGULAR],
-		WeekDay::WEDNESDAY => ["miércoles", NameGender::FEMALE, NameNumber::SINGULAR],
-		WeekDay::THURSDAY => ["jueves", NameGender::FEMALE, NameNumber::SINGULAR],
-		WeekDay::FRIDAY => ["viernes", NameGender::FEMALE, NameNumber::SINGULAR],
+		WeekDay::MONDAY => ["lunes", NameGender::MALE, NameNumber::SINGULAR],
+		WeekDay::TUESDAY => ["martes", NameGender::MALE, NameNumber::SINGULAR],
+		WeekDay::WEDNESDAY => ["miércoles", NameGender::MALE, NameNumber::SINGULAR],
+		WeekDay::THURSDAY => ["jueves", NameGender::MALE, NameNumber::SINGULAR],
+		WeekDay::FRIDAY => ["viernes", NameGender::MALE, NameNumber::SINGULAR],
 		WeekDay::SATURDAY => ["sábado", NameGender::MALE, NameNumber::SINGULAR]
 	);
 

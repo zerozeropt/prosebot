@@ -1,7 +1,7 @@
 {
     "entry_point": [
         {
-            "text": "{template.score}. {template.teams_form} {template.best_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.",
+            "text": "{template.score}. {template.teams_form} {template.best_player}. {template.best_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.",
             "condition": "!has_decisive_player"
         },
         {
@@ -117,15 +117,15 @@
             "condition": "first_competition_game"
         },
         {
-            "text": "À chegada desta jornada, {template.team_form%home_team}, e {template.team_form%away_team}.",
+            "text": "à chegada desta jornada, {template.team_form%home_team}, e {template.team_form%away_team}.",
             "condition": "!first_competition_game && is_league"
         },
         {
-            "text": "À partida para esta jornada, {template.team_form%home_team}, e {template.team_form%away_team}.",
+            "text": "à partida para esta jornada, {template.team_form%home_team}, e {template.team_form%away_team}.",
             "condition": "!first_competition_game && is_league"
         },
         {
-            "text": "À chegada deste duelo, {template.team_form%home_team}, e {template.team_form%away_team}.",
+            "text": "à chegada deste duelo, {template.team_form%home_team}, e {template.team_form%away_team}.",
             "condition": "!first_competition_game && is_league"
         },
         {
@@ -385,7 +385,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{template.fixture}, {o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner}, {final_score}, {EM%weekday} {weekday}",
+            "text": "{template.fixture}, {o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner}, {final_score}, {template.extra} {EM%weekday} {weekday}",
             "condition": "final_score_diff>0"
         },
         {

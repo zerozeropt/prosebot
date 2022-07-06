@@ -1,42 +1,6 @@
 {
     "entry_point": [
         {
-            "text": "{winner.name} derrotó  {loser.name}",
-            "condition": "final_score_diff>0"
-        },
-        {
-            "text": "{winner.name} venció {loser.name}",
-            "condition": "final_score_diff>0"
-        },
-        {
-            "text": "{winner.name} con victoria estruendosa",
-            "condition": "final_score_diff>4"
-        },
-        {
-            "text": "Dominio total del {winner.name}",
-            "condition": "final_score_diff>2"
-        },
-        {
-            "text": "{winner.name} con dominio absoluto",
-            "condition": "final_score_diff>2"
-        },
-        {
-            "text": "{winner.name} con control total",
-            "condition": "final_score_diff>2"
-        },
-        {
-            "text": "Empate en el encuentro entre {winner.name} y {loser.name}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "El duelo entre {winner.name} y {loser.name} no fue más que un empate",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "Igualdad entre {winner.name} y {loser.name}",
-            "condition": "final_score_diff==0"
-        },
-        {
             "text": "{template.competition} {template.main_title}",
             "condition": ""
         }
@@ -196,7 +160,7 @@
             "condition": "!is_final"
         },
         {
-            "text": "{knockouts_winner.name} sigue adelante en {competition.name} {competition.name}",
+            "text": "{knockouts_winner.name} sigue adelante en {competition.name}",
             "condition": "!is_final"
         },
         {
@@ -208,7 +172,7 @@
             "condition": "winner_moves_on && !is_final"
         },
         {
-            "text": "{knockouts_winner.name} sigue adelante en {competition.name} {competition.name}",
+            "text": "{knockouts_winner.name} sigue adelante en {competition.name}",
             "condition": "winner_moves_on && !is_final"
         },
         {

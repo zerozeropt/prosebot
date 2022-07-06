@@ -69,35 +69,35 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} with a tremendous win",
+            "text": "{winner.name} record tremendous win over {loser.name}",
             "condition": "final_score_diff>4"
         },
         {
-            "text": "{winner.name} with absolute dominance",
+            "text": "{winner.name} dominate {loser.name}",
             "condition": "final_score_diff>2 && dominance "
         },
         {
-            "text": "{winner.name} with complete control",
+            "text": "{winner.name} in complete control",
             "condition": "final_score_diff>2"
         },
         {
-            "text": "Draw in the clash between {winner.name} and {loser.name}",
+            "text": "Honours even between {winner.name} and {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "Game between {winner.name} and {loser.name} ended in a stalemate",
+            "text": "Spoils shared between {winner.name} and {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "Points shared between {winner.name} and {loser.name}",
+            "text": "A point apiece for {winner.name} and {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} defeat {loser.name} at home",
+            "text": "{winner.name} defeat {loser.name} at {stadium}",
             "condition": "home_win"
         },
         {
-            "text": "{loser.name} defeated by {winner.name}",
+            "text": "{loser.name} lose out to {winner.name}",
             "condition": "final_score_diff>0"
         },
         {
@@ -109,7 +109,7 @@
             "condition": "final_score_diff>2"
         },
         {
-            "text": "{winner.name} and {loser.name} did not go beyond a tie",
+            "text": "Nothing to separate {winner.name} and {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
@@ -125,7 +125,7 @@
             "condition": "final_score_diff>4"
         },
         {
-            "text": "{winner.name} apply a heavy defeat to {loser.name}",
+            "text": "{winner.name} inflict heavy defeat on {loser.name}",
             "condition": "final_score_diff>4"
         },
         {
@@ -133,11 +133,11 @@
             "condition": "final_score_diff>4"
         },
         {
-            "text": "{winner.name} defeated {loser.name} by {final_score}",
+            "text": "{winner.name} defeat {loser.name}",
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} edged past {loser.name}",
+            "text": "{winner.name} edge past {loser.name}",
             "condition": "final_score_diff==1"
         },
         {
@@ -149,7 +149,7 @@
             "condition": "!home_win"
         },
         {
-            "text": "{winner.name} hosted and defeated {loser.name}",
+            "text": "{winner.name} send {loser.name} home with tail between their legs",
             "condition": "home_win"
         },
         {
@@ -163,6 +163,102 @@
         {
             "text": "{loser.name} edged out by {winner.name}",
             "condition": "!home_win"
+        },
+        {
+            "text": "{winner.name} wallop {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{loser.name} walloped by {winner.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} record comfortable win over {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{loser.name} handed lesson by {winner.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} rack up cricket score against {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} run out easy winners against {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} enjoy goalfest against {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "Landslide win for {winner.name} versus {loser.name}",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} have far too much for {loser.name}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "{winner.name} put {loser.name} to the sword",
+            "condition": "final_score_diff>4"
+        },
+        {
+            "text": "{winner.name} get the better of {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} beat {loser.name} in close encounter",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "{loser.name} drop points at home against {winner.name}",
+            "condition": "!home_win"
+        },
+        {
+            "text": "{winner.name} toy with {loser.name}",
+            "condition": "final_score_diff>2 && dominance "
+        },
+        {
+            "text": "{winner.name} run out winners versus {loser.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{winner.name} bag three points {loser.name} at {stadium}",
+            "condition": "home_win"
+        },
+        {
+            "text": "{loser.name} stumble to defeat against {winner.name}",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{loser.name} enjoy productive visit to {winner.name}",
+            "condition": "!home_win"
+        },
+        {
+            "text": "{loser.name} humbled on home turf by {winner.name}",
+            "condition": "!home_win"
+        },
+        {
+            "text": "{winner.name} celebrate narrow win over {loser.name}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "{winner.name} too good for {loser.name} at {stadium}",
+            "condition": "home_win"
+        },
+        {
+            "text": "{loser.name} put to the sword at home by {winner.name}",
+            "condition": "!home_win"
+        },
+        {
+            "text": "{winner.name} emerge victorious against {loser.name}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "{winner.name} outclass {loser.name}",
+            "condition": "final_score_diff>2 && dominance "
         }
     ],
     "competition": [

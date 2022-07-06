@@ -13,7 +13,7 @@
             "condition": "team_goal==2"
         },
         {
-            "text": "{template.time}, {scorer.name} opened the score for {team.name}, {template.goal_type}, {template.assisted}.",
+            "text": "{template.time}, {scorer.name} opened the scoring for {team.name}, {template.goal_type}, {template.assisted}.",
             "condition": "match_goal==1 && match_goals>1"
         },
         {
@@ -379,6 +379,8 @@
             "condition": "is_gamechanger"
         }
     ],
+    "half-time": [],
+    "final-time": [],
     "penalty_missed": [
         {
             "text": "{template.time}, {team.name} saw {player.name} miss a penalty.",

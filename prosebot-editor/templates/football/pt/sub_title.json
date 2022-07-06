@@ -97,10 +97,6 @@
     ],
     "normal": [
         {
-            "text": "Divisão de pontos {template.draw}",
-            "condition": "final_score_diff==0"
-        },
-        {
             "text": "Vitória tangencial {template.win}",
             "condition": "final_score_diff==1"
         },

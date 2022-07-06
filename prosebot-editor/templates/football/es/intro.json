@@ -11,42 +11,6 @@
     ],
     "score": [
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.commentary} el {weekday}, {final_score}, {template.fixture}",
-            "condition": "final_score_diff>0"
-        },
-        {
-            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name}, {final_score}, el {weekday}",
-            "condition": "final_score_diff>0"
-        },
-        {
-            "text": "El partido entre {winner.name} y {loser.name} el {weekday} terminó con un empate {template.match_adjective}, {final_score}, {template.fixture}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "{winner.name} y {loser.name} empataron en partido {template.match_adjective} el {weekday}, {final_score}, {template.fixture}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "{winner.name} y {loser.name} se dividieron los puntos en un partido {template.match_adjective} el {weekday}, {final_score}, {template.fixture}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "El {weekday} {winner.name} y {loser.name} se dividieron los puntos en un partido {template.match_adjective}, {final_score}, {template.fixture}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "{template.fixture}, {winner.name} y {loser.name} se dividieron los puntos el {weekday}, {final_score}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "El {weekday} {winner.name} y {loser.name} se dividieron los puntos, {final_score}, {template.fixture}",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.commentary} el {weekday}, {final_score}",
-            "condition": "final_score_diff>0"
-        },
-        {
             "text": "{template.pen_score}",
             "condition": "extra_time==\"PEN\""
         },
@@ -165,7 +129,7 @@
             "condition": "!first_competition_game && is_league"
         },
         {
-            "text": "Tanto {el%home_team.name} {home_team.name} como {el%away_team.name} {away_team.name} realizaban su primer partido en la competición. .",
+            "text": "Tanto {el%home_team.name} {home_team.name} como {el%away_team.name} {away_team.name} realizaban su primer partido en la competición.",
             "condition": "first_competition_game == 1"
         },
         {
@@ -441,32 +405,37 @@
             "condition": "#arg.lossless_streak > 3"
         }
     ],
-    "pen_score": [],
+    "pen_score": [
+        {
+            "text": "{El%pen_winner.name} {pen_winner.name} venció {el%pen_loser.name} {pen_loser.name}, en {weekday}, con un resultado de {pen_score} en los penaltis, {template.fixture}. El tiempo reglamentario terminó con un resultado de {final_score}.",
+            "condition": ""
+        }
+    ],
     "normal_score": [
         {
-            "text": "{el%winner.name} {winner.name} {template.defeated} {el%loser.name} {loser.name} {template.streak%winner} {template.commentary}, el {weekday} {weekday}, {final_score}, {template.fixture}",
+            "text": "{el%winner.name} {winner.name} {template.defeated} {el%loser.name} {loser.name} {template.streak%winner} {template.commentary}, {el%weekday} {weekday}, {final_score}, {template.fixture}",
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{template.fixture}, {EL%winner.name} {winner.name} {template.defeated} {EL%loser.name} {loser.name} {template.streak%winner}, {final_score}, el {weekday} {weekday}",
+            "text": "{template.fixture}, {EL%winner.name} {winner.name} {template.defeated} {EL%loser.name} {loser.name} {template.streak%winner}, {final_score}, {template.extra} {el%weekday} {weekday}",
             "condition": "final_score_diff>0"
         },
         {
-            "text": "El partido entre {el%winner.name} {winner.name} y {el%loser.name} {loser.name}, {template.fixture}, el {weekday} {weekday}, terminó empatado {template.match_adjective}, {final_score}",
+            "text": "El partido entre {el%winner.name} {winner.name} y {el%loser.name} {loser.name}, {template.fixture}, {el%weekday} {weekday}, terminó empatado {template.match_adjective}, {final_score}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} empataron su partido {template.match_adjective}, el {weekday} {weekday}, {final_score}, {template.fixture}",
+            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} empataron su partido {template.match_adjective}, {el%weekday} {weekday}, {final_score}, {template.fixture}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} no pasaron del empate {template.match_adjective} {final_score}, el {weekday} {weekday}",
+            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} no pasaron del empate {template.match_adjective} {final_score}, {el%weekday} {weekday}",
             "condition": "final_score_diff==0"
         }
     ],
     "starters": [
         {
-            "text": "Entre los titulares {s:estuvo|p:estiveron%starter_players} {starter_players}.",
+            "text": "Entre los titulares {s:estuvo|p:estuvieron%starter_players} {starter_players}.",
             "condition": "starters"
         }
     ],

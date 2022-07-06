@@ -133,19 +133,19 @@
     "shotgo": [],
     "gksave": [
         {
-            "text": "batió su récord de paradas en la temporada, con {#arg.value} paradas",
+            "text": "batió su récord de paradas en la temporada, con {stat_val} paradas",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "hizo apenas {#arg.value} paradas, su número más bajo esta temporada",
+            "text": "hizo apenas {stat_val} paradas, su número más bajo esta temporada",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "batió el récord de paradas en la temporada, con {#arg.value} paradas",
+            "text": "batió el récord de paradas en la temporada, con {stat_val} paradas",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "hizo apenas {#arg.value} paradas, el número más bajo esta temporada",
+            "text": "hizo apenas {stat_val} paradas, el número más bajo esta temporada",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         }
     ],
