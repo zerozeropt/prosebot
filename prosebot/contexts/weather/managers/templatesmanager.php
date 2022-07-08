@@ -87,7 +87,7 @@ class TemplatesManagerWeather extends TemplatesManager
         // Fixed structure paragraphs with no links allowed
         foreach (static::$fixed_templates_no_links_paths as $path) {
             $chunk_tmp = parent::sanitize($this->build_fixed_paragraph($city, $this->fixed_templates[$path], "entry_point"));
-            $chunk = strip_tags($chunk_tmp, '<i>');
+            $chunk = strip_tags($chunk_tmp, '<em>');
             $summary_array[$path] = $chunk;
         }
 

@@ -67,11 +67,11 @@ class Utils
 
 	/**
 	 * Get random number between 0 and 1
-	 * @return int Random number between 0 (inclusive) and 1 (exclusive)
+	 * @return float Random number between 0 (inclusive) and 1 (exclusive)
      */
 	static function get_rand()
 	{
-		return mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+		return random_int(0, mt_getrandmax() - 1) / mt_getrandmax();
 	}
 
 	/**

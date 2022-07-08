@@ -48,7 +48,7 @@ class EntitiesManagerFootballEN extends EntitiesManagerFootball
 				case "other_name":
 					$other_name = $team->get_other_name();
 					if ($other_name != null) {
-						array_push($options, new TextStructure("<i>".$other_name."</i>", $other_name->gender, $other_name->number));
+						array_push($options, new TextStructure("<em>".$other_name."</em>", $other_name->gender, $other_name->number));
 						array_push($term, "%s");
 					}
 					break;

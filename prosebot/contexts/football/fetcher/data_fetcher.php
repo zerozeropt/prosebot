@@ -35,8 +35,9 @@ class FootballFetcher extends DataFetcher
 		$api = preg_replace('/{match_id}/', $match_id, self::MATCH_DATA_PATH);
 		$json = static::get_json($api);
 
-		if($json == null)
+		if($json == null) {
 			throw new Exception("Error: Match " . $match_id . " does not exist.");
+		}
 		
 		return $json;
 	}
@@ -51,8 +52,9 @@ class FootballFetcher extends DataFetcher
 		$api = preg_replace('/{match_id}/', $match_id, self::H2H_DATA_PATH);
 		$json = static::get_json($api);
 
-		if($json == null)
+		if($json == null) {
 			throw new Exception("Error: Match " . $match_id . " does not exist.");
+		}
 		
 		return $json;
 	}
@@ -67,8 +69,9 @@ class FootballFetcher extends DataFetcher
 		$api = preg_replace('/{team_id}/', $team_id, self::TEAM_DATA_PATH);
 		$json = static::get_json($api);
 
-		if ($json == null)
+		if ($json == null) {
 			throw new Exception("Error: Team " . $team_id . " does not exist.");
+		}
 
 		return $json;
 	}

@@ -27,8 +27,7 @@ abstract class DataFetcher
 	protected static function get_xml($link)
 	{
 		$file = file_get_contents($link);
-		$xml = simplexml_load_string($file);
-		return $xml;
+		return simplexml_load_string($file);
 	}
 }
 ?>

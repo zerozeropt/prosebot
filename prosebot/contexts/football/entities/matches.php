@@ -383,7 +383,7 @@ class MatchData extends MainEntityData
 		$this->date = date_timezone_set($date, timezone_open(get_globals()["languageToTimezone"][$country]));
 		$this->final_result = $match_data['FINALRESULT'];
 		$this->league = Utils::null_if_empty($match_data['LEAGUE']);
-		$this->competition = new CompetitionData($grammar, $match_data['INFO']);
+		$this->competition = new CompetitionData($match_data['INFO']);
 		$this->stadium = Utils::null_if_empty($match_data['STADIUM']);
 		$this->local = Utils::null_if_empty($match_data['INFO']['local']);
 		$this->fixture = Utils::null_if_empty($match_data["FIXTURE"]);
@@ -743,10 +743,12 @@ class MatchData extends MainEntityData
 	public function get_event_team($event_key, $event)
 	{
 		$team = $event->get_team();
-		if ($this->teams[0] === $team)
+		if ($this->teams[0] === $team) {
 			return $this->teams[0];
-		if ($this->teams[1] === $team)
+		}
+		if ($this->teams[1] === $team) {
 			return $this->teams[1];
+		}
 		return null;
 	}
 
@@ -762,10 +764,12 @@ class MatchData extends MainEntityData
 	public function get_stat_team($event_key, $event)
 	{
 		$team = $this->stats[$event_key]->get_team();
-		if ($this->teams[0] === $team)
+		if ($this->teams[0] === $team) {
 			return $this->teams[0];
-		if ($this->teams[1] === $team)
+		}
+		if ($this->teams[1] === $team) {
 			return $this->teams[1];
+		}
 		return null;
 	}
 
@@ -786,7 +790,7 @@ class MatchData extends MainEntityData
 
 	private function get_relevant_players($country_index)
 	{
-		$relevant_players = [];
+		$relevant_players_array = [];
 
 		foreach ($this->players as $player) {
 			if ($this->teams[0]->get_id() == $player->get_team_id()) {
@@ -804,11 +808,11 @@ class MatchData extends MainEntityData
 
 			if ((!$is_national_team && $is_club_player_relevant) || ($is_national_team && $is_nt_player_relevant)) {
 				$player->set_relevant(true);
-				array_push($relevant_players, $player);
+				array_push($relevant_players_array, $player);
 			}
 		}
 
-		return $relevant_players;
+		return $relevant_players_array;
 	}
 
 	public function has_previous_match()
@@ -830,39 +834,49 @@ class MatchData extends MainEntityData
 		$this->edition_team_negative_stats = [];
 
 		foreach ($match_data['MATCHSTATS'] as $stat) {
-			if ($stat['key'] == "ballpo")
+			if ($stat['key'] == "ballpo") {
 				continue;
-			if (array_key_exists($stat['key'], $this->match_stats))
+			}
+			if (array_key_exists($stat['key'], $this->match_stats)) {
 				$this->match_stats[$stat['key']] += $stat["value"];
-			else $this->match_stats[$stat['key']] = $stat["value"];
+			}
+			else {
+				$this->match_stats[$stat['key']] = $stat["value"];
+			}
 		}
 
-		if (array_key_exists("TOP_EDITION_MATCH", $match_data['EDITIONSTATS']))
+		if (array_key_exists("TOP_EDITION_MATCH", $match_data['EDITIONSTATS'])) {
 			foreach ($match_data['EDITIONSTATS']["TOP_EDITION_MATCH"] as $stat) {
 				$top_edition_stats[$stat['key']] = $stat["value"];
 			}
+		}
 
-		if (array_key_exists("TOP_EDITION_MATCH", $match_data['EDITIONNEGATIVESTATS']))
+		if (array_key_exists("TOP_EDITION_MATCH", $match_data['EDITIONNEGATIVESTATS'])) {
 			foreach ($match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_MATCH"] as $stat) {
 				$top_edition_negative_stats[$stat['key']] = $stat["value"];
 			}
-
-		foreach ($this->match_stats as $key => $stat) {
-			if (array_key_exists($key, $top_edition_stats) && $stat > $top_edition_stats[$key])
-				array_push($this->stats, new Stat(null, $key, $stat, false, true));
-			else if (array_key_exists($key, $top_edition_negative_stats) && $stat < $top_edition_negative_stats[$key])
-				array_push($this->stats, new Stat(null, $key, $stat, false, false));
 		}
 
-		if (array_key_exists("TOP_EDITION_TEAM", $match_data['EDITIONSTATS']))
+		foreach ($this->match_stats as $key => $stat) {
+			if (array_key_exists($key, $top_edition_stats) && $stat > $top_edition_stats[$key]) {
+				array_push($this->stats, new Stat(null, $key, $stat, false, true));
+			}
+			else if (array_key_exists($key, $top_edition_negative_stats) && $stat < $top_edition_negative_stats[$key]) {
+				array_push($this->stats, new Stat(null, $key, $stat, false, false));
+			}
+		}
+
+		if (array_key_exists("TOP_EDITION_TEAM", $match_data['EDITIONSTATS'])) {
 			foreach ($match_data['EDITIONSTATS']["TOP_EDITION_TEAM"] as $stat) {
 				$this->edition_team_stats[$stat['key']] = $stat["value"];
 			}
+		}
 
-		if (array_key_exists("TOP_EDITION_TEAM", $match_data['EDITIONNEGATIVESTATS']))
+		if (array_key_exists("TOP_EDITION_TEAM", $match_data['EDITIONNEGATIVESTATS'])) {
 			foreach ($match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_TEAM"] as $stat) {
 				$this->edition_team_negative_stats[$stat['key']] = $stat["value"];
 			}
+		}
 
 		$this->current_match_stat = Utils::find($this->stats, function ($element) {
 			return $element->get_team() == null && $element->is_relevant();
@@ -885,11 +899,15 @@ class MatchData extends MainEntityData
 		$pre_draws = $h2h_data['SUMMARYTOTAL']["draws"]["0"];
 		$post_draws = $pre_draws;
 
-		if ($this->score_diff() == 0)
+		if ($this->score_diff() == 0) {
 			$post_draws = $pre_draws + 1;
-		else if ($this->winner() == $this->home_team())
+		}
+		else if ($this->winner() == $this->home_team()) {
 			$post_home_team_wins = $pre_home_team_wins + 1;
-		else $post_away_team_wins = $pre_away_team_wins + 1;
+		}
+		else {
+			$post_away_team_wins = $pre_away_team_wins + 1;
+		}
 
 		return array(
 			"pre_games" => $pre_games,
@@ -911,8 +929,9 @@ class MatchData extends MainEntityData
 	private function compute_previous_match_goals($h2h_data)
 	{
 		$all_matches = $h2h_data["ALLMATCHES"];
-		if (count($all_matches) <= 1)
+		if (count($all_matches) <= 1) {
 			return [];
+		}
 
 		$current_competition_id = $all_matches[0]["competition"];
 		for ($i = 1; $i < count($all_matches); $i++) {
@@ -962,8 +981,9 @@ class MatchData extends MainEntityData
 	 */
 	public function pen_score($sort = false)
 	{
-		if ($sort || $this->home_pen_goals > $this->away_pen_goals)
+		if ($sort || $this->home_pen_goals > $this->away_pen_goals) {
 			return $this->home_pen_goals . 'x' . $this->away_pen_goals;
+		}
 		return $this->away_pen_goals . 'x' . $this->home_pen_goals;
 	}
 
@@ -1010,8 +1030,9 @@ class MatchData extends MainEntityData
 	 */
 	public function winner()
 	{
-		if ($this->teams[1]->get_goals() > $this->teams[0]->get_goals())
+		if ($this->teams[1]->get_goals() > $this->teams[0]->get_goals()) {
 			return $this->teams[1];
+		}
 		return $this->teams[0];
 	}
 
@@ -1021,8 +1042,9 @@ class MatchData extends MainEntityData
 	 */
 	public function prev_match_winner()
 	{
-		if ($this->teams[1]->get_prev_match_goals() > $this->teams[0]->get_prev_match_goals())
+		if ($this->teams[1]->get_prev_match_goals() > $this->teams[0]->get_prev_match_goals()) {
 			return $this->teams[1];
+		}
 		return $this->teams[0];
 	}
 
@@ -1032,8 +1054,9 @@ class MatchData extends MainEntityData
 	 */
 	public function loser()
 	{
-		if ($this->teams[0]->get_goals() < $this->teams[1]->get_goals())
+		if ($this->teams[0]->get_goals() < $this->teams[1]->get_goals()) {
 			return $this->teams[0];
+		}
 		return $this->teams[1];
 	}
 
@@ -1043,8 +1066,9 @@ class MatchData extends MainEntityData
 	 */
 	public function prev_match_loser()
 	{
-		if ($this->teams[0]->get_prev_match_goals() < $this->teams[1]->get_prev_match_goals())
+		if ($this->teams[0]->get_prev_match_goals() < $this->teams[1]->get_prev_match_goals()) {
 			return $this->teams[0];
+		}
 		return $this->teams[1];
 	}
 
@@ -1090,8 +1114,9 @@ class MatchData extends MainEntityData
 	 */
 	public function best_classified_team_after()
 	{
-		if ($this->teams[1]->get_pos_classification() < $this->teams[0]->get_pos_classification())
+		if ($this->teams[1]->get_pos_classification() < $this->teams[0]->get_pos_classification()) {
 			return $this->teams[1];
+		}
 		return $this->teams[0];
 	}
 
@@ -1101,8 +1126,9 @@ class MatchData extends MainEntityData
 	 */
 	public function worst_classified_team_after()
 	{
-		if ($this->teams[1]->get_pos_classification() >= $this->teams[0]->get_pos_classification())
+		if ($this->teams[1]->get_pos_classification() >= $this->teams[0]->get_pos_classification()) {
 			return $this->teams[1];
+		}
 		return $this->teams[0];
 	}
 
@@ -1113,8 +1139,9 @@ class MatchData extends MainEntityData
 	 */
 	public function is_goal_event($event_n)
 	{
-		if ($event_n === null)
+		if ($event_n === null) {
 			return false;
+		}
 		return ($this->events[$event_n] instanceof GoalEvent);
 	}
 
@@ -1187,15 +1214,22 @@ class MatchData extends MainEntityData
 			$event_coach = $event["fk_coach"];
 
 			// define team for goal event (just in case it is an own goal)
-			if ($event_type == '3' && $event["goal_og"] == '1')
+			if ($event_type == '3' && $event["goal_og"] == '1') {
 				$event_team = intval($event["fk_opponent"]);
-			else $event_team = intval($event["fk_team"]);
+			}
+			else {
+				$event_team = intval($event["fk_team"]);
+			}
 
-			if ($event_team === $this->teams[0]->get_id())
+			if ($event_team === $this->teams[0]->get_id()) {
 				$event_team = $this->teams[0];
-			elseif ($event_team === $this->teams[1]->get_id())
+			}
+			elseif ($event_team === $this->teams[1]->get_id()) {
 				$event_team = $this->teams[1];
-			else throw new Exception("undefined team id: " . $event_team . " is not one of " . $this->teams[0]->get_id() . " or " . $this->teams[1]->get_id());
+			}
+			else {
+				throw new Exception("undefined team id: " . $event_team . " is not one of " . $this->teams[0]->get_id() . " or " . $this->teams[1]->get_id());
+			}
 
 			// if yellow card, add directly
 			if ($event_type == '1') {
@@ -1222,8 +1256,9 @@ class MatchData extends MainEntityData
 				$key = $event_minute[0] . '.' . $event_minute[1] . '_' . $event_team->get_id();
 
 				// if no event of that type for team, create new entry
-				if (!array_key_exists($key, $tmp_events[$event_type]))
+				if (!array_key_exists($key, $tmp_events[$event_type])) {
 					$tmp_events[$event_type][$key] = array();
+				}
 
 				$addable = $this->players[$event_player];
 
@@ -1280,11 +1315,15 @@ class MatchData extends MainEntityData
 			$sub_key = explode('_', $sub_key);
 			$minute = explode('.', $sub_key[0]);
 			$team_id = intval($sub_key[1]);
-			if ($team_id === $this->teams[0]->get_id())
+			if ($team_id === $this->teams[0]->get_id()) {
 				$team = &$this->teams[0];
-			else if ($team_id === $this->teams[1]->get_id())
+			}
+			else if ($team_id === $this->teams[1]->get_id()) {
 				$team = &$this->teams[1];
-			else throw new Exception("undefined team id");
+			}
+			else {
+				throw new Exception("undefined team id");
+			}
 
 			array_push($result, new SubstitutionEvent($minute, $team, $players_in, $players_out));
 		}
@@ -1295,8 +1334,9 @@ class MatchData extends MainEntityData
 			$goal_event = $tmp_events['3'][$goal_key][0];
 
 			// check if there is an associated assist
-			if (array_key_exists($goal_key, $tmp_events['24']))
+			if (array_key_exists($goal_key, $tmp_events['24'])) {
 				$goal_event->set_assist_player($tmp_events['24'][$goal_key][0]);
+			}
 
 			// append to events
 			array_push($result, $goal_event);
@@ -1308,8 +1348,9 @@ class MatchData extends MainEntityData
 			$penalty_event = $tmp_penalties['17'][$penalty_key][0];
 
 			// check if there is an associated goalkeeper save
-			if (array_key_exists($penalty_key, $tmp_penalties['23']))
+			if (array_key_exists($penalty_key, $tmp_penalties['23'])) {
 				$penalty_event->set_goalkeeper($tmp_penalties['23'][$penalty_key][0]);
+			}
 
 			// append to events
 			array_push($result, $penalty_event);
@@ -1328,8 +1369,9 @@ class MatchData extends MainEntityData
 		$goals_away = 0;
 
 		foreach ($this->events as $event) {
-			if (!array_key_exists($event::NAME, $tmp_data))
+			if (!array_key_exists($event::NAME, $tmp_data)) {
 				$tmp_data[$event::NAME] = array('global' => 0);
+			}
 
 			// update number of events of this type in match
 			$tmp_data[$event::NAME]['global'] += 1;
@@ -1337,11 +1379,13 @@ class MatchData extends MainEntityData
 
 			// update specific field counts
 			foreach ($event->get_updatable_fields() as $field_name => $field_val) {
-				if (!array_key_exists($field_name, $tmp_data[$event::NAME]))
+				if (!array_key_exists($field_name, $tmp_data[$event::NAME])) {
 					$tmp_data[$event::NAME][$field_name] = array();
+				}
 
-				if (!array_key_exists($field_val, $tmp_data[$event::NAME][$field_name]))
+				if (!array_key_exists($field_val, $tmp_data[$event::NAME][$field_name])) {
 					$tmp_data[$event::NAME][$field_name][$field_val] = 0;
+				}
 
 				$tmp_data[$event::NAME][$field_name][$field_val] += 1;
 				$event->update_field($field_name, $tmp_data[$event::NAME][$field_name][$field_val]);
@@ -1379,16 +1423,14 @@ class MatchData extends MainEntityData
 		$pending = array();
 
 		foreach ($this->events as $event) {
-			if ($event::NAME == YellowCardEvent::NAME) {
-				if ($event->get_player_n() == 2)
-					$pending[$event->get_player()->get_id()] = true;
+			if ($event::NAME == YellowCardEvent::NAME && $event->get_player_n() == 2) {
+				$pending[$event->get_player()->get_id()] = true;
 			}
 		}
 
 		foreach ($this->events as $event) {
-			if ($event::NAME == RedCardEvent::NAME) {
-				if (array_key_exists($event->get_player()->get_id(), $pending))
-					$event->set_second_yellow(true);
+			if ($event::NAME == RedCardEvent::NAME && array_key_exists($event->get_player()->get_id(), $pending)) {
+				$event->set_second_yellow(true);
 			}
 		}
 	}
@@ -1401,8 +1443,9 @@ class MatchData extends MainEntityData
 	private static function get_goal_body_part($event)
 	{
 		$elem = intval($event["goal_body"]);
-		if (1 < $elem && $elem < 5)
+		if (1 < $elem && $elem < 5) {
 			return $elem;
+		}
 		return null;
 	}
 
@@ -1414,8 +1457,9 @@ class MatchData extends MainEntityData
 	private static function get_goal_zone($event)
 	{
 		$elem = intval($event["goal_zone"]);
-		if (1 < $elem && $elem < 4)
+		if (1 < $elem && $elem < 4) {
 			return $elem;
+		}
 		return null;
 	}
 
@@ -1426,11 +1470,13 @@ class MatchData extends MainEntityData
 	 */
 	private static function get_goal_type($event)
 	{
-		if ($event["goal_gp"] == '1')
+		if ($event["goal_gp"] == '1') {
 			return GoalType::PENALTY;
+		}
 		$elem = intval($event["goal_origin"]);
-		if (1 < $elem && $elem < 9)
+		if (1 < $elem && $elem < 9) {
 			return $elem;
+		}
 		return null;
 	}
 
@@ -1444,10 +1490,12 @@ class MatchData extends MainEntityData
 
 		foreach ($this->relevant_players as $player) {
 			$minute_in = $player->get_minute_in();
-			if ($minute_in == 0)
+			if ($minute_in == 0) {
 				array_push($this->starter_players, strval($player->get_name()));
-			else if ($minute_in == 999)
+			}
+			else if ($minute_in == 999) {
 				array_push($this->benched_players, strval($player->get_name()));
+			}
 		}
 	}
 
@@ -1495,8 +1543,9 @@ class MatchData extends MainEntityData
 	 */
 	private function compute_turnaround()
 	{
-		if (count($this->events) == 0)
+		if (count($this->events) == 0) {
 			return false;
+		}
 
 		$last_item = $this->events[0];
 		$tmp_home = array();
@@ -1538,7 +1587,6 @@ class MatchData extends MainEntityData
 	{
 		foreach ($this->events as $event) {
 			if ($event->get_event_name() == "red_card" && !$event->coach()) {
-				strval($event->get_team()->get_name());
 				$event->get_team()->set_final_players($event->get_team()->get_final_players() - 1);
 				$event->get_team()->set_has_red_card(true);
 			}
@@ -1680,7 +1728,7 @@ class MatchData extends MainEntityData
 		$pos = strpos($entity, ".");
 		$lookup = substr($entity, 0, $pos);
 
-		$entities = array(
+		$entities_array = array(
 			"competition" => $this->competition,
 			"best_player" => $this->get_best_player(),
 			"decisive_player" => $this->get_decisive_player(),
@@ -1721,7 +1769,7 @@ class MatchData extends MainEntityData
 			}
 		}
 
-		return $entities[$lookup];
+		return $entities_array[$lookup];
 	}
 
 	/**
@@ -1788,8 +1836,9 @@ class MatchData extends MainEntityData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 
@@ -1804,12 +1853,14 @@ class MatchData extends MainEntityData
 	public function get_entity_from_main($manager, $entity, $event_n = null, $report_mention = false)
 	{
 		$used_step = PHP_INT_MAX;
-		if ($report_mention && $event_n !== null)
+		if ($report_mention && $event_n !== null) {
 			$used_step = $event_n;
+		}
 
 		$event = null;
-		if ($event_n !== null && $event_n < count($this->events))
+		if ($event_n !== null && $event_n < count($this->events)) {
 			$event = $this->events[$event_n];
+		}
 
 		return parent::get_entity($manager, $entity, $used_step, $event_n, $event);
 	}

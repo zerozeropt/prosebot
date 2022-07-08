@@ -101,8 +101,9 @@ abstract class PersonData extends EntityData
      */
 	public function get_entity($manager, $entity, $used_step = PHP_INT_MAX, $event_n = null, $event = null)
 	{
-		if ($used_step < $this->used_step)
+		if ($used_step < $this->used_step) {
 			$this->used_step = $used_step;
+		}
 
 		return parent::get_entity($manager, $entity, $used_step, $event_n, $event);
 	}
@@ -165,8 +166,9 @@ class CoachData extends PersonData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 }
@@ -274,8 +276,9 @@ class PlayerData extends PersonData
 		$this->team_id = $json_data["fk_team"];
 
 		$this->own_goals = 0;
-		if ($this->goals == 0 && $this->tmp_goals != 0)
+		if ($this->goals == 0 && $this->tmp_goals != 0) {
 			$this->own_goals = 1;
+		}
 
 		$this->assists = intval($json_data['sassists']);
 		$this->positive_impact = 0;
@@ -421,8 +424,9 @@ class PlayerData extends PersonData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 }

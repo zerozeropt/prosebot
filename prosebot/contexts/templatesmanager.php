@@ -289,8 +289,8 @@ abstract class TemplatesManager
 			$result = trim($result);
 			
 			//tokenize sentences
-			preg_match_all('/(?<=[.?!])\s+(?=(\w|<i>))/u', $result, $out, PREG_OFFSET_CAPTURE);
-			$result = preg_split('/(?<=[.?!])\s+(?=(\w|<i>))/u', $result);
+			preg_match_all('/(?<=[.?!])\s+(?=(\w|<em>))/u', $result, $out, PREG_OFFSET_CAPTURE);
+			$result = preg_split('/(?<=[.?!])\s+(?=(\w|<em>))/u', $result);
 
 			//capitalize first letter
 			foreach ($result as &$sentence) {
@@ -304,7 +304,7 @@ abstract class TemplatesManager
 						$after_tags = $after_a_tag_array[2];
 						$has_hyperlink = true;
 					}
-					preg_match('/(^<i>)(.*<\/i>.*$)/u', trim($after_tags), $after_i_tag_array);
+					preg_match('/(^<em>)(.*<\/em>.*$)/u', trim($after_tags), $after_i_tag_array);
 					if (count($after_i_tag_array) > 2) {
 						$after_tags = $after_i_tag_array[2];
 						$has_italic = true;

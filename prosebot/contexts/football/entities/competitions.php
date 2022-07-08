@@ -43,10 +43,9 @@ class CompetitionData extends EntityData
 	 *-----------------------------------------------------
     */
     /**
-     * @param Grammar $grammar   Grammar
      * @param array   $json_data Decoded json data for a competition
      */
-    function __construct($grammar, $json_data)
+    function __construct($json_data)
     {
         parent::__construct($json_data['edition_id'], $json_data['competition'], FootballFetcher::edition_link);
         $this->name_array = $json_data['competition_name'];
@@ -67,15 +66,6 @@ class CompetitionData extends EntityData
         $number = $is_singular ? NameNumber::SINGULAR : NameNumber::PLURAL;
 		return new TextStructure($name, $gender, $number);
 	}
-
-    /**
-     * Set competition name
-     * @param string $name Name
-     */
-    public function set_name($name)
-    {
-        parent::set_name($name);
-    }
 
     /**
      * Get the names of the competition for each language
@@ -119,8 +109,9 @@ class CompetitionData extends EntityData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+        }
         return static::$entities;
     }
 }

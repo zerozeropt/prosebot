@@ -143,8 +143,9 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 			}
 
 			$cached_val = $this->read_cache('last_method');
-			if ($cached_val === null)
+			if ($cached_val === null) {
 				$cached_val = count($options) - 1;
+			}
 
 			for ($i = 0; $i < count($options); $i++) {
 				$cached_val = ($cached_val + 1) % count($options);

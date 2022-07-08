@@ -251,17 +251,23 @@ class TeamData extends EntityData
 		$this->form_global = static::get_form($form_json);
 		$this->form_number_global = 0;
 		foreach ($this->form_global as $result) {
-			if ($result == $this->form_global[0])
+			if ($result == $this->form_global[0]) {
 				$this->form_number_global++;
-			else break;
+			}
+			else {
+				break;
+			}
 		}
 
 		$this->form_competition = static::get_form($form_json, $competition);
 		$this->form_number_competition = 0;
 		foreach ($this->form_competition as $result) {
-			if ($result == $this->form_competition[0])
+			if ($result == $this->form_competition[0]) {
 				$this->form_number_competition++;
-			else break;
+			}
+			else {
+				break;
+			}
 		}
 
 		$this->next_global_opponent = null;
@@ -354,8 +360,9 @@ class TeamData extends EntityData
 		$result = array();
 
 		foreach ($data as $game) {
-			if ($competition === null || $competition === $game["descr_edition"])
+			if ($competition === null || $competition === $game["descr_edition"]) {
 				array_push($result, $game["state"]);
+			}
 		}
 
 		return $result;
@@ -384,8 +391,9 @@ class TeamData extends EntityData
 	private static function get_next_opponent($grammar, $data, $competition = null)
 	{
 		foreach ($data as $game) {
-			if ($competition === null || $competition === $game["descr_edition"])
+			if ($competition === null || $competition === $game["descr_edition"]) {
 				return array($grammar::get_elem($game, "opponent_descr"), $game["where"], $game["id"], $game["fixture"], $game["neutral_field"]);
+			}
 		}
 		return null;
 	}
@@ -522,11 +530,6 @@ class TeamData extends EntityData
 	/**
 	 * Setters
 	 */
-	public function set_name($name)
-	{
-		parent::set_name($name);
-	}
-
 	public function set_prev_match_goals($goals)
 	{
 		$this->prev_match_goals = $goals;
@@ -655,8 +658,9 @@ class TeamData extends EntityData
 				}
 			}
 
-			if ($skip)
+			if ($skip) {
 				continue;
+			}
 
 			array_push($this->curiosities, new Curiosity($this, $actual_key[0], $pre_val, $post_val, $actual_key[1]));
 		}
@@ -710,8 +714,9 @@ class TeamData extends EntityData
 		$this->match_stats = [];
 
 		foreach ($match_stats as $stat) {
-			if ($stat["fk_team"] == $this->id)
+			if ($stat["fk_team"] == $this->id) {
 				$this->match_stats[$stat['key']] = $stat["value"];
+			}
 		}
 
 		$this->edition_stats = [];
@@ -727,14 +732,18 @@ class TeamData extends EntityData
 		$this->stats = array();
 
 		foreach ($this->match_stats as $key => $stat) {
-			if (array_key_exists($key, $edition_team_stats) && $stat > $edition_team_stats[$key])
+			if (array_key_exists($key, $edition_team_stats) && $stat > $edition_team_stats[$key]) {
 				array_push($this->stats, new Stat($this, $key, $stat, true, true));
-			else if (array_key_exists($key, $this->edition_stats) && $stat > $this->edition_stats[$key])
+			}
+			else if (array_key_exists($key, $this->edition_stats) && $stat > $this->edition_stats[$key]) {
 				array_push($this->stats, new Stat($this, $key, $stat, false, true));
-			else if (array_key_exists($key, $edition_team_negative_stats) && $stat < $edition_team_negative_stats[$key])
+			}
+			else if (array_key_exists($key, $edition_team_negative_stats) && $stat < $edition_team_negative_stats[$key]) {
 				array_push($this->stats, new Stat($this, $key, $stat, true, false));
-			else if (array_key_exists($key, $this->negative_edition_stats) && $stat < $this->negative_edition_stats[$key])
+			}
+			else if (array_key_exists($key, $this->negative_edition_stats) && $stat < $this->negative_edition_stats[$key]) {
 				array_push($this->stats, new Stat($this, $key, $stat, false, false));
+			}
 		}
 
 		$this->current_stat = Utils::find($this->stats, function ($element) {
@@ -796,8 +805,9 @@ class TeamData extends EntityData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 }
