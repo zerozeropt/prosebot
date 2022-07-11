@@ -1,26 +1,11 @@
 <?php
 require_once(__DIR__.'/managers/templatesmanager.php');
 require_once(__DIR__.'/../../global_vars.php');
+require_once(__DIR__.'/../../utils.php');
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 date_default_timezone_set("Europe/Lisbon");
-
-function printP($text)
-{
-	echo $text;
-}
-
-function printList($list, $title)
-{
-	echo '<h4>' . $title . '</h4>';
-	if (count($list) > 0) {
-		echo '<div>';
-		echo '<li>' . implode('</li><li>', $list) . '</li>';
-		echo '</ul>';
-	}
-}
-
 header('Content-Type: text/html; charset=utf8');
 ?>
 
@@ -80,24 +65,24 @@ header('Content-Type: text/html; charset=utf8');
 				}
 		?>
 				<div>
-					<h1><?php printP($title); ?></h1>
-					<h3><?php printP($sub_title); ?></h3>
-					<p><?php printP($small_text); ?></p>
-					<p><?php printP($article); ?></p>
+					<h1><?php Utils::printP($title); ?></h1>
+					<h3><?php Utils::printP($sub_title); ?></h3>
+					<p><?php Utils::printP($small_text); ?></p>
+					<p><?php Utils::printP($article); ?></p>
 					<h3>Curiosities</h3>
-					<?php printList($stats['match_stats'], "Jogo") ?>
-					<?php printList($stats['home_team_stats'], $match->home_team()->get_name()) ?>
-					<?php printList($stats['away_team_stats'], $match->away_team()->get_name()) ?>
+					<?php Utils::printList($stats['match_stats'], "Jogo") ?>
+					<?php Utils::printList($stats['home_team_stats'], $match->home_team()->get_name()) ?>
+					<?php Utils::printList($stats['away_team_stats'], $match->away_team()->get_name()) ?>
 					<?php
 					if ($with_stats) {
 					?>
 					<div>
 						<h5>Lexical Diversity (1-100)</h5>
-						<p><?php printP($count); ?></p>
+						<p><?php Utils::printP($count); ?></p>
 					</div>
 					<div>
 						<h5>Sentences medium size (1-100)</h5>
-						<p><?php printP($medium_sentence_size); ?></p>
+						<p><?php Utils::printP($medium_sentence_size); ?></p>
 					</div>
 					<div>
 						<?php
@@ -116,16 +101,16 @@ header('Content-Type: text/html; charset=utf8');
 				</div>
 				<div>
 					<h5>Score (1-10)</h5>
-					<p><?php printP($points); ?></p>
+					<p><?php Utils::printP($points); ?></p>
 				</div>
 				<?php } ?>
 				<h5>VERSION - <?php echo get_globals()["version"]; ?></h5>
 		<?php
 			} catch (Exception $e) {
-				printP($e->getMessage());
+				Utils::printP($e->getMessage());
 			}
 		} else {
-			printP("");
+			Utils::printP("");
 			exit();
 		}
 		?>

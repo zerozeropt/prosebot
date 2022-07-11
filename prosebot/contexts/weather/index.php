@@ -1,26 +1,11 @@
 <?php
 require_once(__DIR__.'/managers/templatesmanager.php');
 require_once(__DIR__.'/../../global_vars.php');
+require_once(__DIR__.'/../../utils.php');
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 date_default_timezone_set("Europe/Lisbon");
-
-function printP($text)
-{
-	echo $text;
-}
-
-function printList($list, $title)
-{
-	echo '<h4>' . $title . '</h4>';
-	if (count($list) > 0) {
-		echo '<div>';
-		echo '<li>' . implode('</li><li>', $list) . '</li>';
-		echo '</ul>';
-	}
-}
-
 header('Content-Type: text/html; charset=utf8');
 ?>
 
@@ -67,16 +52,16 @@ header('Content-Type: text/html; charset=utf8');
 				$city = $summary["city"];
 		?>
 				<div>
-					<h1><?php printP($title); ?></h1>
-					<p><?php printP($article); ?></p>
+					<h1><?php Utils::printP($title); ?></h1>
+					<p><?php Utils::printP($article); ?></p>
 				</div>
 				<h5>VERSION - <?php echo get_globals()["version"]; ?></h5>
 		<?php
 			} catch (Exception $e) {
-				printP($e->getMessage());
+				Utils::printP($e->getMessage());
 			}
 		} else {
-			printP("");
+			Utils::printP("");
 			exit();
 		}
 		?>

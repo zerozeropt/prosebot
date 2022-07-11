@@ -420,9 +420,9 @@ class MatchData extends MainEntityData
 
 			usort($this->events, function ($a, $b) {
 				if ($a->get_minute()[0] == $b->get_minute()[0]) {
-					return $a->get_minute()[1] > $b->get_minute()[1];
+					return $a->get_minute()[1] - $b->get_minute()[1];
 				}
-				return $a->get_minute()[0] > $b->get_minute()[0];
+				return $a->get_minute()[0] - $b->get_minute()[0];
 			});
 
 			$this->add_events_counts();

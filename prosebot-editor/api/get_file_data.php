@@ -6,7 +6,11 @@
  * RESPONSE: JSON Data of the file
  */
 
-header("Access-Control-Allow-Origin: *");
+require_once(__DIR__.'/vendor/autoload.php');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+header("Access-Control-Allow-Origin: ".$_ENV['CLIENT']);
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");

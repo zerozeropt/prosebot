@@ -151,4 +151,28 @@ class Utils
 	{
 		return $bool ? "1" : "0";
 	}
+
+	/**
+	 * Prints text
+	 * @param string $text Text to be printed
+     */
+	static function printP($text)
+	{
+		echo $text;
+	}
+
+	/**
+	 * Prints a list
+	 * @param array  $list  List to be printed
+	 * @param string $title Title of the list
+     */
+	static function printList($list, $title)
+	{
+		echo '<h4>' . $title . '</h4>';
+		if (count($list) > 0) {
+			echo '<div>';
+			echo '<li>' . implode('</li><li>', $list) . '</li>';
+			echo '</ul>';
+		}
+	}
 }
