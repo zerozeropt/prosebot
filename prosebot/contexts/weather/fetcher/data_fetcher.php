@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__.'/../../data_fetcher.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Class for fetching Weather data
@@ -26,7 +27,7 @@ class WeatherFetcher extends DataFetcher
         $json = static::get_json($api);
 
         if($json == null) {
-            throw new Exception("Error: City " . $city_id . " does not exist.");
+            throw new DataFetcherException("City", $city_id);
         }
 
         return [
@@ -50,7 +51,7 @@ class WeatherFetcher extends DataFetcher
         $xml = static::get_xml($api);
 
         if($xml == null) {
-            throw new Exception("Error: City " . $city_id . " does not exist.");
+            throw new DataFetcherException("City", $city_id);
         }
 
         $city = $xml->city->attributes()->name->__toString();

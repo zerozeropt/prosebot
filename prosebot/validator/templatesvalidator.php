@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/../utils.php');
 require_once(__DIR__ . '/../global_vars.php');
 require_once(__DIR__ . "/../contexts/entities.php");
+require_once(__DIR__ . "/../exceptions.php");
 
 /**
  * Class to validate writing correction of templates
@@ -198,7 +199,7 @@ class TemplatesValidator
 				$this->execution_method($option, $has_hierarchy);
 			} catch (Exception $e) {
 				// If error, throw exception with file name 
-				throw new Exception("[" . $template_name . "] -> " . $e->getMessage());
+				throw new ValidationErrorException($e->getMessage(), "", $template_name);
 			}
 		}
 	}
@@ -1020,7 +1021,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_missing_text($path)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Missing \"text\" key on element");
+		throw new ValidationErrorException("Missing \"text\" key on element", $path);
 	}
 
 	/**
@@ -1029,7 +1030,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_missing_condition($path)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Missing \"condition\" key on element");
+		throw new ValidationErrorException("Missing \"condition\" key on element", $path);
 	}
 
 	/**
@@ -1040,7 +1041,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_missing_bracket($path, $bracket, $chunk)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Missing \"" . $bracket . "\" on chunk \"" . $chunk . "\"");
+		throw new ValidationErrorException("Missing \"" . $bracket . "\" on chunk \"" . $chunk . "\"", $path);
 	}
 
 	/**
@@ -1051,7 +1052,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_expected_found($path, $expected, $found)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Expected \"" . $expected . "\", found \"" . $found . "\"");
+		throw new ValidationErrorException("Expected \"" . $expected . "\", found \"" . $found . "\"", $path);
 	}
 
 	/**
@@ -1062,7 +1063,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_token($path, $token, $explanation)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Wrong token construction: \"{" . $token . "}\", " . $explanation);
+		throw new ValidationErrorException("Wrong token construction: \"{" . $token . "}\", " . $explanation, $path);
 	}
 
 	/**
@@ -1073,7 +1074,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_construct($path, $construct, $explanation)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Wrong construction: \"{" . $construct . "}\", " . $explanation);
+		throw new ValidationErrorException("Wrong construction: \"{" . $construct . "}\", " . $explanation, $path);
 	}
 
 	/**
@@ -1084,7 +1085,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_condition($path, $condition, $explanation)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Wrong condition construction: \"{" . $condition . "}\", " . $explanation);
+		throw new ValidationErrorException("Wrong condition construction: \"{" . $condition . "}\", " . $explanation, $path);
 	}
 
 	/**
@@ -1094,7 +1095,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_variable($path, $variable)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Invalid variable name: \"" . $variable . "\"");
+		throw new ValidationErrorException("Invalid variable name: \"" . $variable . "\"", $path);
 	}
 
 	/**
@@ -1104,7 +1105,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_boolean($path, $express)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Wrong boolean expression construction: \"" . $express . "\"");
+		throw new ValidationErrorException("Wrong boolean expression construction: \"" . $express . "\"", $path);
 	}
 
 	/**
@@ -1115,7 +1116,7 @@ class TemplatesValidator
 	 */
 	private function throw_error_bad_link($path, $link, $explanation)
 	{
-		throw new Exception("<b>Error:</b> " . $path . " - Wrong link construction: \"" . $link . "\", " . $explanation);
+		throw new ValidationErrorException("Wrong link construction: \"" . $link . "\", " . $explanation, $path);
 	}
 
 	/**

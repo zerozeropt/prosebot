@@ -6,6 +6,7 @@ require_once('players.php');
 require_once('teams.php');
 require_once('competitions.php');
 require_once(__DIR__.'/../../entities.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Class for a match
@@ -710,37 +711,37 @@ class MatchData extends MainEntityData
 		return strval($this->goals());
 	}
 
-	public function get_event_minute($event_key, $event)
+	public function get_event_minute($event)
 	{
 		return $event->get_minute()[0];
 	}
 
-	public function get_event_score_player($event_key, $event)
+	public function get_event_score_player($event)
 	{
 		return $event->get_score_player();
 	}
 
-	public function get_event_assist_maker($event_key, $event)
+	public function get_event_assist_maker($event)
 	{
 		return $event->get_assist_player();
 	}
 
-	public function get_stat_val($event_key, $event)
+	public function get_stat_val($event_key)
 	{
 		return $this->stats[$event_key]->get_value();
 	}
 
-	public function get_pre_curiosity_val($event_key, $event)
+	public function get_pre_curiosity_val($event_key)
 	{
 		return $this->curiosities[$event_key]->get_pre_value();
 	}
 
-	public function get_post_curiosity_val($event_key, $event)
+	public function get_post_curiosity_val($event_key)
 	{
 		return $this->curiosities[$event_key]->get_post_value();
 	}
 
-	public function get_event_team($event_key, $event)
+	public function get_event_team($event)
 	{
 		$team = $event->get_team();
 		if ($this->teams[0] === $team) {
@@ -752,7 +753,7 @@ class MatchData extends MainEntityData
 		return null;
 	}
 
-	public function get_other_curiosity_team($event_key, $event)
+	public function get_other_curiosity_team($event_key)
 	{
 		$team = $this->curiosities[$event_key]->get_team();
 		if ($this->teams[0] === $team) {
@@ -761,7 +762,7 @@ class MatchData extends MainEntityData
 		return $this->teams[0];
 	}
 
-	public function get_stat_team($event_key, $event)
+	public function get_stat_team($event_key)
 	{
 		$team = $this->stats[$event_key]->get_team();
 		if ($this->teams[0] === $team) {
@@ -773,17 +774,17 @@ class MatchData extends MainEntityData
 		return null;
 	}
 
-	public function get_event_team_goals_diff($event_key, $event)
+	public function get_event_team_goals_diff($event)
 	{
 		return $event->team_goals_diff();
 	}
 
-	public function get_event_player($event_key, $event)
+	public function get_event_player($event)
 	{
 		return $event->get_player();
 	}
 
-	public function get_event_goalkeeper($event_key, $event)
+	public function get_event_goalkeeper($event)
 	{
 		return $event->get_goalkeeper();
 	}
@@ -1242,7 +1243,7 @@ class MatchData extends MainEntityData
 				$event_team = $this->teams[1];
 			}
 			else {
-				throw new Exception("undefined team id: " . $event_team . " is not one of " . $this->teams[0]->get_id() . " or " . $this->teams[1]->get_id());
+				throw new UndefinedEntityException("team id: " . $event_team . " is not one of " . $this->teams[0]->get_id() . " or " . $this->teams[1]->get_id());
 			}
 
 			// if yellow card, add directly
@@ -1336,7 +1337,7 @@ class MatchData extends MainEntityData
 				$team = &$this->teams[1];
 			}
 			else {
-				throw new Exception("undefined team id");
+				throw new UndefinedEntityException("team id");
 			}
 
 			array_push($result, new SubstitutionEvent($minute, $team, $players_in, $players_out));
@@ -1832,18 +1833,18 @@ class MatchData extends MainEntityData
 			"team_worst_after" => new EntityGetterSub("worst_classified_team_after", "TeamData"),
 			"decisive_player" => new EntityGetterSub("get_decisive_player", "PlayerData"),
 			"best_player" => new EntityGetterSub("get_best_player", "PlayerData"),
-			"minute" => new EntityGetterFlat("get_event_minute", true),
-			"scorer" => new EntityGetterSub("get_event_score_player", "PlayerData", true),
-			"assist_maker" => new EntityGetterSub("get_event_assist_maker", "PlayerData", true),
+			"minute" => new EntityGetterFlat("get_event_minute"),
+			"scorer" => new EntityGetterSub("get_event_score_player", "PlayerData"),
+			"assist_maker" => new EntityGetterSub("get_event_assist_maker", "PlayerData"),
 			"stat_val" => new EntityGetterFlat("get_stat_val", true),
 			"pre_curiosity_val" => new EntityGetterFlat("get_pre_curiosity_val", true),
 			"post_curiosity_val" => new EntityGetterFlat("get_post_curiosity_val", true),
-			"team" => new EntityGetterSub("get_event_team", "TeamData", true),
+			"team" => new EntityGetterSub("get_event_team", "TeamData"),
 			"other_curiosity_team" => new EntityGetterSub("get_other_curiosity_team", "TeamData", true),
 			"stat_team" => new EntityGetterSub("get_stat_team", "TeamData", true),
-			"team_goals_diff" => new EntityGetterFlat("get_event_team_goals_diff", true),
-			"player" => new EntityGetterSub("get_event_player", "PlayerData", true),
-			"goalkeeper" => new EntityGetterSub("get_event_goalkeeper", "PlayerData", true)
+			"team_goals_diff" => new EntityGetterFlat("get_event_team_goals_diff"),
+			"player" => new EntityGetterSub("get_event_player", "PlayerData"),
+			"goalkeeper" => new EntityGetterSub("get_event_goalkeeper", "PlayerData")
 		];
 	}
 

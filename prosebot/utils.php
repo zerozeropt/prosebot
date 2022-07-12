@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__.'/exceptions.php');
 
 /**
  * Class of auxiliary functions transversal to all contexts
@@ -81,7 +82,7 @@ class Utils
 	/**
 	 * Validate json syntax
 	 * @param string $string Json file in string format
-	 * @return json|Exception Encoded json if no error, otherwise throws exception
+	 * @return json Encoded json if no error, otherwise throws exception
      */
 	static function json_validate($string)
 	{
@@ -127,7 +128,7 @@ class Utils
 
 		if ($error !== '') {
 			// throw the Exception
-			throw new Exception("Error: " . $error);
+			throw new ValidationErrorException($error, "/");
 		}
 
 		// everything is OK

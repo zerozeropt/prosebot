@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__.'/../../data_fetcher.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Class for fetching Football data
@@ -36,7 +37,7 @@ class FootballFetcher extends DataFetcher
 		$json = static::get_json($api);
 
 		if($json == null) {
-			throw new Exception("Error: Match " . $match_id . " does not exist.");
+			throw new DataFetcherException("Match", $match_id);
 		}
 		
 		return $json;
@@ -53,7 +54,7 @@ class FootballFetcher extends DataFetcher
 		$json = static::get_json($api);
 
 		if($json == null) {
-			throw new Exception("Error: Match " . $match_id . " does not exist.");
+			throw new DataFetcherException("Match", $match_id);
 		}
 		
 		return $json;
@@ -70,7 +71,7 @@ class FootballFetcher extends DataFetcher
 		$json = static::get_json($api);
 
 		if ($json == null) {
-			throw new Exception("Error: Team " . $team_id . " does not exist.");
+			throw new DataFetcherException("Team", $team_id);
 		}
 
 		return $json;

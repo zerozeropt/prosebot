@@ -4,6 +4,7 @@ require_once('templates.php');
 require_once(__DIR__.'/../utils.php');
 require_once(__DIR__.'/../global_vars.php');
 require_once('entities.php');
+require_once(__DIR__.'/../exceptions.php');
 
 /**
  * Enum of scoring mechanics for evaluation of the generated content
@@ -86,7 +87,7 @@ abstract class TemplatesManager
 		static::$language_dir = $language;
 		$success = require_once(__DIR__.'/../grammars/'.static::$language_dir.'/grammar.php');
 		if (!$success) {
-			throw new Exception("Error: Language does not exist.");
+			throw new UndefinedLanguageException("Language does not exist.");
 		}
 
 		static::$templates_dir = __DIR__.'/'.$context.'/templates/'.static::$language_dir.'/';

@@ -350,7 +350,7 @@ class PlayerData extends PersonData
 		return $this->consecutive_matches_scoring;
 	}
 
-	public function get_season_goals($event_key, $event)
+	public function get_season_goals($event)
 	{
 		if ($event !== null) {
 			$add = $event->get_scorer_n();
@@ -415,7 +415,7 @@ class PlayerData extends PersonData
 			"assists" => new EntityGetterFlat("get_assists"),
 			"minute_in" => new EntityGetterFlat("get_minute_in"),
 			"consecutive_matches_scoring" => new EntityGetterFlat("get_consecutive_matches_scoring"),
-			"season_goals" => new EntityGetterFlat("get_season_goals", true)
+			"season_goals" => new EntityGetterFlat("get_season_goals")
 		];
 	}
 

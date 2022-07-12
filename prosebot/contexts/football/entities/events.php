@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__.'/../fetcher/data_fetcher.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Super class for an event
@@ -120,7 +121,7 @@ abstract class Event
 	public function __call($name, $arguments)
 	{
 		if (!method_exists($this, $name)) {
-			throw new ErrorException($name . ' does not exist!');
+			throw new UndefinedMethodException($name . ' does not exist!');
 		}
 	}
 

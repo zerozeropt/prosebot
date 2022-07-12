@@ -3,6 +3,7 @@
 require_once(__DIR__.'/../../templatesmanager.php');
 require_once(__DIR__.'/../entities/matches.php');
 require_once('propertiesmanager.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Enum of summaries' parts
@@ -108,7 +109,7 @@ class TemplatesManagerFootball extends TemplatesManager
 
 		$success = require_once(static::$language_dir.'/entitiesmanager.php');
 		if (!$success) {
-			throw new Exception("Error: Language does not exist.");
+			throw new UndefinedLanguageException("Language does not exist.");
 		}
 
 		$name = "EntitiesManager" . ucfirst(static::$context) . strtoupper(static::$language_dir);
