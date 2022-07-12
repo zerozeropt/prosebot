@@ -501,7 +501,7 @@ abstract class TemplatesManager
 				foreach ($filtered_properties as $property) {
 					try {
 						$function_name = $property->func;
-						$value = $function_name($main_entity, $event_key, $replacing_arg);
+						$value = $function_name($replacing_arg, $main_entity, $event_key);
 						$value = is_numeric($value) ? $value : "\"" . $value . "\"";
 						$condition = str_replace($property->name, $value, $condition);
 					} catch (Error $e) {

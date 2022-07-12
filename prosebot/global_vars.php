@@ -5,7 +5,7 @@
      */
     function get_globals()
     {
-        $globals = [
+        return [
             "version" => 6.000,
             "contexts" => [
                 "football" => "Football",
@@ -28,6 +28,5 @@
                 "weather" => ["CityData", "cities"]
             ]
         ];
-        return $globals;
     }
 ?>

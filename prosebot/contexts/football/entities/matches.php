@@ -890,13 +890,27 @@ class MatchData extends MainEntityData
 	 */
 	private function compute_h2h_data($h2h_data)
 	{
-		$pre_games = $h2h_data['SUMMARYTOTAL']["games"]["0"];
+		$pre_games = 0;
+		$pre_home_team_wins = 0;
+		$pre_away_team_wins = 0;
+		$pre_draws = 0;
+
+		$h2h_data_summary = $h2h_data['SUMMARYTOTAL'];
+		if (array_key_exists("games", $h2h_data_summary)) {
+			$pre_games = $h2h_data_summary["games"]["0"];
+		}
 		$post_games = $pre_games + 1;
-		$pre_home_team_wins = $h2h_data['SUMMARYTOTAL']["vict_1"]["0"];
+		if (array_key_exists("vict_1", $h2h_data_summary)) {
+			$pre_home_team_wins = $h2h_data_summary["vict_1"]["0"];
+		}
 		$post_home_team_wins = $pre_home_team_wins;
-		$pre_away_team_wins = $h2h_data['SUMMARYTOTAL']["vict_2"]["0"];
+		if (array_key_exists("vict_2", $h2h_data_summary)) {
+			$pre_away_team_wins = $h2h_data_summary["vict_2"]["0"];
+		}
 		$post_away_team_wins = $pre_away_team_wins;
-		$pre_draws = $h2h_data['SUMMARYTOTAL']["draws"]["0"];
+		if (array_key_exists("draws", $h2h_data_summary)) {
+			$pre_draws = $h2h_data_summary["draws"]["0"];
+		}
 		$post_draws = $pre_draws;
 
 		if ($this->score_diff() == 0) {
