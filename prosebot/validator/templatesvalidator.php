@@ -13,6 +13,8 @@ class TemplatesValidator
 {
 	const TEXT_TYPE = "text";
 	const CONDITION_TYPE = "condition";
+	const CONTEXTS_DIR = __DIR__."/../contexts/";
+	const BOOL_EXPR = "boolean expression";
 
 	/**
 	 * @param string $language Language
@@ -24,7 +26,7 @@ class TemplatesValidator
 		$this->templates_array = [];
 		$this->language = $language;  // language of the template to validate
 		$this->context = $context;
-		$this->dictionary = __DIR__ . "/../contexts/" . $context . "/dictionary/vars.json";
+		$this->dictionary = self::CONTEXTS_DIR . $context . "/dictionary/vars.json";
 		$this->unused_templates = [];					// to generate warnings of unused templates with hierarchy
 		$this->templates_queue = [];					// queue of templates to be parsed next		
 		$this->valid_templates = [];					// all templates
@@ -179,7 +181,7 @@ class TemplatesValidator
 	 */
 	public function validate_all_files($has_hierarchy, $option)
 	{
-		$dir = __DIR__ . "/../contexts/" . $this->context . "/templates/" . $this->language . "/";
+		$dir = self::CONTEXTS_DIR . $this->context . "/templates/" . $this->language . "/";
 		$templates = scandir($dir);
 		if ($templates === false) {
 			echo "Warning: Directory is empty<br>";
@@ -421,7 +423,7 @@ class TemplatesValidator
 
 		$token = $token_array[0];
 		// Token cannot have whitespaces or if a connector is used it cannot have whitespaces after %
-		if (preg_match('/\s(?!.*[%])/u', $token)) {
+		if (preg_match('/\s(?!.*%)/u', $token)) {
 			$this->throw_error_bad_token($path, $token, "token declaration cannot have whitespaces");
 		}
 
@@ -614,7 +616,7 @@ class TemplatesValidator
 			switch ($expr) {
 				case "(":
 					if (!$can_open_parenthesis) { // cannot do )(
-						$this->throw_error_expected_found($path, "boolean expression", $expr);
+						$this->throw_error_expected_found($path, self::BOOL_EXPR, $expr);
 					}
 					$nr_par++;
 					break;
@@ -652,7 +654,7 @@ class TemplatesValidator
 		$first_char = $condition_array[0];
 		$is_and_or = trim($first_char) == "&&" || trim($first_char) == "||";
 		if ($is_and_or && !$can_use_and_or) { // cannot use && or || but used them
-			$this->throw_error_expected_found($path, "boolean expression", $first_char);
+			$this->throw_error_expected_found($path, self::BOOL_EXPR, $first_char);
 		}
 
 		foreach ($condition_array as $expr) {
@@ -680,7 +682,7 @@ class TemplatesValidator
 	private function and_or($path, $expression, &$can_use_and_or)
 	{
 		if (!$can_use_and_or) {
-			$this->throw_error_expected_found($path, "boolean expression", $expression);
+			$this->throw_error_expected_found($path, self::BOOL_EXPR, $expression);
 		}
 		$can_use_and_or = false; // used && or ||, cannot use again
 	}
@@ -697,7 +699,8 @@ class TemplatesValidator
 		$express_array = preg_split('/<=|>=|<|>|===|==|!=/u', $expression);
 
 		// A boolean expression cannot be just a number or a string
-		if (preg_match('/(?<![\w\d\W])-?(\d|".*")+$/u', $expression)) {
+		$pattern = '/(?<![\w\W])-?(\d|".*")+$/u';
+		if (preg_match($pattern, $expression)) {
 			$this->throw_error_bad_condition($path, $expression, "not a boolean expression");
 		}
 
@@ -705,7 +708,7 @@ class TemplatesValidator
 		$first_elem = trim($express_array[0]);
 		$is_sign = $first_elem == ">=" || $first_elem == ">" || $first_elem == "<=" || $first_elem == "<" || $first_elem == "===" || $first_elem == "==" || $first_elem == "!=";
 		if ($is_sign && !$can_use_signs) {
-			$this->throw_error_expected_found($path, "boolean expression", "equation sign");
+			$this->throw_error_expected_found($path, self::BOOL_EXPR, "equation sign");
 		}
 
 		// Too many expression signs
@@ -717,7 +720,7 @@ class TemplatesValidator
 		foreach ($express_array as $expr) {
 			$exp = trim($expr);
 			// If not a number or a string
-			if (!preg_match('/(?<![\w\d\W])-?(\d|".*")+$/u', $exp) && !($exp == "" && $can_use_signs)) {
+			if (!preg_match($pattern, $exp) && !($exp == "" && $can_use_signs)) {
 				$this->negation($path, trim($expr)); // !entity.property or !property
 			}
 		}
@@ -735,13 +738,13 @@ class TemplatesValidator
 			// Consume !
 			$express = mb_substr($express, 1, $strlen - 1, 'UTF-8');
 			// If a number or string, throw error
-			if (preg_match('/(?<![\w\d\W])-?(\d|".*")+$/u', $express)) {
+			if (preg_match('/(?<![\w\W])-?(\d|".*")+$/u', $express)) {
 				$this->throw_error_bad_condition($path, $express, "\"!\" sign should be followed by a variable");
 			}
 		}
 
 		// If not a number
-		if (!preg_match('/(?<![\w\d\W])-?(\d)+$/u', $express)) {
+		if (!preg_match('/(?<![\w\W])-?(\d)+$/u', $express)) {
 			$this->validate_arithmetic($path, $express); // entity.property
 		}
 	}
@@ -759,7 +762,7 @@ class TemplatesValidator
 		// For each operand
 		foreach ($operands as $operand) {
 			// If not a number
-			if (!preg_match('/(?<![\w\d\W])-?(\d)+$/u', $operand)) {
+			if (!preg_match('/(?<![\w\W])-?(\d)+$/u', $operand)) {
 				$this->condition_dot($path, $operand);
 			}
 		}
@@ -799,7 +802,7 @@ class TemplatesValidator
 			$this->throw_error_bad_variable($path, "empty variable");
 		}
 
-		if (!preg_match('/(?<![\w\d\W])(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?![\w\d\W])/u', $variable)) {
+		if (!preg_match('/(?<![\w\W])(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?![\w\W])/u', $variable)) {
 			$this->throw_error_bad_variable($path, $variable);
 		}
 	}
@@ -815,7 +818,7 @@ class TemplatesValidator
 			$this->throw_error_bad_variable($path, "empty variable");
 		}
 
-		if (!preg_match('/(?<![\w\d\W])[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable)) {
+		if (!preg_match('/(?<![\w\W])[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\W])/u', $variable)) {
 			echo $this->file_name . "Warning: " . $path . " - Invalid variable name: \"$variable\"<br>";
 		}
 	}
@@ -831,7 +834,7 @@ class TemplatesValidator
 			$this->throw_error_bad_variable($path, "empty variable");
 		}
 
-		if (!preg_match('/(?<![\w\d\W])([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable)) {
+		if (!preg_match('/(?<![\w\W])([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\W])/u', $variable)) {
 			$this->throw_error_bad_variable($path, $variable);
 		}
 	}
@@ -1126,8 +1129,8 @@ class TemplatesValidator
 	public static function generate_dictionary($context)
 	{
 		$main_entity = get_globals()["main_entities_classes"][$context];
-		require_once(__DIR__ . "/../contexts/" . $context . "/managers/propertiesmanager.php");
-		require_once(__DIR__ . "/../contexts/" . $context . "/entities/" . $main_entity[1] . ".php");
+		require_once(self::CONTEXTS_DIR . $context . "/managers/propertiesmanager.php");
+		require_once(self::CONTEXTS_DIR . $context . "/entities/" . $main_entity[1] . ".php");
 
 		$dictionary = array();
 		$properties_manager = "PropertiesManager" . ucfirst($context);
@@ -1190,7 +1193,7 @@ class TemplatesValidator
 		}
 
 		// Write file
-		$dictionary_file = fopen(__DIR__ . "/../contexts/" . $context . "/dictionary/vars.json", "w");
+		$dictionary_file = fopen(self::CONTEXTS_DIR . $context . "/dictionary/vars.json", "w");
 		fwrite($dictionary_file, json_encode($dictionary));
 	}
 }

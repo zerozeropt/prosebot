@@ -610,7 +610,7 @@ abstract class TemplatesManager
 		$array = explode('.', $tmp);
 		$number_words = 0;
 		$sentence_number = 0;
-		foreach ($array as $key => $value) {
+		foreach ($array as $value) {
 			$tmp2 = count(preg_split('/\s+/', $value)) - 1;
 			if ($tmp2 < 3) {
 				$number_words += $tmp2;
@@ -619,7 +619,7 @@ abstract class TemplatesManager
 				$sentence_number += 1;
 			}
 		}
-		return $number_words / $sentence_number;
+		return $sentence_number !== 0 ? $number_words / $sentence_number : 0;
 	}
 
 	/**

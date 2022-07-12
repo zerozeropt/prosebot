@@ -756,7 +756,7 @@ class TeamData extends EntityData
 	 * @param int $n Minimum step
 	 * @return bool False
 	 */
-	public function is_first_mention($n)
+	public function is_first_mention()
 	{
 		return false;
 	}

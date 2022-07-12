@@ -121,12 +121,12 @@ class GrammarES extends Grammar
 
 	/**
 	 * Get full written cardinal number
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Cardinal number
+	 * @param NameNumber $number Number (Singular or Plural)
+	 * @param NameGender $gender Gender
 	 * @return string Full written cardinal number
 	 */
-	public static function cardinal($gender, $number, $text)
+	public static function cardinal($text, $number, $gender)
 	{
 		$num = intval($text);
 		$left_int = intdiv($num, 1000);
@@ -151,14 +151,13 @@ class GrammarES extends Grammar
 
 	/**
 	 * Get full written cardinal number in feminine form
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Cardinal number
+	 * @param NameNumber $number Number (Singular or Plural)
 	 * @return string Full written cardinal number in feminine form
 	 */
-	public static function cardinal_fem($gender, $number, $text)
+	public static function cardinal_fem($text, $number)
 	{
-		return static::cardinal(NameGender::FEMALE, $number, $text);
+		return static::cardinal($text, $number, NameGender::FEMALE);
 	}
 
 	/**
@@ -199,12 +198,12 @@ class GrammarES extends Grammar
 
 	/**
 	 * Get full written ordinal number
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
+	 * @param NameNumber $number Number (Singular or Plural)
+	 * @param NameGender $gender Gender
 	 * @return string Full written ordinal number
 	 */
-	public static function ordinal($gender, $number, $text)
+	public static function ordinal($text, $number, $gender)
 	{
 		$num = intval($text);
 		$res = "";
@@ -236,24 +235,23 @@ class GrammarES extends Grammar
 
 	/**
 	 * Get full written ordinal number in feminine form
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
+	 * @param NameNumber $number Number (Singular or Plural)
 	 * @return string Full written ordinal number in feminine form
 	 */
-	public static function ordinal_fem($gender, $number, $text)
+	public static function ordinal_fem($text, $number)
 	{
-		return static::ordinal(NameGender::FEMALE, $number, $text);
+		return static::ordinal($text, $number, NameGender::FEMALE);
 	}
 
 	/**
 	 * Get ordinal number in "nº/nª(s)" form
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
+	 * @param NameNumber $number Number (Singular or Plural)
+	 * @param NameGender $gender Gender
 	 * @return string Full ordinal number in "nº/nª(s)" form
 	 */
-	public static function ordinal_num($gender, $number, $text)
+	public static function ordinal_num($text, $number, $gender)
 	{
 		$num = intval($text);
 
@@ -273,14 +271,13 @@ class GrammarES extends Grammar
 
 	/**
 	 * Get ordinal number in "nª(s)" form
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
+	 * @param NameNumber $number Number (Singular or Plural)
 	 * @return string Full ordinal number in "nª(s)" form
 	 */
-	public static function ordinal_fem_num($gender, $number, $text)
+	public static function ordinal_fem_num($text, $number)
 	{
-		return static::ordinal_num(NameGender::FEMALE, $number, $text);
+		return static::ordinal_num($text, $number, NameGender::FEMALE);
 	}
 
 	/**

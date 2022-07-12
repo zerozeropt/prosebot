@@ -230,7 +230,7 @@ abstract class Grammar
 			return $connector[$index];
 		}
 		
-		return static::$connector($gender, $number, $text);
+		return static::$connector($text, $number, $gender);
 	}
 
 	/**

@@ -17,7 +17,7 @@ abstract class SummaryParts
     const SMALL_TEXT = "small_text";
     const INTRO = "intro";
     const EVENTS = "events";
-    const FINAL_ = "final";
+    const FINAL_P = "final";
 	const STATS = "stats";
     const LONG_TEXT = "longtext";
     const ANALYSIS = "analysis";
@@ -77,7 +77,7 @@ class TemplatesManagerFootball extends TemplatesManager
 	 */
 	private static $fixed_templates_paths = [
         SummaryParts::INTRO,
-        SummaryParts::FINAL_
+        SummaryParts::FINAL_P
     ];
 	/**
 	 * Array of templates with a variable structure
@@ -148,14 +148,13 @@ class TemplatesManagerFootball extends TemplatesManager
         }
 
         // Events and stats
-        foreach (static::$variable_templates_paths as $path) {
-            $func = 'build_'.$path.'_paragraph';
-            $summary_array[$path] = $this->$func($match);
-            $this->entities_manager->reset();
-        }
+		$summary_array[SummaryParts::EVENTS] = $this->build_events_paragraph($match);
+        $this->entities_manager->reset();
+		$summary_array[SummaryParts::STATS] = $this->build_stats_paragraph($match);
+        $this->entities_manager->reset();
 
         // Build summary long text
-        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO].($summary_array[SummaryParts::EVENTS] != "" ? "\n" : "").$summary_array[SummaryParts::EVENTS]."\n".$summary_array[SummaryParts::FINAL_];
+        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO].($summary_array[SummaryParts::EVENTS] != "" ? "\n" : "").$summary_array[SummaryParts::EVENTS]."\n".$summary_array[SummaryParts::FINAL_P];
 
         // Calculate diversity analysis
 		if ($calculate_stats) {
