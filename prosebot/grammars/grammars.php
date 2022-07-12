@@ -113,8 +113,9 @@ abstract class Grammar
      */
 	public static function get_elem($array, $key)
 	{
-		if (!array_key_exists($key, $array) || $array[$key] == "")
+		if (!array_key_exists($key, $array) || $array[$key] == "") {
 			return null;
+		}
 
 		$name = $array[$key];
 
@@ -122,20 +123,24 @@ abstract class Grammar
 		$new_key = $key . "_GENDER";
 		if (array_key_exists($new_key, $array)) {
 			$elem = $array[$new_key];
-			if ($elem == '0')
+			if ($elem == '0') {
 				$gender = NameGender::MALE;
-			elseif ($elem == '1')
+			}
+			elseif ($elem == '1') {
 				$gender = NameGender::FEMALE;
+			}
 		}
 
 		$number = null;
 		$new_key = $key . "_PLURAL";
 		if (array_key_exists($new_key, $array)) {
 			$elem = $array[$new_key];
-			if ($elem == '0')
+			if ($elem == '0') {
 				$number = NameNumber::SINGULAR;
-			elseif ($elem == '1')
+			}
+			elseif ($elem == '1') {
 				$number = NameNumber::PLURAL;
+			}
 		}
 
 		return new TextStructure($name, $gender, $number);
@@ -148,8 +153,9 @@ abstract class Grammar
      */
 	public static function treat_entity($entity)
 	{
-		if ($entity instanceof TextStructure)
+		if ($entity instanceof TextStructure) {
 			return $entity->get_text();
+		}
 		return $entity;
 	}
 
@@ -164,8 +170,9 @@ abstract class Grammar
 	{
 		foreach ($elems as $elem) {
 			$tmp = explode(":", $elem);
-			if ((count($tmp) == 2 || count($tmp) == 3) && static::evaluate_elem($tmp[0], $gender, $number))
+			if ((count($tmp) == 2 || count($tmp) == 3) && static::evaluate_elem($tmp[0], $gender, $number)) {
 				return $tmp[1];
+			}
 		}
 		return null;
 	}
@@ -180,12 +187,14 @@ abstract class Grammar
 	private static function evaluate_elem($elem, $gender, $number)
 	{
 		foreach (str_split($elem) as $char) {
-			if (!array_key_exists($char, static::$elem_chars))
+			if (!array_key_exists($char, static::$elem_chars)) {
 				return false;
+			}
 
 			$x = static::$elem_chars[$char];
-			if ($x != $gender && $x != $number)
+			if ($x != $gender && $x != $number) {
 				return false;
+			}
 		}
 		return true;
 	}
@@ -243,8 +252,9 @@ abstract class Grammar
 		}
 
 		if (count($elems) > 1) {
-			if (is_numeric($entity))
+			if (is_numeric($entity)) {
 				$number = $entity !== 1 ? NameNumber::PLURAL : NameNumber::SINGULAR;
+			}
 			return static::pick_elem($elems, $gender, $number);
 		}
 		return static::find_connector($func, $gender, $number, $text);

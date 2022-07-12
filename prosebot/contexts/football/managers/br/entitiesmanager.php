@@ -56,18 +56,24 @@ class EntitiesManagerFootballBR extends EntitiesManagerFootball
 					$coach = $team->get_coach();
 					if ($coach != null) {
 						array_push($options, new TextStructure($team->get_coach(), NameGender::FEMALE, NameNumber::SINGULAR));
-						if (random_int(0, 1))
+						if (random_int(0, 1)) {
 							array_push($term, "equipe do técnico %s");
-						else array_push($term, "equipe comandada por %s");
+						}
+						else {
+							array_push($term, "equipe comandada por %s");
+						}
 					}
 					break;
 				case "coach_time":
 					$coach = $team->get_coach();
 					if ($coach != null) {
 						array_push($options, new TextStructure($team->get_coach(), NameGender::MALE, NameNumber::SINGULAR));
-						if (random_int(0, 1))
+						if (random_int(0, 1)) {
 							array_push($term, "time do técnico %s");
-						else array_push($term, "time treinado por %s");
+						}
+						else {
+							array_push($term, "time treinado por %s");
+						}
 					}
 					break;
 				case "city_country":

@@ -50,8 +50,9 @@ class TemplatesValidator
 		// Add properties
 		$this->templates_array = $file_array;
 		$this->unused_templates = array_keys((array)$this->templates_array);
-		if (count($this->unused_templates) == 0)
+		if (count($this->unused_templates) == 0) {
 			$this->throw_error_expected_found("", "templates tree structure", "null"); // error if no templates
+		}
 		$this->templates_queue = array($this->unused_templates[0]);
 	}
 
@@ -64,16 +65,6 @@ class TemplatesValidator
 		// Check for json validaty
 		$json_array = Utils::json_validate(file_get_contents($file_path));
 		$this->set_file_data($json_array);
-	}
-
-	/**
-	 * Set the data of a json template file
-	 * @param JSON $file_data Data of a json template file
-	 */
-	public function set_file($file)
-	{
-		// Check for json validaty
-		$this->set_file_data($file);
 	}
 
 	/**
@@ -123,24 +114,28 @@ class TemplatesValidator
 		}
 
 		echo "<br>Conditions:<br>";
-		foreach ($this->vars_array->properties->condition as $property)
+		foreach ($this->vars_array->properties->condition as $property) {
 			echo "-- " . $property . "<br>";
+		}
 
 		echo "<br>Properties:<br>";
-		foreach ($this->vars_array->properties->text as $property)
+		foreach ($this->vars_array->properties->text as $property) {
 			echo "-- " . $property . "<br>";
+		}
 
 		echo "<br>Entities:<br>";
 		foreach ($this->vars_array->entities as $entity => $properties) {
 			echo "-- " . $entity . "<br>";
-			foreach ($properties as $property)
+			foreach ($properties as $property) {
 				echo "&nbsp;&nbsp;&nbsp;&nbsp;." . $property . "<br>";
+			}
 		}
 
 		echo "<br>Connectors:<br>";
 		echo $this->language . ":<br>";
-		foreach ($this->vars_array->connectors as $connector)
+		foreach ($this->vars_array->connectors as $connector) {
 			echo "-- " . $connector . "<br>";
+		}
 	}
 
 	/**
@@ -193,8 +188,9 @@ class TemplatesValidator
 		// For each template
 		foreach ($templates as $template_name) {
 			// Skip . and ..
-			if ($template_name == "." || $template_name == "..")
+			if ($template_name == "." || $template_name == "..") {
 				continue;
+			}
 			// Validate file
 			try {
 				$this->file_name = "[" . $template_name . "] -> ";
@@ -238,17 +234,22 @@ class TemplatesValidator
 		$current_path = "";
 
 		// Check if each json root key has a valid variable name
-		foreach ($this->unused_templates as $unused)
+		foreach ($this->unused_templates as $unused) {
 			$this->validate_template_variable("JSON root key", $unused);
+		}
 
 		$this->valid_templates = $this->unused_templates;
-		if ($has_hierarchy) // Walk up the tree starting in the root node
+		if ($has_hierarchy) { // Walk up the tree starting in the root node
 			$this->validate_tree($current_path, $this->unused_templates[0]);
-		else $this->validate_object($current_path); // Validate each json value
+		}
+		else {
+			$this->validate_object($current_path); // Validate each json value
+		}
 
 		// Print unused templates as warnings
-		foreach ($this->unused_templates as $unused_key)
+		foreach ($this->unused_templates as $unused_key) {
 			echo $this->file_name . "Warning: \"$unused_key\" defined but never used.<br>";
+		}
 	}
 
 	/**
@@ -259,12 +260,14 @@ class TemplatesValidator
 	private function validate_tree($path, $current_key)
 	{
 		// Stop condition - all templates used
-		if (empty($this->unused_templates))
+		if (empty($this->unused_templates)) {
 			return;
+		}
 
 		// Stop condition - no more templates in queue
-		if (empty($this->templates_queue))
+		if (empty($this->templates_queue)) {
 			return;
+		}
 
 		// Get current value
 		$current_value = $this->templates_array->{$current_key};
@@ -273,15 +276,18 @@ class TemplatesValidator
 
 		// Remove current template from arrays
 		$removed_unused_key = array_search($current_key, $this->unused_templates);
-		if ($removed_unused_key !== false)
+		if ($removed_unused_key !== false) {
 			array_splice($this->unused_templates, $removed_unused_key, 1);
+		}
 		$removed_template_key = array_search($current_key, $this->templates_queue);
-		if ($removed_template_key !== false)
+		if ($removed_template_key !== false) {
 			array_splice($this->templates_queue, $removed_template_key, 1);
+		}
 
 		// For each template in queue start a new recursion
-		foreach ($this->templates_queue as $key)
+		foreach ($this->templates_queue as $key) {
 			$this->validate_tree($path, $key);
+		}
 	}
 
 	/**
@@ -314,10 +320,12 @@ class TemplatesValidator
 			$path_elem = $path . "[" . $count . "]";
 
 			// An element must have text and condition keys
-			if (!isset($template->text))
+			if (!isset($template->text)) {
 				$this->throw_error_missing_text($path_elem);
-			if (!isset($template->condition))
+			}
+			if (!isset($template->condition)) {
 				$this->throw_error_missing_condition($path_elem);
+			}
 
 			// Validate text prop.
 			$this->validate_text($path_elem, $template->text);
@@ -337,8 +345,9 @@ class TemplatesValidator
 		$path .= "[text]";
 
 		// Validate links
-		if (preg_match('/@.+link/u', $text) && !preg_match('/@.*link.*<\/a>/u', $text))
+		if (preg_match('/@.+link/u', $text) && !preg_match('/@.*link.*<\/a>/u', $text)) {
 			$this->throw_error_bad_link($path, $text, "missing closing hyperlink with </a>");
+		}
 
 		// Split text through {tokens}
 		$text_array = preg_split('/({(.*?)})/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
@@ -365,7 +374,9 @@ class TemplatesValidator
 				$this->token($path, $token_str, $token_array);
 			}
 			// Regular string
-			else $this->regular_string($path, $chunk);
+			else {
+				$this->regular_string($path, $chunk);
+			}
 		}
 	}
 
@@ -395,25 +406,33 @@ class TemplatesValidator
 	private function token($path, $token_str, $token_array)
 	{
 		// Token cannot be null
-		if (count($token_array) < 1)
+		if (empty($token_array)) {
 			$this->throw_error_expected_found($path, "token", "null");
+		}
 		// Token cannot have opening brackets
-		else if (preg_match('/{/u', $token_str))
+		else if (preg_match('/{/u', $token_str)) {
 			$this->throw_error_bad_token($path, $token_str, "duplicate opening bracket {");
+		}
 		// Token cannot have closing brackets
-		else if (preg_match('/}/u', $token_str))
+		else if (preg_match('/}/u', $token_str)) {
 			$this->throw_error_bad_token($path, $token_str, "duplicate closing bracket }");
+		}
 
 		$token = $token_array[0];
 		// Token cannot have whitespaces or if a connector is used it cannot have whitespaces after %
-		if (preg_match('/\s(?!.*[%])/u', $token))
+		if (preg_match('/\s(?!.*[%])/u', $token)) {
 			$this->throw_error_bad_token($path, $token, "token declaration cannot have whitespaces");
+		}
 
-		if (preg_match('/template\./u', $token))	// {template.template_name}
+		if (preg_match('/template\./u', $token)) {	// {template.template_name}
 			$this->token_template($path, $token);
-		else if (preg_match('/\./u', $token))		// {entity.property}
+		}
+		else if (preg_match('/\./u', $token)) {		// {entity.property}
 			$this->token_dot_common($path, $token);
-		else $this->token_common($path, $token);	// {property}
+		}
+		else {										// {property}
+			$this->token_common($path, $token);	
+		}
 	}
 
 	/**
@@ -424,8 +443,9 @@ class TemplatesValidator
 	private function token_template($path, $token)
 	{
 		$token_array = $this->token_dot($path, $token);
-		if ($token_array[0] != "template") // If not "template"
+		if ($token_array[0] != "template") { // If not "template"
 			$this->throw_error_bad_token($path, $token, "missing \"template\"");
+		}
 		$this->token_function_template($path, $token_array[1]); // template%entity
 	}
 
@@ -440,8 +460,9 @@ class TemplatesValidator
 		$entity = $this->token_function_entity($path, $token_array[0]); // connector%entity or s/f:|p/m:%entity
 
 		// If entity.@link...</a>
-		if (strlen($token_array[1]) > 1 && mb_substr($token_array[1], 0, 1) == "@")
+		if (strlen($token_array[1]) > 1 && mb_substr($token_array[1], 0, 1) == "@") {
 			$this->validate_link_variable($path, $token);
+		}
 		$this->is_entity_dot_property_defined($path, $entity, $token_array[1]); // entity.property
 
 		return $token_array;
@@ -455,8 +476,9 @@ class TemplatesValidator
 	private function token_common($path, $token)
 	{
 		// On s:|p:%property or f:|m:%property format
-		if ($this->is_property_sp_fm($path, $token))
+		if ($this->is_property_sp_fm($path, $token)) {
 			return;
+		}
 
 		$variables = $this->token_function($path, $token);
 		// On connector%property format
@@ -471,7 +493,9 @@ class TemplatesValidator
 			$this->is_property_defined($path, $variables[0], self::TEXT_TYPE);
 		}
 		// On property format
-		else $this->is_property_defined($path, $variables[0], self::TEXT_TYPE);
+		else {
+			$this->is_property_defined($path, $variables[0], self::TEXT_TYPE);
+		}
 	}
 
 	/**
@@ -482,8 +506,9 @@ class TemplatesValidator
 	private function token_dot($path, $token)
 	{
 		$token_array = preg_split("/\./", $token);
-		if (count($token_array) != 2)
+		if (count($token_array) != 2) {
 			$this->throw_error_bad_token($path, $token, "not in \"variable.variable\" format");
+		}
 
 		return $token_array;
 	}
@@ -497,17 +522,20 @@ class TemplatesValidator
 	{
 		// Validate variable%variable
 		$variables = $this->token_function($path, $token_function);
-		if (count($variables) < 1) // Token cannot be null
+		if (empty($variables)) { // Token cannot be null
 			$this->throw_error_bad_token($path, $token_function, "null token");
+		}
 
 		// Check if template is defined
 		$this->is_template_defined($path, $variables[0]);
-		if (count($variables) == 2) // If template%entity, check if entity is defined
+		if (count($variables) == 2) { // If template%entity, check if entity is defined
 			$this->is_entity_defined($path, $variables[1]);
+		}
 
 		// Push to queue if in list of not used and not in queue already
-		if (in_array($variables[0], $this->unused_templates) && !in_array($variables[0], $this->templates_queue))
+		if (in_array($variables[0], $this->unused_templates) && !in_array($variables[0], $this->templates_queue)) {
 			array_push($this->templates_queue, $variables[0]);
+		}
 	}
 
 	/**
@@ -518,8 +546,9 @@ class TemplatesValidator
 	private function token_function_entity($path, $token_function)
 	{
 		$variables = $this->token_function($path, $token_function); // connector%entity
-		if (count($variables) < 1)
+		if (empty($variables)) {
 			$this->throw_error_bad_token($path, $token_function, "null token");
+		}
 
 		// Connector or singular|plural or feminine|masculine
 		if (count($variables) == 2) {
@@ -527,7 +556,9 @@ class TemplatesValidator
 			$this->is_entity_defined($path, $variables[1]);
 			return $variables[1];
 		} // entity
-		else $this->is_entity_defined($path, $variables[0]);
+		else {
+			$this->is_entity_defined($path, $variables[0]);
+		}
 
 		return $variables[0];
 	}
@@ -541,8 +572,9 @@ class TemplatesValidator
 	{
 		// Split through %
 		$function_array = preg_split("/%/", $token_function);
-		if (count($function_array) > 2)
+		if (count($function_array) > 2) {
 			$this->throw_error_bad_token($path, $token_function, "too many % functions");
+		}
 
 		return $function_array;
 	}
@@ -557,14 +589,17 @@ class TemplatesValidator
 		$path .= "[condition]";
 
 		// If condition equals "", then valid
-		if ($condition == "")
+		if ($condition == "") {
 			return;
+		}
 
 		// If condition begins or ends with signs, then invalid
-		if (preg_match('/^(\s)*(==|===|!=|>=|>|<=|<|&&|\|\|)/u', $condition))
+		if (preg_match('/^(\s)*(==|===|!=|>=|>|<=|<|&&|\|\|)/u', $condition)) {
 			$this->throw_error_bad_condition($path, $condition, "condition cannot start with signs");
-		if (preg_match('/(==|===|!=|>=|>|<=|<|&&|\|\|)(\s)*$/u', $condition))
+		}
+		if (preg_match('/(==|===|!=|>=|>|<=|<|&&|\|\|)(\s)*$/u', $condition)) {
 			$this->throw_error_bad_condition($path, $condition, "condition cannot end with signs");
+		}
 
 		// Split through ( and )
 		$condition_array = preg_split("/(\()|(\))/u", $condition, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
@@ -577,8 +612,9 @@ class TemplatesValidator
 		foreach ($condition_array as $expr) {
 			switch ($expr) {
 				case "(":
-					if (!$can_open_parenthesis) // cannot do )(
+					if (!$can_open_parenthesis) { // cannot do )(
 						$this->throw_error_expected_found($path, "boolean expression", $expr);
+					}
 					$nr_par++;
 					break;
 				case ")":
@@ -592,11 +628,13 @@ class TemplatesValidator
 					$can_open_parenthesis = true;
 					break;
 			}
-			if ($nr_par < 0)
+			if ($nr_par < 0) {
 				$this->throw_error_expected_found($path, "opening parenthesis (", $expr);
+			}
 		}
-		if ($nr_par > 0)
+		if ($nr_par > 0) {
 			$this->throw_error_expected_found($path, "closing parenthesis )", $expr);
+		}
 	}
 
 	/**
@@ -612,8 +650,9 @@ class TemplatesValidator
 		$condition_array = preg_split("/( \|\| )|( \&\& )/", $expression, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 		$first_char = $condition_array[0];
 		$is_and_or = trim($first_char) == "&&" || trim($first_char) == "||";
-		if ($is_and_or && !$can_use_and_or) // cannot use && or || but used them
+		if ($is_and_or && !$can_use_and_or) { // cannot use && or || but used them
 			$this->throw_error_expected_found($path, "boolean expression", $first_char);
+		}
 
 		foreach ($condition_array as $expr) {
 			switch ($expr) {
@@ -639,8 +678,9 @@ class TemplatesValidator
 	 */
 	private function and_or($path, $expression, &$can_use_and_or)
 	{
-		if (!$can_use_and_or)
+		if (!$can_use_and_or) {
 			$this->throw_error_expected_found($path, "boolean expression", $expression);
+		}
 		$can_use_and_or = false; // used && or ||, cannot use again
 	}
 
@@ -656,26 +696,29 @@ class TemplatesValidator
 		$express_array = preg_split('/<=|>=|<|>|===|==|!=/u', $expression);
 
 		// A boolean expression cannot be just a number or a string
-		if (preg_match('/(?<![\w\d\W])-?([0-9]|".*")+$/u', $expression))
+		if (preg_match('/(?<![\w\d\W])-?(\d|".*")+$/u', $expression)) {
 			$this->throw_error_bad_condition($path, $expression, "not a boolean expression");
+		}
 
 		// Cannot use <=|>=|<|>|===|==|!= but used them
 		$first_elem = trim($express_array[0]);
 		$is_sign = $first_elem == ">=" || $first_elem == ">" || $first_elem == "<=" || $first_elem == "<" || $first_elem == "===" || $first_elem == "==" || $first_elem == "!=";
-		if ($is_sign && !$can_use_signs)
+		if ($is_sign && !$can_use_signs) {
 			$this->throw_error_expected_found($path, "boolean expression", "equation sign");
+		}
 
 		// Too many expression signs
-		if (count($express_array) > 2)
+		if (count($express_array) > 2) {
 			$this->throw_error_bad_boolean($path, $expression);
+		}
 
 		// For each side of expression
 		foreach ($express_array as $expr) {
 			$exp = trim($expr);
 			// If not a number or a string
-			if (!preg_match('/(?<![\w\d\W])-?([0-9]|".*")+$/u', $exp))
-				if (!($exp == "" && $can_use_signs))
-					$this->negation($path, trim($expr)); // !entity.property or !property
+			if (!preg_match('/(?<![\w\d\W])-?(\d|".*")+$/u', $exp) && !($exp == "" && $can_use_signs)) {
+				$this->negation($path, trim($expr)); // !entity.property or !property
+			}
 		}
 	}
 
@@ -691,13 +734,15 @@ class TemplatesValidator
 			// Consume !
 			$express = mb_substr($express, 1, $strlen - 1, 'UTF-8');
 			// If a number or string, throw error
-			if (preg_match('/(?<![\w\d\W])-?([0-9]|".*")+$/u', $express))
+			if (preg_match('/(?<![\w\d\W])-?(\d|".*")+$/u', $express)) {
 				$this->throw_error_bad_condition($path, $express, "\"!\" sign should be followed by a variable");
+			}
 		}
 
 		// If not a number
-		if (!preg_match('/(?<![\w\d\W])-?([0-9])+$/u', $express))
+		if (!preg_match('/(?<![\w\d\W])-?(\d)+$/u', $express)) {
 			$this->validate_arithmetic($path, $express); // entity.property
+		}
 	}
 
 	/**
@@ -713,8 +758,9 @@ class TemplatesValidator
 		// For each operand
 		foreach ($operands as $operand) {
 			// If not a number
-			if (!preg_match('/(?<![\w\d\W])-?([0-9])+$/u', $operand))
+			if (!preg_match('/(?<![\w\d\W])-?(\d)+$/u', $operand)) {
 				$this->condition_dot($path, $operand);
+			}
 		}
 	}
 
@@ -728,11 +774,13 @@ class TemplatesValidator
 		// Split through .
 		$condition_array = preg_split("/\./", $condition);
 		$nr_args = count($condition_array);
-		if ($nr_args > 2 || $condition == "") // Too many dots
+		if ($nr_args > 2 || $condition == "") { // Too many dots
 			$this->throw_error_bad_condition($path, $condition, "not in \"variable.variable\" format");
+		}
 
-		if ($nr_args == 2) // #arg.property
+		if ($nr_args == 2) { // #arg.property
 			$this->is_arg_condition_defined($path, $condition_array[0], $condition_array[1]);
+		}
 		else { // property - no dots
 			$this->validate_variable($path, $condition_array[0]);
 			$this->is_property_defined($path, $condition_array[0], self::CONDITION_TYPE);
@@ -746,11 +794,13 @@ class TemplatesValidator
 	 */
 	private function validate_variable($path, $variable)
 	{
-		if ($variable == "")
+		if ($variable == "") {
 			$this->throw_error_bad_variable($path, "empty variable");
+		}
 
-		if (!preg_match('/(?<![\w\d\W])(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?![\w\d\W])/u', $variable))
+		if (!preg_match('/(?<![\w\d\W])(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?![\w\d\W])/u', $variable)) {
 			$this->throw_error_bad_variable($path, $variable);
+		}
 	}
 
 	/**
@@ -760,11 +810,13 @@ class TemplatesValidator
 	 */
 	private function validate_template_variable($path, $variable)
 	{
-		if ($variable == "")
+		if ($variable == "") {
 			$this->throw_error_bad_variable($path, "empty variable");
+		}
 
-		if (!preg_match('/(?<![\w\d\W])[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable))
+		if (!preg_match('/(?<![\w\d\W])[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable)) {
 			echo $this->file_name . "Warning: " . $path . " - Invalid variable name: \"$variable\"<br>";
+		}
 	}
 
 	/**
@@ -774,11 +826,13 @@ class TemplatesValidator
 	 */
 	private function validate_link_variable($path, $variable)
 	{
-		if ($variable == "")
+		if ($variable == "") {
 			$this->throw_error_bad_variable($path, "empty variable");
+		}
 
-		if (!preg_match('/(?<![\w\d\W])([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable))
+		if (!preg_match('/(?<![\w\d\W])([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\d\W])/u', $variable)) {
 			$this->throw_error_bad_variable($path, $variable);
+		}
 	}
 
 	/**
@@ -790,13 +844,14 @@ class TemplatesValidator
 	private function is_property_defined($path, $property, $type)
 	{
 		$this->validate_variable($path, $property);
-		if ($this->check_entities)
-			if ($type == self::TEXT_TYPE && !in_array($property, $this->vars_array->properties->{$type}))
-				$this->throw_error_bad_token($path, $property, "property not defined for [" . $type . "]");
+		if ($this->check_entities && $type == self::TEXT_TYPE && !in_array($property, $this->vars_array->properties->{$type})) {
+			$this->throw_error_bad_token($path, $property, "property not defined for [" . $type . "]");
+		}
 
 		// Push to properties list
-		if ($this->get_entities && !in_array($property, $this->vars_array->properties->{$type}))
+		if ($this->get_entities && !in_array($property, $this->vars_array->properties->{$type})) {
 			array_push($this->vars_array->properties->{$type}, $property);
+		}
 	}
 
 	/**
@@ -808,16 +863,18 @@ class TemplatesValidator
 	private function is_arg_condition_defined($path, $entity, $property)
 	{
 		$full_condition = $entity . "." . $property;
-		if ($entity !== "#arg")
+		if ($entity !== "#arg") {
 			$this->throw_error_bad_condition($path, $full_condition, "not in #arg.property format");
+		}
 		$this->validate_variable($path, $property);
-		if ($this->check_entities)
-			if (!in_array($full_condition, $this->vars_array->properties->condition))
-				$this->throw_error_bad_token($path, $full_condition, "#arg.property not defined");
+		if ($this->check_entities && !in_array($full_condition, $this->vars_array->properties->condition)) {
+			$this->throw_error_bad_token($path, $full_condition, "#arg.property not defined");
+		}
 
 		// Push to properties list
-		if ($this->get_entities && !in_array($full_condition, $this->vars_array->properties->condition))
+		if ($this->get_entities && !in_array($full_condition, $this->vars_array->properties->condition)) {
 			array_push($this->vars_array->properties->condition, $full_condition);
+		}
 	}
 
 	/**
@@ -829,12 +886,14 @@ class TemplatesValidator
 	{
 		$this->validate_variable($path, $entity);
 		$entities_keys = array_keys((array)$this->vars_array->entities);
-		if ($this->check_entities && !in_array($entity, $entities_keys))
+		if ($this->check_entities && !in_array($entity, $entities_keys)) {
 			$this->throw_error_bad_token($path, $entity, "entity not defined");
+		}
 
 		// Push to entities list
-		if ($this->get_entities && !in_array($entity, $entities_keys))
+		if ($this->get_entities && !in_array($entity, $entities_keys)) {
 			$this->vars_array->entities->{$entity} = [];
+		}
 	}
 
 	/**
@@ -862,17 +921,20 @@ class TemplatesValidator
 				}
 			}
 			// entity specified
-			else if (in_array($property, $this->vars_array->entities->entities_properties->{$this->vars_array->entities->{$entity}}))
+			else if (in_array($property, $this->vars_array->entities->entities_properties->{$this->vars_array->entities->{$entity}})) {
 				$has_error = false;
+			}
 
 			// if error, throw exception
-			if ($has_error)
+			if ($has_error) {
 				$this->throw_error_bad_construct($path, $entity . "." . $property, $entity . " does not have property \"" . $property . "\"");
+			}
 		}
 
 		// Push to entity.properties list
-		if ($this->get_entities && property_exists($this->vars_array->entities, $entity) && !in_array($property, $this->vars_array->entities->{$entity}))
+		if ($this->get_entities && property_exists($this->vars_array->entities, $entity) && !in_array($property, $this->vars_array->entities->{$entity})) {
 			array_push($this->vars_array->entities->{$entity}, $property);
+		}
 	}
 
 	/**
@@ -883,8 +945,9 @@ class TemplatesValidator
 	private function is_template_defined($path, $template)
 	{
 		$this->validate_template_variable($path, $template);
-		if (!in_array($template, $this->valid_templates) && $this->check_templates)
+		if (!in_array($template, $this->valid_templates) && $this->check_templates) {
 			echo $this->file_name . "Warning: " . $path . " - Wrong token construction: \"{" . $template . "}\", template not defined<br>";
+		}
 	}
 
 	/**
@@ -895,8 +958,9 @@ class TemplatesValidator
 	private function is_property_sp_fm($path, $entity)
 	{
 		$entity_array = preg_split('/\|/u', $entity);
-		if (count($entity_array) != 2 && count($entity_array) != 3)
+		if (count($entity_array) != 2 && count($entity_array) != 3) {
 			return false;
+		}
 
 		$has_singular = preg_match('/^s:(.(?![:]))*$/u', $entity_array[0]);
 		$has_plural = preg_match('/^p:(.(?![:]))+$/u', $entity_array[1]);
@@ -909,12 +973,17 @@ class TemplatesValidator
 		if (count($entity_array) == 3) {
 			$has_n = preg_match('/^n:(.(?![:]))+$/u', $entity_array[2]);
 			$incorrect_form_fm = ($has_f + $has_m + $has_n) == 1 || ($has_f + $has_m + $has_n) == 2;
-		} else $incorrect_form_fm = ($has_f + $has_m) == 1;
+		}
+		else {
+			$incorrect_form_fm = ($has_f + $has_m) == 1;
+		}
 
-		if ($incorrect_form_sp)
+		if ($incorrect_form_sp) {
 			$this->throw_error_bad_token($path, $entity, "should be s:string|p:string");
-		if ($incorrect_form_fm)
+		}
+		if ($incorrect_form_fm) {
 			$this->throw_error_bad_token($path, $entity, "should be f:string|m:string(|n:string)");
+		}
 
 		$is_singular_plural = ($has_singular + $has_plural) == 2;
 		$is_f_m = ($has_f + $has_m + $has_n) == 2 || ($has_f + $has_m + $has_n) == 3;
@@ -928,15 +997,18 @@ class TemplatesValidator
 	 */
 	private function is_connector_defined($path, $connector)
 	{
-		if ($this->is_property_sp_fm($path, $connector))
+		if ($this->is_property_sp_fm($path, $connector)) {
 			return;
+		}
 
-		if ($this->check_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language}))
+		if ($this->check_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language})) {
 			$this->throw_error_bad_token($path, $connector, "connector not defined");
+		}
 
 		// Push to connectors list
-		if ($this->get_entities && !in_array(strtolower($connector), $this->vars_array->connectors))
+		if ($this->get_entities && !in_array(strtolower($connector), $this->vars_array->connectors)) {
 			array_push($this->vars_array->connectors, strtolower($connector));
+		}
 	}
 
 	/**
@@ -1081,30 +1153,33 @@ class TemplatesValidator
 			switch (get_class($entity_getter)) {
 				case EntityGetterManager::class:
 				case EntityGetterFlat::class: {
-						array_push($dictionary["properties"]["text"], $entity_name);
-						break;
-					}
+					array_push($dictionary["properties"]["text"], $entity_name);
+					break;
+				}
 				case EntityGetterSub::class: {
-						array_push($dictionary["properties"]["text"], $entity_name);
-						$dictionary["entities"][$entity_name] = $entity_getter->classname . "_properties";
-						$dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"] = [];
-						$entities_list = $entity_getter->classname::get_entities_list();
-						foreach ($entities_list as $prop_entity_name => $prop_entity_getter)
-							array_push($dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"], $prop_entity_name);
-						break;
+					array_push($dictionary["properties"]["text"], $entity_name);
+					$dictionary["entities"][$entity_name] = $entity_getter->classname . "_properties";
+					$dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"] = [];
+					$entities_list = $entity_getter->classname::get_entities_list();
+					foreach ($entities_list as $prop_entity_name => $prop_entity_getter) {
+						array_push($dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"], $prop_entity_name);
 					}
+					break;
+				}
+				default:
+					break;
 			}
 		}
 
 		$grammars = scandir(__DIR__ . "/../grammars");
 		foreach ($grammars as $lang) {
 
-			if (!in_array($lang, array_keys(get_globals()["languages"])))
+			if (!in_array($lang, array_keys(get_globals()["languages"]))) {
 				continue;
+			}
 
 			require_once(__DIR__ . "/../grammars/" . $lang . "/grammar.php");
 			$grammar_class_name = "Grammar" . strtoupper($lang);
-
 			$dictionary["connectors"][$lang] = array_map(
 				function ($connector) {
 					return $connector;

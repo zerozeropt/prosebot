@@ -1,7 +1,7 @@
 {
     "goal": [
         {
-            "text": "{template.time}, {EL%scorer.name} {scorer.name} marcó {template.goal_again} para el {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
+            "text": "{template.time}, {EL%scorer.name} {scorer.name} marcó {template.goal_again} para {el%team.name} {team.name}, {template.goal_type}, {template.assisted}. {template.commentary_scorer%scorer}.",
             "condition": ""
         },
         {
@@ -411,7 +411,7 @@
             "condition": "!#arg.is_coach && #arg.minute_in > 0"
         },
         {
-            "text": "{player.name}, {template.time}, recibió orden de expulsión y dejó al {team.name} superado en número.",
+            "text": "{player.name}, {template.time}, recibió orden de expulsión y dejó {a%team.name} {team.name} superado en número.",
             "condition": "!#arg.is_coach && #arg.minute_in > 0"
         }
     ],
@@ -421,7 +421,7 @@
             "condition": ""
         },
         {
-            "text": "Después de ver la segunda amarilla {template.time}, {player.name} fue expulsado y dejó al {team.name} superado en número.",
+            "text": "Después de ver la segunda amarilla {template.time}, {player.name} fue expulsado y dejó {a%team.name} {team.name} superado en número.",
             "condition": "!#arg.is_coach && #arg.minute_in > 0"
         },
         {
@@ -429,7 +429,7 @@
             "condition": "#arg.is_coach"
         },
         {
-            "text": "Después de ver la segunda amarilla {template.time}, {player.name} fue expulsado y dejó al {team.name} jugando con uno menos.",
+            "text": "Después de ver la segunda amarilla {template.time}, {player.name} fue expulsado y dejó {a%team.name} {team.name} jugando con uno menos.",
             "condition": "!#arg.is_coach && #arg.minute_in > 0"
         },
         {

@@ -16,7 +16,7 @@ abstract class SummaryParts
     const TITLE = "title";
     const INTRO = "intro";
 	const STATS = "stats";
-    const _FINAL = "final";
+    const FINAL_ = "final";
     const LONG_TEXT = "longtext";
 }
 
@@ -50,7 +50,7 @@ class TemplatesManagerWeather extends TemplatesManager
 	 */
 	private static $fixed_templates_paths = [
         SummaryParts::INTRO,
-        SummaryParts::_FINAL,
+        SummaryParts::FINAL_,
 		SummaryParts::STATS
     ];
 
@@ -98,7 +98,7 @@ class TemplatesManagerWeather extends TemplatesManager
         }
 
         // Build summary long text
-        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO]."\n".$summary_array[SummaryParts::STATS]."\n".$summary_array[SummaryParts::_FINAL];
+        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO]."\n".$summary_array[SummaryParts::STATS]."\n".$summary_array[SummaryParts::FINAL_];
 
         // Add match object
         $summary_array["city"] = $city;

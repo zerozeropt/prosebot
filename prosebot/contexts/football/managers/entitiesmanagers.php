@@ -63,11 +63,6 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 	 * Methods
 	 *-----------------------------------------------------
     */
-	function __construct()
-	{
-		parent::__construct();
-	}
-
 	/**
 	 * Reset cache and shuffle array of ways to call a team
      */

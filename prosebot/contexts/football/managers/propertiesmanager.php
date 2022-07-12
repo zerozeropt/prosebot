@@ -249,8 +249,9 @@ class PropertiesManagerFootball extends PropertiesManager
 					return $elem::NAME === GoalEvent::NAME;
 				});
 	
-				if ($last_goal === false)
+				if ($last_goal === false) {
 					return "0";
+				}
 	
 				$minute = $reversed[$last_goal]->get_minute()[0];
 				$minute_extra = $reversed[$last_goal]->get_minute()[1];
@@ -263,8 +264,9 @@ class PropertiesManagerFootball extends PropertiesManager
 					return $elem::NAME === GoalEvent::NAME;
 				});
 	
-				if ($last_goal === false)
+				if ($last_goal === false) {
 					return "0";
+				}
 	
 				$goal = $reversed[$last_goal];
 				$minute = $reversed[$last_goal]->get_minute()[0];

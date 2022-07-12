@@ -37,7 +37,9 @@ if (isset($_GET["context"]) && isset($_GET["lang"])) {
         echo json_encode(array("message" => "Bad request."));
         http_response_code(400);
     }
-    else  http_response_code(200);
+    else {
+        http_response_code(200);
+    }
 }
 else {
     echo json_encode(array("message" => "Bad request."));

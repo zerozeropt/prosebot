@@ -390,7 +390,7 @@ class MatchData extends MainEntityData
 		$this->stage = Utils::null_if_empty($match_data['INFO']['name_stage']);
 		$this->match_id = $match_id;
 		$this->edition = intval($match_data['MATCHREPORT']["edition"]['id']);
-		$this->edition_link = FootballFetcher::edition_link . $this->edition . ">";
+		$this->edition_link = FootballFetcher::EDITION_LINK . $this->edition . ">";
 		$this->senior = Utils::null_if_empty($match_data['INFO']['senior']);
 		$this->crowd = Utils::null_if_empty($match_data['INFO']['crowd']);
 		$this->stadium_capacity = Utils::null_if_empty($match_data['INFO']['stadium_capacity']);
@@ -994,7 +994,7 @@ class MatchData extends MainEntityData
 	 */
 	public function score_link($sort = false)
 	{
-		return FootballFetcher::match_link . $this->match_id . ">" . $this->score($sort) . "</a>";
+		return FootballFetcher::MATCH_LINK . $this->match_id . ">" . $this->score($sort) . "</a>";
 	}
 
 	/**
@@ -1766,6 +1766,8 @@ class MatchData extends MainEntityData
 					return $this->events[$event_n]->get_player();
 				case "goalkeeper":
 					return $this->events[$event_n]->get_goalkeeper();
+				default:
+					return "";
 			}
 		}
 

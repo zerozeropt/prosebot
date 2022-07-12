@@ -14,8 +14,9 @@ class Utils
      */
 	static function null_if_empty($string)
 	{
-		if ($string == '')
+		if ($string == '') {
 			return null;
+		}
 		return $string;
 	}
 
@@ -30,8 +31,9 @@ class Utils
 	{
 		$sliced = array_slice($array, $start);
 		foreach ($sliced as $key => $element) {
-			if ($filter($element))
+			if ($filter($element)) {
 				return $key;
+			}
 		}
 		return false;
 	}
@@ -46,10 +48,12 @@ class Utils
      */
 	static function exceptions_error_handler($severity, $message, $filename, $lineno)
 	{
-		if (error_reporting() == 0)
+		if (error_reporting() == 0) {
 			return;
-		if (error_reporting() & $severity)
+		}
+		if (error_reporting() & $severity) {
 			throw new ErrorException($message, 0, $severity, $filename, $lineno);
+		}
 	}
 
 	/**
@@ -60,9 +64,9 @@ class Utils
      */
 	static function undefined_constant_handler($err_no, $err_str)
 	{
-		if (strpos($err_str, 'Use of undefined constant ') === 0)
+		if (strpos($err_str, 'Use of undefined constant ') === 0) {
 			throw new ErrorException($err_str);
-		return;
+		}
 	}
 
 	/**

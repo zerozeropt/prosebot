@@ -22,11 +22,12 @@ class WeatherFetcher extends DataFetcher
 	 */
     public static function get_weather_json($city_id)
     {
-        $api = preg_replace('/{city_id}/', $city_id, self::WEATHER_DATA_JSON_PATH);
+        $api = str_replace('{city_id}', $city_id, self::WEATHER_DATA_JSON_PATH);
         $json = static::get_json($api);
 
-        if($json == null)
+        if($json == null) {
             throw new Exception("Error: City " . $city_id . " does not exist.");
+        }
 
         return [
             "city" => $json["name"],
@@ -45,11 +46,12 @@ class WeatherFetcher extends DataFetcher
 	 */
     public static function get_weather_xml($city_id)
     {
-        $api = preg_replace('/{city_id}/', $city_id, self::WEATHER_DATA_XML_PATH);
+        $api = str_replace('{city_id}', $city_id, self::WEATHER_DATA_XML_PATH);
         $xml = static::get_xml($api);
 
-        if($xml == null)
+        if($xml == null) {
             throw new Exception("Error: City " . $city_id . " does not exist.");
+        }
 
         $city = $xml->city->attributes()->name->__toString();
         $country = $xml->city->country->__toString();

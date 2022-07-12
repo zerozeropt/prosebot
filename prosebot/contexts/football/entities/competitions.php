@@ -47,7 +47,7 @@ class CompetitionData extends EntityData
      */
     function __construct($json_data)
     {
-        parent::__construct($json_data['edition_id'], $json_data['competition'], FootballFetcher::edition_link);
+        parent::__construct($json_data['edition_id'], $json_data['competition'], FootballFetcher::EDITION_LINK);
         $this->name_array = $json_data['competition_name'];
         $this->name_gender = $json_data['competition_gender_feminine'];
         $this->other_name = $this->construct_competition_name($json_data['competition_known_as'], $json_data['competition_gender_feminine_known_as'], $json_data['competition_number_known_as']);

@@ -78,21 +78,25 @@ class GrammarPT extends Grammar
      */
 	private static function get_cardinal($int, $gender, $min_val = 0, $exp = 2)
 	{
-		if ($int < $min_val || $int >= 1000)
+		if ($int < $min_val || $int >= 1000) {
 			return "";
+		}
 
-		if ($int == 0)
+		if ($int == 0) {
 			return "zero";
+		}
 
-		if ($int == 100)
+		if ($int == 100) {
 			return "cem";
+		}
 
 
 		if (array_key_exists($int, static::$cardinals)) {
 			$res = static::$cardinals[$int];
 			if (is_array($res)) {
-				if ($gender === NameGender::FEMALE)
+				if ($gender === NameGender::FEMALE) {
 					return $res[1];
+				}
 				return $res[0];
 			}
 			return $res;
@@ -197,12 +201,16 @@ class GrammarPT extends Grammar
 			$current = static::$ordinals[$num % 10 * (pow(10, $iter))];
 
 			if ($current !== "") {
-				if ($gender == NameGender::FEMALE)
+				if ($gender == NameGender::FEMALE) {
 					$current .= "a";
-				else $current .= "o";
+				}
+				else {
+					$current .= "o";
+				}
 				
-				if ($current !== "" && $number == NameNumber::PLURAL)
+				if ($current !== "" && $number == NameNumber::PLURAL) {
 					$current .= "s";
+				}
 			}
 
 			$res = $current . " " . $res;
@@ -236,12 +244,16 @@ class GrammarPT extends Grammar
 	{
 		$num = intval($text);
 
-		if ($gender == NameGender::FEMALE)
+		if ($gender == NameGender::FEMALE) {
 			$num .= "ª";
-		else $num .= "º";
+		}
+		else {
+			$num .= "º";
+		}
 
-		if ($num !== "" && $number == NameNumber::PLURAL)
+		if ($num !== "" && $number == NameNumber::PLURAL) {
 			$num .= "s";
+		}
 
 		return trim($num);
 	}

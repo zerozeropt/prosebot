@@ -17,7 +17,7 @@
             "condition": ""
         },
         {
-            "text": "{pen_winner.name} se impuso al {pen_loser.name} en la tanda de penaltis",
+            "text": "{pen_winner.name} se impuso {a%pen_loser.name} {pen_loser.name} en la tanda de penaltis",
             "condition": ""
         }
     ],
@@ -93,7 +93,7 @@
             "condition": "final_score_diff>2"
         },
         {
-            "text": "Triunfo del {winner.name} {winner.name} ante {el%loser.name} {loser.name} con goleada incluida",
+            "text": "Triunfo {de%winner.name} {winner.name} ante {el%loser.name} {loser.name} con goleada incluida",
             "condition": "final_score_diff>2"
         },
         {
@@ -101,7 +101,7 @@
             "condition": "final_score_diff>4"
         },
         {
-            "text": "{winner.name} Impone una derrota pesada al {loser.name} {loser.name}",
+            "text": "{winner.name} Impone una derrota pesada {a%loser.name} {loser.name}",
             "condition": "final_score_diff>4"
         },
         {
@@ -109,23 +109,23 @@
             "condition": "final_score_diff>4"
         },
         {
-            "text": "{winner.name} se impuso al {loser.name} {loser.name}",
+            "text": "{winner.name} se impuso {a%loser.name} {loser.name}",
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} recebió y derrotó al {loser.name} {loser.name}",
+            "text": "{winner.name} recebió y derrotó {a%loser.name} {loser.name}",
             "condition": "home_win"
         },
         {
-            "text": "{winner.name} triunfó en casa del {loser.name} {loser.name}",
+            "text": "{winner.name} triunfó en casa {de%loser.name} {loser.name}",
             "condition": "!home_win"
         },
         {
-            "text": "{winner.name} ganó en su campo al {loser.name} {loser.name}",
+            "text": "{winner.name} ganó en su campo {a%loser.name} {loser.name}",
             "condition": "home_win"
         },
         {
-            "text": "{loser.name} derrotado en casa ante el {winner.name} {winner.name}",
+            "text": "{loser.name} derrotado en casa ante {el%winner.name} {winner.name}",
             "condition": "!home_win"
         }
     ],
@@ -164,7 +164,7 @@
             "condition": "!is_final"
         },
         {
-            "text": "{knockouts_winner.name} deja por el camino al {knockouts_loser.name} {knockouts_loser.name}",
+            "text": "{knockouts_winner.name} deja por el camino {a%knockouts_loser.name} {knockouts_loser.name}",
             "condition": "!is_final"
         },
         {

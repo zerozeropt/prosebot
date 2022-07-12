@@ -16,7 +16,7 @@ abstract class SummaryParts
     const SMALL_TEXT = "small_text";
     const INTRO = "intro";
     const EVENTS = "events";
-    const _FINAL = "final";
+    const FINAL_ = "final";
 	const STATS = "stats";
     const LONG_TEXT = "longtext";
     const ANALYSIS = "analysis";
@@ -76,7 +76,7 @@ class TemplatesManagerFootball extends TemplatesManager
 	 */
 	private static $fixed_templates_paths = [
         SummaryParts::INTRO,
-        SummaryParts::_FINAL
+        SummaryParts::FINAL_
     ];
 	/**
 	 * Array of templates with a variable structure
@@ -107,8 +107,9 @@ class TemplatesManagerFootball extends TemplatesManager
 		$this->country_index = $this->languageToCountry[$language];
 
 		$success = require_once(static::$language_dir.'/entitiesmanager.php');
-		if (!$success)
+		if (!$success) {
 			throw new Exception("Error: Language does not exist.");
+		}
 
 		$name = "EntitiesManager" . ucfirst(static::$context) . strtoupper(static::$language_dir);
 		$this->entities_manager = new $name();
@@ -153,7 +154,7 @@ class TemplatesManagerFootball extends TemplatesManager
         }
 
         // Build summary long text
-        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO].($summary_array[SummaryParts::EVENTS] != "" ? "\n" : "").$summary_array[SummaryParts::EVENTS]."\n".$summary_array[SummaryParts::_FINAL];
+        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO].($summary_array[SummaryParts::EVENTS] != "" ? "\n" : "").$summary_array[SummaryParts::EVENTS]."\n".$summary_array[SummaryParts::FINAL_];
 
         // Calculate diversity analysis
 		if ($calculate_stats) {

@@ -87,22 +87,29 @@ class GrammarES extends Grammar
 	 */
 	private static function get_cardinal($int, $gender, $min_val = 0, $exp = 2)
 	{
-		if ($int < $min_val || $int >= 1000)
+		if ($int < $min_val || $int >= 1000) {
 			return "";
+		}
 
-		if ($int == 0)
+		if ($int == 0) {
 			return "cero";
+		}
 
-		if ($int == 100)
+		if ($int == 100) {
 			return "cien";
+		}
 
 		if (array_key_exists($int, static::$cardinals)) {
 			$res = static::$cardinals[$int];
 			if (is_array($res)) {
-				if ($gender === NameGender::FEMALE)
+				if ($gender === NameGender::FEMALE) {
 					return $res[1];
+				}
 				return $res[0];
-			} else return $res;
+			}
+			else {
+				return $res;
+			}
 		}
 
 		$div = pow(10, $exp);
@@ -127,17 +134,19 @@ class GrammarES extends Grammar
 
 		$left = "";
 		$right = "";
-		if ($left_int > 1)
+		if ($left_int > 1) {
 			$left = static::get_cardinal($left_int, $gender, 2) . " ";
+		}
 
-		if ($left_int > 0)
+		if ($left_int > 0) {
 			$left .= "mil";
+		}
 
-		if ($right_int > 0)
+		if ($right_int > 0) {
 			$right = static::get_cardinal($right_int, $gender);
+		}
 
-		$res = $left . ($left !== "" && $right !== "" ? static::$st_connector : "") . $right;
-		return $res;
+		return $left . ($left !== "" && $right !== "" ? static::$st_connector : "") . $right;
 	}
 
 	/**
@@ -205,12 +214,16 @@ class GrammarES extends Grammar
 			$current = static::$ordinals[$num % 10 * (pow(10, $iter))];
 
 			if ($current !== "") {
-				if ($gender == NameGender::FEMALE)
+				if ($gender == NameGender::FEMALE) {
 					$current .= "a";
-				else $current .= "o";
+				}
+				else {
+					$current .= "o";
+				}
 
-				if ($current !== "" && $number == NameNumber::PLURAL)
+				if ($current !== "" && $number == NameNumber::PLURAL) {
 					$current .= "s";
+				}
 			}
 
 			$res = $current . " " . $res;
@@ -244,12 +257,16 @@ class GrammarES extends Grammar
 	{
 		$num = intval($text);
 
-		if ($gender == NameGender::FEMALE)
+		if ($gender == NameGender::FEMALE) {
 			$num .= "ª";
-		else $num .= "º";
+		}
+		else {
+			$num .= "º";
+		}
 
-		if ($num !== "" && $number == NameNumber::PLURAL)
+		if ($num !== "" && $number == NameNumber::PLURAL) {
 			$num .= "s";
+		}
 
 		return trim($num);
 	}

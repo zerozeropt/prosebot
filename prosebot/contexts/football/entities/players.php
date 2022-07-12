@@ -139,7 +139,7 @@ class CoachData extends PersonData
 	{
 		parent::__construct($json_data, $gender);
 		parent::set_id($json_data["id"]);
-		$this->link = FootballFetcher::coach_link . $this->id . ">" . $this->name . "</a>";
+		$this->link = FootballFetcher::COACH_LINK . $this->id . ">" . $this->name . "</a>";
 	}
 
 	/**
@@ -269,7 +269,7 @@ class PlayerData extends PersonData
 	{
 		parent::__construct($json_data, $gender);
 		parent::set_id($json_data["fk_player"]);
-		parent::set_link(FootballFetcher::player_link . $this->id . ">");
+		parent::set_link(FootballFetcher::PLAYER_LINK . $this->id . ">");
 		$this->position = intval($json_data["position"]);
 		$this->goals = intval($json_data["sgoals"]);
 		$this->tmp_goals = intval($json_data["goals"]);

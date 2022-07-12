@@ -22,7 +22,7 @@ if (isset($_GET['context']) && isset($_GET['lang'])) {
     if ($data !== null && property_exists($data, "data")) {
         try {
             $validator = new TemplatesValidator($_GET['lang'], $_GET['context']);
-            $validator->set_file($data->data);
+            $validator->set_file_data($data->data);
             $validator->validate_full(false);
         } catch (Exception $e) {
             echo str_replace(["<b>", "</b>"], "", $e->getMessage());
@@ -33,7 +33,9 @@ if (isset($_GET['context']) && isset($_GET['lang'])) {
         echo json_encode(array("message" => "Bad request. Data is empty."));
         http_response_code(400);
     }
-    else http_response_code(200);
+    else {
+        http_response_code(200);
+    }
 } else {
     echo json_encode(array("message" => "Bad request."));
     http_response_code(400);

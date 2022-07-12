@@ -85,8 +85,9 @@ abstract class TemplatesManager
 		static::$context = $context;
 		static::$language_dir = $language;
 		$success = require_once(__DIR__.'/../grammars/'.static::$language_dir.'/grammar.php');
-		if (!$success)
+		if (!$success) {
 			throw new Exception("Error: Language does not exist.");
+		}
 
 		static::$templates_dir = __DIR__.'/'.$context.'/templates/'.static::$language_dir.'/';
 		static::$grammar_class = "Grammar" . strtoupper(static::$language_dir);
@@ -157,8 +158,9 @@ abstract class TemplatesManager
 		foreach (array_filter($templates, function ($elem) use ($template_key) {
 			return $elem->get_type() == $template_key || $template_key == null;
 		}) as $template) {
-			if (static::is_valid_template($template->get_condition(), $main_entity, $event_key, $arg_replace))
+			if (static::is_valid_template($template->get_condition(), $main_entity, $event_key, $arg_replace)) {
 				$result[] = $template;
+			}
 		}
 
 		//tell the template it passed in validation (for selection weights update)
@@ -188,7 +190,6 @@ abstract class TemplatesManager
 					&& !$found_arg)
 			) {
 				$max_templates[$template->get_type()] = array($template);
-				continue;
 			}
 			//if as value as the most value of its type, append
 			elseif ($template->get_weight() == $max_templates[$template->get_type()][0]->get_weight() || $found_arg) {
@@ -210,8 +211,9 @@ abstract class TemplatesManager
 		//filter templates by type
 		$templates_filtered = array();
 		foreach ($templates as $template) {
-			if ($template->get_type() == $template_type)
+			if ($template->get_type() == $template_type) {
 				$templates_filtered[] = $template;
+			}
 		}
 		$templates = $templates_filtered;
 
@@ -361,8 +363,9 @@ abstract class TemplatesManager
 
 		$result = "";
 		$used_entities = array();
-		if ($used_entities_parent)
+		if ($used_entities_parent) {
 			$used_entities = $used_entities_parent;
+		}
 
 		//treat replacing tokens
 		$last_index = 0;
@@ -388,14 +391,11 @@ abstract class TemplatesManager
 			if (strpos($elem, "template.") === 0) {
 				$entity = substr($elem, strlen("template."));
 
-				$filtered_templates = $templates;
 				$update_entities = false;
 				//if arg passed, retransmit received args
-				if ($passing_args !== null) {
-					if ($passing_args === static::$arg_str) {
-						$update_entities = true;
-						$passing_args = $args;
-					}
+				if ($passing_args !== null && $passing_args === static::$arg_str) {
+					$update_entities = true;
+					$passing_args = $args;
 				}
 				$filtered_templates = TemplatesManager::filter_valid_templates($templates, $main_entity, $event_key, $passing_args, $entity);
 				$subsentence = TemplatesManager::get_random_template_by_type($filtered_templates, $entity);
@@ -438,10 +438,11 @@ abstract class TemplatesManager
 						$full_entity = $main_entity->get_full_entity($entity, $event_key);
 
 						// Whether it was not already mentioned
-						if(!$full_entity->has_mention()){
+						if(!$full_entity->has_mention()) {
 							// Whether it has an hyperlink for entity
-							if ($full_entity->has_link())
+							if ($full_entity->has_link()) {
 								$parsed_entity = $full_entity->get_link();
+							}
 							$full_entity->set_has_mention(true);
 						}
 					}
@@ -524,8 +525,9 @@ abstract class TemplatesManager
 			}
 		}
 
-		if (strpos($condition, static::$arg_str) !== false)
+		if (strpos($condition, static::$arg_str) !== false) {
 			return 0;
+		}
 
 		//use new handler, so we can catch undefined constants (when evaluating unexisting properties)
 		set_error_handler("Utils::undefined_constant_handler", E_NOTICE);
@@ -548,18 +550,21 @@ abstract class TemplatesManager
 	 */
 	protected static function compute_weight($condition)
 	{
-		if ($condition === null)
+		if ($condition === null) {
 			return 1;
+		}
 
 		$result = -1;
 		$properties = PropertiesManager::get_template_properties();
 		foreach ($properties as $property) {
-			if (strpos($condition, $property->name) !== false)
+			if (strpos($condition, $property->name) !== false) {
 				$result = max($result, $property->weight);
+			}
 		}
 
-		if ($result === -1)
+		if ($result === -1) {
 			$result = 1;
+		}
 
 		return $result;
 	}
@@ -573,8 +578,7 @@ abstract class TemplatesManager
 	{
 		$array_count = array_count_values(explode(' ', strtolower($text)));
 		arsort($array_count, SORT_NUMERIC);
-		$count = round(100 / (array_sum(array_values($array_count)) / count($array_count)), 3);
-		return $count;
+		return round(100 / (array_sum(array_values($array_count)) / count($array_count)), 3);
 	}
 
 	/**
@@ -591,8 +595,7 @@ abstract class TemplatesManager
 			$lengths[$key] = $tmp2;
 		}
 		$maxs = array_keys($lengths, max($lengths));
-		$tmp = array($array[$maxs[0]], $lengths[$maxs[0]]);
-		return $tmp;
+		return array($array[$maxs[0]], $lengths[$maxs[0]]);
 	}
 
 	/**
@@ -615,8 +618,7 @@ abstract class TemplatesManager
 				$sentence_number += 1;
 			}
 		}
-		$setence_medium_size = $number_words / $sentence_number;
-		return $setence_medium_size;
+		return $number_words / $sentence_number;
 	}
 
 	/**

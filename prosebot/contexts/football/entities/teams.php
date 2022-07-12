@@ -229,7 +229,7 @@ class TeamData extends EntityData
 	) {
 		# get full json
 		$team_data = FootballFetcher::get_team_json($team_id)["data"];
-		parent::__construct($team_id, $grammar::get_elem($team_data['PROFILE'], 'SHORT_NAME'), FootballFetcher::team_link);
+		parent::__construct($team_id, $grammar::get_elem($team_data['PROFILE'], 'SHORT_NAME'), FootballFetcher::TEAM_LINK);
 		$this->name_array = [];
 		$name_gender = $team_data['PROFILE']['SHORT_NAME_GENDER'] === '0' ? NameGender::MALE : NameGender::FEMALE;
 		$name_number = $team_data['PROFILE']['SHORT_NAME_PLURAL'] === '0' ? NameNumber::SINGULAR : NameNumber::PLURAL;
@@ -296,8 +296,8 @@ class TeamData extends EntityData
 			$this->next_competition_match_neutral = $next[4];
 		}
 
-		$this->next_competition_match_link = FootballFetcher::match_link . $this->next_competition_match_id . ">";
-		$this->next_global_match_link = FootballFetcher::match_link . $this->next_global_match_id . ">";
+		$this->next_competition_match_link = FootballFetcher::MATCH_LINK . $this->next_competition_match_id . ">";
+		$this->next_global_match_link = FootballFetcher::MATCH_LINK . $this->next_global_match_id . ">";
 
 		$this->long_name = Utils::null_if_empty($team_data['PROFILE']['NAME']);
 		$this->other_name = $grammar::get_elem($team_data['PROFILE'], 'OTHERNAME');
