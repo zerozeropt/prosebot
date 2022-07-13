@@ -220,41 +220,45 @@ abstract class TemplatesManager
 
 		$result = new Template("", null, null);
 
-		if (!empty($templates)) {
+		if (empty($templates)) {
+			return $result;
+		}
 
-			//weighted choice
-			if (static::$weighted) {
-				//find the sum of weights
-				$sum = array_reduce($templates, function ($i, $template) {
-					return $i += $template->get_weight();
-				});
+		//weighted choice
+		if (static::$weighted) {
+			//find the sum of weights
+			$sum = array_reduce($templates, function ($i, $template) {
+				return $i += $template->get_weight();
+			});
 
-				if ($sum == 0) {
-					$result = $templates[array_rand($templates)];
-				} else {
-					//get random number from 0 to computed sum
-					$r = Utils::get_rand() * $sum;
+			if ($sum == 0) {
+				$result = $templates[array_rand($templates)];
+			}
+			else {
+				//get random number from 0 to computed sum
+				$r = Utils::get_rand() * $sum;
 
-					//go through weights to pick corresponding template
-					$idx = 0;
-					foreach ($templates as $template) {
-						$idx += $template->get_weight();
-						if ($idx > $r) {
-							$result = $template;
-							break;
-						}
+				//go through weights to pick corresponding template
+				$idx = 0;
+				foreach ($templates as $template) {
+					$idx += $template->get_weight();
+					if ($idx > $r) {
+						$result = $template;
+						break;
 					}
 				}
 			}
-			//completely random choice
-			else {
-				$result = $templates[array_rand($templates)];
-			}
-			//update weight of chosen template
-			if (static::$update_weight) {
-				$result->used();
-			}
 		}
+		//completely random choice
+		else {
+			$result = $templates[array_rand($templates)];
+		}
+
+		//update weight of chosen template
+		if (static::$update_weight) {
+			$result->used();
+		}
+
 		return $result;
 	}
 
@@ -277,58 +281,60 @@ abstract class TemplatesManager
 	{
 		$result = $text;
 
-		if ($result != '') {
-			$result = preg_replace("/\r\n\t*/", "", $result);
-			$result = preg_replace("/<\/*p>\n*/", "", $result);
-			$result = preg_replace("/ +/", ' ', $result);
-			$result = preg_replace("/ +,/", ',', $result);
-			$result = preg_replace("/,+/", ',', $result);
-			$result = preg_replace("/,? *\.+/", '.', $result);
-			$result = preg_replace("/\.+/", '.', $result);
-			$result = preg_replace("/\n +/", "\n", $result);
-			$result = preg_replace("/,\s*,/", ',', $result);
-			$result = preg_replace("/\.\s*\./", '.', $result);
-			$result = preg_replace("/\s+\./", '.', $result);
-			$result = trim($result);
-			
-			//tokenize sentences
-			preg_match_all('/(?<=[.?!])\s+(?=(\w|<em>))/u', $result, $out, PREG_OFFSET_CAPTURE);
-			$result = preg_split('/(?<=[.?!])\s+(?=(\w|<em>))/u', $result);
-
-			//capitalize first letter
-			foreach ($result as &$sentence) {
-				if ($sentence != "") {
-					$has_italic = false;
-					$has_hyperlink = false;
-
-					$after_tags = $sentence;
-					preg_match('/(^<a[^>]*+>)(.*<\/a>.*$)/u', $sentence, $after_a_tag_array);
-					if (count($after_a_tag_array) > 2) {
-						$after_tags = $after_a_tag_array[2];
-						$has_hyperlink = true;
-					}
-					preg_match('/(^<em>)(.*<\/em>.*$)/u', trim($after_tags), $after_i_tag_array);
-					if (count($after_i_tag_array) > 2) {
-						$after_tags = $after_i_tag_array[2];
-						$has_italic = true;
-					}
-
-					$trimmed_str = trim($after_tags);
-					$first_char = mb_substr($trimmed_str, 0, 1, 'UTF-8');
-					$prev_chars = $has_hyperlink ? $after_a_tag_array[1] : "";
-					$prev_chars .= $has_italic ? $after_i_tag_array[1] : "";
-					$pos_chars = mb_substr($trimmed_str, 1, strlen($trimmed_str), 'UTF-8');
-					$sentence = $prev_chars . mb_strtoupper($first_char, 'UTF-8') . $pos_chars;
-				}
-			}
-
-			$result = implode(" ", $result);
-			$result = str_replace(static::$escape_period, ".", $result);
-			$result = trim($result);
-			$result = str_replace(static::$escape_period, ".", $result);
+		if ($result == '') {
+			return $result;
 		}
 
-		return $result;
+		$result = preg_replace("/\r\n\t*/", "", $result);
+		$result = preg_replace("/<\/*p>\n*/", "", $result);
+		$result = preg_replace("/ +/", ' ', $result);
+		$result = preg_replace("/ +,/", ',', $result);
+		$result = preg_replace("/,+/", ',', $result);
+		$result = preg_replace("/,? *\.+/", '.', $result);
+		$result = preg_replace("/\.+/", '.', $result);
+		$result = preg_replace("/\n +/", "\n", $result);
+		$result = preg_replace("/,\s*,/", ',', $result);
+		$result = preg_replace("/\.\s*\./", '.', $result);
+		$result = preg_replace("/\s+\./", '.', $result);
+		$result = trim($result);
+		
+		//tokenize sentences
+		preg_match_all('/(?<=[.?!])\s+(?=(\w|<em>))/u', $result, $out, PREG_OFFSET_CAPTURE);
+		$result = preg_split('/(?<=[.?!])\s+(?=(\w|<em>))/u', $result);
+
+		//capitalize first letter
+		foreach ($result as &$sentence) {
+			if ($sentence == "") {
+				continue;
+			}
+
+			$has_italic = false;
+			$has_hyperlink = false;
+
+			$after_tags = $sentence;
+			preg_match('/(^<a[^>]*+>)(.*<\/a>.*$)/u', $sentence, $after_a_tag_array);
+			if (count($after_a_tag_array) > 2) {
+				$after_tags = $after_a_tag_array[2];
+				$has_hyperlink = true;
+			}
+			preg_match('/(^<em>)(.*<\/em>.*$)/u', trim($after_tags), $after_i_tag_array);
+			if (count($after_i_tag_array) > 2) {
+				$after_tags = $after_i_tag_array[2];
+				$has_italic = true;
+			}
+
+			$trimmed_str = trim($after_tags);
+			$first_char = mb_substr($trimmed_str, 0, 1, 'UTF-8');
+			$prev_chars = $has_hyperlink ? $after_a_tag_array[1] : "";
+			$prev_chars .= $has_italic ? $after_i_tag_array[1] : "";
+			$pos_chars = mb_substr($trimmed_str, 1, strlen($trimmed_str), 'UTF-8');
+			$sentence = $prev_chars . mb_strtoupper($first_char, 'UTF-8') . $pos_chars;
+		}
+
+		$result = implode(" ", $result);
+		$result = str_replace(static::$escape_period, ".", $result);
+		$result = trim($result);
+		return str_replace(static::$escape_period, ".", $result);
 	}
 
 	/**
@@ -469,6 +475,37 @@ abstract class TemplatesManager
 	}
 
 	/**
+	 * Replace variables in conditions by their values
+	 * @param array       $filtered_properties	Array of properties that are present in condition
+	 * @param mixed       $main_entity  		The core entity of the context
+	 * @param string|null $event_key    		Key of an event or null if there is no event
+	 * @param string      $condition    		Condition
+	 * @param string|null $arg_replace  		Entity to replace #arg
+	 * @return string Condition with variables replaced by their values
+	 */
+	private static function replace_properties_condition($filtered_properties, $main_entity, $event_key, $condition, $replacing_arg = null)
+	{
+		foreach ($filtered_properties as $property) {
+			try {
+				$function_name = $property->func;
+				$value = "";
+				if ($replacing_arg === null) {
+					$value = $function_name($main_entity, $event_key);
+				}
+				else {
+					$value = $function_name($replacing_arg, $main_entity, $event_key);
+				}
+				$value = is_numeric($value) ? $value : "\"" . $value . "\"";
+				$condition = str_replace($property->name, $value, $condition);
+			} catch (ErrorException $e) {
+				Utils::printP($e->getMessage());
+			}
+		}
+
+		return $condition;
+	}
+
+	/**
 	 * Test codition to see if the template is valid
 	 * @param string      $condition    Condition
 	 * @param mixed       $main_entity  The core entity of the context
@@ -496,40 +533,20 @@ abstract class TemplatesManager
 
 			//passed arg
 			$replacing_arg = $main_entity->get_entity_from_main(null, $arg_replace, $event_key);
-
 			$filtered_properties = array_filter(PropertiesManager::get_template_arg_properties(), function ($elem) use ($condition) {
 				return preg_match('/\b'.$elem->name.'\b/u', $condition) === 1;
 			});
-			foreach ($filtered_properties as $property) {
-				try {
-					$function_name = $property->func;
-					$value = $function_name($replacing_arg, $main_entity, $event_key);
-					$value = is_numeric($value) ? $value : "\"" . $value . "\"";
-					$condition = str_replace($property->name, $value, $condition);
-				} catch (Error $e) {
-					Utils::printP($e->getMessage());
-				} catch (ErrorException $e2) {
-					Utils::printP($e2->getMessage());
-				}
-			}
+			$condition = static::replace_properties_condition($filtered_properties, $main_entity, $event_key, $condition, $replacing_arg);
 		}
 		
 		//use new handler, so we can catch undefined index errors (when $event_key is null)
 		set_error_handler("Utils::exceptions_error_handler");
 		
+		//regular condition (no #arg)
 		$filtered_properties = array_filter(PropertiesManager::get_template_properties(), function ($elem) use ($condition) {
 			return preg_match('/\b'.$elem->name.'\b/u', $condition) === 1;
 		});
-		foreach ($filtered_properties as $property) {
-			try {
-				$function_name = $property->func;
-				$value = $function_name($main_entity, $event_key);
-				$value = is_numeric($value) ? $value : "\"" . $value . "\"";
-				$condition = str_replace($property->name, $value, $condition);
-			} catch (ErrorException $e) {
-				Utils::printP($e->getMessage());
-			}
-		}
+		$condition = static::replace_properties_condition($filtered_properties, $main_entity, $event_key, $condition);
 
 		if (strpos($condition, static::$arg_str) !== false) {
 			return 0;
