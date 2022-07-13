@@ -498,7 +498,7 @@ abstract class TemplatesManager
 			$replacing_arg = $main_entity->get_entity_from_main(null, $arg_replace, $event_key);
 
 			$filtered_properties = array_filter(PropertiesManager::get_template_arg_properties(), function ($elem) use ($condition) {
-				return strpos($condition, $elem->name) !== false;
+				return preg_match('/\b'.$elem->name.'\b/u', $condition) === 1;
 			});
 			foreach ($filtered_properties as $property) {
 				try {
@@ -507,15 +507,18 @@ abstract class TemplatesManager
 					$value = is_numeric($value) ? $value : "\"" . $value . "\"";
 					$condition = str_replace($property->name, $value, $condition);
 				} catch (Error $e) {
+					Utils::printP($e->getMessage());
 				} catch (ErrorException $e2) {
+					Utils::printP($e2->getMessage());
 				}
 			}
 		}
 		
 		//use new handler, so we can catch undefined index errors (when $event_key is null)
 		set_error_handler("Utils::exceptions_error_handler");
+		
 		$filtered_properties = array_filter(PropertiesManager::get_template_properties(), function ($elem) use ($condition) {
-			return strpos($condition, $elem->name) !== false;
+			return preg_match('/\b'.$elem->name.'\b/u', $condition) === 1;
 		});
 		foreach ($filtered_properties as $property) {
 			try {
@@ -524,6 +527,7 @@ abstract class TemplatesManager
 				$value = is_numeric($value) ? $value : "\"" . $value . "\"";
 				$condition = str_replace($property->name, $value, $condition);
 			} catch (ErrorException $e) {
+				Utils::printP($e->getMessage());
 			}
 		}
 

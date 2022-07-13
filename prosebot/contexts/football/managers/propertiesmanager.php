@@ -440,24 +440,24 @@ class PropertiesManagerFootball extends PropertiesManager
 				return $arg->get_entity(null, "consecutive_matches_scoring");
 			}),
 			new Property('#arg.winningless_streak', function ($arg) {
-				return $arg->get_curiosity("winningless_streak")->get_value();
+				return $arg->get_winningless_streak();
 			}),
 			new Property('#arg.lossless_streak', function ($arg) {
-				return $arg->get_curiosity("lossless_streak")->get_value();
+				return $arg->get_lossless_streak();
 			}),
 			new Property('#arg.no_goals_conceded_streak', function ($arg) {
-				return $arg->get_curiosity("no_goals_conceded_streak")->get_value();
+				return $arg->get_no_goals_conceded_streak();
 			}),
 			new Property('#arg.goals_scored_streak', function ($arg) {
-				return $arg->get_curiosity("goals_scored_streak")->get_value();
+				return $arg->get_goals_scored_streak();
 			}),
 			new Property('#arg.first_loss', function ($arg) {
 				$curiosity = $arg->get_curiosity("losses");
-				return $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
+				return $curiosity !== 0 && $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
 			}),
 			new Property('#arg.first_non_win', function ($arg) {
 				$curiosity = $arg->get_curiosity("games_without_winning");
-				return $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
+				return $curiosity !== 0 && $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
 			}),
 			new Property('#arg.pre_classification', function ($arg) {
 				return $arg->get_pre_classification();

@@ -1370,7 +1370,7 @@ class MatchData extends MainEntityData
 			// append to events
 			array_push($result, $penalty_event);
 		}
-
+		
 		return $result;
 	}
 
