@@ -148,7 +148,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {template.extra} {EM%weekday} {weekday}.",
+            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {EM%weekday} {weekday}.",
             "condition": "final_score_diff>0"
         },
         {
@@ -156,7 +156,7 @@
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {template.extra} {EM%weekday} {weekday}.",
+            "text": "{o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {EM%weekday} {weekday}.",
             "condition": "final_score_diff>0"
         }
     ]

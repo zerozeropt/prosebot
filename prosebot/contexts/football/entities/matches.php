@@ -1762,28 +1762,44 @@ class MatchData extends MainEntityData
 		);
 
 		if ($event_n !== null) {
+			$full_entity = "";
 			switch ($lookup) {
-				case "stat_team":
-					return $this->stats[$event_n]->get_team();
-				case "other_curiosity_team":
+				case "stat_team": {
+					$full_entity = $this->stats[$event_n]->get_team();
+					break;
+				}
+				case "other_curiosity_team": {
 					$team = $this->curiosities[$event_n]->get_team();
 					if ($this->teams[0] === $team) {
-						return $this->teams[1];
+						$full_entity = $this->teams[1];
 					}
-					return $this->teams[0];
-				case "scorer":
-					return $this->events[$event_n]->get_score_player();
-				case "assist_maker":
-					return $this->events[$event_n]->get_assist_player();
-				case "team":
-					return $this->events[$event_n]->get_team();
-				case "player":
-					return $this->events[$event_n]->get_player();
-				case "goalkeeper":
-					return $this->events[$event_n]->get_goalkeeper();
+					$full_entity = $this->teams[0];
+					break;
+				}
+				case "scorer": {
+					$full_entity = $this->events[$event_n]->get_score_player();
+					break;
+				}
+				case "assist_maker": {
+					$full_entity = $this->events[$event_n]->get_assist_player();
+					break;
+				}
+				case "team": {
+					$full_entity = $this->events[$event_n]->get_team();
+					break;
+				}
+				case "player": {
+					$full_entity = $this->events[$event_n]->get_player();
+					break;
+				}
+				case "goalkeeper": {
+					$full_entity = $this->events[$event_n]->get_goalkeeper();
+					break;
+				}
 				default:
-					return "";
+					break;
 			}
+			return $full_entity;
 		}
 
 		return $entities_array[$lookup];

@@ -23,7 +23,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name}, {final_score}, {template.extra} on {weekday}, {template.fixture}",
+            "text": "{winner.name} {template.defeated} {loser.name}, {final_score}, on {weekday}, {template.fixture}",
             "condition": "final_score_diff>0"
         },
         {
@@ -140,14 +140,6 @@
         }
     ],
     "teams_form": [
-        {
-            "text": "Na primeira mão {o%prev_match_winner.name} {prev_match_winner.name} tinha vencido {o%prev_match_loser.name} {prev_match_loser.name}, {prev_match_score}.",
-            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff!=0"
-        },
-        {
-            "text": "Na primeira mão as equipas tinham empatado, {prev_match_score}.",
-            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"
-        },
         {
             "text": "In this competition, {template.team_form%home_team}, and {template.team_form%away_team}.",
             "condition": "!first_competition_game && is_league"
@@ -405,7 +397,7 @@
     ],
     "normal_score": [
         {
-            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.streak%winner}, {final_score}, {template.extra} on {weekday}",
+            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.streak%winner}, {final_score}, on {weekday}",
             "condition": "final_score_diff>0"
         },
         {

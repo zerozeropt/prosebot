@@ -259,7 +259,7 @@ abstract class TemplatesManager
 	}
 
 	/**
-	 * Evaluates a condition as an integer value, where 0 is false and >0 is true
+	 * Evaluates a condition as an integer value, where 0 is false and 1 is true
 	 * @param string $condition Condition
 	 * @return int Condition value
 	 */
@@ -302,7 +302,7 @@ abstract class TemplatesManager
 					$has_hyperlink = false;
 
 					$after_tags = $sentence;
-					preg_match('/(^<a.*?>)(.*<\/a>.*$)/u', $sentence, $after_a_tag_array);
+					preg_match('/(^<a[^>]*+>)(.*<\/a>.*$)/u', $sentence, $after_a_tag_array);
 					if (count($after_a_tag_array) > 2) {
 						$after_tags = $after_a_tag_array[2];
 						$has_hyperlink = true;
@@ -492,25 +492,26 @@ abstract class TemplatesManager
 		if ($found_arg) {
 			if ($arg_replace === null) {
 				return true;
-			} else {
-				//passed arg
-				$replacing_arg = $main_entity->get_entity_from_main(null, $arg_replace, $event_key);
+			}
 
-				$filtered_properties = array_filter(PropertiesManager::get_template_arg_properties(), function ($elem) use ($condition) {
-					return strpos($condition, $elem->name) !== false;
-				});
-				foreach ($filtered_properties as $property) {
-					try {
-						$function_name = $property->func;
-						$value = $function_name($replacing_arg, $main_entity, $event_key);
-						$value = is_numeric($value) ? $value : "\"" . $value . "\"";
-						$condition = str_replace($property->name, $value, $condition);
-					} catch (Error $e) {
-					} catch (ErrorException $e2) {
-					}
+			//passed arg
+			$replacing_arg = $main_entity->get_entity_from_main(null, $arg_replace, $event_key);
+
+			$filtered_properties = array_filter(PropertiesManager::get_template_arg_properties(), function ($elem) use ($condition) {
+				return strpos($condition, $elem->name) !== false;
+			});
+			foreach ($filtered_properties as $property) {
+				try {
+					$function_name = $property->func;
+					$value = $function_name($replacing_arg, $main_entity, $event_key);
+					$value = is_numeric($value) ? $value : "\"" . $value . "\"";
+					$condition = str_replace($property->name, $value, $condition);
+				} catch (Error $e) {
+				} catch (ErrorException $e2) {
 				}
 			}
 		}
+		
 		//use new handler, so we can catch undefined index errors (when $event_key is null)
 		set_error_handler("Utils::exceptions_error_handler");
 		$filtered_properties = array_filter(PropertiesManager::get_template_properties(), function ($elem) use ($condition) {

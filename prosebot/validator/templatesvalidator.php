@@ -699,7 +699,7 @@ class TemplatesValidator
 		$express_array = preg_split('/<=|>=|<|>|===|==|!=/u', $expression);
 
 		// A boolean expression cannot be just a number or a string
-		$pattern = '/(?<![\w\W])-?(\d|".*")+$/u';
+		$pattern = '/(?<!.)-?(\d|".*")+$/u';
 		if (preg_match($pattern, $expression)) {
 			$this->throw_error_bad_condition($path, $expression, "not a boolean expression");
 		}
@@ -738,13 +738,13 @@ class TemplatesValidator
 			// Consume !
 			$express = mb_substr($express, 1, $strlen - 1, 'UTF-8');
 			// If a number or string, throw error
-			if (preg_match('/(?<![\w\W])-?(\d|".*")+$/u', $express)) {
+			if (preg_match('/(?<!.)-?(\d|".*")+$/u', $express)) {
 				$this->throw_error_bad_condition($path, $express, "\"!\" sign should be followed by a variable");
 			}
 		}
 
 		// If not a number
-		if (!preg_match('/(?<![\w\W])-?(\d)+$/u', $express)) {
+		if (!preg_match('/(?<!.)-?(\d)+$/u', $express)) {
 			$this->validate_arithmetic($path, $express); // entity.property
 		}
 	}
@@ -762,7 +762,7 @@ class TemplatesValidator
 		// For each operand
 		foreach ($operands as $operand) {
 			// If not a number
-			if (!preg_match('/(?<![\w\W])-?(\d)+$/u', $operand)) {
+			if (!preg_match('/(?<!.)-?(\d)+$/u', $operand)) {
 				$this->condition_dot($path, $operand);
 			}
 		}
@@ -802,7 +802,7 @@ class TemplatesValidator
 			$this->throw_error_bad_variable($path, "empty variable");
 		}
 
-		if (!preg_match('/(?<![\w\W])(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?![\w\W])/u', $variable)) {
+		if (!preg_match('/(?<!.)(([@A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?)|(^#arg))$(?!.)/u', $variable)) {
 			$this->throw_error_bad_variable($path, $variable);
 		}
 	}
@@ -815,10 +815,10 @@ class TemplatesValidator
 	private function validate_template_variable($path, $variable)
 	{
 		if ($variable == "") {
-			$this->throw_error_bad_variable($path, "empty variable");
+			$this->throw_error_bad_variable($path, "variable is empty");
 		}
 
-		if (!preg_match('/(?<![\w\W])[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\W])/u', $variable)) {
+		if (!preg_match('/(?<!.)[A-Za-z][\w$]*(\.[\w$]+)?(\[\d+])?$(?!.)/u', $variable)) {
 			echo $this->file_name . "Warning: " . $path . " - Invalid variable name: \"$variable\"<br>";
 		}
 	}
@@ -834,7 +834,7 @@ class TemplatesValidator
 			$this->throw_error_bad_variable($path, "empty variable");
 		}
 
-		if (!preg_match('/(?<![\w\W])([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?![\w\W])/u', $variable)) {
+		if (!preg_match('/(?<!.)([A-Za-z#][\w]+\.@)?[A-Za-z#][\w$]*(\.[\w$]+)?(\[\d+])?$(?!.)/u', $variable)) {
 			$this->throw_error_bad_variable($path, $variable);
 		}
 	}
@@ -917,7 +917,7 @@ class TemplatesValidator
 
 			// enitity not specified (= #arg)
 			if ($entity == "#arg") {
-				foreach ($this->vars_array->entities->entities_properties as $key => $properties) {
+				foreach ($this->vars_array->entities->entities_properties as $properties) {
 					if (in_array($property, $properties)) {
 						$has_error = false;
 						break;
@@ -966,16 +966,16 @@ class TemplatesValidator
 			return false;
 		}
 
-		$has_singular = preg_match('/^s:(.(?![:]))*$/u', $entity_array[0]);
-		$has_plural = preg_match('/^p:(.(?![:]))+$/u', $entity_array[1]);
+		$has_singular = preg_match('/^s:(.(?!:))*$/u', $entity_array[0]);
+		$has_plural = preg_match('/^p:(.(?!:))+$/u', $entity_array[1]);
 		$incorrect_form_sp = ($has_singular + $has_plural) == 1;
 
-		$has_f = preg_match('/^f:(.(?![:]))+$/u', $entity_array[0]);
-		$has_m = preg_match('/^m:(.(?![:]))+$/u', $entity_array[1]);
+		$has_f = preg_match('/^f:(.(?!:))+$/u', $entity_array[0]);
+		$has_m = preg_match('/^m:(.(?!:))+$/u', $entity_array[1]);
 		$has_n = 0;
 		$incorrect_form_fm = false;
 		if (count($entity_array) == 3) {
-			$has_n = preg_match('/^n:(.(?![:]))+$/u', $entity_array[2]);
+			$has_n = preg_match('/^n:(.(?!:))+$/u', $entity_array[2]);
 			$incorrect_form_fm = ($has_f + $has_m + $has_n) == 1 || ($has_f + $has_m + $has_n) == 2;
 		}
 		else {
@@ -1162,11 +1162,12 @@ class TemplatesValidator
 				}
 				case EntityGetterSub::class: {
 					array_push($dictionary["properties"]["text"], $entity_name);
-					$dictionary["entities"][$entity_name] = $entity_getter->classname . "_properties";
-					$dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"] = [];
+					$props = "_properties";
+					$dictionary["entities"][$entity_name] = $entity_getter->classname . $props;
+					$dictionary["entities"]["entities_properties"][$entity_getter->classname . $props] = [];
 					$entities_list = $entity_getter->classname::get_entities_list();
 					foreach ($entities_list as $prop_entity_name => $prop_entity_getter) {
-						array_push($dictionary["entities"]["entities_properties"][$entity_getter->classname . "_properties"], $prop_entity_name);
+						array_push($dictionary["entities"]["entities_properties"][$entity_getter->classname . $props], $prop_entity_name);
 					}
 					break;
 				}

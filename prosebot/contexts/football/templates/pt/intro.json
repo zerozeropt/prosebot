@@ -385,7 +385,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{template.fixture}, {o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner}, {final_score}, {template.extra} {EM%weekday} {weekday}",
+            "text": "{template.fixture}, {o%winner.name} {winner.name} {template.defeated} {o%loser.name} {loser.name} {template.streak%winner}, {final_score}, {EM%weekday} {weekday}",
             "condition": "final_score_diff>0"
         },
         {

@@ -261,6 +261,7 @@ abstract class EntityData
 		}
 
         $entities_list = static::get_entities_list();
+        $entity_value = "";
         if (array_key_exists($lookup, $entities_list)) {
 			$entity_getter = $entities_list[$lookup];
             $getter_function = $entity_getter->getter_function;
@@ -268,28 +269,33 @@ abstract class EntityData
             switch (get_class($entity_getter)) {
                 case EntityGetterFlat::class:
                 {
-                    return $this->get_flat_entity($entity_getter, $getter_function, $event, $event_n);
+                    $entity_value = $this->get_flat_entity($entity_getter, $getter_function, $event, $event_n);
+                    break;
                 }
                 case EntityGetterSub::class:
                 {
                     $prop = $this->get_flat_entity($entity_getter, $getter_function, $event, $event_n);
-                    return $prop === null ? null : $prop->get_entity($manager, $params, $used_step, $event_n, $event);
+                    $entity_value = $prop === null ? null : $prop->get_entity($manager, $params, $used_step, $event_n, $event);
+                    break;
                 }
                 case EntityGetterManager::class:
                 {
                     $manager_function = $entity_getter->manager_function;
                     $arg_getter_function = $entity_getter->arg_getter_function;
                     if ($arg_getter_function === "") {
-                        return $manager->$manager_function($this);
+                        $entity_value = $manager->$manager_function($this);
                     }
-                    return $manager->$manager_function($this->$arg_getter_function());
+                    else {
+                        $entity_value = $manager->$manager_function($this->$arg_getter_function());
+                    }
+                    break;
                 }
                 default:
-                    return "";
+                    break;
             }
 		}
 
-        return "";
+        return $entity_value;
 	}
 }
 

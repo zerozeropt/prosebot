@@ -2,11 +2,13 @@
 require_once(__DIR__.'/managers/templatesmanager.php');
 require_once(__DIR__.'/../../global_vars.php');
 require_once(__DIR__.'/../../utils.php');
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 date_default_timezone_set("Europe/Lisbon");
 header('Content-Type: text/html; charset=utf8');
+
+//Debug code
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+
 ?>
 
 <!doctype html>
