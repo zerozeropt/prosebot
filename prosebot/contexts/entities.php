@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__.'/../exceptions.php');
 
 /**
  * Class for handling the different types of ways to get an entity
@@ -26,12 +27,12 @@ class EntityGetterFlat extends EntityGetter
 {
     /**
      * @param string  $getter_function      Getter function name
-     * @param bool    $has_event            Whether the getter function as an event key as argument
+     * @param bool    $has_only_index       Whether the getter function as an event key as argument, but not an event itself
      */
-    function __construct($getter_function, $has_event = false)
+    function __construct($getter_function, $has_only_index = false)
     {
         parent::__construct($getter_function);
-        $this->has_event = $has_event;
+        $this->has_only_index = $has_only_index;
     }
 }
 
@@ -46,13 +47,13 @@ class EntityGetterSub extends EntityGetter
     /**
      * @param string  $getter_function  Getter function name
      * @param string  $classname        Sub entity class name
-     * @param bool    $has_event        Whether the getter function as an event key as argument
+     * @param bool    $has_only_index   Whether the getter function as an event key as argument, but not an event itself
      */
-    function __construct($getter_function, $classname, $has_event = false)
+    function __construct($getter_function, $classname, $has_only_index = false)
     {
         parent::__construct($getter_function);
         $this->classname = $classname;
-        $this->has_event = $has_event;
+        $this->has_only_index = $has_only_index;
     }
 }
 
@@ -120,7 +121,7 @@ abstract class EntityData
 	 * @param TextStructure $name       Entity name
 	 * @param string        $start_link Beginning of the entity's hyperlink
 	 */
-    function __construct($id, $name = "", $start_link)
+    function __construct($id, $name = "", $start_link = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -148,10 +149,11 @@ abstract class EntityData
 
     public function get_link()
     {
-        $link = "";
-        foreach ($this->link as $part)
-            $link .= $part;
-        return $link;
+        $hyperlink = "";
+        foreach ($this->link as $part) {
+            $hyperlink .= $part;
+        }
+        return $hyperlink;
     }
 
     public function has_link()
@@ -172,7 +174,7 @@ abstract class EntityData
         $this->id = $id;
     }
 
-    protected function set_name($name)
+    public function set_name($name)
     {
         $this->name = $name;
         $this->upadte_link_name();
@@ -180,15 +182,26 @@ abstract class EntityData
 
     protected function upadte_link_name()
     {
-        if ($this->has_link())
-            $this->link[1] = $this->name;
+        if ($this->has_link()) {
+            if ($this->name instanceof TextStructure) {
+                $this->link[1] = $this->name->text;
+            }
+            else {
+                $this->link[1] = $this->name;
+            }
+        }
     }
 
     protected function set_link($link_b)
     {
         $this->link = [];
         array_push($this->link, $link_b);
-        array_push($this->link, $this->name);
+        if ($this->name instanceof TextStructure) {
+            array_push($this->link, $this->name->text);
+        }
+        else {
+            array_push($this->link, $this->name);
+        }
         array_push($this->link, "</a>");
     }
 
@@ -218,6 +231,22 @@ abstract class EntityData
     abstract static function get_entities_list();
 
     /**
+     * Get flat entity
+     * @param string          $entity          Entity or property name to be handled
+     * @param EntityGetter    $entity_getter   Entity getter object
+     * @param string          $getter_function Getter function name
+     * @param object   		  $event           Event
+     * @param key|null		  $event_n         Event key
+	 * @return string|object Content to be written for the entity or a sub-entity object
+     */
+    private function get_flat_entity($entity_getter, $getter_function, $event, $event_n) {
+        if ($entity_getter->has_only_index) {
+            return $this->$getter_function($event_n);
+        }
+        return $this->$getter_function($event, $event_n);
+    }
+
+    /**
 	 * Get entity.
      * @param EntitiesManager $manager      Manager that handles the entity
      * @param string          $entity       Entity or property name to be handled
@@ -228,8 +257,9 @@ abstract class EntityData
      */
 	public function get_entity($manager, $entity, $used_step = PHP_INT_MAX, $event_n = null, $event = null)
 	{
-        if ($entity === null)
+        if ($entity === null) {
             return $this;
+        }
             
 		$pos = strpos($entity, ".");
 		$lookup = $entity;
@@ -241,6 +271,7 @@ abstract class EntityData
 		}
 
         $entities_list = static::get_entities_list();
+        $entity_value = "";
         if (array_key_exists($lookup, $entities_list)) {
 			$entity_getter = $entities_list[$lookup];
             $getter_function = $entity_getter->getter_function;
@@ -248,34 +279,33 @@ abstract class EntityData
             switch (get_class($entity_getter)) {
                 case EntityGetterFlat::class:
                 {
-                    if ($entity_getter->has_event)
-                        return $this->$getter_function($event_n, $event);
-                    return $this->$getter_function();
+                    $entity_value = $this->get_flat_entity($entity_getter, $getter_function, $event, $event_n);
+                    break;
                 }
                 case EntityGetterSub::class:
                 {
-                    $prop = null;
-                    if ($entity_getter->has_event)
-                        $prop = $this->$getter_function($event_n, $event);
-                    else $prop = $this->$getter_function();
-                    if ($prop === null)
-                        return null;
-                    return $prop->get_entity($manager, $params, $used_step, $event_n, $event);
+                    $prop = $this->get_flat_entity($entity_getter, $getter_function, $event, $event_n);
+                    $entity_value = $prop === null ? null : $prop->get_entity($manager, $params, $used_step, $event_n, $event);
+                    break;
                 }
                 case EntityGetterManager::class:
                 {
                     $manager_function = $entity_getter->manager_function;
                     $arg_getter_function = $entity_getter->arg_getter_function;
-                    if ($arg_getter_function === "")
-                        return $manager->$manager_function($this);
-                    return $manager->$manager_function($this->$arg_getter_function());
+                    if ($arg_getter_function === "") {
+                        $entity_value = $manager->$manager_function($this);
+                    }
+                    else {
+                        $entity_value = $manager->$manager_function($this->$arg_getter_function());
+                    }
+                    break;
                 }
                 default:
-                    return "";
+                    break;
             }
 		}
 
-        return "";
+        return $entity_value;
 	}
 }
 

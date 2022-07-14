@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__.'/exceptions.php');
 
 /**
  * Class of auxiliary functions transversal to all contexts
@@ -14,8 +15,9 @@ class Utils
      */
 	static function null_if_empty($string)
 	{
-		if ($string == '')
+		if ($string == '') {
 			return null;
+		}
 		return $string;
 	}
 
@@ -30,8 +32,9 @@ class Utils
 	{
 		$sliced = array_slice($array, $start);
 		foreach ($sliced as $key => $element) {
-			if ($filter($element))
+			if ($filter($element)) {
 				return $key;
+			}
 		}
 		return false;
 	}
@@ -46,10 +49,12 @@ class Utils
      */
 	static function exceptions_error_handler($severity, $message, $filename, $lineno)
 	{
-		if (error_reporting() == 0)
+		if (error_reporting() == 0) {
 			return;
-		if (error_reporting() & $severity)
+		}
+		if (error_reporting() & $severity) {
 			throw new ErrorException($message, 0, $severity, $filename, $lineno);
+		}
 	}
 
 	/**
@@ -60,24 +65,24 @@ class Utils
      */
 	static function undefined_constant_handler($err_no, $err_str)
 	{
-		if (strpos($err_str, 'Use of undefined constant ') === 0)
+		if (strpos($err_str, 'Use of undefined constant ') === 0) {
 			throw new ErrorException($err_str);
-		return;
+		}
 	}
 
 	/**
 	 * Get random number between 0 and 1
-	 * @return int Random number between 0 (inclusive) and 1 (exclusive)
+	 * @return float Random number between 0 (inclusive) and 1 (exclusive)
      */
 	static function get_rand()
 	{
-		return mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+		return random_int(0, mt_getrandmax() - 1) / mt_getrandmax();
 	}
 
 	/**
 	 * Validate json syntax
 	 * @param string $string Json file in string format
-	 * @return json|Exception Encoded json if no error, otherwise throws exception
+	 * @return json Encoded json if no error, otherwise throws exception
      */
 	static function json_validate($string)
 	{
@@ -123,7 +128,7 @@ class Utils
 
 		if ($error !== '') {
 			// throw the Exception
-			throw new Exception("Error: " . $error);
+			throw new ValidationErrorException($error, "/");
 		}
 
 		// everything is OK
@@ -150,5 +155,29 @@ class Utils
 	static function boolstr($bool)
 	{
 		return $bool ? "1" : "0";
+	}
+
+	/**
+	 * Prints text
+	 * @param string $text Text to be printed
+     */
+	static function printP($text)
+	{
+		echo $text;
+	}
+
+	/**
+	 * Prints a list
+	 * @param array  $list  List to be printed
+	 * @param string $title Title of the list
+     */
+	static function printList($list, $title)
+	{
+		echo '<h4>' . $title . '</h4>';
+		if (count($list) > 0) {
+			echo '<div>';
+			echo '<li>' . implode('</li><li>', $list) . '</li>';
+			echo '</ul>';
+		}
 	}
 }

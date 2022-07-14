@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__.'/../../data_fetcher.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Class for fetching Football data
@@ -19,11 +20,11 @@ class FootballFetcher extends DataFetcher
 	/**
 	 * Entities hyperlinks
 	 */
-	const match_link = "<a href=https://www.zerozero.pt/match.php?id=";
-	const team_link = "<a href=https://www.zerozero.pt/equipa.php?id=";
-	const player_link = "<a href=https://www.zerozero.pt/player.php?id=";
-	const coach_link = "<a href=https://www.zerozero.pt/coach.php?id=";
-	const edition_link = "<a href=https://www.zerozero.pt/edicao.php?id_edicao=";
+	const MATCH_LINK = "<a href=https://www.zerozero.pt/match.php?id=";
+	const TEAM_LINK = "<a href=https://www.zerozero.pt/equipa.php?id=";
+	const PLAYER_LINK = "<a href=https://www.zerozero.pt/player.php?id=";
+	const COACH_LINK = "<a href=https://www.zerozero.pt/coach.php?id=";
+	const EDITION_LINK = "<a href=https://www.zerozero.pt/edicao.php?id_edicao=";
 
 	/**
 	 * Fetch match entity data
@@ -32,11 +33,12 @@ class FootballFetcher extends DataFetcher
 	 */
 	public static function get_match_json($match_id)
 	{
-		$api = preg_replace('/{match_id}/', $match_id, self::MATCH_DATA_PATH);
+		$api = str_replace('{match_id}', $match_id, self::MATCH_DATA_PATH);
 		$json = static::get_json($api);
 
-		if($json == null)
-			throw new Exception("Error: Match " . $match_id . " does not exist.");
+		if($json == null) {
+			throw new DataFetcherException("Match", $match_id);
+		}
 		
 		return $json;
 	}
@@ -48,11 +50,12 @@ class FootballFetcher extends DataFetcher
 	 */
 	public static function get_h2h_json($match_id)
 	{
-		$api = preg_replace('/{match_id}/', $match_id, self::H2H_DATA_PATH);
+		$api = str_replace('{match_id}', $match_id, self::H2H_DATA_PATH);
 		$json = static::get_json($api);
 
-		if($json == null)
-			throw new Exception("Error: Match " . $match_id . " does not exist.");
+		if($json == null) {
+			throw new DataFetcherException("Match", $match_id);
+		}
 		
 		return $json;
 	}
@@ -64,11 +67,12 @@ class FootballFetcher extends DataFetcher
 	 */
 	public static function get_team_json($team_id)
 	{
-		$api = preg_replace('/{team_id}/', $team_id, self::TEAM_DATA_PATH);
+		$api = str_replace('{team_id}', $team_id, self::TEAM_DATA_PATH);
 		$json = static::get_json($api);
 
-		if ($json == null)
-			throw new Exception("Error: Team " . $team_id . " does not exist.");
+		if ($json == null) {
+			throw new DataFetcherException("Team", $team_id);
+		}
 
 		return $json;
 	}

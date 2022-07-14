@@ -45,8 +45,9 @@ abstract class EntitiesManager
 	protected function read_cache($suffix="")
 	{
 		$key = debug_backtrace()[1]['function'] . $suffix;
-		if (array_key_exists($key, $this->cache))
+		if (array_key_exists($key, $this->cache)) {
 			return $this->cache[$key];
+		}
 		return null;
 	}
 
@@ -74,8 +75,9 @@ abstract class EntitiesManager
 		// read last used value, if any
 		$cached_val = $this->read_cache($key);
 
-		if ($cached_val === null)
+		if ($cached_val === null) {
 			$cached_val = count($options) - 1;
+		}
 
 		// iterate through values to pick one
 		for ($i = 0; $i < count($options); $i++) {

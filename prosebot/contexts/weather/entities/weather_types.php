@@ -76,7 +76,7 @@ class WeatherTypesData extends EntityData
      */
 	public function is_snowy()
 	{
-		return $this->main == "Snow" || preg_match('/^6[0-9][0-9]$/', $this->main);
+		return $this->main == "Snow" || preg_match('/^6\d\d$/', $this->main);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class WeatherTypesData extends EntityData
      */
 	public function is_rainy()
 	{
-		return $this->main == "Rain" || $this->main == "Drizzle" || preg_match('/^5[0-9][0-9]$/', $this->main) || preg_match('/^3[0-9][0-9]$/', $this->main);
+		return $this->main == "Rain" || $this->main == "Drizzle" || preg_match('/^5\d\d$/', $this->main) || preg_match('/^3\d\d$/', $this->main);
 	}
 
 	/**
@@ -94,7 +94,7 @@ class WeatherTypesData extends EntityData
      */
 	public function is_stormy()
 	{
-		return $this->main == "Thunderstorm" || preg_match('/^2[0-9][0-9]$/', $this->main);
+		return $this->main == "Thunderstorm" || preg_match('/^2\d\d$/', $this->main);
 	}
 
 	/**
@@ -103,7 +103,7 @@ class WeatherTypesData extends EntityData
      */
 	public function is_atmosphere()
 	{
-		return $this->main == "Atmosphere" || preg_match('/^7[0-9][0-9]$/', $this->main);
+		return $this->main == "Atmosphere" || preg_match('/^7\d\d$/', $this->main);
 	}
 
 	/**
@@ -122,8 +122,9 @@ class WeatherTypesData extends EntityData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 }

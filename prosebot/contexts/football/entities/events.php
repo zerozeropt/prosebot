@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__.'/../fetcher/data_fetcher.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Super class for an event
@@ -85,8 +86,9 @@ abstract class Event
 
 	public function get_updatable_fields()
 	{
-		if ($this->team !== null)
+		if ($this->team !== null) {
 			return array('team_id' => $this->team->get_id());
+		}
 		return array();
 	}
 
@@ -105,10 +107,12 @@ abstract class Event
 
 	public function update_field($field_name, $val)
 	{
-		if ($field_name == 'team_id')
+		if ($field_name == 'team_id') {
 			$this->team_n = $val;
-		elseif ($field_name == 'global')
+		}
+		elseif ($field_name == 'global') {
 			$this->match_n = $val;
+		}
 	}
 
 	/**
@@ -116,8 +120,9 @@ abstract class Event
 	 */
 	public function __call($name, $arguments)
 	{
-		if (!method_exists($this, $name))
-			throw new ErrorException($name . ' does not exist!');
+		if (!method_exists($this, $name)) {
+			throw new UndefinedMethodException($name . ' does not exist!');
+		}
 	}
 
 	/**
@@ -241,7 +246,7 @@ class GoalEvent extends Event
 	 * @param int 		 		$minute 		Minute of the event
 	 * @param TeamData	 		$team   		Team
 	 * @param PlayerData 		$score_player	Player who scored
-	 * @param PlayerData|null 	$assist_player  Player who assits
+	 * @param PlayerData	 	$assist_player  Player who assits
 	 * @param GoalBodyPart		$body_part      Body part
 	 * @param GoalZone			$zone           Goal zone
 	 * @param GoalType			$play_type      Goal type
@@ -251,7 +256,7 @@ class GoalEvent extends Event
 		$minute,
 		$team,
 		$score_player,
-		$assist_player = null,
+		$assist_player,
 		$body_part,
 		$zone,
 		$play_type,
@@ -284,11 +289,13 @@ class GoalEvent extends Event
 	public function get_updatable_fields()
 	{
 		$result = array();
-		if ($this->score_player != null)
+		if ($this->score_player != null) {
 			$result['score_player_id'] = $this->score_player->get_id();
+		}
 
-		if ($this->assist_player != null)
+		if ($this->assist_player != null) {
 			$result['assist_player_id'] = $this->assist_player->get_id();
+		}
 
 		return $result + parent::get_updatable_fields();
 	}
@@ -318,11 +325,15 @@ class GoalEvent extends Event
 
 	public function update_field($field_name, $val)
 	{
-		if ($field_name == 'score_player_id')
+		if ($field_name == 'score_player_id') {
 			$this->scorer_n = $val;
-		elseif ($field_name == 'assist_player_id')
+		}
+		elseif ($field_name == 'assist_player_id') {
 			$this->assist_n = $val;
-		else parent::update_field($field_name, $val);
+		}
+		else {
+			parent::update_field($field_name, $val);
+		}
 	}
 
 	/**
@@ -441,8 +452,9 @@ class YellowCardEvent extends Event
 	public function get_updatable_fields()
 	{
 		$result = array();
-		if ($this->player !== null)
+		if ($this->player !== null) {
 			$result['player_id'] = $this->player->get_id();
+		}
 
 		return $result + parent::get_updatable_fields();
 	}
@@ -452,9 +464,12 @@ class YellowCardEvent extends Event
 	 */
 	public function update_field($field_name, $val)
 	{
-		if ($field_name == 'player_id')
+		if ($field_name == 'player_id') {
 			$this->player_n = $val;
-		else parent::update_field($field_name, $val);
+		}
+		else {
+			parent::update_field($field_name, $val);
+		}
 	}
 
 	/**
@@ -629,8 +644,9 @@ class SubstitutionEvent extends Event
 				break;
 			}
 
-			if ($res === null || $p->get_positive_impact() > $res->get_positive_impact())
+			if ($res === null || $p->get_positive_impact() > $res->get_positive_impact()) {
 				$res = $p;
+			}
 		}
 
 		foreach ($this->players_out as $p) {
@@ -650,8 +666,9 @@ class SubstitutionEvent extends Event
 	public function has_positive_impact()
 	{
 		foreach ($this->players_in as $p) {
-			if ($p->get_positive_impact() > 3)
+			if ($p->get_positive_impact() > 3) {
 				return true;
+			}
 		}
 		return false;
 	}
@@ -663,13 +680,15 @@ class SubstitutionEvent extends Event
 	public function is_relevant_player()
 	{
 		foreach ($this->players_in as $player) {
-			if ($player->is_relevant())
+			if ($player->is_relevant()) {
 				return 1;
+			}
 		}
 
 		foreach ($this->players_out as $player) {
-			if ($player->is_relevant())
+			if ($player->is_relevant()) {
 				return 2;
+			}
 		}
 
 		return 0;
@@ -682,8 +701,9 @@ class SubstitutionEvent extends Event
 	public function __toString()
 	{
 		$post = '';
-		if (count($this->players_in) > 1)
+		if (count($this->players_in) > 1) {
 			$post = 'x' . count($this->players_in);
+		}
 		return parent::__toString() . $post;
 	}
 }

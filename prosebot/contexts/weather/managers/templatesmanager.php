@@ -16,7 +16,7 @@ abstract class SummaryParts
     const TITLE = "title";
     const INTRO = "intro";
 	const STATS = "stats";
-    const _FINAL = "final";
+    const FINAL_P = "final";
     const LONG_TEXT = "longtext";
 }
 
@@ -50,7 +50,7 @@ class TemplatesManagerWeather extends TemplatesManager
 	 */
 	private static $fixed_templates_paths = [
         SummaryParts::INTRO,
-        SummaryParts::_FINAL,
+        SummaryParts::FINAL_P,
 		SummaryParts::STATS
     ];
 
@@ -87,7 +87,7 @@ class TemplatesManagerWeather extends TemplatesManager
         // Fixed structure paragraphs with no links allowed
         foreach (static::$fixed_templates_no_links_paths as $path) {
             $chunk_tmp = parent::sanitize($this->build_fixed_paragraph($city, $this->fixed_templates[$path], "entry_point"));
-            $chunk = strip_tags($chunk_tmp, '<i>');
+            $chunk = strip_tags($chunk_tmp, '<em>');
             $summary_array[$path] = $chunk;
         }
 
@@ -98,7 +98,7 @@ class TemplatesManagerWeather extends TemplatesManager
         }
 
         // Build summary long text
-        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO]."\n".$summary_array[SummaryParts::STATS]."\n".$summary_array[SummaryParts::_FINAL];
+        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO]."\n".$summary_array[SummaryParts::STATS]."\n".$summary_array[SummaryParts::FINAL_P];
 
         // Add match object
         $summary_array["city"] = $city;

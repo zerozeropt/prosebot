@@ -1,7 +1,5 @@
 <?php
 require_once('global_vars.php');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 date_default_timezone_set("Europe/Lisbon");
 header('Content-Type: text/html; charset=utf8');
 if (!empty($_GET["context"])) {

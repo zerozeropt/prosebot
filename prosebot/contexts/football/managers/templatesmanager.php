@@ -3,6 +3,7 @@
 require_once(__DIR__.'/../../templatesmanager.php');
 require_once(__DIR__.'/../entities/matches.php');
 require_once('propertiesmanager.php');
+require_once(__DIR__.'/../../../exceptions.php');
 
 /**
  * Enum of summaries' parts
@@ -16,7 +17,7 @@ abstract class SummaryParts
     const SMALL_TEXT = "small_text";
     const INTRO = "intro";
     const EVENTS = "events";
-    const _FINAL = "final";
+    const FINAL_P = "final";
 	const STATS = "stats";
     const LONG_TEXT = "longtext";
     const ANALYSIS = "analysis";
@@ -76,7 +77,7 @@ class TemplatesManagerFootball extends TemplatesManager
 	 */
 	private static $fixed_templates_paths = [
         SummaryParts::INTRO,
-        SummaryParts::_FINAL
+        SummaryParts::FINAL_P
     ];
 	/**
 	 * Array of templates with a variable structure
@@ -107,8 +108,9 @@ class TemplatesManagerFootball extends TemplatesManager
 		$this->country_index = $this->languageToCountry[$language];
 
 		$success = require_once(static::$language_dir.'/entitiesmanager.php');
-		if (!$success)
-			throw new Exception("Error: Language does not exist.");
+		if (!$success) {
+			throw new UndefinedLanguageException("Language does not exist.");
+		}
 
 		$name = "EntitiesManager" . ucfirst(static::$context) . strtoupper(static::$language_dir);
 		$this->entities_manager = new $name();
@@ -133,7 +135,7 @@ class TemplatesManagerFootball extends TemplatesManager
         // Fixed structure paragraphs with no links allowed
         foreach (static::$fixed_templates_no_links_paths as $path) {
             $chunk_tmp = parent::sanitize($this->build_fixed_paragraph($match, $this->fixed_templates[$path], "entry_point"));
-            $chunk = strip_tags($chunk_tmp, '<i>');
+            $chunk = strip_tags($chunk_tmp, '<em>');
             $summary_array[$path] = $chunk;
             $this->entities_manager->reset();
         }
@@ -146,14 +148,13 @@ class TemplatesManagerFootball extends TemplatesManager
         }
 
         // Events and stats
-        foreach (static::$variable_templates_paths as $path) {
-            $func = 'build_'.$path.'_paragraph';
-            $summary_array[$path] = $this->$func($match);
-            $this->entities_manager->reset();
-        }
+		$summary_array[SummaryParts::EVENTS] = $this->build_events_paragraph($match);
+        $this->entities_manager->reset();
+		$summary_array[SummaryParts::STATS] = $this->build_stats_paragraph($match);
+        $this->entities_manager->reset();
 
         // Build summary long text
-        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO].($summary_array[SummaryParts::EVENTS] != "" ? "\n" : "").$summary_array[SummaryParts::EVENTS]."\n".$summary_array[SummaryParts::_FINAL];
+        $summary_array[SummaryParts::LONG_TEXT] = $summary_array[SummaryParts::INTRO].($summary_array[SummaryParts::EVENTS] != "" ? "\n" : "").$summary_array[SummaryParts::EVENTS]."\n".$summary_array[SummaryParts::FINAL_P];
 
         // Calculate diversity analysis
 		if ($calculate_stats) {

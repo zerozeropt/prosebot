@@ -136,8 +136,9 @@ class MainValuesData extends EntityData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+        }
         return static::$entities;
     }
 }

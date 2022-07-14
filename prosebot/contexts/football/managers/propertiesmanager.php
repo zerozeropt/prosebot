@@ -20,19 +20,19 @@ class PropertiesManagerFootball extends PropertiesManager
 			new Property('player_goal', function ($match, $n) {
 				return strval($match->get_events()[$n]->get_scorer_n());
 			}, 10),
-			new Property('fixture', function ($match, $n) {
+			new Property('fixture', function ($match) {
 				return intval($match->get_fixture());
 			}, 10),
 			new Property('player_goals', function ($match, $n) {
 				return strval($match->get_events()[$n]->get_score_player()->get_goals());
 			}, 1),
-			new Property('has_turn_around', function ($match, $n) {
+			new Property('has_turn_around', function ($match) {
 				return Utils::boolstr($match->has_turnaround());
 			}, 100),
 			new Property('has_assist', function ($match, $n) {
 				return Utils::boolstr($match->get_events()[$n]->get_assist_player() !== null);
 			}, 15),
-			new Property('zone_goal', function ($match, $n) {
+			new Property('zone_goal', function () {
 				return Utils::boolstr(1);
 			}, 2),
 			new Property('is_inside_box_goal', function ($match, $n) {
@@ -47,7 +47,7 @@ class PropertiesManagerFootball extends PropertiesManager
 			new Property('is_own_goal', function ($match, $n) {
 				return Utils::boolstr($match->get_events()[$n]->get_own_goal());
 			}, 100),
-			new Property('goal_type', function ($match, $n) {
+			new Property('goal_type', function () {
 				return Utils::boolstr(1);
 			}, 2),
 			new Property('is_left_foot_goal', function ($match, $n) {
@@ -95,43 +95,43 @@ class PropertiesManagerFootball extends PropertiesManager
 			new Property('match_goal', function ($match, $n) {
 				return strval($match->get_events()[$n]->get_match_n());
 			}, 9),
-			new Property('home_team_goal', function ($match, $n) {
+			new Property('home_team_goal', function ($match) {
 				return Utils::boolstr($match->get_home_goals() != 0);
 			}, 1),
-			new Property('starters', function ($match, $n) {
+			new Property('starters', function ($match) {
 				return Utils::boolstr(count($match->get_starters()) != 0);
 			}, 1),
-			new Property('benched', function ($match, $n) {
+			new Property('benched', function ($match) {
 				return Utils::boolstr(count($match->get_benched()) != 0);
 			}, 1),
-			new Property('away_team_goal', function ($match, $n) {
+			new Property('away_team_goal', function ($match) {
 				return Utils::boolstr($match->get_away_goals() != 0);
 			}, 1),
-			new Property('match_goals', function ($match, $n) {
+			new Property('match_goals', function ($match) {
 				return strval($match->goals());
 			}, 1),
-			new Property('first_competition_game', function ($match, $n) {
+			new Property('first_competition_game', function ($match) {
 				return $match->get_first_competition_game();
 			}, 1),
 			new Property('player_assist', function ($match, $n) {
 				return strval($match->get_events()[$n]->get_assist_n());
 			}, 15),
-			new Property('final_score_diff', function ($match, $n) {
+			new Property('final_score_diff', function ($match) {
 				return strval(abs($match->score_diff()));
 			}, 10),
-			new Property('prev_match_final_score_diff', function ($match, $n) {
+			new Property('prev_match_final_score_diff', function ($match) {
 				return strval(abs($match->prev_match_score_diff()));
 			}, 10),
-			new Property('winner', function ($match, $n) {
+			new Property('winner', function ($match) {
 				return $match->winner();
 			}, 2),
-			new Property('loser', function ($match, $n) {
+			new Property('loser', function ($match) {
 				return $match->loser();
 			}, 2),
-			new Property('home_team', function ($match, $n) {
+			new Property('home_team', function ($match) {
 				return $match->get_home_team_id();
 			}, 2),
-			new Property('away_team', function ($match, $n) {
+			new Property('away_team', function ($match) {
 				return $match->get_away_team_id();
 			}, 2),
 			new Property('minute', function ($match, $n) {
@@ -151,57 +151,57 @@ class PropertiesManagerFootball extends PropertiesManager
 			new Property('total_goals', function ($match, $n) {
 				return strval($match->get_events()[$n]->total_goals());
 			}, 1),
-			new Property('has_best_player', function ($match, $n) {
+			new Property('has_best_player', function ($match) {
 				return Utils::boolstr($match->get_best_player() !== null);
 			}, 1),
-			new Property('has_decisive_player', function ($match, $n) {
+			new Property('has_decisive_player', function ($match) {
 				return Utils::boolstr($match->get_decisive_player() !== null);
 			}, 1),
 			new Property('is_second_yellow', function ($match, $n) {
 				return Utils::boolstr($match->get_events()[$n]->get_second_yellow());
 			}, 1),
-			new Property('home_win',  function ($match, $n) {
+			new Property('home_win',  function ($match) {
 				return Utils::boolstr($match->home_team() == $match->winner() && !$match->is_neutral_ground());
 			}, 1),
-			new Property('away_win',  function ($match, $n) {
+			new Property('away_win',  function ($match) {
 				return Utils::boolstr($match->away_team() == $match->winner() && !$match->is_neutral_ground());
 			}, 1),
 			new Property('is_gamechanger', function ($match, $n) {
 				return Utils::boolstr($match->get_events()[$n]->has_positive_impact() && $match->improved_upon_event($n));
 			}, 1),
-			new Property('has_suprise', function ($match, $n) {
+			new Property('has_suprise', function ($match) {
 				return Utils::boolstr(($match->winner() != $match->home_team()) && (($match->loser()->get_pre_classification() - $match->winner()->get_pre_classification()) < -3));
 			}, 100),
-			new Property('stage', function ($match, $n) {
+			new Property('stage', function ($match) {
 				return $match->get_stage();
 			}, 1),
-			new Property('is_league', function ($match, $n) {
+			new Property('is_league', function ($match) {
 				return Utils::boolstr($match->get_fixture() != 0);
 			}, 1),
-			new Property('is_final', function ($match, $n) {
+			new Property('is_final', function ($match) {
 				return Utils::boolstr($match->get_stage() == "F" && $match->get_competition_hand() == $match->get_competition_num_hands());
 			}, 1),
-			new Property('is_semi_final', function ($match, $n) {
+			new Property('is_semi_final', function ($match) {
 				return Utils::boolstr($match->get_stage() == "MF" || $match->get_stage() == "SF" || $match->get_stage() == "1/2");
 			}, 1),
-			new Property('is_quarter_final', function ($match, $n) {
+			new Property('is_quarter_final', function ($match) {
 				return Utils::boolstr($match->get_stage() == "QF" || $match->get_stage() == "1/4");
 			}, 1),
-			new Property('is_round_of_16', function ($match, $n) {
+			new Property('is_round_of_16', function ($match) {
 				return Utils::boolstr($match->get_stage() == "1/8");
 			}, 1),
-			new Property('is_group_stage', function ($match, $n) {
+			new Property('is_group_stage', function ($match) {
 				return Utils::boolstr($match->get_stage()[0] == 'G');
 			}, 1),
-			new Property('next_game_same_teams', function ($match, $n) {
+			new Property('next_game_same_teams', function ($match) {
 				$match_id_home = $match->home_team()->get_next_competition_match_id();
 				$match_id_away = $match->away_team()->get_next_competition_match_id();
 				return Utils::boolstr($match_id_home == $match_id_away);
 			}, 1),
-			new Property('is_next_match_day', function ($match, $n) {
+			new Property('is_next_match_day', function ($match) {
 				return Utils::boolstr($match->home_team()->is_next_match_day() && $match->away_team()->is_next_match_day());
 			}, 1),
-			new Property('is_last_match_day', function ($match, $n) {
+			new Property('is_last_match_day', function ($match) {
 				return Utils::boolstr($match->home_team()->is_last_match_day() && $match->away_team()->is_last_match_day());
 			}, 1),
 			new Property('has_stat_team', function ($match, $n) {
@@ -216,55 +216,57 @@ class PropertiesManagerFootball extends PropertiesManager
 			new Property('is_relevant_player', function ($match, $n) {
 				return strval($match->get_events()[$n]->is_relevant_player());
 			}, 1),
-			new Property('has_previous_match', function ($match, $n) {
+			new Property('has_previous_match', function ($match) {
 				return Utils::boolstr($match->has_previous_match());
 			}, 1),
-			new Property('has_match_stat', function ($match, $n) {
+			new Property('has_match_stat', function ($match) {
 				return Utils::boolstr($match->current_match_stat !== false);
 			}, 1),
-			new Property('has_home_stat', function ($match, $n) {
+			new Property('has_home_stat', function ($match) {
 				return Utils::boolstr($match->home_team()->get_current_stat() !== false);
 			}, 1),
-			new Property('has_away_stat', function ($match, $n) {
+			new Property('has_away_stat', function ($match) {
 				return Utils::boolstr($match->away_team()->get_current_stat() !== false);
 			}, 1),
-			new Property('has_winner_stat', function ($match, $n) {
+			new Property('has_winner_stat', function ($match) {
 				return Utils::boolstr($match->winner()->get_current_stat() !== false);
 			}, 1),
-			new Property('has_loser_stat', function ($match, $n) {
+			new Property('has_loser_stat', function ($match) {
 				return Utils::boolstr($match->loser()->get_current_stat() !== false);
 			}, 1),
-			new Property('has_home_team_next_match', function ($match, $n) {
+			new Property('has_home_team_next_match', function ($match) {
 				return Utils::boolstr($match->home_team()->get_next_competition_match_id() !== null);
 			}, 1),
-			new Property('has_away_team_next_match', function ($match, $n) {
+			new Property('has_away_team_next_match', function ($match) {
 				return Utils::boolstr($match->away_team()->get_next_competition_match_id() !== null);
 			}, 1),
-			new Property('has_next_competition_game', function ($match, $n) {
+			new Property('has_next_competition_game', function ($match) {
 				return Utils::boolstr($match->away_team()->get_next_competition_match_id() !== null || $match->home_team()->get_next_competition_match_id() !== null);
 			}, 1),
-			new Property('last_goal_stoppage_time', function ($match, $n) {
+			new Property('last_goal_stoppage_time', function ($match) {
 				$reversed = array_reverse($match->get_events());
 				$last_goal = Utils::find($reversed, function ($elem) {
 					return $elem::NAME === GoalEvent::NAME;
 				});
 	
-				if ($last_goal === false)
+				if ($last_goal === false) {
 					return "0";
+				}
 	
 				$minute = $reversed[$last_goal]->get_minute()[0];
 				$minute_extra = $reversed[$last_goal]->get_minute()[1];
 	
 				return Utils::boolstr($minute == 90 && $minute_extra > 0);
 			}, 100),
-			new Property('decisive_goal_stoppage_time', function ($match, $n) {
+			new Property('decisive_goal_stoppage_time', function ($match) {
 				$reversed = array_reverse($match->get_events());
 				$last_goal = Utils::find($reversed, function ($elem) {
 					return $elem::NAME === GoalEvent::NAME;
 				});
 	
-				if ($last_goal === false)
+				if ($last_goal === false) {
 					return "0";
+				}
 	
 				$goal = $reversed[$last_goal];
 				$minute = $reversed[$last_goal]->get_minute()[0];
@@ -275,7 +277,7 @@ class PropertiesManagerFootball extends PropertiesManager
 	
 				return Utils::boolstr(($minute == 90 && $minute_extra > 0) && ($diff === 0 || ($team == $winner && $diff === 1)));
 			}, 150),
-			new Property('dominance', function ($match, $n) {
+			new Property('dominance', function ($match) {
 				$winner = $match->winner();
 				$loser = $match->loser();
 	
@@ -347,120 +349,120 @@ class PropertiesManagerFootball extends PropertiesManager
 
 		// List of #arg.properties
 		static::$template_arg_properties = array(
-			new Property('#arg.is_away_team', function ($match, $n, $arg) {
+			new Property('#arg.is_away_team', function ($arg, $match) {
 				return Utils::boolstr($arg == $match->away_team());
 			}),
-			new Property('#arg.is_global_winning_sequence', function ($match, $n, $arg) {
+			new Property('#arg.is_global_winning_sequence', function ($arg) {
 				return Utils::boolstr($arg->is_global_winning_sequence());
 			}),
-			new Property('#arg.is_global_drawing_sequence', function ($match, $n, $arg) {
+			new Property('#arg.is_global_drawing_sequence', function ($arg) {
 				return Utils::boolstr($arg->is_global_drawing_sequence());
 			}),
-			new Property('#arg.is_global_losing_sequence', function ($match, $n, $arg) {
+			new Property('#arg.is_global_losing_sequence', function ($arg) {
 				return Utils::boolstr($arg->is_global_losing_sequence());
 			}),
-			new Property('#arg.global_form_sequence', function ($match, $n, $arg) {
+			new Property('#arg.global_form_sequence', function ($arg) {
 				return $arg->get_entity(null, "global_form_sequence");
 			}),
-			new Property('#arg.is_coach', function ($match, $n, $arg) {
+			new Property('#arg.is_coach', function ($arg) {
 				return Utils::boolstr($arg->is_coach());
 			}),
-			new Property('#arg.is_competition_winning_sequence', function ($match, $n, $arg) {
+			new Property('#arg.is_competition_winning_sequence', function ($arg) {
 				return Utils::boolstr($arg->is_competition_winning_sequence());
 			}),
-			new Property('#arg.is_competition_drawing_sequence', function ($match, $n, $arg) {
+			new Property('#arg.is_competition_drawing_sequence', function ($arg) {
 				return Utils::boolstr($arg->is_competition_drawing_sequence());
 			}),
-			new Property('#arg.is_competition_losing_sequence', function ($match, $n, $arg) {
+			new Property('#arg.is_competition_losing_sequence', function ($arg) {
 				return Utils::boolstr($arg->is_competition_losing_sequence());
 			}),
-			new Property('#arg.competition_form_sequence', function ($match, $n, $arg) {
+			new Property('#arg.competition_form_sequence', function ($arg) {
 				return $arg->get_entity(null, "competition_form_sequence");
 			}),
-			new Property('#arg.competition_form_sequence_bool', function ($match, $n, $arg) {
+			new Property('#arg.competition_form_sequence_bool', function ($arg) {
 				return Utils::boolstr($arg->get_entity(null, "competition_form_sequence"));
 			}),
-			new Property('#arg.is_next_global_home', function ($match, $n, $arg) {
+			new Property('#arg.is_next_global_home', function ($arg) {
 				return Utils::boolstr($arg->is_next_global_home());
 			}),
-			new Property('#arg.is_next_global_away', function ($match, $n, $arg) {
+			new Property('#arg.is_next_global_away', function ($arg) {
 				return Utils::boolstr($arg->is_next_global_away());
 			}),
-			new Property('#arg.is_next_competition_home', function ($match, $n, $arg) {
+			new Property('#arg.is_next_competition_home', function ($arg) {
 				return Utils::boolstr($arg->is_next_competition_home());
 			}),
-			new Property('#arg.is_next_competition_away', function ($match, $n, $arg) {
+			new Property('#arg.is_next_competition_away', function ($arg) {
 				return Utils::boolstr($arg->is_next_competition_away());
 			}),
-			new Property('#arg.is_next_competition_neutral', function ($match, $n, $arg) {
+			new Property('#arg.is_next_competition_neutral', function ($arg) {
 				return Utils::boolstr($arg->is_next_competition_neutral());
 			}),
-			new Property('#arg.has_next_competition_game', function ($match, $n, $arg) {
+			new Property('#arg.has_next_competition_game', function ($arg) {
 				return Utils::boolstr($arg->get_next_competition_match_id() != null);
 			}),
-			new Property('#arg.is_first_mention', function ($match, $n, $arg) {
+			new Property('#arg.is_first_mention', function ($arg, $match, $n) {
 				return Utils::boolstr($arg->is_first_mention($n));
 			}),
-			new Property('#arg.is_positive', function ($match, $n, $arg) {
+			new Property('#arg.is_positive', function ($arg) {
 				return Utils::boolstr($arg->is_positive());
 			}),
-			new Property('#arg.key', function ($match, $n, $arg) {
+			new Property('#arg.key', function ($arg) {
 				return $arg->get_key();
 			}),
-			new Property('#arg.has_red_card', function ($match, $n, $arg) {
+			new Property('#arg.has_red_card', function ($arg) {
 				return Utils::boolstr($arg->has_red_card());
 			}),
-			new Property('#arg.minute_in', function ($match, $n, $arg) {
+			new Property('#arg.minute_in', function ($arg) {
 				return strval($arg->get_minute_in());
 			}),
-			new Property('#arg.report_num_goals', function ($match, $n, $arg) {
+			new Property('#arg.report_num_goals', function ($arg, $match, $n) {
 				$season_goals = $arg->get_entity(null, "season_goals", PHP_INT_MAX, $n, $match->get_events()[$n]);
 				$goal = $match->get_events()[$n]->get_scorer_n();
 				$goals = $arg->get_goals();
 				return Utils::boolstr(($season_goals > 0 && $season_goals % 5 === 0 && $goals < 3) || $goals >= 3 && $goal == $goals);
 			}),
-			new Property('#arg.is_stat_ball_po', function ($match, $n, $arg) {
+			new Property('#arg.is_stat_ball_po', function ($arg) {
 				return Utils::boolstr($arg->stat_type == "ballpo");
 			}),
-			new Property('#arg.is_stat_shots', function ($match, $n, $arg) {
+			new Property('#arg.is_stat_shots', function ($arg) {
 				return Utils::boolstr($arg->stat_type == "shots");
 			}),
-			new Property('#arg.player_goals', function ($match, $n, $arg) {
+			new Property('#arg.player_goals', function ($arg) {
 				return $arg->get_goals();
 			}),
-			new Property('#arg.player_assists', function ($match, $n, $arg) {
+			new Property('#arg.player_assists', function ($arg) {
 				return $arg->get_assists();
 			}),
-			new Property('#arg.player_goal', function ($match, $n, $arg) {
+			new Property('#arg.player_goal', function ($arg, $match, $n) {
 				return $match->get_events()[$n]->get_scorer_n();
 			}),
-			new Property('#arg.consecutive_matches_scoring', function ($match, $n, $arg) {
+			new Property('#arg.consecutive_matches_scoring', function ($arg) {
 				return $arg->get_entity(null, "consecutive_matches_scoring");
 			}),
-			new Property('#arg.winningless_streak', function ($match, $n, $arg) {
-				return $arg->get_curiosity("winningless_streak")->get_value();
+			new Property('#arg.winningless_streak', function ($arg) {
+				return $arg->get_winningless_streak();
 			}),
-			new Property('#arg.lossless_streak', function ($match, $n, $arg) {
-				return $arg->get_curiosity("lossless_streak")->get_value();
+			new Property('#arg.lossless_streak', function ($arg) {
+				return $arg->get_lossless_streak();
 			}),
-			new Property('#arg.no_goals_conceded_streak', function ($match, $n, $arg) {
-				return $arg->get_curiosity("no_goals_conceded_streak")->get_value();
+			new Property('#arg.no_goals_conceded_streak', function ($arg) {
+				return $arg->get_no_goals_conceded_streak();
 			}),
-			new Property('#arg.goals_scored_streak', function ($match, $n, $arg) {
-				return $arg->get_curiosity("goals_scored_streak")->get_value();
+			new Property('#arg.goals_scored_streak', function ($arg) {
+				return $arg->get_goals_scored_streak();
 			}),
-			new Property('#arg.first_loss', function ($match, $n, $arg) {
+			new Property('#arg.first_loss', function ($arg) {
 				$curiosity = $arg->get_curiosity("losses");
-				return $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
+				return $curiosity !== 0 && $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
 			}),
-			new Property('#arg.first_non_win', function ($match, $n, $arg) {
+			new Property('#arg.first_non_win', function ($arg) {
 				$curiosity = $arg->get_curiosity("games_without_winning");
-				return $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
+				return $curiosity !== 0 && $curiosity->get_pre_value() == 0 && $curiosity->get_post_value() > 0;
 			}),
-			new Property('#arg.pre_classification', function ($match, $n, $arg) {
+			new Property('#arg.pre_classification', function ($arg) {
 				return $arg->get_pre_classification();
 			}),
-			new Property('#arg.pos_classification', function ($match, $n, $arg) {
+			new Property('#arg.pos_classification', function ($arg) {
 				return $arg->get_pos_classification();
 			}),
 		);

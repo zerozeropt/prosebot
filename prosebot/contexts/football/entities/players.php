@@ -101,8 +101,9 @@ abstract class PersonData extends EntityData
      */
 	public function get_entity($manager, $entity, $used_step = PHP_INT_MAX, $event_n = null, $event = null)
 	{
-		if ($used_step < $this->used_step)
+		if ($used_step < $this->used_step) {
 			$this->used_step = $used_step;
+		}
 
 		return parent::get_entity($manager, $entity, $used_step, $event_n, $event);
 	}
@@ -138,7 +139,7 @@ class CoachData extends PersonData
 	{
 		parent::__construct($json_data, $gender);
 		parent::set_id($json_data["id"]);
-		$this->link = FootballFetcher::coach_link . $this->id . ">" . $this->name . "</a>";
+		$this->link = FootballFetcher::COACH_LINK . $this->id . ">" . $this->name . "</a>";
 	}
 
 	/**
@@ -165,8 +166,9 @@ class CoachData extends PersonData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 }
@@ -267,15 +269,16 @@ class PlayerData extends PersonData
 	{
 		parent::__construct($json_data, $gender);
 		parent::set_id($json_data["fk_player"]);
-		parent::set_link(FootballFetcher::player_link . $this->id . ">");
+		parent::set_link(FootballFetcher::PLAYER_LINK . $this->id . ">");
 		$this->position = intval($json_data["position"]);
 		$this->goals = intval($json_data["sgoals"]);
 		$this->tmp_goals = intval($json_data["goals"]);
 		$this->team_id = $json_data["fk_team"];
 
 		$this->own_goals = 0;
-		if ($this->goals == 0 && $this->tmp_goals != 0)
+		if ($this->goals == 0 && $this->tmp_goals != 0) {
 			$this->own_goals = 1;
+		}
 
 		$this->assists = intval($json_data['sassists']);
 		$this->positive_impact = 0;
@@ -347,7 +350,7 @@ class PlayerData extends PersonData
 		return $this->consecutive_matches_scoring;
 	}
 
-	public function get_season_goals($event_key, $event)
+	public function get_season_goals($event)
 	{
 		if ($event !== null) {
 			$add = $event->get_scorer_n();
@@ -412,7 +415,7 @@ class PlayerData extends PersonData
 			"assists" => new EntityGetterFlat("get_assists"),
 			"minute_in" => new EntityGetterFlat("get_minute_in"),
 			"consecutive_matches_scoring" => new EntityGetterFlat("get_consecutive_matches_scoring"),
-			"season_goals" => new EntityGetterFlat("get_season_goals", true)
+			"season_goals" => new EntityGetterFlat("get_season_goals")
 		];
 	}
 
@@ -421,8 +424,9 @@ class PlayerData extends PersonData
      */
     public static function get_entities_list()
     {
-        if (empty(static::$entities))
+        if (empty(static::$entities)) {
             static::compute_entities();
+		}
         return static::$entities;
     }
 }

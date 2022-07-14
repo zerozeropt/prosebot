@@ -1,20 +1,16 @@
 <?php
 require_once('templatesvalidator.php');
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+require_once(__DIR__ . '/../utils.php');
 date_default_timezone_set("Europe/Lisbon");
-
-function printP($text)
-{
-	echo $text;
-}
-
 header('Content-Type: text/html; charset=utf8');
+
+//Debug code
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+
 ?>
 
 <!doctype html>
-
 <html lang="en">
 
 <head>
@@ -100,7 +96,7 @@ header('Content-Type: text/html; charset=utf8');
 					$option = $_POST["validation_option"];
 					$validator->execution_method($option, isset($_POST["hierarchy"]));
 				} catch (Exception $e) {
-					printP($e->getMessage());
+					Utils::printP($e->getMessage());
 				}
 			}
 		} else if (isset($_POST["submitTextCondition"])) {
@@ -112,7 +108,7 @@ header('Content-Type: text/html; charset=utf8');
 				echo "Condition: " . $condition . "<br>";
 				$validator->validate_inputs($text, $condition);
 			} catch (Exception $e) {
-				printP($e->getMessage());
+				Utils::printP($e->getMessage());
 			}
 		} else if (isset($_POST["submitAllFiles"])) {
 			try {
@@ -120,13 +116,13 @@ header('Content-Type: text/html; charset=utf8');
 				$option = $_POST["validation_option"];
 				$validator->validate_all_files(isset($_POST["hierarchy"]), $option);
 			} catch (Exception $e) {
-				printP($e->getMessage());
+				Utils::printP($e->getMessage());
 			}
 		} else if (isset($_POST["submitDictionaries"])) {
 			try {
 				TemplatesValidator::generate_dictionary($_POST["context"]);
 			} catch (Exception $e) {
-				printP($e->getMessage());
+				Utils::printP($e->getMessage());
 			}
 		}
 		?>

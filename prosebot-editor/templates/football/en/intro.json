@@ -23,7 +23,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} {template.defeated} {loser.name}, {final_score}, {template.extra} on {weekday}, {template.fixture}",
+            "text": "{winner.name} {template.defeated} {loser.name}, {final_score}, on {weekday}, {template.fixture}",
             "condition": "final_score_diff>0"
         },
         {
@@ -405,7 +405,7 @@
     ],
     "normal_score": [
         {
-            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.streak%winner}, {final_score}, {template.extra} on {weekday}",
+            "text": "{template.fixture}, {winner.name} {template.defeated} {loser.name} {template.streak%winner}, {final_score}, on {weekday}",
             "condition": "final_score_diff>0"
         },
         {

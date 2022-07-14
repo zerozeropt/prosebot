@@ -26,12 +26,10 @@ class GrammarEN extends Grammar
 
 	/**
 	 * Get full written ordinal number
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
 	 * @return string Full written ordinal number
      */
-	public static function cardinal($gender, $number, $text)
+	public static function cardinal($text)
 	{
 		$f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
 		return $f->format(intval($text));
@@ -39,12 +37,10 @@ class GrammarEN extends Grammar
 
 	/**
 	 * Get ordinal number in "n^st/n^nd/n^rd/n^th" form
-	 * @param NameGender $gender Gender
-	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param string     $text   Ordinal number
 	 * @return string Full ordinal number in "n^st/n^nd/n^rd/n^th" form
      */
-	public static function ordinal_num($gender, $number, $text)
+	public static function ordinal_num($text)
 	{
 		$f = new NumberFormatter("en", NumberFormatter::ORDINAL);
 		return $f->format(intval($text));

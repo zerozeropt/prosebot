@@ -417,7 +417,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{template.fixture}, {EL%winner.name} {winner.name} {template.defeated} {EL%loser.name} {loser.name} {template.streak%winner}, {final_score}, {template.extra} {el%weekday} {weekday}",
+            "text": "{template.fixture}, {EL%winner.name} {winner.name} {template.defeated} {EL%loser.name} {loser.name} {template.streak%winner}, {final_score}, {el%weekday} {weekday}",
             "condition": "final_score_diff>0"
         },
         {

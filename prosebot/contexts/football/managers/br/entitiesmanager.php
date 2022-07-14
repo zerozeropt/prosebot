@@ -48,7 +48,7 @@ class EntitiesManagerFootballBR extends EntitiesManagerFootball
 				case "other_name":
 					$other_name = $team->get_other_name();
 					if ($other_name != null) {
-						array_push($options, new TextStructure("<i>".$other_name->text."</i>", $other_name->gender, $other_name->number));
+						array_push($options, new TextStructure("<em>".$other_name->text."</em>", $other_name->gender, $other_name->number));
 						array_push($term, "%s");
 					}
 					break;
@@ -56,18 +56,24 @@ class EntitiesManagerFootballBR extends EntitiesManagerFootball
 					$coach = $team->get_coach();
 					if ($coach != null) {
 						array_push($options, new TextStructure($team->get_coach(), NameGender::FEMALE, NameNumber::SINGULAR));
-						if (rand(0, 1))
+						if (random_int(0, 1)) {
 							array_push($term, "equipe do técnico %s");
-						else array_push($term, "equipe comandada por %s");
+						}
+						else {
+							array_push($term, "equipe comandada por %s");
+						}
 					}
 					break;
 				case "coach_time":
 					$coach = $team->get_coach();
 					if ($coach != null) {
 						array_push($options, new TextStructure($team->get_coach(), NameGender::MALE, NameNumber::SINGULAR));
-						if (rand(0, 1))
+						if (random_int(0, 1)) {
 							array_push($term, "time do técnico %s");
-						else array_push($term, "time treinado por %s");
+						}
+						else {
+							array_push($term, "time treinado por %s");
+						}
 					}
 					break;
 				case "city_country":
