@@ -737,13 +737,13 @@ class MatchData extends MainEntityData
 	 */
 	private function build_teams_players($match_data)
 	{
-		$home_players = array_key_exists("home_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["home_players"] : [];
-		$away_players = array_key_exists("away_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["away_players"] : [];
+		$home_players_array = array_key_exists("home_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["home_players"] : [];
+		$away_players_array = array_key_exists("away_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["away_players"] : [];
 
-		$starter_home = array_key_exists("starters", $home_players) ? $home_players["starters"] : [];
-		$benched_home = array_key_exists("benched", $home_players) ? $home_players["benched"] : [];
-		$starter_away = array_key_exists("starters", $away_players) ? $away_players["starters"] : [];
-		$benched_away = array_key_exists("benched", $away_players) ? $away_players["benched"] : [];
+		$starter_home = array_key_exists("starters", $home_players_array) ? $home_players_array["starters"] : [];
+		$benched_home = array_key_exists("benched", $home_players_array) ? $home_players_array["benched"] : [];
+		$starter_away = array_key_exists("starters", $away_players_array) ? $away_players_array["starters"] : [];
+		$benched_away = array_key_exists("benched", $away_players_array) ? $away_players_array["benched"] : [];
 
 		//populate players (player_id, player)
 		$this->players = array();
@@ -1603,8 +1603,9 @@ class MatchData extends MainEntityData
 
 		// Check turnaround for home team and then for away team
 		for ($i = 0; $i < 2; $i++) {
-			if ($this->check_turnaround($this->teams[$i]))
+			if ($this->check_turnaround($this->teams[$i])) {
 				return true;
+			}
 		}
 
 		return false;
