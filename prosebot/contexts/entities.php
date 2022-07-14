@@ -183,7 +183,12 @@ abstract class EntityData
     protected function upadte_link_name()
     {
         if ($this->has_link()) {
-            $this->link[1] = $this->name;
+            if ($this->name instanceof TextStructure) {
+                $this->link[1] = $this->name->text;
+            }
+            else {
+                $this->link[1] = $this->name;
+            }
         }
     }
 
@@ -191,7 +196,12 @@ abstract class EntityData
     {
         $this->link = [];
         array_push($this->link, $link_b);
-        array_push($this->link, $this->name);
+        if ($this->name instanceof TextStructure) {
+            array_push($this->link, $this->name->text);
+        }
+        else {
+            array_push($this->link, $this->name);
+        }
         array_push($this->link, "</a>");
     }
 

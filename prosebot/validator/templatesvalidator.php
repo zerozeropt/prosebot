@@ -414,17 +414,17 @@ class TemplatesValidator
 		}
 		// Token cannot have opening brackets
 		else if (preg_match('/{/u', $token_str)) {
-			$this->throw_error_bad_token($path, $token_str, "duplicate opening bracket {");
+			$this->throw_error_bad_construct($path, $token_str, "duplicate opening bracket {", "token");
 		}
 		// Token cannot have closing brackets
 		else if (preg_match('/}/u', $token_str)) {
-			$this->throw_error_bad_token($path, $token_str, "duplicate closing bracket }");
+			$this->throw_error_bad_construct($path, $token_str, "duplicate closing bracket }", "token");
 		}
 
 		$token = $token_array[0];
 		// Token cannot have whitespaces or if a connector is used it cannot have whitespaces after %
 		if (preg_match('/\s(?!.*%)/u', $token)) {
-			$this->throw_error_bad_token($path, $token, "token declaration cannot have whitespaces");
+			$this->throw_error_bad_construct($path, $token, "token declaration cannot have whitespaces", "token");
 		}
 
 		if (preg_match('/template\./u', $token)) {	// {template.template_name}
@@ -447,7 +447,7 @@ class TemplatesValidator
 	{
 		$token_array = $this->token_dot($path, $token);
 		if ($token_array[0] != "template") { // If not "template"
-			$this->throw_error_bad_token($path, $token, "missing \"template\"");
+			$this->throw_error_bad_construct($path, $token, "missing \"template\"", "token");
 		}
 		$this->token_function_template($path, $token_array[1]); // template%entity
 	}
@@ -510,7 +510,7 @@ class TemplatesValidator
 	{
 		$token_array = preg_split("/\./", $token);
 		if (count($token_array) != 2) {
-			$this->throw_error_bad_token($path, $token, "not in \"variable.variable\" format");
+			$this->throw_error_bad_construct($path, $token, "not in \"variable.variable\" format", "token");
 		}
 
 		return $token_array;
@@ -526,7 +526,7 @@ class TemplatesValidator
 		// Validate variable%variable
 		$variables = $this->token_function($path, $token_function);
 		if (empty($variables)) { // Token cannot be null
-			$this->throw_error_bad_token($path, $token_function, "null token");
+			$this->throw_error_bad_construct($path, $token_function, "null token", "token");
 		}
 
 		// Check if template is defined
@@ -550,7 +550,7 @@ class TemplatesValidator
 	{
 		$variables = $this->token_function($path, $token_function); // connector%entity
 		if (empty($variables)) {
-			$this->throw_error_bad_token($path, $token_function, "null token");
+			$this->throw_error_bad_construct($path, $token_function, "null token", "token");
 		}
 
 		// Connector or singular|plural or feminine|masculine
@@ -576,7 +576,7 @@ class TemplatesValidator
 		// Split through %
 		$function_array = preg_split("/%/", $token_function);
 		if (count($function_array) > 2) {
-			$this->throw_error_bad_token($path, $token_function, "too many % functions");
+			$this->throw_error_bad_construct($path, $token_function, "too many % functions", "token");
 		}
 
 		return $function_array;
@@ -598,10 +598,10 @@ class TemplatesValidator
 
 		// If condition begins or ends with signs, then invalid
 		if (preg_match('/^(\s)*(==|===|!=|>=|>|<=|<|&&|\|\|)/u', $condition)) {
-			$this->throw_error_bad_condition($path, $condition, "condition cannot start with signs");
+			$this->throw_error_bad_construct($path, $condition, "condition cannot start with signs", "condition");
 		}
 		if (preg_match('/(==|===|!=|>=|>|<=|<|&&|\|\|)(\s)*$/u', $condition)) {
-			$this->throw_error_bad_condition($path, $condition, "condition cannot end with signs");
+			$this->throw_error_bad_construct($path, $condition, "condition cannot end with signs", "condition");
 		}
 
 		// Split through ( and )
@@ -701,7 +701,7 @@ class TemplatesValidator
 		// A boolean expression cannot be just a number or a string
 		$pattern = '/(?<!.)-?(\d|".*")+$/u';
 		if (preg_match($pattern, $expression)) {
-			$this->throw_error_bad_condition($path, $expression, "not a boolean expression");
+			$this->throw_error_bad_construct($path, $expression, "not a boolean expression", "condition");
 		}
 
 		// Cannot use <=|>=|<|>|===|==|!= but used them
@@ -739,7 +739,7 @@ class TemplatesValidator
 			$express = mb_substr($express, 1, $strlen - 1, 'UTF-8');
 			// If a number or string, throw error
 			if (preg_match('/(?<!.)-?(\d|".*")+$/u', $express)) {
-				$this->throw_error_bad_condition($path, $express, "\"!\" sign should be followed by a variable");
+				$this->throw_error_bad_construct($path, $express, "\"!\" sign should be followed by a variable", "condition");
 			}
 		}
 
@@ -779,7 +779,7 @@ class TemplatesValidator
 		$condition_array = preg_split("/\./", $condition);
 		$nr_args = count($condition_array);
 		if ($nr_args > 2 || $condition == "") { // Too many dots
-			$this->throw_error_bad_condition($path, $condition, "not in \"variable.variable\" format");
+			$this->throw_error_bad_construct($path, $condition, "not in \"variable.variable\" format", "condition");
 		}
 
 		if ($nr_args == 2) { // #arg.property
@@ -849,7 +849,7 @@ class TemplatesValidator
 	{
 		$this->validate_variable($path, $property);
 		if ($this->check_entities && $type == self::TEXT_TYPE && !in_array($property, $this->vars_array->properties->{$type})) {
-			$this->throw_error_bad_token($path, $property, "property not defined for [" . $type . "]");
+			$this->throw_error_bad_construct($path, $property, "property not defined for [" . $type . "]", "token");
 		}
 
 		// Push to properties list
@@ -868,11 +868,11 @@ class TemplatesValidator
 	{
 		$full_condition = $entity . "." . $property;
 		if ($entity !== "#arg") {
-			$this->throw_error_bad_condition($path, $full_condition, "not in #arg.property format");
+			$this->throw_error_bad_construct($path, $full_condition, "not in #arg.property format", "condition");
 		}
 		$this->validate_variable($path, $property);
 		if ($this->check_entities && !in_array($full_condition, $this->vars_array->properties->condition)) {
-			$this->throw_error_bad_token($path, $full_condition, "#arg.property not defined");
+			$this->throw_error_bad_construct($path, $full_condition, "#arg.property not defined", "token");
 		}
 
 		// Push to properties list
@@ -891,7 +891,7 @@ class TemplatesValidator
 		$this->validate_variable($path, $entity);
 		$entities_keys = array_keys((array)$this->vars_array->entities);
 		if ($this->check_entities && !in_array($entity, $entities_keys)) {
-			$this->throw_error_bad_token($path, $entity, "entity not defined");
+			$this->throw_error_bad_construct($path, $entity, "entity not defined", "token");
 		}
 
 		// Push to entities list
@@ -983,10 +983,10 @@ class TemplatesValidator
 		}
 
 		if ($incorrect_form_sp) {
-			$this->throw_error_bad_token($path, $entity, "should be s:string|p:string");
+			$this->throw_error_bad_construct($path, $entity, "should be s:string|p:string", "token");
 		}
 		if ($incorrect_form_fm) {
-			$this->throw_error_bad_token($path, $entity, "should be f:string|m:string(|n:string)");
+			$this->throw_error_bad_construct($path, $entity, "should be f:string|m:string(|n:string)", "token");
 		}
 
 		$is_singular_plural = ($has_singular + $has_plural) == 2;
@@ -1006,7 +1006,7 @@ class TemplatesValidator
 		}
 
 		if ($this->check_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language})) {
-			$this->throw_error_bad_token($path, $connector, "connector not defined");
+			$this->throw_error_bad_construct($path, $connector, "connector not defined", "token");
 		}
 
 		// Push to connectors list
@@ -1059,36 +1059,18 @@ class TemplatesValidator
 	}
 
 	/**
-	 * Throw invalid token construction exception
-	 * @param string $path    		Local in the json structure
-	 * @param string $token   		Wrongly constructed token
-	 * @param string $explanation   Explanation of why it is wrongly constructed
-	 */
-	private function throw_error_bad_token($path, $token, $explanation)
-	{
-		throw new ValidationErrorException("Wrong token construction: \"{" . $token . "}\", " . $explanation, $path);
-	}
-
-	/**
 	 * Throw invalid construction exception
 	 * @param string $path    		Local in the json structure
 	 * @param string $construct   	Wrongly constructed string
 	 * @param string $explanation   Explanation of why it is wrongly constructed
+	 * @param string $type			The type of the construction (token, condition or "")
 	 */
-	private function throw_error_bad_construct($path, $construct, $explanation)
+	private function throw_error_bad_construct($path, $construct, $explanation, $type = "")
 	{
-		throw new ValidationErrorException("Wrong construction: \"{" . $construct . "}\", " . $explanation, $path);
-	}
-
-	/**
-	 * Throw invalid construction exception
-	 * @param string $path    		Local in the json structure
-	 * @param string $condition   	Wrongly constructed condition
-	 * @param string $explanation   Explanation of why it is wrongly constructed
-	 */
-	private function throw_error_bad_condition($path, $condition, $explanation)
-	{
-		throw new ValidationErrorException("Wrong condition construction: \"{" . $condition . "}\", " . $explanation, $path);
+		if ($type !== "") {
+			$type .= " ";
+		}
+		throw new ValidationErrorException("Wrong " . $type . "construction: \"{" . $construct . "}\", " . $explanation, $path);
 	}
 
 	/**

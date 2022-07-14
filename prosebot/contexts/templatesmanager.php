@@ -202,6 +202,39 @@ abstract class TemplatesManager
 	}
 
 	/**
+	 * Get a random template by calculating templates weights
+	 * @param Template[] $templates     Array of templates
+	 * @param Template   $result		Empty template
+	 * @return Template Random template
+	 */
+	private static function get_random_template_by_weight($templates, $result) {
+		//find the sum of weights
+		$sum = array_reduce($templates, function ($i, $template) {
+			return $i += $template->get_weight();
+		});
+
+		if ($sum == 0) {
+			$result = $templates[array_rand($templates)];
+		}
+		else {
+			//get random number from 0 to computed sum
+			$r = Utils::get_rand() * $sum;
+
+			//go through weights to pick corresponding template
+			$idx = 0;
+			foreach ($templates as $template) {
+				$idx += $template->get_weight();
+				if ($idx > $r) {
+					$result = $template;
+					break;
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	/**
 	 * Get a random template for a given type
 	 * @param Template[] $templates     Array of templates
 	 * @param string     $template_type Type
@@ -219,35 +252,13 @@ abstract class TemplatesManager
 		$templates = $templates_filtered;
 
 		$result = new Template("", null, null);
-
 		if (empty($templates)) {
 			return $result;
 		}
 
 		//weighted choice
 		if (static::$weighted) {
-			//find the sum of weights
-			$sum = array_reduce($templates, function ($i, $template) {
-				return $i += $template->get_weight();
-			});
-
-			if ($sum == 0) {
-				$result = $templates[array_rand($templates)];
-			}
-			else {
-				//get random number from 0 to computed sum
-				$r = Utils::get_rand() * $sum;
-
-				//go through weights to pick corresponding template
-				$idx = 0;
-				foreach ($templates as $template) {
-					$idx += $template->get_weight();
-					if ($idx > $r) {
-						$result = $template;
-						break;
-					}
-				}
-			}
+			$result = static::get_random_template_by_weight($templates, $result);
 		}
 		//completely random choice
 		else {
@@ -407,7 +418,8 @@ abstract class TemplatesManager
 				$filtered_templates = TemplatesManager::filter_valid_templates($templates, $main_entity, $event_key, $passing_args, $entity);
 				$subsentence = TemplatesManager::get_random_template_by_type($filtered_templates, $entity);
 				$result .= TemplatesManager::template_recursive($templates, $subsentence, $main_entity, $event_key, $passing_args, $used_entities, $update_entities);
-			} else {
+			}
+			else {
 				if ($passing_args === null) {
 					$entity = $elem;
 					$func = null;
@@ -497,8 +509,10 @@ abstract class TemplatesManager
 				}
 				$value = is_numeric($value) ? $value : "\"" . $value . "\"";
 				$condition = str_replace($property->name, $value, $condition);
-			} catch (ErrorException $e) {
+			} catch (Error $e) {
 				Utils::printP($e->getMessage());
+			} catch (ErrorException $e2) {
+				Utils::printP($e2->getMessage()."<br>");
 			}
 		}
 
@@ -534,7 +548,7 @@ abstract class TemplatesManager
 			//passed arg
 			$replacing_arg = $main_entity->get_entity_from_main(null, $arg_replace, $event_key);
 			$filtered_properties = array_filter(PropertiesManager::get_template_arg_properties(), function ($elem) use ($condition) {
-				return preg_match('/\b'.$elem->name.'\b/u', $condition) === 1;
+				return preg_match('/'.$elem->name.'\b/u', $condition) === 1;
 			});
 			$condition = static::replace_properties_condition($filtered_properties, $main_entity, $event_key, $condition, $replacing_arg);
 		}

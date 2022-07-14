@@ -1,15 +1,16 @@
 <?php
 require_once('templatesvalidator.php');
-require_once(__DIR__.'/../utils.php');
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+require_once(__DIR__ . '/../utils.php');
 date_default_timezone_set("Europe/Lisbon");
 header('Content-Type: text/html; charset=utf8');
+
+//Debug code
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+
 ?>
 
 <!doctype html>
-
 <html lang="en">
 
 <head>

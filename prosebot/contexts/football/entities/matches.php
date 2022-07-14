@@ -279,59 +279,12 @@ class MatchData extends MainEntityData
 		$this->grammar = $grammar;
 		$this->own_goal_form = $own_goal_form;
 
+		//stats
 		$this->build_stats($match_data);
+		//teams
+		$this->build_teams($match_data, $grammar);
 
-		$home_team_edition_stats = array_key_exists("TOP_EDITION_HOME_TEAM", $match_data['EDITIONSTATS']) ? $match_data['EDITIONSTATS']["TOP_EDITION_HOME_TEAM"] : [];
-		$home_team_negative_edition_stats = array_key_exists("TOP_EDITION_HOME_TEAM", $match_data['EDITIONNEGATIVESTATS']) ? $match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_HOME_TEAM"] : [];
-		$away_team_edition_stats = array_key_exists("TOP_EDITION_AWAY_TEAM", $match_data['EDITIONSTATS']) ? $match_data['EDITIONSTATS']["TOP_EDITION_AWAY_TEAM"] : [];
-		$away_team_negative_edition_stats = array_key_exists("TOP_EDITION_AWAY_TEAM", $match_data['EDITIONNEGATIVESTATS']) ? $match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_AWAY_TEAM"] : [];
-
-		//populate teams (0-home, 1-away)
-		$this->teams = array(
-			new TeamData(
-				$grammar,
-				intval($match_data['MATCHREPORT']["game"]["fk_home_team"]), // team id
-				$match_data['HOMEGOALS'], //goals
-				Utils::null_if_empty($match_data['MATCHREPORT']["coach_home"]['abrev']), // coach
-				Utils::null_if_empty($match_data["LEAGUE"]), // league
-				intval($match_data['CLASSIFHOME_PRE']), // pre_classification
-				intval($match_data['CLASSIFHOME_POS']), // $pos_classification
-				intval($match_data['POINTSHOME']), // points
-				$match_data['FORMHOME'], // form
-				$match_data['NEXTHOME'], // next matches,
-				$match_data["FIXTURE"],
-				$match_data['MATCHSTATS'],
-				$home_team_edition_stats,
-				$home_team_negative_edition_stats,
-				$this->edition_team_stats,
-				$this->edition_team_negative_stats,
-				$match_data['INFO']["type_home_team"],
-				$match_data['CURIOSITY']['PRE_MATCH_HOME'],
-				$match_data['CURIOSITY']['POS_MATCH_HOME']
-			),
-			new TeamData(
-				$grammar,
-				intval($match_data['MATCHREPORT']["game"]["fk_away_team"]), // team id
-				$match_data['AWAYGOALS'], //goals
-				Utils::null_if_empty($match_data['MATCHREPORT']["coach_away"]['abrev']), // coach
-				Utils::null_if_empty($match_data["LEAGUE"]), // league
-				intval($match_data['CLASSIFAWAY_PRE']), // pre_classification
-				intval($match_data['CLASSIFAWAY_POS']), // $pos_classification
-				intval($match_data['POINTSAWAY']), // points
-				$match_data['FORMAWAY'], // form
-				$match_data['NEXTAWAY'],
-				$match_data["FIXTURE"],
-				$match_data['MATCHSTATS'],
-				$away_team_edition_stats,
-				$away_team_negative_edition_stats,
-				$this->edition_team_stats,
-				$this->edition_team_negative_stats,
-				$match_data['INFO']["type_away_team"],
-				$match_data['CURIOSITY']["PRE_MATCH_AWAY"],
-				$match_data['CURIOSITY']["POS_MATCH_AWAY"]
-			)
-		);
-
+		//h2h
 		$this->h2h = $this->compute_h2h_data($h2h_data);
 		$prev_match_goals = $this->compute_previous_match_goals($h2h_data);
 		$this->has_previous_match = !empty($prev_match_goals);
@@ -344,40 +297,14 @@ class MatchData extends MainEntityData
 		$this->stats = array_merge($this->stats, $this->teams[0]->get_stats(), $this->teams[1]->get_stats());
 		$this->curiosities = array_merge($this->teams[0]->get_curiosities(), $this->teams[1]->get_curiosities());
 
+		//city
 		if ($this->teams[0]->get_city() === $this->teams[1]->get_city()) {
 			$this->teams[0]->set_can_use_city(false);
 			$this->teams[1]->set_can_use_city(false);
 		}
 
-		$home_players = array_key_exists("home_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["home_players"] : [];
-		$away_players = array_key_exists("away_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["away_players"] : [];
-
-		$starter_home = array_key_exists("starters", $home_players) ? $home_players["starters"] : [];
-		$benched_home = array_key_exists("benched", $home_players) ? $home_players["benched"] : [];
-		$starter_away = array_key_exists("starters", $away_players) ? $away_players["starters"] : [];
-		$benched_away = array_key_exists("benched", $away_players) ? $away_players["benched"] : [];
-
-		//populate players (player_id, player)
-		$this->players = array();
-		foreach (array_merge(
-			$starter_home,
-			$benched_home,
-			$starter_away,
-			$benched_away,
-		)
-			as $player) {
-			$this->players[$player["fk_player"]] = new PlayerData($player, $this->gender);
-		}
-
-		foreach ($match_data['PLAYERSTATS'] as $stats) {
-			if (array_key_exists('player_id', $stats) && array_key_exists($stats['player_id'], $this->players)) {
-				$this->players[$stats['player_id']]->add_stats($stats);
-			}
-		}
-
-		$this->coaches = array();
-		$this->coaches[$match_data['MATCHREPORT']["coach_home"]['id']] = new CoachData($match_data['MATCHREPORT']["coach_home"], $this->gender);
-		$this->coaches[$match_data['MATCHREPORT']["coach_away"]['id']] = new CoachData($match_data['MATCHREPORT']["coach_away"], $this->gender);
+		//players
+		$this->build_teams_players($match_data);
 
 		//match data
 		$date = DateTime::createFromFormat('Y-m-d H-i-s', $match_data['DATETIME'], timezone_open('Europe/Lisbon'));
@@ -430,25 +357,8 @@ class MatchData extends MainEntityData
 			$this->add_double_yellow_cards();
 		}
 
+		//turnaround
 		$this->has_turnaround = $this->compute_turnaround();
-
-		//set home players
-		$this->home_players = array();
-		foreach (array_merge(
-			$starter_home,
-			$benched_home
-		) as $player) {
-			$this->home_players[$player["fk_player"]] = new PlayerData($player, $this->gender);
-		}
-
-		//set away players
-		$this->away_players = array();
-		foreach (array_merge(
-			$starter_away,
-			$benched_away
-		) as $player) {
-			$this->away_players[$player["fk_player"]] = new PlayerData($player, $this->gender);
-		}
 
 		//array with goals (name and number of goals)
 		$this->home_goals = array();
@@ -822,41 +732,155 @@ class MatchData extends MainEntityData
 	}
 
 	/**
+	 * Construct players
+	 * @param object $match_data Decoded json data for a match
+	 */
+	private function build_teams_players($match_data)
+	{
+		$home_players = array_key_exists("home_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["home_players"] : [];
+		$away_players = array_key_exists("away_players", $match_data['MATCHREPORT']) ? $match_data['MATCHREPORT']["away_players"] : [];
+
+		$starter_home = array_key_exists("starters", $home_players) ? $home_players["starters"] : [];
+		$benched_home = array_key_exists("benched", $home_players) ? $home_players["benched"] : [];
+		$starter_away = array_key_exists("starters", $away_players) ? $away_players["starters"] : [];
+		$benched_away = array_key_exists("benched", $away_players) ? $away_players["benched"] : [];
+
+		//populate players (player_id, player)
+		$this->players = array();
+		foreach (array_merge(
+			$starter_home,
+			$benched_home,
+			$starter_away,
+			$benched_away,
+		)
+			as $player) {
+			$this->players[$player["fk_player"]] = new PlayerData($player, $this->gender);
+		}
+
+		foreach ($match_data['PLAYERSTATS'] as $stats) {
+			if (array_key_exists('player_id', $stats) && array_key_exists($stats['player_id'], $this->players)) {
+				$this->players[$stats['player_id']]->add_stats($stats);
+			}
+		}
+
+		$this->coaches = array();
+		$this->coaches[$match_data['MATCHREPORT']["coach_home"]['id']] = new CoachData($match_data['MATCHREPORT']["coach_home"], $this->gender);
+		$this->coaches[$match_data['MATCHREPORT']["coach_away"]['id']] = new CoachData($match_data['MATCHREPORT']["coach_away"], $this->gender);
+
+		//set home players
+		$this->home_players = array();
+		foreach (array_merge(
+			$starter_home,
+			$benched_home
+		) as $player) {
+			$this->home_players[$player["fk_player"]] = new PlayerData($player, $this->gender);
+		}
+
+		//set away players
+		$this->away_players = array();
+		foreach (array_merge(
+			$starter_away,
+			$benched_away
+		) as $player) {
+			$this->away_players[$player["fk_player"]] = new PlayerData($player, $this->gender);
+		}
+	}
+
+	/**
+	 * Construct team
+	 * @param object  $match_data 					Decoded json data for a match
+	 * @param Grammar $grammar	  					Grammar
+	 * @param string  $team_place 					Either "home" or "away"
+	 * @param array	  $team_edition_stats			Team stats in the edition
+	 * @param array	  $team_negative_edition_stats	Team negative stats in the edition
+	 * @return TeamData Constructed team
+	 */
+	private function build_team($match_data, $grammar, $team_place, $team_edition_stats, $team_negative_edition_stats)
+	{
+		$caps_place = strtoupper($team_place);
+		return new TeamData(
+			$grammar,
+			intval($match_data["MATCHREPORT"]["game"]["fk_".$team_place."_team"]), // team id
+			$match_data["".$caps_place."GOALS"], //goals
+			Utils::null_if_empty($match_data["MATCHREPORT"]["coach_".$team_place.""]["abrev"]), // coach
+			Utils::null_if_empty($match_data["LEAGUE"]), // league
+			intval($match_data["CLASSIF".$caps_place."_PRE"]), // pre_classification
+			intval($match_data["CLASSIF".$caps_place."_POS"]), // $pos_classification
+			intval($match_data["POINTS".$caps_place.""]), // points
+			$match_data["FORM".$caps_place.""], // form
+			$match_data["NEXT".$caps_place.""], // next matches,
+			$match_data["FIXTURE"],
+			$match_data["MATCHSTATS"],
+			$team_edition_stats,
+			$team_negative_edition_stats,
+			$this->edition_team_stats,
+			$this->edition_team_negative_stats,
+			$match_data["INFO"]["type_".$team_place."_team"],
+			$match_data["CURIOSITY"]["PRE_MATCH_".$caps_place.""],
+			$match_data["CURIOSITY"]["POS_MATCH_".$caps_place.""]
+		);
+	}
+
+	/**
+	 * Construct teams
+	 * @param object  $match_data Decoded json data for a match
+	 * @param Grammar $grammar	  Grammar
+	 */
+	private function build_teams($match_data, $grammar)
+	{
+		$home_team_edition_stats = array_key_exists("TOP_EDITION_HOME_TEAM", $match_data['EDITIONSTATS']) ? $match_data['EDITIONSTATS']["TOP_EDITION_HOME_TEAM"] : [];
+		$home_team_negative_edition_stats = array_key_exists("TOP_EDITION_HOME_TEAM", $match_data['EDITIONNEGATIVESTATS']) ? $match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_HOME_TEAM"] : [];
+		$away_team_edition_stats = array_key_exists("TOP_EDITION_AWAY_TEAM", $match_data['EDITIONSTATS']) ? $match_data['EDITIONSTATS']["TOP_EDITION_AWAY_TEAM"] : [];
+		$away_team_negative_edition_stats = array_key_exists("TOP_EDITION_AWAY_TEAM", $match_data['EDITIONNEGATIVESTATS']) ? $match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_AWAY_TEAM"] : [];
+		
+		$home_team = $this->build_team($match_data, $grammar, "home", $home_team_edition_stats, $home_team_negative_edition_stats);
+		$away_team = $this->build_team($match_data, $grammar, "away", $away_team_edition_stats, $away_team_negative_edition_stats);
+		$this->teams = array(
+			$home_team,
+			$away_team
+		);
+	}
+
+	/**
+	 * Construct stats for a given type specified by the indexes
+	 * @param object $match_data Decoded json data for a match
+	 * @param string $index1	 Either EDITIONSTATS or EDITIONNEGATIVESTATS
+	 * @param string $index2	 Either TOP_EDITION_MATCH or TOP_EDITION_TEAM
+	 * @return array Array of stats
+	 */
+	private function build_stats_type($match_data, $index1, $index2)
+	{
+		$type_stats = [];
+		if (array_key_exists($index2, $match_data[$index1])) {
+			foreach ($match_data[$index1][$index2] as $stat) {
+				$type_stats[$stat['key']] = $stat["value"];
+			}
+		}
+
+		return $type_stats;
+	}
+
+	/**
 	 * Construct stats
 	 * @param object $match_data Decoded json data for a match
 	 */
-	function build_stats($match_data)
+	private function build_stats($match_data)
 	{
 		$this->stats = [];
-		$top_edition_stats = [];
-		$top_edition_negative_stats = [];
 		$this->match_stats = array();
-		$this->edition_team_stats = [];
-		$this->edition_team_negative_stats = [];
 
 		foreach ($match_data['MATCHSTATS'] as $stat) {
 			if ($stat['key'] == "ballpo") {
 				continue;
 			}
-			if (array_key_exists($stat['key'], $this->match_stats)) {
-				$this->match_stats[$stat['key']] += $stat["value"];
+			if (!array_key_exists($stat['key'], $this->match_stats)) {
+				$this->match_stats[$stat['key']] = 0;
 			}
-			else {
-				$this->match_stats[$stat['key']] = $stat["value"];
-			}
+			$this->match_stats[$stat['key']] += $stat["value"];
 		}
 
-		if (array_key_exists("TOP_EDITION_MATCH", $match_data['EDITIONSTATS'])) {
-			foreach ($match_data['EDITIONSTATS']["TOP_EDITION_MATCH"] as $stat) {
-				$top_edition_stats[$stat['key']] = $stat["value"];
-			}
-		}
-
-		if (array_key_exists("TOP_EDITION_MATCH", $match_data['EDITIONNEGATIVESTATS'])) {
-			foreach ($match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_MATCH"] as $stat) {
-				$top_edition_negative_stats[$stat['key']] = $stat["value"];
-			}
-		}
+		$top_edition_stats = $this->build_stats_type($match_data, "EDITIONSTATS", "TOP_EDITION_MATCH");
+		$top_edition_negative_stats = $this->build_stats_type($match_data, "EDITIONNEGATIVESTATS", "TOP_EDITION_MATCH");
 
 		foreach ($this->match_stats as $key => $stat) {
 			if (array_key_exists($key, $top_edition_stats) && $stat > $top_edition_stats[$key]) {
@@ -867,17 +891,8 @@ class MatchData extends MainEntityData
 			}
 		}
 
-		if (array_key_exists("TOP_EDITION_TEAM", $match_data['EDITIONSTATS'])) {
-			foreach ($match_data['EDITIONSTATS']["TOP_EDITION_TEAM"] as $stat) {
-				$this->edition_team_stats[$stat['key']] = $stat["value"];
-			}
-		}
-
-		if (array_key_exists("TOP_EDITION_TEAM", $match_data['EDITIONNEGATIVESTATS'])) {
-			foreach ($match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_TEAM"] as $stat) {
-				$this->edition_team_negative_stats[$stat['key']] = $stat["value"];
-			}
-		}
+		$this->edition_team_stats = $this->build_stats_type($match_data, "EDITIONSTATS", "TOP_EDITION_TEAM");
+		$this->edition_team_negative_stats = $this->build_stats_type($match_data, "EDITIONNEGATIVESTATS", "TOP_EDITION_TEAM");
 
 		$this->current_match_stat = Utils::find($this->stats, function ($element) {
 			return $element->get_team() == null && $element->is_relevant();
@@ -1553,6 +1568,30 @@ class MatchData extends MainEntityData
 	}
 
 	/**
+	 * Calculate whether there was a turn around in the score for the given team
+	 * @param TeamData $team Team
+	 * @return bool Whether there was a turn around in the score for the given team
+	 */
+	private function check_turnaround($team)
+	{
+		$last_item = $this->events[0];
+		$tmp_team = array();
+		foreach ($this->events as $event) {
+			if ($event->get_event_name() == "goal" && $event->get_team()->get_name() == $team->get_name()) {
+				array_push($tmp_team, $event);
+			}
+		}
+		foreach ($tmp_team as $event) {
+			if ($last_item->team_goals_diff() == -1 && $event->team_goals_diff() == 0) {
+				return true;
+			}
+			$last_item = $event;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Calculate whether there was a turn around in the score
 	 * @return bool Whether there was a turn around in the score
 	 */
@@ -1562,34 +1601,10 @@ class MatchData extends MainEntityData
 			return false;
 		}
 
-		$last_item = $this->events[0];
-		$tmp_home = array();
-		foreach ($this->events as $event) {
-			if ($event->get_event_name() == "goal" && $event->get_team()->get_name() == $this->teams[0]->get_name()) {
-				array_push($tmp_home, $event);
-			}
-		}
-
-		foreach ($tmp_home as $event) {
-			if ($last_item->team_goals_diff() == -1 && $event->team_goals_diff() == 0) {
+		// Check turnaround for home team and then for away team
+		for ($i = 0; $i < 2; $i++) {
+			if ($this->check_turnaround($this->teams[$i]))
 				return true;
-			}
-			$last_item = $event;
-		}
-
-		$last_item = $this->events[0];
-		$tmp_away = array();
-		foreach ($this->events as $event) {
-			if ($event->get_event_name() == "goal" && $event->get_team()->get_name() == $this->teams[1]->get_name()) {
-				array_push($tmp_away, $event);
-			}
-		}
-
-		foreach ($tmp_away as $event) {
-			if ($last_item->team_goals_diff() == -1 && $event->team_goals_diff() == 0) {
-				return true;
-			}
-			$last_item = $event;
 		}
 
 		return false;
@@ -1772,8 +1787,10 @@ class MatchData extends MainEntityData
 					$team = $this->curiosities[$event_n]->get_team();
 					if ($this->teams[0] === $team) {
 						$full_entity = $this->teams[1];
+					} 
+					else { 
+						$full_entity = $this->teams[0];
 					}
-					$full_entity = $this->teams[0];
 					break;
 				}
 				case "scorer": {
