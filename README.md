@@ -30,6 +30,12 @@ The Prosebot system is composed of the following components as depicted [here](h
 
 # Get started
 
+## Requirements
+
+PHP version 7.4.28.
+Node.js (tested with version 16.15.0).
+npm (tested with version 8.5.5).
+
 ## Prosebot
 
 Prosebot was developed under PHP version 7.4.28.
