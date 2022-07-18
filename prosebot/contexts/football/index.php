@@ -71,7 +71,7 @@ header('Content-Type: text/html; charset=utf8');
 					<p><?php Utils::printP($small_text); ?></p>
 					<p><?php Utils::printP($article); ?></p>
 					<h3>Curiosities</h3>
-					<?php Utils::printList($stats['match_stats'], "Jogo") ?>
+					<?php Utils::printList($stats['match_stats'], "Match") ?>
 					<?php Utils::printList($stats['home_team_stats'], $match->home_team()->get_name()) ?>
 					<?php Utils::printList($stats['away_team_stats'], $match->away_team()->get_name()) ?>
 					<?php

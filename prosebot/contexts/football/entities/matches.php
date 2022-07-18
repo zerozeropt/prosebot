@@ -802,13 +802,13 @@ class MatchData extends MainEntityData
 			$grammar,
 			intval($match_data["MATCHREPORT"]["game"]["fk_".$team_place."_team"]), // team id
 			$match_data["".$caps_place."GOALS"], //goals
-			Utils::null_if_empty($match_data["MATCHREPORT"]["coach_".$team_place.""]["abrev"]), // coach
+			Utils::null_if_empty($match_data["MATCHREPORT"]["coach_".$team_place]["abrev"]), // coach
 			Utils::null_if_empty($match_data["LEAGUE"]), // league
 			intval($match_data["CLASSIF".$caps_place."_PRE"]), // pre_classification
 			intval($match_data["CLASSIF".$caps_place."_POS"]), // $pos_classification
-			intval($match_data["POINTS".$caps_place.""]), // points
-			$match_data["FORM".$caps_place.""], // form
-			$match_data["NEXT".$caps_place.""], // next matches,
+			intval($match_data["POINTS".$caps_place]), // points
+			$match_data["FORM".$caps_place], // form
+			$match_data["NEXT".$caps_place], // next matches,
 			$match_data["FIXTURE"],
 			$match_data["MATCHSTATS"],
 			$team_edition_stats,
@@ -816,8 +816,8 @@ class MatchData extends MainEntityData
 			$this->edition_team_stats,
 			$this->edition_team_negative_stats,
 			$match_data["INFO"]["type_".$team_place."_team"],
-			$match_data["CURIOSITY"]["PRE_MATCH_".$caps_place.""],
-			$match_data["CURIOSITY"]["POS_MATCH_".$caps_place.""]
+			$match_data["CURIOSITY"]["PRE_MATCH_".$caps_place],
+			$match_data["CURIOSITY"]["POS_MATCH_".$caps_place]
 		);
 	}
 
