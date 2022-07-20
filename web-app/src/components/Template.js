@@ -77,7 +77,7 @@ const Template = ({
                         size='sm'
                         key={i}
                         color="secondary"
-                        style={{backgroundColor: "#ffba91", cursor: "pointer", border: "#ffba91"}}
+                        style={{ backgroundColor: "#ffba91", cursor: "pointer", border: "#ffba91" }}
                         onClick={() => onOpenTemplateKey(tkeyName)}
                     >
                         {substr}
@@ -85,9 +85,13 @@ const Template = ({
                 );
             }
             return substr;
-        }); 
+        });
 
         return str;
+    }
+
+    const appendSignal = (signal) => {
+        setTmpCondition(tmpCondition + signal);
     }
 
     return (
@@ -175,45 +179,125 @@ const Template = ({
                             type="text"
                             id="textForm"
                             rows="4"
-                            defaultValue={tmpText}
+                            value={tmpText}
                             onChange={(event) => setTmpText(event.target.value)}
                         />
                     </CCardBody>
                     <CCardFooter>
-                        <CRow>
-                            <CCol lg={10} className='d-flex'>
-                                Condition:
-                                <CFormInput
-                                    type='text'
-                                    id="conditionForm"
-                                    className='ms-1'
-                                    defaultValue={tmpCondition}
-                                    onChange={(event) => setTmpCondition(event.target.value)}
-                                />
-                            </CCol>
-                            <CCol lg={2} className='d-flex flex-row-reverse'>
-                                <CButton
-                                    size='sm'
-                                    color='primary'
-                                    onClick={() => {
-                                        onValidate(true);
-                                    }}
-                                >
-                                    Save
-                                </CButton>
-                                <CButton
-                                    color='secondary'
-                                    className='me-1'
-                                    onClick={() => {
-                                        resetTextCondition();
-                                        setMode(false);
-                                        setAddedTemplate(false);
-                                    }}
-                                >
-                                    Cancel
-                                </CButton>
-                            </CCol>
+                        <CRow className='m-0'>
+                            Condition:
                         </CRow>
+                        <div className='mb-2 mt-2 d-flex flex-direction-row'>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                onClick={() => appendSignal(" && ")}
+                            >
+                                AND
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal(" || ")}
+                            >
+                                OR
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal("(")}
+                            >
+                                (
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal(")")}
+                            >
+                                )
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal("!")}
+                            >
+                                NOT
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal("==")}
+                            >
+                                EQUAL TO
+                            </CButton>
+                        </div>
+                        <div className='mb-2 d-flex flex-direction-row'>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                onClick={() => appendSignal(">")}
+                            >
+                                GREATER THAN
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal("<")}
+                            >
+                                LESS THAN
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal(">=")}
+                            >
+                                GREATER OR EQUAL
+                            </CButton>
+                            <CButton
+                                size='sm'
+                                color='secondary'
+                                className='ms-3'
+                                onClick={() => appendSignal("<=")}
+                            >
+                                LESS OR EQUAL
+                            </CButton>
+                        </div>
+                        <div className='mt-1 d-flex flex-direction-row'>
+                            <CFormInput
+                                type='text'
+                                id="conditionForm"
+                                value={tmpCondition}
+                                onChange={(event) => setTmpCondition(event.target.value)}
+                            />
+                            <CButton
+                                size='sm'
+                                color='primary'
+                                className='ms-2 me-2'
+                                onClick={() => {
+                                    onValidate(true);
+                                }}
+                            >
+                                Save
+                            </CButton>
+                            <CButton
+                                color='secondary'
+                                className='me-1'
+                                onClick={() => {
+                                    resetTextCondition();
+                                    setMode(false);
+                                    setAddedTemplate(false);
+                                }}
+                            >
+                                Cancel
+                            </CButton>
+                        </div>
                     </CCardFooter>
                 </CForm>
             )}
