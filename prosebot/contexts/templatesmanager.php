@@ -512,7 +512,7 @@ abstract class TemplatesManager
 			} catch (Error $e) {
 				Utils::printP($e->getMessage());
 			} catch (ErrorException $e2) {
-				Utils::printP($e2->getMessage()."<br>");
+				Utils::printP($e2->getMessage());
 			}
 		}
 

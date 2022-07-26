@@ -241,9 +241,11 @@ abstract class Grammar
 	 */
 	public static function apply_func($func, $entity)
 	{
+		// Default
+		$gender = NameGender::MALE;
+		$number = NameNumber::SINGULAR;
 		$elems = explode("|", $func);
-		$gender = null;
-		$number = null;
+		
 		$text = $entity;
 		if ($entity instanceof TextStructure) {
 			$gender = $entity->get_gender();

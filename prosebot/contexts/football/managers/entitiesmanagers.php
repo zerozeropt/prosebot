@@ -36,7 +36,7 @@ abstract class PlayerPosition
 	const FUTSAL_WINGER = 56;
 	const FUTSAL_PIVOT_WINGER = 57;
 	const FUTSAL_PIVOT = 58;
-	const FUTSAL_DEVENDER_PIVOT = 327;
+	const FUTSAL_DEFENDER_PIVOT = 327;
 }
 
 /**

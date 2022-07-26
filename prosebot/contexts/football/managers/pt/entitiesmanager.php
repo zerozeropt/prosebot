@@ -93,7 +93,7 @@ class EntitiesManagerFootballPT extends EntitiesManagerFootball
 		PlayerPosition::FUTSAL_PIVOT => [NameGender::MALE => 'pivot', NameGender::FEMALE => 'pivot'],
 		PlayerPosition::FUTSAL_WINGER => [NameGender::MALE => 'ala', NameGender::FEMALE => 'ala'],
 		PlayerPosition::FUTSAL_PIVOT_WINGER => [NameGender::MALE => 'pivot ala', NameGender::FEMALE => 'pivot ala'],
-		PlayerPosition::FUTSAL_DEVENDER_PIVOT => [NameGender::MALE => 'fixo pivot', NameGender::FEMALE => 'fixo pivot']
+		PlayerPosition::FUTSAL_DEFENDER_PIVOT => [NameGender::MALE => 'fixo pivot', NameGender::FEMALE => 'fixo pivot']
 	);
 
 	public static function get_player_positions()
