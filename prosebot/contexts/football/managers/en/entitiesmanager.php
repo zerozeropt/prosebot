@@ -61,7 +61,7 @@ class EntitiesManagerFootballEN extends EntitiesManagerFootball
 					break;
 				case "city_country":
 					if ($team->get_can_use_city()) {
-						$origin = $team->get_type() == 1 ? $team->get_country() : $team->get_city();
+						$origin = $team->get_type() == 1 ? $team->get_name() : $team->get_city();
 
 						if ($origin != null) {
 							$team_term =  "%s's ".($team->get_type() == 1 ? "national team" : "team");
