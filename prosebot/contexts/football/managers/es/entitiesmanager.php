@@ -31,51 +31,13 @@ class EntitiesManagerFootballES extends EntitiesManagerFootball
 
 	public function get_team_name($team)
 	{
-		$name_array = $team->get_name_array();
-		$name = $team->get_name();
-		if (array_key_exists("es", $name_array)) {
-			$name = $name_array["es"];
-			$team->set_name($name);
-		}
-		$options = array(
-			$name,
+		$expressions = array(
+			"coach" => new TextStructure("equipo de %s", NameGender::FEMALE, NameNumber::SINGULAR),
+			"city" => new TextStructure("equipo de %s", NameGender::FEMALE, NameNumber::SINGULAR),
+			"country" => new TextStructure("selección de %s", NameGender::FEMALE, NameNumber::SINGULAR)
 		);
-
-		$term = array("%s");
-
-		foreach (static::$team_name_version as $strat) {
-			switch ($strat) {
-				case "other_name":
-					$other_name = $team->get_other_name();
-					if ($other_name != null) {
-						array_push($options, new TextStructure("<em>".$other_name->text."</em>", $other_name->gender, $other_name->number));
-						array_push($term, "%s");
-					}
-					break;
-				case "coach":
-					$coach = $team->get_coach();
-					if ($coach != null) {
-						array_push($options, new TextStructure($team->get_coach(), NameGender::FEMALE, NameNumber::SINGULAR));
-						array_push($term, "equipo de %s");
-					}
-					break;
-				case "city_country":
-					if ($team->get_can_use_city()) {
-						$origin = $team->get_type() == 1 ? $team->get_name() : $team->get_city();
-
-						if ($origin != null) {
-							$team_term = ($team->get_type() == 1 ? "selección" : "equipo") . " de %s";
-							array_push($term, $team_term);
-							array_push($options, new TextStructure($origin, NameGender::FEMALE, NameNumber::SINGULAR));
-						}
-					}
-					break;
-				default:
-					break;
-			}
-		}
-
-		return $this->sequential_name($team->get_id(), $options, $term);
+		$variations = parent::construct_team_name_options("es", $team, static::$team_name_version, $expressions);
+		return $this->sequential_name($team->get_id(), $variations[0], $variations[1]);
 	}
 
 	/**

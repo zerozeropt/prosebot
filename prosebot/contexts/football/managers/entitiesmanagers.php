@@ -108,6 +108,106 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 	abstract function get_team_name($team);
 
 	/**
+	 * Construct team name variations
+	 * @param string   			$lang 				Language initials
+	 * @param TeamData			$team				Team
+	 * @param string[] 			$team_name_versions	Variation types
+	 * @param TextStructure[]	$expressions		Referring expressions for each variation type
+	 * @return array Options and term
+	 */
+	protected function construct_team_name_options($lang, $team, $team_name_versions, $expressions) {
+		$this->construct_team_name_lang($team, $lang);
+		$options = array(
+			$team->get_name(),
+		);
+
+		$term = array("%s");
+
+		foreach ($team_name_versions as $strat) {
+			switch ($strat) {
+				case "other_name":
+					$this->construct_team_other_name_option($team, $options, $term);
+					break;
+				case "coach":
+					$this->construct_team_coach_option($team, $expressions, $options, $term);
+					break;
+				case "city_country":
+					$this->construct_team_city_country_option($team, $expressions, $options, $term);
+					break;
+				default:
+					break;
+			}
+		}
+
+		return [$options, $term];
+	}
+
+	/**
+	 * Set team name for specific language
+	 * @param TeamData  $team Team
+	 * @param string	$lang Language
+	 */
+	protected function construct_team_name_lang($team, $lang) {
+		$name_array = $team->get_name_array();
+		$name = $team->get_name();
+		if (array_key_exists($lang, $name_array)) {
+			$name = $name_array[$lang];
+			$team->set_name($name);
+		}
+	}
+
+	/**
+	 * Construct team's other name option
+	 * @param TeamData 			$team	 Team
+	 * @param TextStructure[]	$options Options for team's name
+	 * @param string[]			$term    Expressions to be completed with the correct option 
+	 */
+	protected function construct_team_other_name_option($team, &$options, &$term) {
+		$other_name = $team->get_other_name();
+		if ($other_name != null) {
+			array_push($options, new TextStructure("<em>".$other_name->text."</em>", $other_name->gender, $other_name->number));
+			array_push($term, "%s");
+		}
+	}
+
+	/**
+	 * Construct team's coach option
+	 * @param TeamData 			$team	 	 Team
+	 * @param TextStructure[]	$expressions Referring expressions for each variation type
+	 * @param TextStructure[]	$options 	 Options for team's name
+	 * @param string[]			$term    	 Expressions to be completed with the correct option 
+	 */
+	protected function construct_team_coach_option($team, $expressions, &$options, &$term) {
+		$type = "coach";
+		$coach = $team->get_coach();
+		if ($coach != null) {
+			array_push($options, new TextStructure($team->get_coach(), $expressions[$type]->get_gender(), $expressions[$type]->get_number()));
+			array_push($term, $expressions[$type]->get_text());
+		}
+	}
+
+	/**
+	 * Construct team's city/country option
+	 * @param TeamData 			$team	 	 Team
+	 * @param TextStructure[]	$expressions Referring expressions for each variation type
+	 * @param TextStructure[]	$options 	 Options for team's name
+	 * @param string[]			$term    	 Expressions to be completed with the correct option 
+	 */
+	protected function construct_team_city_country_option($team, $expressions, &$options, &$term) {
+		if (!$team->get_can_use_city()) {
+			return;
+		}
+		$city_type = "city";
+		$country_type = "country";
+		$origin = $team->get_type() == 1 ? $team->get_name() : $team->get_city();
+		if ($origin != null) {
+			$team_term = $team->get_type() == 1 ? $expressions[$country_type]->get_text() : $expressions[$city_type]->get_text();
+			array_push($term, $team_term);
+			array_push($options, new TextStructure($origin, $expressions[$city_type]->get_gender(), $expressions[$city_type]->get_number()));
+		}
+	}
+
+	/**
 	 * Get array of player positions in each language
 	 * @return array Array of player positions
 	 */

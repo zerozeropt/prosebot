@@ -31,33 +31,23 @@ class EntitiesManagerFootballIT extends EntitiesManagerFootball
 
 	public function get_team_name($team)
 	{
-		$name_array = $team->get_name_array();
-		$name = $team->get_name();
-		if (array_key_exists("it", $name_array)) {
-			$name = $name_array["it"];
-			$team->set_name($name);
-		}
+		parent::construct_team_name_lang($team, "it");
 		$options = array(
-			$name,
+			$team->get_name(),
 		);
-
 		$term = array("%s");
+		
+		$coach_expressions = array(
+			"coach" => new TextStructure("squadra di %s", NameGender::FEMALE, NameNumber::SINGULAR),
+		);
 
 		foreach (static::$team_name_version as $strat) {
 			switch ($strat) {
 				case "other_name":
-					$other_name = $team->get_other_name();
-					if ($other_name != null) {
-						array_push($options, new TextStructure("<em>".$other_name->text."</em>", $other_name->gender, $other_name->number));
-						array_push($term, "%s");
-					}
+					parent::construct_team_other_name_option($team, $options, $term);
 					break;
 				case "coach":
-					$coach = $team->get_coach();
-					if ($coach != null) {
-						array_push($options, new TextStructure($team->get_coach(), NameGender::FEMALE, NameNumber::SINGULAR));
-						array_push($term, "squadra di %s");
-					}
+					parent::construct_team_coach_option($team, $coach_expressions, $options, $term);
 					break;
 				case "city_country":
 					if ($team->get_can_use_city()) {
