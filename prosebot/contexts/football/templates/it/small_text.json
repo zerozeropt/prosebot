@@ -1,0 +1,163 @@
+{
+    "entry_point": [
+        {
+            "text": "{template.score}. {template.starters} {template.benched}",
+            "condition": ""
+        }
+    ],
+    "score": [
+        {
+            "text": "{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "extra_time==\"PEN\""
+        },
+        {
+            "text": "{template.normal_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "extra_time!=\"PEN\""
+        }
+    ],
+    "defeated": [
+        {
+            "text": "ha battuto",
+            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "ha sconfitto",
+            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "ha trionfato su",
+            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "ha spezzato",
+            "condition": "final_score_diff\u003E3"
+        },
+        {
+            "text": "ha vinto",
+            "condition": "final_score_diff\u003E0  || extra_time==\"PEN\""
+        },
+        {
+            "text": "ha spaccato",
+            "condition": "final_score_diff\u003E3"
+        },
+        {
+            "text": "ha dominato",
+            "condition": "final_score_diff\u003E3"
+        }
+    ],
+    "draw_adjective": [
+        {
+            "text": "senza gol",
+            "condition": "match_goals==0"
+        }
+    ],
+    "match_adjective": [
+        {
+            "text": "in una elettrizzante vittoria",
+            "condition": "match_goals\u003E5"
+        },
+        {
+            "text": "in una stupenda vittoria",
+            "condition": "match_goals\u003E6 || final_score_diff\u003E4"
+        },
+        {
+            "text": "in una vittoria serrata",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "in una strepitosa rimontata",
+            "condition": "has_turn_around"
+        }
+    ],
+    "goals": [
+        {
+            "text": "{template.home_team_goals}, mentre {template.away_team_goals}.",
+            "condition": "match_goals!=0 && home_team_goal && away_team_goal"
+        },
+        {
+            "text": "{template.home_team_goals}.",
+            "condition": "match_goals!=0 && home_team_goal && !away_team_goal"
+        },
+        {
+            "text": "{template.away_team_goals}.",
+            "condition": "match_goals!=0 && !home_team_goal && away_team_goal"
+        }
+    ],
+    "home_team_goals": [
+        {
+            "text": "{il%home_team.name} {home_team.name} {s:segn\u00f2|p:segnarono%home_team.name} per opera di {home_goals}",
+            "condition": ""
+        }
+    ],
+    "away_team_goals": [
+        {
+            "text": "{il%away_team.name} {away_team.name} {s:segn\u00f2|p:segnarono%away_team.name} per opera di {away_goals}",
+            "condition": ""
+        }
+    ],
+    "red_card": [
+        {
+            "text": "{il%#arg.name} {#arg.name} finisce la partita con {#arg.final_players} giocatori.",
+            "condition": "#arg.has_red_card"
+        },
+        {
+            "text": "{il%#arg.name} {#arg.name} finisce la partita {#arg.final_players} giocatori in meno.",
+            "condition": "#arg.has_red_card"
+        }
+    ],
+    "commentary": [],
+    "starters": [
+        {
+            "text": "Tra i titolari {s:\u00e8 stato|p:sono stati%starter_players} {starter_players}.",
+            "condition": "starters"
+        }
+    ],
+    "benched": [
+        {
+            "text": "{benched_players} non usc{s:\u00ec|p:irono%benched_players} dalla panchina.",
+            "condition": "benched"
+        }
+    ],
+    "match_stat_intro": [],
+    "match_stat": [],
+    "streak": [],
+    "home_team_stat": [],
+    "away_team_stat": [],
+    "team_stat": [],
+    "pen_score": [
+        {
+            "text": "{il%pen_winner.name} {pen_winner.name} {template.defeated} {il%pen_loser.name} {pen_loser.name}, {weekday}, per {pen_score} ai tiri di rigore, dopo un risultato di {final_score} durante il tempo regolamentare.",
+            "condition": ""
+        }
+    ],
+    "normal_score": [
+        {
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.match_adjective} {weekday}, {final_score}.",
+            "condition": "final_score_diff\u003E0"
+        },
+        {
+            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name} {weekday} \u00e8 finita a reti inviolati {template.draw_adjective}, {final_score}.",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.streak%winner} {template.match_adjective} {weekday}, {final_score}.",
+            "condition": "final_score_diff\u003E0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.streak%winner} {template.match_adjective}, {final_score}, {weekday}.",
+            "condition": "final_score_diff\u003E0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {weekday}.",
+            "condition": "final_score_diff\u003E0"
+        }
+    ]
+}

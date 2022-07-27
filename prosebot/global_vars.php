@@ -15,13 +15,15 @@
                 "pt" => "Português",
                 "br" => "Português do Brasil",
                 "en" => "English",
-                "es" => "Español"
+                "es" => "Español",
+                "it" => "Italiano"
             ],
             "languageToTimezone" => [
                 "pt" => "Europe/Lisbon",
                 "br" => "America/Sao_Paulo",
                 "en" => "Europe/London",
-                "es" => "Europe/Madrid"
+                "es" => "Europe/Madrid",
+                "it" => "Europe/Rome"
             ],
             "main_entities_classes" => [
                 "football" => ["MatchData", "matches"],

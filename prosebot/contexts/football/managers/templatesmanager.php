@@ -44,8 +44,7 @@ class TemplatesManagerFootball extends TemplatesManager
 		"en" => 16,
 		"br" => 6,
 		"es" => 12,
-		"fr" => 14,
-		"us" => 127
+		"it" => 18
 	];
 	/**
 	 * Country

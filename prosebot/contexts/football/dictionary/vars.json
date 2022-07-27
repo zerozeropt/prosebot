@@ -283,6 +283,19 @@
             "ordinal_fem_num",
             "ordinal_num"
         ],
+        "it": [
+            "a",
+            "il",
+            "di",
+            "da",
+            "in",
+            "cardinale",
+            "cardinale_fem",
+            "ordinale",
+            "ordinale_fem",
+            "ordinale_fem_num",
+            "ordinale_num"
+        ],
         "pt": [
             "a",
             "de",

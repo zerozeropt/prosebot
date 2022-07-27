@@ -1,0 +1,230 @@
+{
+    "entry_point": [
+        {
+            "text": "{template.stats} {template.classification}",
+            "condition": "is_league && is_last_match_day"
+        },
+        {
+            "text": "{template.stats} {template.knockouts_result} {template.next_games}.",
+            "condition": "!is_league"
+        },
+        {
+            "text": "{template.stats} {template.classification} {template.next_games}.",
+            "condition": "is_league && !is_last_match_day"
+        }
+    ],
+    "classification": [
+        {
+            "text": "Dopo questo risultato {il%team_best_after.name} {team_best_after.name} {s:si incontra|p:si incontrano%team_best_after.name} nel {ORDINALE%team_best_after.pos_classification} posto in {template.classification_content}, {team_best_after.points} {s:punto|p:punti%team_best_after.points}, trovandosi {il%team_worst_after.name} {team_worst_after.name} al {ORDINALE_FEM%team_worst_after.pos_classification} posto, {team_worst_after.points} {s:ponto|p:pontos%team_worst_after.points}.",
+            "condition": "has_classification"
+        }
+    ],
+    "classification_content": [
+        {
+            "text": "{@edition_link} classifica generale\u003C\/a\u003E",
+            "condition": ""
+        }
+    ],
+    "next_games": [
+        {
+            "text": "{template.intro_next_games}, {template.next_location%winner}",
+            "condition": "next_game_same_teams && has_next_competition_game"
+        },
+        {
+            "text": "{template.intro_next_games}, {template.next_location%winner}{template.next_game_connector} {template.next_location%loser}",
+            "condition": "!next_game_same_teams && has_next_competition_game"
+        }
+    ],
+    "intro_next_games": [
+        {
+            "text": "Quanto alle prossime sfide della competizione",
+            "condition": ""
+        },
+        {
+            "text": "Nella prossima giornata",
+            "condition": "is_league && is_next_match_day"
+        },
+        {
+            "text": "Quanto alla prossima giornata",
+            "condition": "is_league && is_next_match_day"
+        },
+        {
+            "text": "Quanto alle prossime partite della {il%competition.name} {competition.name}",
+            "condition": ""
+        }
+    ],
+    "next_location": [
+        {
+            "text": "{Il%#arg.name} {#arg.name} {#arg.@next_competition_match_link} {template.next_location_content%#arg}\u003C\/a\u003E",
+            "condition": "#arg.has_next_competition_game"
+        }
+    ],
+    "next_location_content": [
+        {
+            "text": "gioca{s:|p:no%#arg.name} in trasferta a {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "si trasferisc{s:e|p:ono%#arg.name} a {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "ospita{s:|p:no%#arg.name} {il%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_home"
+        },
+        {
+            "text": "gioca{s:|p:no%#arg.name} fuori casa a {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        },
+        {
+            "text": "acco{s:glie|p:lgono%#arg.name} {il%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_home"
+        },
+        {
+            "text": "gioca{s:|p:no%#arg.name} fuori casa contro {il%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
+            "condition": "#arg.is_next_competition_away"
+        }
+    ],
+    "next_game_loser": [],
+    "competition_winner": [],
+    "stats": [
+        {
+            "text": "{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}. {template.loser_stat_intro%loser_stat} {template.loser_stat%loser_stat}.",
+            "condition": "has_winner_stat && has_loser_stat && fixture \u003E 5 && final_score_diff != 0"
+        },
+        {
+            "text": "{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}.",
+            "condition": "has_winner_stat && !has_loser_stat && fixture \u003E 5"
+        },
+        {
+            "text": "{template.loser_stat_intro%loser_stat}, {template.loser_stat%loser_stat}.",
+            "condition": "has_loser_stat && !has_winner_stat && fixture \u003E 5"
+        },
+        {
+            "text": "In questa sfida, {template.winner_stat%winner_stat}, mentre {template.loser_stat%loser_stat}.",
+            "condition": "has_winner_stat && has_loser_stat && fixture \u003E 5 && final_score_diff == 0"
+        }
+    ],
+    "winner_stat_intro": [
+        {
+            "text": "Si aggiunge alla vittoria, ",
+            "condition": "#arg.is_positive && final_score_diff \u003E 0"
+        },
+        {
+            "text": "Nonostante la vittoria, ",
+            "condition": "!#arg.is_positive && final_score_diff \u003E 0"
+        },
+        {
+            "text": "Nonostante il pareggio, ",
+            "condition": "#arg.is_positive && final_score_diff == 0"
+        },
+        {
+            "text": "Si aggiunge al pareggio, ",
+            "condition": "!#arg.is_positive && final_score_diff == 0"
+        },
+        {
+            "text": "Oltre la vittoria,",
+            "condition": "#arg.is_positive && final_score_diff \u003E 0"
+        },
+        {
+            "text": "Oltre il pareggio,",
+            "condition": "#arg.is_positive && final_score_diff == 0"
+        }
+    ],
+    "loser_stat_intro": [
+        {
+            "text": "Nonostante la sconfitta, ",
+            "condition": "#arg.is_positive && final_score_diff \u003E 0"
+        },
+        {
+            "text": "Si aggiunge alla sconfitta,",
+            "condition": "!#arg.is_positive && final_score_diff \u003E 0"
+        },
+        {
+            "text": "Nonostante il pari, ",
+            "condition": "#arg.is_positive && final_score_diff == 0"
+        },
+        {
+            "text": "Si aggiunge al pari, ",
+            "condition": "!#arg.is_positive && final_score_diff == 0"
+        }
+    ],
+    "winner_stat": [
+        {
+            "text": "{il%winner.name} {winner.name} {template.team_stat%#arg}",
+            "condition": ""
+        }
+    ],
+    "loser_stat": [
+        {
+            "text": "{il%loser.name} {loser.name} {template.team_stat%#arg}",
+            "condition": ""
+        }
+    ],
+    "team_stat": [
+        {
+            "text": "ha battuto il suo record di tiri in porta nella stagione, con {#arg.value} calci in totale",
+            "condition": "#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": "ha solo calciato {#arg.value} volte in porta, il registro pi\u00f9 basso nella stagione",
+            "condition": "!#arg.is_positive && #arg.key==\"shotgo\""
+        },
+        {
+            "text": "ha battuto il suo record di parate nella stagione, con {#arg.value} parate in totale",
+            "condition": "#arg.is_positive && #arg.key==\"gksave\""
+        },
+        {
+            "text": "ha registrato solo {#arg.value} parate, il numero pi\u00f9 basso della stagione",
+            "condition": "!#arg.is_positive && #arg.key==\"gksave\""
+        },
+        {
+            "text": "ha raggiunto il migliore registro di possesso palla, {#arg.value}% in totale",
+            "condition": "#arg.is_positive && #arg.key==\"ballpo\""
+        },
+        {
+            "text": "ha registrato il peggiore possesso palla della stagione con {#arg.value}%",
+            "condition": "!#arg.is_positive && #arg.key==\"ballpo\""
+        },
+        {
+            "text": "ha superato il suo stesso record di tiri nella stagione, con {#arg.value} tiri in totale",
+            "condition": "#arg.is_positive && #arg.key==\"shot\""
+        },
+        {
+            "text": "ha solo calciato {#arg.value} volte nello specchio, il registro pi\u00d9 basso della stagione",
+            "condition": "!#arg.is_positive && #arg.key==\"shot\""
+        }
+    ],
+    "next_game_connector": [
+        {
+            "text": ". A sua volta, ",
+            "condition": "has_home_team_next_match && has_away_team_next_match"
+        },
+        {
+            "text": ", mentre",
+            "condition": "has_home_team_next_match && has_away_team_next_match"
+        }
+    ],
+    "knockouts_result": [
+        {
+            "text": "Con questo risultato, {il%knockouts_winner.name} {knockouts_winner.name} vinc{s:e|p:ono%knockouts_winner.name} la competizione.",
+            "condition": "is_final"
+        },
+        {
+            "text": "{Il%knockouts_winner.name} {knockouts_winner.name} ha{s:|p:nno%knockouts_winner.name} vinto la competizione con questo risultato.",
+            "condition": "is_final"
+        },
+        {
+            "text": "In virt\u00f9 di questo trionfo, {il%knockouts_winner.name} {knockouts_winner.name} vinc{s:e|p:ono%knockouts_winner.name} la competizione.",
+            "condition": "is_final"
+        },
+        {
+            "text": "Con questo trionfo, {il%knockouts_winner.name} {knockouts_winner.name} va{s:|p:nno%knockouts_winner.name} avanti nella competizione.",
+            "condition": "!is_final && is_elim_game"
+        },
+        {
+            "text": "Grazie a questo trionfo, {il%knockouts_winner.name} {knockouts_winner.name} elimina {il%knockouts_loser.name} {knockouts_loser.name} della competizione.",
+            "condition": "!is_final && is_elim_game"
+        }
+    ]
+}

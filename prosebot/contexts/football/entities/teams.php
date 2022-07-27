@@ -169,6 +169,11 @@ class TeamData extends EntityData
 	 */
 	private $name_array;
 	/**
+	 * Gender
+	 * @var NameGender
+	 */
+	private $name_gender;
+	/**
 	 * Whether can write the city
 	 * @var bool
 	 */
@@ -231,10 +236,10 @@ class TeamData extends EntityData
 		$team_data = FootballFetcher::get_team_json($team_id)["data"];
 		parent::__construct($team_id, $grammar::get_elem($team_data['PROFILE'], 'SHORT_NAME'), FootballFetcher::TEAM_LINK);
 		$this->name_array = [];
-		$name_gender = $team_data['PROFILE']['SHORT_NAME_GENDER'] === '0' ? NameGender::MALE : NameGender::FEMALE;
+		$this->name_gender = $team_data['PROFILE']['SHORT_NAME_GENDER'] === '0' ? NameGender::MALE : NameGender::FEMALE;
 		$name_number = $team_data['PROFILE']['SHORT_NAME_PLURAL'] === '0' ? NameNumber::SINGULAR : NameNumber::PLURAL;
 		foreach($team_data['PROFILE']['SHORT_NAME_ARRAY'] as $lang => $name) {
-			$this->name_array[$lang] = new TextStructure($name, $name_gender, $name_number);
+			$this->name_array[$lang] = new TextStructure($name, $this->name_gender, $name_number);
 		}
 		$this->type = intval($type);
 		$this->goals = $goals;
@@ -411,6 +416,11 @@ class TeamData extends EntityData
 	public function get_name_array()
 	{
 		return $this->name_array;
+	}
+
+	public function get_name_gender()
+	{
+		return $this->name_gender;
 	}
 
 	public function get_coach()
