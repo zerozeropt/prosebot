@@ -42,7 +42,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/contexts/get_contexts.php`)
+      .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/properties/contexts`)
       .then(async (res) => {
         const tmpContexts = res.data;
         setContexts(tmpContexts);
@@ -51,7 +51,7 @@ const Dashboard = () => {
       });
 
     axios
-      .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/contexts/get_languages.php`)
+      .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/properties/languages`)
       .then(async (res) => {
         const tmpLanguages = res.data;
         setLanguages(tmpLanguages);
@@ -63,7 +63,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (activeContext && activeLanguage)
       axios
-        .get(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/get_files_names.php`, {
+        .get(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/names`, {
           params: {
             context: activeContext,
             lang: activeLanguage
@@ -77,11 +77,10 @@ const Dashboard = () => {
   useEffect(() => {
     if (activeFileIndex !== -1 && activeContext && activeLanguage)
       axios
-        .get(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/get_file_data.php`, {
+        .get(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${templates[activeFileIndex]}/data`, {
           params: {
             context: activeContext,
-            lang: activeLanguage,
-            name: templates[activeFileIndex]
+            lang: activeLanguage
           }
         })
         .then(async (res) => {
@@ -111,13 +110,12 @@ const Dashboard = () => {
     }
 
     axios
-      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/update.php`, {
-        file: tmpTemplates,
+      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${templates[activeFileIndex]}/data`, {
+        data: tmpTemplates,
       }, {
         params: {
           context: activeContext,
           lang: activeLanguage,
-          name: templates[activeFileIndex]
         }
       })
       .then(() => {
@@ -135,13 +133,12 @@ const Dashboard = () => {
     tmpTemplates[key].splice(index, 1);
 
     axios
-      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/update.php`, {
-        file: tmpTemplates,
+      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${templates[activeFileIndex]}/data`, {
+        data: tmpTemplates,
       }, {
         params: {
           context: activeContext,
           lang: activeLanguage,
-          name: templates[activeFileIndex]
         }
       })
       .then((res) => {
@@ -158,13 +155,12 @@ const Dashboard = () => {
     tmpTemplates[addedTemplateKey] = [];
 
     axios
-      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/update.php`, {
-        file: tmpTemplates,
+      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${templates[activeFileIndex]}/data`, {
+        data: tmpTemplates,
       }, {
         params: {
           context: activeContext,
-          lang: activeLanguage,
-          name: templates[activeFileIndex]
+          lang: activeLanguage
         }
       })
       .then(() => {
@@ -181,13 +177,12 @@ const Dashboard = () => {
       delete tmpTemplates[tkey];
 
     axios
-      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/update.php`, {
-        file: tmpTemplates,
+      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${templates[activeFileIndex]}/data`, {
+        data: tmpTemplates,
       }, {
         params: {
           context: activeContext,
-          lang: activeLanguage,
-          name: templates[activeFileIndex]
+          lang: activeLanguage
         }
       })
       .then(() => {
@@ -209,11 +204,11 @@ const Dashboard = () => {
     }
 
     axios
-      .post(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/create.php`, {
-        file: {
+      .post(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates`, {
+        data: {
           entry_point: []
         },
-        name: filename
+        filename: tmpFileName
       }, {
         params: {
           context: activeContext,
@@ -230,11 +225,10 @@ const Dashboard = () => {
   const onDeleteFile = (event, filename, index) => {
     event.preventDefault();
     axios
-      .delete(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/delete.php`, {
+      .delete(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${filename}`, {
         params: {
           context: activeContext,
-          lang: activeLanguage,
-          name: filename + ".json"
+          lang: activeLanguage
         }
       })
       .then(() => {
@@ -247,13 +241,12 @@ const Dashboard = () => {
   const onRenameFile = (event, index, filename, newFilename) => {
     event.preventDefault();
     axios
-      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/rename_file.php`, {
-        filename: newFilename + ".json",
+      .put(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates/${filename}/name`, {
+        filename: newFilename,
       }, {
         params: {
           context: activeContext,
-          lang: activeLanguage,
-          name: filename + ".json"
+          lang: activeLanguage
         }
       })
       .then(() => {
@@ -270,7 +263,7 @@ const Dashboard = () => {
 
   const onValidateFile = () => {
     axios
-      .post(`${process.env.REACT_APP_VALIDATION_SERVER}/api/validator/file.php`, {
+      .post(`${process.env.REACT_APP_VALIDATION_SERVER}/api/validator/file`, {
         data: activeTemplateFile,
       }, {
         params: {
@@ -411,7 +404,7 @@ const Dashboard = () => {
           return (
             <TemplateFileButton
               key={`template-${template}-${i}`}
-              filename={template.substring(0, template.length - 5)}
+              filename={template}
               tindex={i}
               setAddedTemplate={setAddedTemplate}
               activeFileIndex={activeFileIndex}
