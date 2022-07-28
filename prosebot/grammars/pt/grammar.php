@@ -272,7 +272,7 @@ class GrammarPT extends Grammar
 	 * @var array
 	 */
 	private static $connectors = array(
-		// Name => [Singular Male, Singular Female, Neutral, Plural Male, Plural Female]
+		// Name => [Singular Masculine, Singular Feminine, Neutral, Plural Masculine, Plural Feminine]
 		"a" => ["ao", "à", "a", "aos", "às"],
 		"de" => ["do", "da", "de", "dos", "das"],
 		"em" => ["no", "na", "em", "nos", "nas"],

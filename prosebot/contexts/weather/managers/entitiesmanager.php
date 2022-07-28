@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/../../entitiesmanager.php');
+require_once(__DIR__ . '/../../entitiesmanager.php');
 
 /**
  * Class for entities data management for Weather context
@@ -39,6 +39,11 @@ class EntitiesManagerWeather extends EntitiesManager
 			"NO" => "Noruega",
 			"US" => "Estados Unidos de América"
 		],
+		"it" => [
+			"PT" => "Portogallo",
+			"NO" => "Norvegia",
+			"US" => "Stati Uniti d'America"
+		]
 	];
 
 	function __construct($language)
@@ -49,8 +54,12 @@ class EntitiesManagerWeather extends EntitiesManager
 
 	public function get_country_name($city)
 	{
-		return static::$initialsToCountry[static::$language][$city->get_country_initials()];
+		if (
+			array_key_exists(static::$language, static::$initialsToCountry)
+			&& array_key_exists($city->get_country_initials(), static::$initialsToCountry[static::$language])
+		) {
+			return static::$initialsToCountry[static::$language][$city->get_country_initials()];
+		}
+		return $city->get_country_initials();
 	}
 }
-
-?>

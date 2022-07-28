@@ -13,7 +13,7 @@
     ],
     "clouds": [
         {
-            "text": "Uma percentagem de {clouds.percentage}% de nuvens.",
+            "text": "Céu com {clouds.percentage}% de nebulosidade.",
             "condition": ""
         }
     ],

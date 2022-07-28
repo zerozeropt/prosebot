@@ -31,7 +31,7 @@ class GrammarIT extends Grammar
 	 * List of cardinal numbers
 	 * @var array
 	 */
-	private static $cardinali = array(
+	private static $cardinals = array(
 		0 => '',
 		1 => array('un', 'una'),
 		2 => 'due',
@@ -79,7 +79,7 @@ class GrammarIT extends Grammar
 	 * @param int        $exp     Exponent
 	 * @return string Full written cardinal number
 	 */
-	private static function get_cardinale($int, $gender, $min_val = 0, $exp = 2)
+	private static function get_cardinal($int, $gender, $min_val = 0, $exp = 2)
 	{
 		if ($int < $min_val || $int >= 1000) {
 			return "";
@@ -89,8 +89,8 @@ class GrammarIT extends Grammar
 			return "zero";
 		}
 
-		if (array_key_exists($int, static::$cardinali)) {
-			$res = static::$cardinali[$int];
+		if (array_key_exists($int, static::$cardinals)) {
+			$res = static::$cardinals[$int];
 			if (is_array($res)) {
 				if ($gender === NameGender::FEMALE) {
 					return $res[1];
@@ -101,8 +101,8 @@ class GrammarIT extends Grammar
 		}
 
 		$div = pow(10, $exp);
-		$left = static::$cardinali[intdiv($int, $div) * $div];
-		$right = static::get_cardinale($int % $div, $gender, $min_val, $exp - 1);
+		$left = static::$cardinals[intdiv($int, $div) * $div];
+		$right = static::get_cardinal($int % $div, $gender, $min_val, $exp - 1);
 
 		if ($exp === 1 && ($right === "un" || $right === "una" || $right === "otto")) {
 			$left = mb_substr($left, 0, strlen($left) - 1);
@@ -131,14 +131,14 @@ class GrammarIT extends Grammar
 		$left = "";
 		$right = "";
 		if ($left_int > 1) {
-			$left = static::get_cardinale($left_int, $gender, 2);
+			$left = static::get_cardinal($left_int, $gender, 2);
 			$left .= "milla";
 		} else if ($left_int === 1) {
 			$left .= "mille";
 		}
 
 		if ($right_int > 0) {
-			$right = static::get_cardinale($right_int, $gender);
+			$right = static::get_cardinal($right_int, $gender);
 		}
 
 		return $left . $right;
@@ -466,7 +466,7 @@ class GrammarIT extends Grammar
 	 * @var array
 	 */
 	private static $connectors = array(
-		// Name => [Singular Male, Singular Female, Neutral, Plural Male, Plural Female]
+		// Name => [Singular Masculine, Singular Feminine, Neutral, Plural Masculine, Plural Feminine]
 		"a" => ["al", "alla", "a", "ai", "alle"],
 		"di" => ["del", "della", "di", "dei", "delle"],
 		"da" => ["dal", "dalla", "da", "dai", "dalle"],

@@ -285,7 +285,7 @@ class GrammarES extends Grammar
 	 * @var array
 	 */
 	private static $connectors = array(
-		// Name => [Singular Male, Singular Female, Neutral, Plural Male, Plural Female]
+		// Name => [Singular Masculine, Singular Feminine, Neutral, Plural Masculine, Plural Feminine]
 		"a" => ["al", "a", "a", "a los", "a las"],
 		"de" => ["del", "de la", "de", "de los", "de las"],
 		"el" => ["el", "la", "", "los", "las"],

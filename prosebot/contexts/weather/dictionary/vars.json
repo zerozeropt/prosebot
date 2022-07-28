@@ -62,7 +62,6 @@
             "ordinal_num"
         ],
         "en": [
-            "was",
             "cardinal",
             "ordinal_num"
         ],
@@ -76,6 +75,24 @@
             "ordinal_fem",
             "ordinal_fem_num",
             "ordinal_num"
+        ],
+        "it": [
+            "a",
+            "di",
+            "da",
+            "in",
+            "il",
+            "a_il",
+            "da_il",
+            "di_il",
+            "in_il",
+            "su_il",
+            "cardinale",
+            "cardinale_fem",
+            "ordinale",
+            "ordinale_fem",
+            "ordinale_fem_num",
+            "ordinale_num"
         ],
         "pt": [
             "a",
