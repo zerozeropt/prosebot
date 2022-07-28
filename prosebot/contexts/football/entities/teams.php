@@ -169,6 +169,11 @@ class TeamData extends EntityData
 	 */
 	private $name_array;
 	/**
+	 * Gender
+	 * @var NameGender
+	 */
+	private $name_gender;
+	/**
 	 * Whether can write the city
 	 * @var bool
 	 */
@@ -185,7 +190,7 @@ class TeamData extends EntityData
 	protected static $entities = [];
 
 	/**
-	 * @param Grammar 	$grammar 						Grammar
+	 * @param EntitiesManagerFootball $entities_manager Entities manager
 	 * @param string  	$team_id 						Team id
 	 * @param int	  	$goals   						Number of goals
 	 * @param int	  	$prev_match_goals   			Number of goals in the previous match between the two teams for the same competition
@@ -207,7 +212,7 @@ class TeamData extends EntityData
 	 * @param array     $post_game_curiosities			Array of curiosities after the match
 	 */
 	function __construct(
-		$grammar,
+		$entities_manager,
 		$team_id,
 		$goals,
 		$coach,
@@ -229,12 +234,12 @@ class TeamData extends EntityData
 	) {
 		# get full json
 		$team_data = FootballFetcher::get_team_json($team_id)["data"];
-		parent::__construct($team_id, $grammar::get_elem($team_data['PROFILE'], 'SHORT_NAME'), FootballFetcher::TEAM_LINK);
+		parent::__construct($team_id, $entities_manager::get_elem($team_data['PROFILE'], 'SHORT_NAME'), FootballFetcher::TEAM_LINK);
 		$this->name_array = [];
-		$name_gender = $team_data['PROFILE']['SHORT_NAME_GENDER'] === '0' ? NameGender::MALE : NameGender::FEMALE;
+		$this->name_gender = $team_data['PROFILE']['SHORT_NAME_GENDER'] === '0' ? NameGender::MALE : NameGender::FEMALE;
 		$name_number = $team_data['PROFILE']['SHORT_NAME_PLURAL'] === '0' ? NameNumber::SINGULAR : NameNumber::PLURAL;
 		foreach($team_data['PROFILE']['SHORT_NAME_ARRAY'] as $lang => $name) {
-			$this->name_array[$lang] = new TextStructure($name, $name_gender, $name_number);
+			$this->name_array[$lang] = new TextStructure($name, $this->name_gender, $name_number);
 		}
 		$this->type = intval($type);
 		$this->goals = $goals;
@@ -279,7 +284,7 @@ class TeamData extends EntityData
 		$this->next_competition_match_where = null;
 		$this->next_competition_match_id = null;
 
-		$next = static::get_next_opponent($grammar, $next_matches_json);
+		$next = static::get_next_opponent($entities_manager, $next_matches_json);
 		if ($next !== null) {
 			$this->next_global_opponent = $next[0];
 			$this->next_global_match_where = $next[1];
@@ -287,7 +292,7 @@ class TeamData extends EntityData
 			$this->next_global_match_day = $next[3];
 		}
 
-		$next = static::get_next_opponent($grammar, $next_matches_json, $competition);
+		$next = static::get_next_opponent($entities_manager, $next_matches_json, $competition);
 		if ($next !== null) {
 			$this->next_competition_opponent = $next[0];
 			$this->next_competition_match_where = $next[1];
@@ -300,7 +305,7 @@ class TeamData extends EntityData
 		$this->next_global_match_link = FootballFetcher::MATCH_LINK . $this->next_global_match_id . ">";
 
 		$this->long_name = Utils::null_if_empty($team_data['PROFILE']['NAME']);
-		$this->other_name = $grammar::get_elem($team_data['PROFILE'], 'OTHERNAME');
+		$this->other_name = $entities_manager::get_elem($team_data['PROFILE'], 'OTHERNAME');
 		$this->city = Utils::null_if_empty($team_data['PROFILE']['CITY']);
 
 		$this->country = Utils::null_if_empty($team_data['PROFILE']['COUNTRY']);
@@ -388,11 +393,13 @@ class TeamData extends EntityData
 		return $this->can_use_city;
 	}
 
-	private static function get_next_opponent($grammar, $data, $competition = null)
+	private static function get_next_opponent($entities_manager, $data, $competition = null)
 	{
 		foreach ($data as $game) {
 			if ($competition === null || $competition === $game["descr_edition"]) {
-				return array($grammar::get_elem($game, "opponent_descr"), $game["where"], $game["id"], $game["fixture"], $game["neutral_field"]);
+				$name_array = FootballFetcher::get_team_json($game["fk_opponent"])["data"]["PROFILE"]["SHORT_NAME_ARRAY"];
+				$name = $entities_manager->get_entity_lang_name($entities_manager::get_elem($game, "opponent_descr"), $name_array);
+				return array($name, $game["where"], $game["id"], $game["fixture"], $game["neutral_field"]);
 			}
 		}
 		return null;
@@ -411,6 +418,11 @@ class TeamData extends EntityData
 	public function get_name_array()
 	{
 		return $this->name_array;
+	}
+
+	public function get_name_gender()
+	{
+		return $this->name_gender;
 	}
 
 	public function get_coach()

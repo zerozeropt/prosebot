@@ -37,7 +37,7 @@ const Template = ({
 
     const onValidate = (isSave = false) => {
         axios
-            .post(`${process.env.REACT_APP_VALIDATION_SERVER}/api/validator/template.php`, {
+            .post(`${process.env.REACT_APP_VALIDATION_SERVER}/api/validator/template`, {
                 text: tmpText,
                 condition: tmpCondition
             }, {

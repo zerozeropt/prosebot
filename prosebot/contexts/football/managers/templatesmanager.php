@@ -44,8 +44,7 @@ class TemplatesManagerFootball extends TemplatesManager
 		"en" => 16,
 		"br" => 6,
 		"es" => 12,
-		"fr" => 14,
-		"us" => 127
+		"it" => 18
 	];
 	/**
 	 * Country
@@ -130,7 +129,7 @@ class TemplatesManagerFootball extends TemplatesManager
 	public function build_summary($match_id, $calculate_stats)
 	{
         $summary_array = array();
-		$match = new MatchData($match_id, static::$grammar_class, $this->country, $this->country_index, $this->entities_manager::get_own_goal_form());
+		$match = new MatchData($match_id, static::$grammar_class, $this->entities_manager, $this->country, $this->country_index);
 
         // Fixed structure paragraphs with no links allowed
         foreach (static::$fixed_templates_no_links_paths as $path) {

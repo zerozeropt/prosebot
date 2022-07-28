@@ -246,10 +246,10 @@ class MatchData extends MainEntityData
 	 */
 	private $has_previous_match;
 	/**
-	 * Own goal initials for a specific language
-	 * @var string
+	 * Entities manager
+	 * @var EntitiesManagerFootball
 	 */
-	private $own_goal_form;
+	private $entities_manager;
 	/**
 	 * List of entities
 	 * @var EntityGetter[]
@@ -262,13 +262,13 @@ class MatchData extends MainEntityData
 	 *-----------------------------------------------------
     */
 	/**
-	 * @param string  $match_id 	 Match id
-	 * @param Grammar $grammar  	 Grammar
-	 * @param string  $country		 Country initials
-	 * @param int	  $country_index Country index
-	 * @param string  $own_goal_form Own goal form for a specific language
+	 * @param string  					$match_id 	 	  Match id
+	 * @param Grammar 					$grammar  	 	  Grammar
+	 * @param EntitiesManagerFootball  	$entities_manager Entities manager
+	 * @param string  					$country		  Country initials
+	 * @param int	  					$country_index 	  Country index
 	 */
-	function __construct($match_id, $grammar, $country, $country_index, $own_goal_form)
+	function __construct($match_id, $grammar, $entities_manager, $country, $country_index)
 	{
 		//get full json
 		$match_data = FootballFetcher::get_match_json($match_id)["data"];
@@ -277,12 +277,12 @@ class MatchData extends MainEntityData
 		// get match gender
 		$this->gender = Utils::null_if_empty($match_data['INFO']["gender"]);
 		$this->grammar = $grammar;
-		$this->own_goal_form = $own_goal_form;
+		$this->entities_manager = $entities_manager;
 
 		//stats
 		$this->build_stats($match_data);
 		//teams
-		$this->build_teams($match_data, $grammar);
+		$this->build_teams($match_data);
 
 		//h2h
 		$this->h2h = $this->compute_h2h_data($h2h_data);
@@ -789,17 +789,16 @@ class MatchData extends MainEntityData
 	/**
 	 * Construct team
 	 * @param object  $match_data 					Decoded json data for a match
-	 * @param Grammar $grammar	  					Grammar
 	 * @param string  $team_place 					Either "home" or "away"
 	 * @param array	  $team_edition_stats			Team stats in the edition
 	 * @param array	  $team_negative_edition_stats	Team negative stats in the edition
 	 * @return TeamData Constructed team
 	 */
-	private function build_team($match_data, $grammar, $team_place, $team_edition_stats, $team_negative_edition_stats)
+	private function build_team($match_data, $team_place, $team_edition_stats, $team_negative_edition_stats)
 	{
 		$caps_place = strtoupper($team_place);
 		return new TeamData(
-			$grammar,
+			$this->entities_manager,
 			intval($match_data["MATCHREPORT"]["game"]["fk_".$team_place."_team"]), // team id
 			$match_data["".$caps_place."GOALS"], //goals
 			Utils::null_if_empty($match_data["MATCHREPORT"]["coach_".$team_place]["abrev"]), // coach
@@ -824,17 +823,16 @@ class MatchData extends MainEntityData
 	/**
 	 * Construct teams
 	 * @param object  $match_data Decoded json data for a match
-	 * @param Grammar $grammar	  Grammar
 	 */
-	private function build_teams($match_data, $grammar)
+	private function build_teams($match_data)
 	{
 		$home_team_edition_stats = array_key_exists("TOP_EDITION_HOME_TEAM", $match_data['EDITIONSTATS']) ? $match_data['EDITIONSTATS']["TOP_EDITION_HOME_TEAM"] : [];
 		$home_team_negative_edition_stats = array_key_exists("TOP_EDITION_HOME_TEAM", $match_data['EDITIONNEGATIVESTATS']) ? $match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_HOME_TEAM"] : [];
 		$away_team_edition_stats = array_key_exists("TOP_EDITION_AWAY_TEAM", $match_data['EDITIONSTATS']) ? $match_data['EDITIONSTATS']["TOP_EDITION_AWAY_TEAM"] : [];
 		$away_team_negative_edition_stats = array_key_exists("TOP_EDITION_AWAY_TEAM", $match_data['EDITIONNEGATIVESTATS']) ? $match_data['EDITIONNEGATIVESTATS']["TOP_EDITION_AWAY_TEAM"] : [];
 		
-		$home_team = $this->build_team($match_data, $grammar, "home", $home_team_edition_stats, $home_team_negative_edition_stats);
-		$away_team = $this->build_team($match_data, $grammar, "away", $away_team_edition_stats, $away_team_negative_edition_stats);
+		$home_team = $this->build_team($match_data, "home", $home_team_edition_stats, $home_team_negative_edition_stats);
+		$away_team = $this->build_team($match_data, "away", $away_team_edition_stats, $away_team_negative_edition_stats);
 		$this->teams = array(
 			$home_team,
 			$away_team
@@ -1530,41 +1528,37 @@ class MatchData extends MainEntityData
 	}
 
 	/**
+	 * Calculate the list of players who scored goals in the match for a given team
+	 * @param array $team1_players 	  List of players of team1
+	 * @param array $team1_goals_list List of players' names who scored for the team1
+	 * @param array $team2_goals_list List of players' names who scored own goals
+	 */
+	private function compute_match_team_goals($team1_players, &$team1_goals_list, &$team2_goals_list)
+	{
+		foreach ($team1_players as $player) {
+
+			if ($player->get_goals() == 1) {
+				$tmp = strval($player->get_name());
+				array_push($team1_goals_list, $tmp);
+			} else if ($player->get_goals() > 1) {
+				$tmp = strval($player->get_name()) . " " . strval($player->get_goals()) . "x";
+				array_push($team1_goals_list, $tmp);
+			}
+
+			if ($player->get_own_goals() != 0) {
+				$tmp = strval($player->get_name()) . " " . $this->entities_manager->get_own_goal_form();
+				array_push($team2_goals_list, $tmp);
+			}
+		}
+	}
+
+	/**
 	 * Calculate the list of players who scored goals in the match for each team
 	 */
 	private function compute_match_goals()
 	{
-		foreach ($this->home_players as $player) {
-
-			if ($player->get_goals() == 1) {
-				$tmp = strval($player->get_name());
-				array_push($this->home_goals, $tmp);
-			} else if ($player->get_goals() > 1) {
-				$tmp = strval($player->get_name()) . " " . strval($player->get_goals()) . "x";
-				array_push($this->home_goals, $tmp);
-			}
-
-			if ($player->get_own_goals() != 0) {
-				$tmp = strval($player->get_name()) . " " . $this->own_goal_form;
-				array_push($this->away_goals, $tmp);
-			}
-		}
-
-		foreach ($this->away_players as $player) {
-
-			if ($player->get_goals() == 1) {
-				$tmp = strval($player->get_name());
-				array_push($this->away_goals, $tmp);
-			} else if ($player->get_goals() > 1) {
-				$tmp = strval($player->get_name()) . " " . strval($player->get_goals()) . "x";
-				array_push($this->away_goals, $tmp);
-			}
-
-			if ($player->get_own_goals() != 0) {
-				$tmp = strval($player->get_name()) . " " . $this->own_goal_form;
-				array_push($this->home_goals, $tmp);
-			}
-		}
+		$this->compute_match_team_goals($this->home_players, $this->home_goals, $this->away_goals);
+		$this->compute_match_team_goals($this->home_players, $this->away_goals, $this->home_goals);
 	}
 
 	/**

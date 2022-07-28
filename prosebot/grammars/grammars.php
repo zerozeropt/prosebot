@@ -106,47 +106,6 @@ abstract class Grammar
 	abstract static function get_st_connector();
 
 	/**
-	 * Get element from array if exists
-	 * @param array	 $array  Generic array of elements
-	 * @param string $key    Key of the element
-	 * @return TextStructure Element of the array or null if it does not exist
-     */
-	public static function get_elem($array, $key)
-	{
-		if (!array_key_exists($key, $array) || $array[$key] == "") {
-			return null;
-		}
-
-		$name = $array[$key];
-
-		$gender = NameGender::NEUTRAL;
-		$new_key = $key . "_GENDER";
-		if (array_key_exists($new_key, $array)) {
-			$elem = $array[$new_key];
-			if ($elem == '0') {
-				$gender = NameGender::MALE;
-			}
-			elseif ($elem == '1') {
-				$gender = NameGender::FEMALE;
-			}
-		}
-
-		$number = null;
-		$new_key = $key . "_PLURAL";
-		if (array_key_exists($new_key, $array)) {
-			$elem = $array[$new_key];
-			if ($elem == '0') {
-				$number = NameNumber::SINGULAR;
-			}
-			elseif ($elem == '1') {
-				$number = NameNumber::PLURAL;
-			}
-		}
-
-		return new TextStructure($name, $gender, $number);
-	}
-
-	/**
 	 * Get entity text content
 	 * @param string or TextStructure $entity Entity to be treated
 	 * @return string Content of the entity

@@ -26,9 +26,9 @@ const ImportTemplate = () => {
     const doSubmit = (event) => {
         event.preventDefault();
         axios
-            .post(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/create.php`, {
-                file: file,
-                name: filename
+            .post(`${process.env.REACT_APP_TEMPLATES_SERVER}/api/templates`, {
+                data: file,
+                filename: filename
             }, {
                 params: {
                     context: activeContext,
@@ -42,7 +42,7 @@ const ImportTemplate = () => {
 
     useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/contexts/get_contexts.php`)
+            .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/properties/contexts`)
             .then(async (res) => {
                 const tmpContexts = res.data;
                 setContexts(tmpContexts);
@@ -51,7 +51,7 @@ const ImportTemplate = () => {
             });
 
         axios
-            .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/contexts/get_languages.php`)
+            .get(`${process.env.REACT_APP_VALIDATION_SERVER}/api/properties/languages`)
             .then(async (res) => {
                 const tmpLanguages = res.data;
                 setLanguages(tmpLanguages);
