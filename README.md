@@ -17,6 +17,7 @@ Currently, Prosebot has full support for the following languages:
 - Brazilian Portuguese
 - English
 - European Portuguese
+- Italian
 - Spanish
 
 However, new languages can be added by the community. Please read the following [tutorial](https://github.com/zerozeropt/prosebot/wiki/How-to-add-a-new-language) on how to add new languages to the system.
