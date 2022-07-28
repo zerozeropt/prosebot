@@ -22,11 +22,6 @@ class CompetitionData extends EntityData
 	 */
     private $name_array;
     /**
-	 * Gender of the name of the competition
-	 * @var string
-	 */
-    private $name_gender;
-    /**
 	 * Other name for the competition
 	 * @var string
 	 */
@@ -47,9 +42,12 @@ class CompetitionData extends EntityData
      */
     function __construct($json_data)
     {
-        $this->name_array = $json_data['competition_name'];
-        $this->name_gender = $json_data['competition_gender_feminine'];
-        $name = $this->construct_competition_name($json_data['competition'], $this->name_gender);
+        $name_gender = $json_data['competition_gender_feminine'];
+        $this->name_array = [];
+        foreach($json_data['competition_name'] as $lang => $name) {
+			$this->name_array[$lang] = $this->construct_competition_name($name, $name_gender);
+		}
+        $name = $this->construct_competition_name($json_data['competition'], $name_gender);
         parent::__construct($json_data['edition_id'], $name, FootballFetcher::EDITION_LINK);
         $this->other_name = $this->construct_competition_name($json_data['competition_known_as'], $json_data['competition_gender_feminine_known_as'], $json_data['competition_number_known_as']);
     }
@@ -61,9 +59,9 @@ class CompetitionData extends EntityData
      * @param bool   $is_singular   Whether is a singular name
      * @return TextStructure Competition name
      */
-    public function construct_competition_name($name, $is_female, $is_singular=true)
+    private function construct_competition_name($name, $is_female, $is_singular=true)
 	{
-        $gender = !$is_female ? NameGender::MALE : NameGender::FEMALE;
+        $gender = $is_female ? NameGender::FEMALE : NameGender::MALE;
         $number = $is_singular ? NameNumber::SINGULAR : NameNumber::PLURAL;
 		return new TextStructure($name, $gender, $number);
 	}
@@ -84,15 +82,6 @@ class CompetitionData extends EntityData
     public function get_other_name()
     {
         return $this->other_name;
-    }
-
-    /**
-     * Get the gender of the name of the competition
-     * @return string Gender of the name of the competition
-     */
-    public function get_name_gender()
-    {
-        return $this->name_gender;
     }
 
     /**

@@ -116,7 +116,7 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 	 * @return array Options and term
 	 */
 	protected function construct_team_name_options($lang, $team, $team_name_versions, $expressions) {
-		$this->construct_team_name_lang($team, $lang);
+		$this->set_entity_lang_name($team, $lang);
 		$options = array(
 			$team->get_name(),
 		);
@@ -140,20 +140,6 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 		}
 
 		return [$options, $term];
-	}
-
-	/**
-	 * Set team name for specific language
-	 * @param TeamData  $team Team
-	 * @param string	$lang Language
-	 */
-	protected function construct_team_name_lang($team, $lang) {
-		$name_array = $team->get_name_array();
-		$name = $team->get_name();
-		if (array_key_exists($lang, $name_array)) {
-			$name = $name_array[$lang];
-			$team->set_name($name);
-		}
 	}
 
 	/**
@@ -305,6 +291,80 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 	{
 		$d = static::get_week_days()[$date->format('w')];
 		return new TextStructure($d[0], $d[1], $d[2]);
+	}
+
+	/**
+	 * Get element from array if exists
+	 * @param array	 $array  Generic array of elements
+	 * @param string $key    Key of the element
+	 * @return TextStructure Element of the array or null if it does not exist
+     */
+	public static function get_elem($array, $key)
+	{
+		if (!array_key_exists($key, $array) || $array[$key] == "") {
+			return null;
+		}
+
+		$name = $array[$key];
+
+		$gender = NameGender::NEUTRAL;
+		$new_key = $key . "_GENDER";
+		if (array_key_exists($new_key, $array)) {
+			$elem = $array[$new_key];
+			if ($elem == '0') {
+				$gender = NameGender::MALE;
+			}
+			elseif ($elem == '1') {
+				$gender = NameGender::FEMALE;
+			}
+		}
+
+		$number = null;
+		$new_key = $key . "_PLURAL";
+		if (array_key_exists($new_key, $array)) {
+			$elem = $array[$new_key];
+			if ($elem == '0') {
+				$number = NameNumber::SINGULAR;
+			}
+			elseif ($elem == '1') {
+				$number = NameNumber::PLURAL;
+			}
+		}
+
+		return new TextStructure($name, $gender, $number);
+	}
+
+	/**
+	 * Set entity name for specific language if exists
+	 * @param CompetitionData|TeamData $entity  Entity object
+	 * @param string 	 			   $lang    Language
+     */
+	public static function set_entity_lang_name(&$entity, $lang)
+	{
+		$name_array = [];
+		if (method_exists($entity, "get_name_array")) {
+			$name_array = $entity->get_name_array();
+		}
+		$name = $entity->get_name();
+		if (array_key_exists($lang, $name_array)) {
+			$name = $name_array[$lang];
+		}
+		$entity->set_name($name);
+	}
+
+	/**
+	 * Get entity name for specific language if exists
+	 * @param TextStructure $name   	 Standard entity name
+	 * @param string[]      $name_array  Array of entity's names for each language
+	 * @param string		$lang		 Language initials
+	 * @return TextStructure Entity's name
+     */
+	public static function get_entity_lang_name($name, $name_array, $lang)
+	{
+		if (array_key_exists($lang, $name_array)) {
+			return new TextStructure($name_array[$lang], $name->get_gender(), $name->get_number());
+		}
+		return $name;
 	}
 }
 

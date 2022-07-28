@@ -15,12 +15,7 @@ class EntitiesManagerFootballIT extends EntitiesManagerFootball
 	 */
 	public function get_competition_name($competition)
 	{
-		$name_array = $competition->get_name_array();
-		$name = $competition->get_name();
-		if (array_key_exists("it", $name_array)) {
-			$name = $name_array["it"];
-		}
-		$competition->set_name($competition->construct_competition_name($name, $competition->get_name_gender()));
+		parent::set_entity_lang_name($competition, "it");
 		return parent::get_competition_name($competition);
 	}
 
@@ -31,7 +26,7 @@ class EntitiesManagerFootballIT extends EntitiesManagerFootball
 
 	public function get_team_name($team)
 	{
-		parent::construct_team_name_lang($team, "it");
+		parent::set_entity_lang_name($team, "it");
 		$options = array(
 			$team->get_name(),
 		);
@@ -120,5 +115,10 @@ class EntitiesManagerFootballIT extends EntitiesManagerFootball
 	public static function get_week_days()
 	{
 		return static::$day_name;
+	}
+
+	public static function get_entity_lang_name($name, $name_array, $lang="it")
+	{
+		return parent::get_entity_lang_name($name, $name_array, $lang);
 	}
 }

@@ -149,7 +149,7 @@ class TemplatesValidator
 	public function execution_method($option, $has_hierarchy)
 	{
 		switch ($option) {
-			case "no_entites":
+			case "no_entities":
 				$this->validate_no_entities_check($has_hierarchy);
 				break;
 			case "get_entities":
