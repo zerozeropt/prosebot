@@ -35,6 +35,7 @@ const Dashboard = () => {
   const [errorsKey, setErrorsKey] = useState();
   const [validationErrors, setValidationErrors] = useState([]);
   const [showValidation, setShowValidation] = useState(false);
+  const [errors, setErrors] = useState("");
   const colors = [
     "#3961b0",
     "#54b5b0",
@@ -48,6 +49,9 @@ const Dashboard = () => {
         setContexts(tmpContexts);
         if (tmpContexts.length > 0)
           setActiveContext(tmpContexts[0]);
+      })
+      .catch((e) => {
+        setErrors(e["message"]);
       });
 
     axios
@@ -57,6 +61,9 @@ const Dashboard = () => {
         setLanguages(tmpLanguages);
         if (tmpLanguages.length > 0)
           setActiveLanguage(tmpLanguages[0]);
+      })
+      .catch((e) => {
+        setErrors(e["message"]);
       });
   }, []);
 
@@ -72,6 +79,9 @@ const Dashboard = () => {
         .then(async (res) => {
           setTemplates(res.data);
         })
+        .catch((e) => {
+          setErrors(e["message"]);
+        });
   }, [activeContext, activeLanguage]);
 
   useEffect(() => {
@@ -86,6 +96,9 @@ const Dashboard = () => {
         .then(async (res) => {
           setActiveTemplateFile(res.data);
         })
+        .catch((e) => {
+          setErrors(e["message"]);
+        });
   }, [activeFileIndex, activeContext, activeLanguage]);
 
   const resetChoices = () => {
@@ -126,6 +139,9 @@ const Dashboard = () => {
           }
         });
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onDeleteTemplate = (key, index) => {
@@ -144,6 +160,9 @@ const Dashboard = () => {
       .then((res) => {
         setActiveTemplateFile(res.data);
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onAddTemplateKey = () => {
@@ -166,6 +185,9 @@ const Dashboard = () => {
       .then(() => {
         setIsAddMode(false);
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onEditTemplateKey = (event, tkey, newKey, isDelete = false) => {
@@ -192,13 +214,15 @@ const Dashboard = () => {
           }
         });
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onAddFile = (event) => {
     event.preventDefault();
 
-    const filename = tmpFileName + ".json";
-    if (templates.includes(filename)) {
+    if (templates.includes(tmpFileName)) {
       setErrorsFile("File already exists!");
       return;
     }
@@ -216,10 +240,13 @@ const Dashboard = () => {
         }
       })
       .then(() => {
-        setTemplates((oldItems) => [...oldItems, filename]);
+        setTemplates((oldItems) => [...oldItems, tmpFileName]);
         setIsAddFileMode(false);
         setTmpFileName("filename");
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onDeleteFile = (event, filename, index) => {
@@ -233,9 +260,12 @@ const Dashboard = () => {
       })
       .then(() => {
         setTemplates((oldItems) => oldItems.filter((item) => {
-          return item !== filename + ".json"
+          return item !== filename
         }))
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onRenameFile = (event, index, filename, newFilename) => {
@@ -251,9 +281,12 @@ const Dashboard = () => {
       })
       .then(() => {
         setTemplates((oldItems) => {
-          return [...oldItems.slice(0, index), newFilename + ".json", ...oldItems.slice(index + 1)];
+          return [...oldItems.slice(0, index), newFilename, ...oldItems.slice(index + 1)];
         })
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onClickTemplateFileButton = (index) => {
@@ -275,6 +308,9 @@ const Dashboard = () => {
         setValidationErrors(res.data === "" ? [] : res.data.split("<br>"));
         setShowValidation(true);
       })
+      .catch((e) => {
+        setErrors(e["message"]);
+      });
   }
 
   const onOpenTemplateKey = (tkeyName) => {
@@ -282,175 +318,184 @@ const Dashboard = () => {
   }
 
   return (
-    <CRow>
-      <CCol xs={9}>
-        {activeTemplateFile && (
-          <CCard>
-            <CCardHeader className='d-flex pt-3 pb-3'>
-              <h3>{templates[activeFileIndex]}</h3>
-              {!showValidation && (
-                <CButton className='ms-auto' color='primary' onClick={onValidateFile}>
-                  Validate file
-                </CButton>
-              )}
-              {showValidation && (
-                <CButton className='ms-auto' color='primary' onClick={() => setShowValidation(false)}>
-                  <CIcon icon={cilX} />
-                </CButton>
-              )}
-            </CCardHeader>
-            <CCardBody>
-              {showValidation && (
-                <CCard className='mb-3'>
-                  <CCardBody>
-                    {validationErrors.length > 0 && validationErrors.map((error, i) => {
-                      return (
-                        <p style={{ color: "red" }} key={`error-${i}`}>{error}</p>
-                      );
-                    })}
-                    {validationErrors.length === 0 && (
-                      <p>No errors found</p>
-                    )}
-                  </CCardBody>
-                </CCard>
-              )}
-              <CCard style={{ border: "0" }}>
-                {Object.keys(activeTemplateFile).map((template, i) => {
-                  return (
-                    <TemplateKey
-                      opened={activeTemplateKey === template}
-                      activeContext={activeContext}
-                      activeLanguage={activeLanguage}
-                      key={`template-key-${template}-${i}`}
-                      tkey={template}
-                      color={colors[i % colors.length]}
-                      activeTemplateFile={activeTemplateFile}
-                      addedTemplate={addedTemplate}
-                      onOpenTemplateKey={onOpenTemplateKey}
-                      onEditTemplateKey={onEditTemplateKey}
-                      setAddedTemplate={setAddedTemplate}
-                      onSaveEditTemplate={onSaveEditTemplate}
-                      onDeleteTemplate={onDeleteTemplate}
-                    />
-                  );
-                })}
-                {isAddMode && (
-                  <CForm>
-                    <CFormInput
-                      type="text"
-                      id="keyForm"
-                      defaultValue="template"
-                      onChange={(event) => setAddedTemplateKey(event.target.value)}
-                    />
-                  </CForm>
+    <>
+      {errors !== "" && (
+        <CCard color='danger' style={{ marginBottom: "1rem", color: "white" }}>
+          <CCardHeader>
+            {errors}. Please refresh and try again.
+          </CCardHeader>
+        </CCard>
+      )}
+      <CRow>
+        <CCol xs={9}>
+          {activeTemplateFile && (
+            <CCard>
+              <CCardHeader className='d-flex pt-3 pb-3'>
+                <h3>{templates[activeFileIndex]}</h3>
+                {!showValidation && (
+                  <CButton className='ms-auto' color='primary' onClick={onValidateFile}>
+                    Validate file
+                  </CButton>
                 )}
-              </CCard>
-            </CCardBody>
-            <CCardFooter>
-              {!isAddMode && (
-                <CButton color='primary' onClick={() => setIsAddMode(true)}>
-                  Add key +
-                </CButton>
-              )}
-              {isAddMode && (
-                <CRow>
-                  <CCol className='ms-1' style={{ color: "red" }}>
-                    {errorsKey}
-                  </CCol>
-                  <CCol className='d-flex justify-content-end mt-2 mb-2'>
-                    <CButton color='secondary' className='me-1' onClick={() => setIsAddMode(false)}>
-                      Cancel
-                    </CButton>
-                    <CButton onClick={onAddTemplateKey}>
-                      Save
-                    </CButton>
-                  </CCol>
-                </CRow>
-              )}
-            </CCardFooter>
-          </CCard>
-        )}
-      </CCol>
-      <CCol xs={3} className='d-flex flex-column'>
-        <CForm>
-          <CFormSelect
-            className="form-select mb-2"
-            onChange={(opt) => {
-              resetChoices();
-              setActiveContext(opt.target.value);
-            }}
-          >
-            {contexts && contexts.map((context, i) => {
-              return (
-                <option key={`context-${i}`}>{context}</option>
-              );
-            })}
-          </CFormSelect>
-          <CFormSelect
-            className="form-select mb-2"
-            onChange={(opt) => {
-              resetChoices();
-              setActiveLanguage(opt.target.value);
-            }}
-          >
-            {languages && languages.map((context, i) => {
-              return (
-                <option key={`language-${i}`}>{context}</option>
-              );
-            })}
-          </CFormSelect>
-        </CForm>
-        {templates && templates.map((template, i) => {
-          return (
-            <TemplateFileButton
-              key={`template-${template}-${i}`}
-              filename={template}
-              tindex={i}
-              setAddedTemplate={setAddedTemplate}
-              activeFileIndex={activeFileIndex}
-              onClick={onClickTemplateFileButton}
-              onDeleteFile={onDeleteFile}
-              onRenameFile={onRenameFile}
-              resetChoices={resetChoices}
-            />
-          );
-        })}
-        {!isAddFileMode && (
-          <CButton
-            color='secondary'
-            className='mt-1 w-100'
-            onClick={() => setIsAddFileMode(true)}
-          >
-            Add file +
-          </CButton>
-        )}
-        {isAddFileMode && (
-          <CForm onSubmit={onAddFile}>
-            {errorsFile}
-            <CFormInput
-              type="text"
-              id="fileForm"
-              className='mt-1'
-              defaultValue={tmpFileName}
-              onChange={(event) => setTmpFileName(event.target.value)}
-            />
-            <CButton type='submit' className='float-end mt-2'>
-              Save
-            </CButton>
-            <CButton
-              color='secondary'
-              className='float-end m-2'
-              onClick={() => {
-                setTmpFileName("filename");
-                setIsAddFileMode(false);
+                {showValidation && (
+                  <CButton className='ms-auto' color='primary' onClick={() => setShowValidation(false)}>
+                    <CIcon icon={cilX} />
+                  </CButton>
+                )}
+              </CCardHeader>
+              <CCardBody>
+                {showValidation && (
+                  <CCard className='mb-3'>
+                    <CCardBody>
+                      {validationErrors.length > 0 && validationErrors.map((error, i) => {
+                        return (
+                          <p style={{ color: "red" }} key={`error-${i}`}>{error}</p>
+                        );
+                      })}
+                      {validationErrors.length === 0 && (
+                        <p>No errors found</p>
+                      )}
+                    </CCardBody>
+                  </CCard>
+                )}
+                <CCard style={{ border: "0" }}>
+                  {Object.keys(activeTemplateFile).map((template, i) => {
+                    return (
+                      <TemplateKey
+                        opened={activeTemplateKey === template}
+                        activeContext={activeContext}
+                        activeLanguage={activeLanguage}
+                        key={`template-key-${template}-${i}`}
+                        tkey={template}
+                        color={colors[i % colors.length]}
+                        activeTemplateFile={activeTemplateFile}
+                        addedTemplate={addedTemplate}
+                        onOpenTemplateKey={onOpenTemplateKey}
+                        onEditTemplateKey={onEditTemplateKey}
+                        setAddedTemplate={setAddedTemplate}
+                        onSaveEditTemplate={onSaveEditTemplate}
+                        onDeleteTemplate={onDeleteTemplate}
+                      />
+                    );
+                  })}
+                  {isAddMode && (
+                    <CForm>
+                      <CFormInput
+                        type="text"
+                        id="keyForm"
+                        defaultValue="template"
+                        onChange={(event) => setAddedTemplateKey(event.target.value)}
+                      />
+                    </CForm>
+                  )}
+                </CCard>
+              </CCardBody>
+              <CCardFooter>
+                {!isAddMode && (
+                  <CButton color='primary' onClick={() => setIsAddMode(true)}>
+                    Add key +
+                  </CButton>
+                )}
+                {isAddMode && (
+                  <CRow>
+                    <CCol className='ms-1' style={{ color: "red" }}>
+                      {errorsKey}
+                    </CCol>
+                    <CCol className='d-flex justify-content-end mt-2 mb-2'>
+                      <CButton color='secondary' className='me-1' onClick={() => setIsAddMode(false)}>
+                        Cancel
+                      </CButton>
+                      <CButton onClick={onAddTemplateKey}>
+                        Save
+                      </CButton>
+                    </CCol>
+                  </CRow>
+                )}
+              </CCardFooter>
+            </CCard>
+          )}
+        </CCol>
+        <CCol xs={3} className='d-flex flex-column'>
+          <CForm>
+            <CFormSelect
+              className="form-select mb-2"
+              onChange={(opt) => {
+                resetChoices();
+                setActiveContext(opt.target.value);
               }}
             >
-              Cancel
-            </CButton>
+              {contexts && contexts.map((context, i) => {
+                return (
+                  <option key={`context-${i}`}>{context}</option>
+                );
+              })}
+            </CFormSelect>
+            <CFormSelect
+              className="form-select mb-2"
+              onChange={(opt) => {
+                resetChoices();
+                setActiveLanguage(opt.target.value);
+              }}
+            >
+              {languages && languages.map((context, i) => {
+                return (
+                  <option key={`language-${i}`}>{context}</option>
+                );
+              })}
+            </CFormSelect>
           </CForm>
-        )}
-      </CCol>
-    </CRow>
+          {templates && templates.map((template, i) => {
+            return (
+              <TemplateFileButton
+                key={`template-${template}-${i}`}
+                filename={template}
+                tindex={i}
+                setAddedTemplate={setAddedTemplate}
+                activeFileIndex={activeFileIndex}
+                onClick={onClickTemplateFileButton}
+                onDeleteFile={onDeleteFile}
+                onRenameFile={onRenameFile}
+                resetChoices={resetChoices}
+              />
+            );
+          })}
+          {!isAddFileMode && (
+            <CButton
+              color='secondary'
+              className='mt-1 w-100'
+              onClick={() => setIsAddFileMode(true)}
+            >
+              Add file +
+            </CButton>
+          )}
+          {isAddFileMode && (
+            <CForm onSubmit={onAddFile}>
+              {errorsFile}
+              <CFormInput
+                type="text"
+                id="fileForm"
+                className='mt-1'
+                defaultValue={tmpFileName}
+                onChange={(event) => setTmpFileName(event.target.value)}
+              />
+              <CButton type='submit' className='float-end mt-2'>
+                Save
+              </CButton>
+              <CButton
+                color='secondary'
+                className='float-end m-2'
+                onClick={() => {
+                  setTmpFileName("filename");
+                  setIsAddFileMode(false);
+                }}
+              >
+                Cancel
+              </CButton>
+            </CForm>
+          )}
+        </CCol>
+      </CRow>
+    </>
   )
 }
 

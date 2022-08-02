@@ -57,6 +57,9 @@ const Template = ({
                     if (isSave) setSaveAnyway(true);
                 }
             })
+            .catch((e) => {
+                setErrors(e["message"]);
+            });
     }
 
     const resetTextCondition = () => {

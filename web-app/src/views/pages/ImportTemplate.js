@@ -10,6 +10,7 @@ const ImportTemplate = () => {
     const [languages, setLanguages] = useState([]);
     const [activeLanguage, setActiveLanguage] = useState();
     const [uploaded, setUploaded] = useState(false);
+    const [errors, setErrors] = useState("");
 
     const fileHandler = (event) => {
         setUploaded(false);
@@ -38,6 +39,9 @@ const ImportTemplate = () => {
             .then(() => {
                 setUploaded(true);
             })
+            .catch((e) => {
+                setErrors(e["message"]);
+            });
     };
 
     useEffect(() => {
@@ -48,6 +52,9 @@ const ImportTemplate = () => {
                 setContexts(tmpContexts);
                 if (tmpContexts.length > 0)
                     setActiveContext(tmpContexts[0]);
+            })
+            .catch((e) => {
+                setErrors(e["message"]);
             });
 
         axios
@@ -57,58 +64,70 @@ const ImportTemplate = () => {
                 setLanguages(tmpLanguages);
                 if (tmpLanguages.length > 0)
                     setActiveLanguage(tmpLanguages[0]);
+            })
+            .catch((e) => {
+                setErrors(e["message"]);
             });
     }, []);
 
     return (
-        <CForm onSubmit={doSubmit}>
-            <CCard>
-                <CCardHeader>
-                    <h3>Import file</h3>
-                </CCardHeader>
-                <CCardBody>
-                    <CFormInput type='file' label="Template json file" onChange={fileHandler} />
-                    <CRow className='mt-2'>
-                        <CCol>
-                            <CFormSelect
-                                className="form-select"
-                                onChange={(opt) => {
-                                    setActiveContext(opt.target.value);
-                                }}
-                            >
-                                {contexts && contexts.map((context, i) => {
-                                    return (
-                                        <option key={`context-${i}`}>{context}</option>
-                                    );
-                                })}
-                            </CFormSelect>
-                        </CCol>
-                        <CCol>
-                            <CFormSelect
-                                className="form-select"
-                                onChange={(opt) => {
-                                    setActiveLanguage(opt.target.value);
-                                }}
-                            >
-                                {languages && languages.map((context, i) => {
-                                    return (
-                                        <option key={`language-${i}`}>{context}</option>
-                                    );
-                                })}
-                            </CFormSelect>
-                        </CCol>
-                    </CRow>
-                </CCardBody>
-                <CCardFooter className='d-flex'>
-                    {uploaded && (
-                        <p className='m-0' style={{color: "#54b5b0"}}>File successfully uploaded!</p>
-                    )}
-                    <CButton color='primary' type='submit' className='ms-auto'>
-                        Save
-                    </CButton>
-                </CCardFooter>
-            </CCard>
-        </CForm>
+        <>
+            {errors !== "" && (
+                <CCard color='danger' style={{ marginBottom: "1rem", color: "white" }}>
+                    <CCardHeader>
+                        {errors}. Please refresh and try again.
+                    </CCardHeader>
+                </CCard>
+            )}
+            <CForm onSubmit={doSubmit}>
+                <CCard>
+                    <CCardHeader>
+                        <h3>Import file</h3>
+                    </CCardHeader>
+                    <CCardBody>
+                        <CFormInput type='file' label="Template json file" onChange={fileHandler} />
+                        <CRow className='mt-2'>
+                            <CCol>
+                                <CFormSelect
+                                    className="form-select"
+                                    onChange={(opt) => {
+                                        setActiveContext(opt.target.value);
+                                    }}
+                                >
+                                    {contexts && contexts.map((context, i) => {
+                                        return (
+                                            <option key={`context-${i}`}>{context}</option>
+                                        );
+                                    })}
+                                </CFormSelect>
+                            </CCol>
+                            <CCol>
+                                <CFormSelect
+                                    className="form-select"
+                                    onChange={(opt) => {
+                                        setActiveLanguage(opt.target.value);
+                                    }}
+                                >
+                                    {languages && languages.map((context, i) => {
+                                        return (
+                                            <option key={`language-${i}`}>{context}</option>
+                                        );
+                                    })}
+                                </CFormSelect>
+                            </CCol>
+                        </CRow>
+                    </CCardBody>
+                    <CCardFooter className='d-flex'>
+                        {uploaded && (
+                            <p className='m-0' style={{ color: "#54b5b0" }}>File successfully uploaded!</p>
+                        )}
+                        <CButton color='primary' type='submit' className='ms-auto'>
+                            Save
+                        </CButton>
+                    </CCardFooter>
+                </CCard>
+            </CForm>
+        </>
     )
 }
 

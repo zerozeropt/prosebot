@@ -102,7 +102,7 @@ class TemplateController
         $data = json_decode(file_get_contents('php://input'));
         if (isset($_GET["context"]) && isset($_GET["lang"])) {
             if ($data !== null && property_exists($data, "data") && property_exists($data, "filename")) {
-                $dir = __DIR__ . '/../templates/' . $_GET["context"] . '/' . $_GET["lang"] . '/' . $data->filename;
+                $dir = __DIR__ . '/../templates/' . $_GET["context"] . '/' . $_GET["lang"] . '/' . $data->filename . ".json";
                 if (file_exists($dir)) {
                     echo json_encode(array("message" => "File already exists."));
                     http_response_code(400);
