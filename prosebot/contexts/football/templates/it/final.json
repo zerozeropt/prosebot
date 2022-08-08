@@ -15,13 +15,13 @@
     ],
     "classification": [
         {
-            "text": "Dopo questo risultato {il%team_best_after.name} {team_best_after.name} {s:si incontra|p:si incontrano%team_best_after.name} nel {ORDINALE%team_best_after.pos_classification} posto in {template.classification_content}, {team_best_after.points} {s:punto|p:punti%team_best_after.points}, trovandosi {il%team_worst_after.name} {team_worst_after.name} al {ORDINALE_FEM%team_worst_after.pos_classification} posto, {team_worst_after.points} {s:ponto|p:pontos%team_worst_after.points}.",
+            "text": "Dopo questo risultato {il%team_best_after.name} {team_best_after.name} {s:si incontra|p:si incontrano%team_best_after.name} nel {ORDINALE%team_best_after.pos_classification} posto in {template.classification_content}, {team_best_after.points} {s:punto|p:punti%team_best_after.points}, trovandosi {il%team_worst_after.name} {team_worst_after.name} al {ORDINALE%team_worst_after.pos_classification} posto, {team_worst_after.points} {s:ponto|p:pontos%team_worst_after.points}.",
             "condition": "has_classification"
         }
     ],
     "classification_content": [
         {
-            "text": "{@edition_link} classifica generale\u003C\/a\u003E",
+            "text": "{@edition_link} classifica generale<\/a>",
             "condition": ""
         }
     ],
@@ -55,26 +55,22 @@
     ],
     "next_location": [
         {
-            "text": "{Il%#arg.name} {#arg.name} {#arg.@next_competition_match_link} {template.next_location_content%#arg}\u003C\/a\u003E",
+            "text": "{Il%#arg.name} {#arg.name} {#arg.@next_competition_match_link} {template.next_location_content%#arg}<\/a>",
             "condition": "#arg.has_next_competition_game"
         }
     ],
     "next_location_content": [
         {
-            "text": "gioca{s:|p:no%#arg.name} in trasferta a {#arg.next_opponent_competition}",
+            "text": "gioca{s:|p:no%#arg.name} in trasferta a casa {di%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
             "condition": "#arg.is_next_competition_away"
         },
         {
-            "text": "si trasferisc{s:e|p:ono%#arg.name} a {#arg.next_opponent_competition}",
+            "text": "si trasferisc{s:e|p:ono%#arg.name} a casa {di%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
             "condition": "#arg.is_next_competition_away"
         },
         {
             "text": "ospita{s:|p:no%#arg.name} {il%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
             "condition": "#arg.is_next_competition_home"
-        },
-        {
-            "text": "gioca{s:|p:no%#arg.name} fuori casa a {#arg.next_opponent_competition}",
-            "condition": "#arg.is_next_competition_away"
         },
         {
             "text": "acco{s:glie|p:lgono%#arg.name} {il%#arg.next_opponent_competition} {#arg.next_opponent_competition}",
@@ -90,29 +86,29 @@
     "stats": [
         {
             "text": "{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}. {template.loser_stat_intro%loser_stat} {template.loser_stat%loser_stat}.",
-            "condition": "has_winner_stat && has_loser_stat && fixture \u003E 5 && final_score_diff != 0"
+            "condition": "has_winner_stat && has_loser_stat && fixture > 5 && final_score_diff != 0"
         },
         {
             "text": "{template.winner_stat_intro%winner_stat} {template.winner_stat%winner_stat}.",
-            "condition": "has_winner_stat && !has_loser_stat && fixture \u003E 5"
+            "condition": "has_winner_stat && !has_loser_stat && fixture > 5"
         },
         {
             "text": "{template.loser_stat_intro%loser_stat}, {template.loser_stat%loser_stat}.",
-            "condition": "has_loser_stat && !has_winner_stat && fixture \u003E 5"
+            "condition": "has_loser_stat && !has_winner_stat && fixture > 5"
         },
         {
             "text": "In questa sfida, {template.winner_stat%winner_stat}, mentre {template.loser_stat%loser_stat}.",
-            "condition": "has_winner_stat && has_loser_stat && fixture \u003E 5 && final_score_diff == 0"
+            "condition": "has_winner_stat && has_loser_stat && fixture > 5 && final_score_diff == 0"
         }
     ],
     "winner_stat_intro": [
         {
             "text": "Si aggiunge alla vittoria, ",
-            "condition": "#arg.is_positive && final_score_diff \u003E 0"
+            "condition": "#arg.is_positive && final_score_diff > 0"
         },
         {
             "text": "Nonostante la vittoria, ",
-            "condition": "!#arg.is_positive && final_score_diff \u003E 0"
+            "condition": "!#arg.is_positive && final_score_diff > 0"
         },
         {
             "text": "Nonostante il pareggio, ",
@@ -124,7 +120,7 @@
         },
         {
             "text": "Oltre la vittoria,",
-            "condition": "#arg.is_positive && final_score_diff \u003E 0"
+            "condition": "#arg.is_positive && final_score_diff > 0"
         },
         {
             "text": "Oltre il pareggio,",
@@ -134,11 +130,11 @@
     "loser_stat_intro": [
         {
             "text": "Nonostante la sconfitta, ",
-            "condition": "#arg.is_positive && final_score_diff \u003E 0"
+            "condition": "#arg.is_positive && final_score_diff > 0"
         },
         {
             "text": "Si aggiunge alla sconfitta,",
-            "condition": "!#arg.is_positive && final_score_diff \u003E 0"
+            "condition": "!#arg.is_positive && final_score_diff > 0"
         },
         {
             "text": "Nonostante il pari, ",
@@ -167,7 +163,7 @@
             "condition": "#arg.is_positive && #arg.key==\"shotgo\""
         },
         {
-            "text": "ha solo calciato {#arg.value} volte in porta, il registro pi\u00f9 basso nella stagione",
+            "text": "ha solo calciato {#arg.value} volte in porta, il registro più basso nella stagione",
             "condition": "!#arg.is_positive && #arg.key==\"shotgo\""
         },
         {
@@ -175,7 +171,7 @@
             "condition": "#arg.is_positive && #arg.key==\"gksave\""
         },
         {
-            "text": "ha registrato solo {#arg.value} parate, il numero pi\u00f9 basso della stagione",
+            "text": "ha registrato solo {#arg.value} parate, il numero più basso della stagione",
             "condition": "!#arg.is_positive && #arg.key==\"gksave\""
         },
         {
@@ -191,7 +187,7 @@
             "condition": "#arg.is_positive && #arg.key==\"shot\""
         },
         {
-            "text": "ha solo calciato {#arg.value} volte nello specchio, il registro pi\u00d9 basso della stagione",
+            "text": "ha solo calciato {#arg.value} volte nello specchio, il registro più basso della stagione",
             "condition": "!#arg.is_positive && #arg.key==\"shot\""
         }
     ],
@@ -215,7 +211,7 @@
             "condition": "is_final"
         },
         {
-            "text": "In virt\u00f9 di questo trionfo, {il%knockouts_winner.name} {knockouts_winner.name} vinc{s:e|p:ono%knockouts_winner.name} la competizione.",
+            "text": "In virtù di questo trionfo, {il%knockouts_winner.name} {knockouts_winner.name} vinc{s:e|p:ono%knockouts_winner.name} la competizione.",
             "condition": "is_final"
         },
         {

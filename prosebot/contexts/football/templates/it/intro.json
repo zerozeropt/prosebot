@@ -1,7 +1,7 @@
 {
     "entry_point": [
         {
-            "text": "{template.score}. {template.teams_form} {template.best_player}. {template.best_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.",
+            "text": "{template.score}. {template.teams_form} {template.best_player}. {template.match_stat_intro}. {template.starters}. {template.benched}.",
             "condition": "!has_decisive_player"
         },
         {
@@ -22,31 +22,31 @@
     "defeated": [
         {
             "text": "ha battuto",
-            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
             "text": "ha sconfitto",
-            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
-            "text": "ha trionfato su",
-            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+            "text": "ha superato",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
             "text": "ha spezzato",
-            "condition": "final_score_diff\u003E3"
+            "condition": "final_score_diff>3"
         },
         {
             "text": "ha dominato",
-            "condition": "final_score_diff\u003E3"
+            "condition": "final_score_diff>3"
         },
         {
             "text": "ha spaccato",
-            "condition": "final_score_diff\u003E3"
+            "condition": "final_score_diff>3"
         },
         {
             "text": "ha vinto",
-            "condition": "final_score_diff\u003E0  || extra_time==\"PEN\""
+            "condition": "final_score_diff>0  || extra_time==\"PEN\""
         }
     ],
     "commentary": [
@@ -62,11 +62,11 @@
         },
         {
             "text": "entusiasmante",
-            "condition": "match_goals\u003E5 && final_score_diff\u003C2"
+            "condition": "match_goals>5 && final_score_diff<2"
         },
         {
             "text": "straordinaria",
-            "condition": "match_goals\u003E6 || final_score_diff\u003E4"
+            "condition": "match_goals>6 || final_score_diff>4"
         },
         {
             "text": "di misura",
@@ -74,11 +74,11 @@
         },
         {
             "text": "molto serrata",
-            "condition": "match_goals\u003E5 && final_score_diff\u003C2"
+            "condition": "match_goals>5 && final_score_diff<2"
         },
         {
             "text": "magistrale",
-            "condition": "match_goals\u003E6 || final_score_diff\u003E4"
+            "condition": "match_goals>6 || final_score_diff>4"
         },
         {
             "text": "equilibrata",
@@ -88,15 +88,15 @@
     "win_adjective": [
         {
             "text": "splendida",
-            "condition": "match_goals\u003E5 || final_score_diff\u003E3"
+            "condition": "match_goals>5 || final_score_diff>3"
         },
         {
             "text": "incontestabile",
-            "condition": "match_goals\u003E5 || final_score_diff\u003E3"
+            "condition": "match_goals>5 || final_score_diff>3"
         },
         {
             "text": "chiara",
-            "condition": "match_goals\u003E5 || final_score_diff\u003E3"
+            "condition": "match_goals>5 || final_score_diff>3"
         }
     ],
     "teams_form": [
@@ -113,7 +113,7 @@
             "condition": "!first_competition_game && is_league"
         },
         {
-            "text": "Entrambi {home_team.name} e {away_team.name} giocavano la sua prima sfida nella competizione.",
+            "text": "Sia {il%home_team.name} {home_team.name}, che {il%away_team.name} {away_team.name} giocavano la sua prima sfida nella competizione.",
             "condition": "first_competition_game"
         },
         {
@@ -139,11 +139,11 @@
             "condition": "!#arg.competition_form_sequence_bool"
         },
         {
-            "text": "{Il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} arrivat{s:o|p:i%#arg.name} da {template.form_type%#arg}",
+            "text": "{Il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} {s:arrivato|p:arrivati%#arg.name} da {template.form_type%#arg}",
             "condition": "#arg.competition_form_sequence_bool"
         },
         {
-            "text": "curiosamente, {il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} anche arrivat{s:o|p:i%#arg.name} da {template.form_type%#arg}",
+            "text": "curiosamente, {il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} anche {s:arrivato|p:arrivati%#arg.name} da {template.form_type%#arg}",
             "condition": "same_competition_form_sequence && #arg.is_away_team"
         },
         {
@@ -154,7 +154,7 @@
     "form_type": [
         {
             "text": "{CARDINALE_FEM%#arg.competition_form_sequence} vittorie",
-            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence\u003E1"
+            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence>1"
         },
         {
             "text": "una vittoria",
@@ -162,7 +162,7 @@
         },
         {
             "text": "{CARDINALE%#arg.competition_form_sequence} pareggi",
-            "condition": "#arg.is_competition_drawing_sequence && #arg.competition_form_sequence\u003E1"
+            "condition": "#arg.is_competition_drawing_sequence && #arg.competition_form_sequence>1"
         },
         {
             "text": "un pareggio",
@@ -170,7 +170,7 @@
         },
         {
             "text": "{CARDINALE_FEM%#arg.competition_form_sequence} sconfitte",
-            "condition": "#arg.is_competition_losing_sequence && #arg.competition_form_sequence\u003E1"
+            "condition": "#arg.is_competition_losing_sequence && #arg.competition_form_sequence>1"
         },
         {
             "text": "una sconfitta",
@@ -178,7 +178,7 @@
         },
         {
             "text": "una sequenza di {CARDINALE_FEM%#arg.competition_form_sequence} vittorie",
-            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence\u003E1"
+            "condition": "#arg.is_competition_winning_sequence && #arg.competition_form_sequence>1"
         }
     ],
     "best_player": [
@@ -300,17 +300,17 @@
     "best_player_connector": [
         {
             "text": " e ",
-            "condition": "#arg.player_goals \u003E 0 && #arg.player_assists \u003E 0"
+            "condition": "#arg.player_goals > 0 && #arg.player_assists > 0"
         },
         {
             "text": "insieme a",
-            "condition": "#arg.player_goals \u003E 0 && #arg.player_assists \u003E 0"
+            "condition": "#arg.player_goals > 0 && #arg.player_assists > 0"
         }
     ],
     "goals": [
         {
             "text": "{#arg.goals} reti",
-            "condition": "#arg.player_goals \u003E 1"
+            "condition": "#arg.player_goals > 1"
         },
         {
             "text": "{#arg.goals} gol",
@@ -320,7 +320,7 @@
     "assists": [
         {
             "text": "{#arg.assists} assist",
-            "condition": "#arg.player_assists \u003E 1"
+            "condition": "#arg.player_assists > 1"
         },
         {
             "text": "{#arg.assists} assist",
@@ -330,43 +330,43 @@
     "match_stat_intro": [
         {
             "text": "In questa partita {template.match_stat%match_stat}.",
-            "condition": "has_match_stat && fixture \u003E 5"
+            "condition": "has_match_stat && fixture > 5"
         }
     ],
     "match_stat": [
         {
-            "text": "\u00e8 stato superato il record di tiri nella stagione, {#arg.value} tiri",
+            "text": "è stato superato il record di tiri nella stagione, {#arg.value} tiri",
             "condition": "#arg.is_positive && #arg.key==\"shot\""
         },
         {
-            "text": "sono stati registrati solo {#arg.value} tiri, il registro pi\u00f9 basso della stagione",
+            "text": "sono stati registrati solo {#arg.value} tiri, il registro più basso della stagione",
             "condition": "!#arg.is_positive && #arg.key==\"shot\""
         },
         {
-            "text": "\u00e8 stato superato il record di tiri in porta nella stagione, con {#arg.value} tiri in totale",
+            "text": "è stato superato il record di tiri in porta nella stagione, con {#arg.value} tiri in totale",
             "condition": "#arg.is_positive && #arg.key==\"shotgo\""
         },
         {
-            "text": "sono stati registrati solo {#arg.value} tiri in porta, il registro pi\u00f9 basso della stagione",
+            "text": "sono stati registrati solo {#arg.value} tiri in porta, il registro più basso della stagione",
             "condition": "!#arg.is_positive && #arg.key==\"shotgo\""
         },
         {
-            "text": "\u00e8 stato superato il record di calci d'angolo battuti, con {#arg.value} in totale",
+            "text": "è stato superato il record di calci d'angolo battuti, con {#arg.value} in totale",
             "condition": "#arg.is_positive && #arg.key==\"corner\""
         },
         {
-            "text": "sono stati battuti solo {#arg.value} {s:calcio|p:calci%#arg.value} d'angolo, il registro pi\u00f9 basso della stagione",
+            "text": "sono stati battuti solo {#arg.value} {s:calcio|p:calci%#arg.value} d'angolo, il registro più basso della stagione",
             "condition": "!#arg.is_positive && #arg.key==\"corner\""
         }
     ],
     "streak": [
         {
             "text": ", ritrovando la vittoria dopo {#arg.winningless_streak} partite senza vincere, ",
-            "condition": "#arg.winningless_streak \u003E 3"
+            "condition": "#arg.winningless_streak > 3"
         },
         {
             "text": ", ampliando una sequenza di {#arg.lossless_streak} gare senza perdere,",
-            "condition": "#arg.lossless_streak \u003E 3"
+            "condition": "#arg.lossless_streak > 3"
         }
     ],
     "pen_score": [
@@ -378,14 +378,14 @@
     "normal_score": [
         {
             "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.streak%winner} {template.commentary}, {weekday}, {final_score}, {template.fixture}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{template.fixture}, {il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.streak%winner}, {final_score}, {weekday}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
-            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name}, {template.fixture}, {weekday}, \u00e8 finita a reti bianchi {template.match_adjective}, {final_score}",
+            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name}, {template.fixture}, {weekday}, è finita a reti bianchi {template.match_adjective}, {final_score}",
             "condition": "final_score_diff==0"
         },
         {
@@ -399,7 +399,7 @@
     ],
     "starters": [
         {
-            "text": "Tra i titolari {s:\u00e8|p:sono%starter_players} stati {starter_players}.",
+            "text": "Tra i titolari {s:è|p:sono%starter_players} stati {starter_players}.",
             "condition": "starters"
         },
         {
@@ -411,17 +411,17 @@
             "condition": "starters"
         },
         {
-            "text": "{starter_players} {s:\u00e8 stato|p:sono stati%starter_players} {s:titolare|p:titolari%starter_players} nella partita.",
+            "text": "{starter_players} {s:è stato|p:sono stati%starter_players} {s:titolare|p:titolari%starter_players} nella partita.",
             "condition": "starters"
         }
     ],
     "benched": [
         {
-            "text": "{benched_players} non usc{s:\u00ec|p:irono%benched_players} da panchina.",
+            "text": "{benched_players} non usc{s:ì|p:irono%benched_players} da panchina.",
             "condition": "benched"
         },
         {
-            "text": "{benched_players} non {s:\u00e8 stato|p:sono stati%benched_players} usato nella sfida.",
+            "text": "{benched_players} non {s:è stato|p:sono stati%benched_players} usato nella sfida.",
             "condition": "benched"
         }
     ],

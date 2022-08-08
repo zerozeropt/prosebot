@@ -20,7 +20,7 @@
         },
         {
             "text": "in una sfida con {match_goals} gol",
-            "condition": "match_goals\u003E3"
+            "condition": "match_goals>3"
         },
         {
             "text": ", a reti inviolati",
@@ -28,7 +28,7 @@
         },
         {
             "text": "in una sfida piena di gol",
-            "condition": "match_goals\u003E3"
+            "condition": "match_goals>3"
         },
         {
             "text": "dopo una sfida a reti bianchi",
@@ -44,11 +44,11 @@
         },
         {
             "text": "in una partita piena di gol",
-            "condition": "match_goals\u003E3"
+            "condition": "match_goals>3"
         },
         {
             "text": "in una pioggia di gol",
-            "condition": "match_goals\u003E3"
+            "condition": "match_goals>3"
         }
     ],
     "win": [
@@ -75,7 +75,7 @@
     ],
     "pen": [
         {
-            "text": "La gara solo \u00e8 stata decisa ai tiri di rigore",
+            "text": "La gara solo è stata decisa ai tiri di rigore",
             "condition": ""
         }
     ],
@@ -94,7 +94,7 @@
         },
         {
             "text": "Vittoria netta {template.win}",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "{loser.name} {f:sorpresa|m:sorpreso%loser.name} in gara casalinga",
@@ -122,7 +122,7 @@
         },
         {
             "text": "Vittoria netta {template.win} {template.draw}",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "Pareggio giusto prima al triplice fischio {template.draw}",

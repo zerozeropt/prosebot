@@ -43,17 +43,17 @@
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "sono stati registrati solo {stat_val} passaggi, il numero pi\u00f9 basso di questa stagione",
+            "text": "sono stati registrati solo {stat_val} passaggi, il numero più basso di questa stagione",
             "condition": "!has_stat_team && !is_stat_positive"
         }
     ],
     "faltas": [
         {
-            "text": "\u00e8 diventato quello con meno infrazioni commesse questa stagione, {stat_val} in totale",
+            "text": "è diventato quello con meno infrazioni commesse questa stagione, {stat_val} in totale",
             "condition": "!has_stat_team && !is_stat_positive"
         },
         {
-            "text": "\u00e8 diventato quello con pi\u00f9 infrazioni commesse questa stagione, {stat_val} in totale",
+            "text": "è diventato quello con più infrazioni commesse questa stagione, {stat_val} in totale",
             "condition": "!has_stat_team && is_stat_positive"
         },
         {
@@ -91,17 +91,17 @@
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "si sono registrati {stat_val} falli, diventando la sfida con pi\u00f9 infrazioni della stagione",
+            "text": "si sono registrati {stat_val} falli, diventando la sfida con più infrazioni della stagione",
             "condition": "!has_stat_team && is_stat_positive"
         },
         {
-            "text": "si sono solo registrate {stat_val} infrazioni, il numero pi\u00f9 basso nella competizione",
+            "text": "si sono solo registrate {stat_val} infrazioni, il numero più basso nella competizione",
             "condition": "!has_stat_team && !is_stat_positive"
         }
     ],
     "corner": [
         {
-            "text": "solo sono stati battuti {stat_val} calci d'angolo, il numero pi\u00f9 basso della stagione",
+            "text": "solo sono stati battuti {stat_val} calci d'angolo, il numero più basso della stagione",
             "condition": "!has_stat_team && is_stat_positive"
         },
         {
@@ -117,11 +117,11 @@
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "ha solo battuti {stat_val} calci d'angolo, il registro pi\u00f9 basso di tutta la competizione",
+            "text": "ha solo battuti {stat_val} calci d'angolo, il registro più basso di tutta la competizione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha solo battuto {stat_val} calci d'angolo, il suo registro pi\u00f9 basso nella competizione",
+            "text": "ha solo battuto {stat_val} calci d'angolo, il suo registro più basso nella competizione",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
@@ -135,23 +135,23 @@
             "condition": "!has_stat_team && !is_stat_positive"
         },
         {
-            "text": "si ha registrato il pi\u00f9 grande numero di fuorigioco - {stat_val}",
+            "text": "si ha registrato il più grande numero di fuorigioco - {stat_val}",
             "condition": "!has_stat_team && is_stat_positive"
         },
         {
-            "text": "si \u00e8 trovato in fuorigioco {stat_val} volte, il pi\u00f9 grosso registro finora nella competizione",
+            "text": "si è trovato in fuorigioco {stat_val} volte, il più grosso registro finora nella competizione",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "\u00e8 spostato in fuorigioco {stat_val} volte, il registro pi\u00f9 alto nella competizione",
+            "text": "è spostato in fuorigioco {stat_val} volte, il registro più alto nella competizione",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "\u00e8 spostato in fuorigioco {stat_val} volte, il registro pi\u00f9 basso nella competizione",
+            "text": "è spostato in fuorigioco {stat_val} volte, il registro più basso nella competizione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "\u00e8 spostato in fuorigioco {stat_val} volte, il migliore registro nella competizione",
+            "text": "è spostato in fuorigioco {stat_val} volte, il migliore registro nella competizione",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         }
     ],
@@ -177,82 +177,82 @@
             "condition": "!has_stat_team && is_stat_positive"
         },
         {
-            "text": "solo sono stati registrati {stat_val} tiri, il registro pi\u00f9 basso di questa stagione",
+            "text": "solo sono stati registrati {stat_val} tiri, il registro più basso di questa stagione",
             "condition": "!has_stat_team && !is_stat_positive"
         }
     ],
     "winningless_streak": [
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza vincere",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         },
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza vincere",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         }
     ],
     "losing_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} sconfitte",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} sconfitte",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "winning_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} vittorie",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} vittorie",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "drawing_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} pareggi",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} pareggi",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "lossless_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza perdere",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza perdere",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "no_goals_conceded_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza subire gol",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza gol subiti",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         },
         {
             "text": "Ha nuovamente subito gol dopo una seguenza di {pre_curiosity_val} porte inviolate",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "goals_scored_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} gare di fila segnando",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} gare di fila segnando",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "shotgo": [
@@ -277,7 +277,7 @@
             "condition": "!has_stat_team && is_stat_positive"
         },
         {
-            "text": "solo sono stati registrati {stat_val} tiri in porta, il registro pi\u00f9 basso di questa stagione",
+            "text": "solo sono stati registrati {stat_val} tiri in porta, il registro più basso di questa stagione",
             "condition": "!has_stat_team && !is_stat_positive"
         }
     ],
@@ -287,7 +287,7 @@
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "ha registrato solo {stat_val} parate, il suo numero pi\u00f9 basso di questa stagione",
+            "text": "ha registrato solo {stat_val} parate, il suo numero più basso di questa stagione",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
@@ -295,20 +295,20 @@
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha registrato solo {stat_val} parate, il numero pi\u00f9 basso di questa stagione",
+            "text": "ha registrato solo {stat_val} parate, il numero più basso di questa stagione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         }
     ],
     "games_without_winning": [
         {
             "text": "Ha perso punti per la prima volta",
-            "condition": "pre_curiosity_val == 0 && post_curiosity_val \u003E 0"
+            "condition": "pre_curiosity_val == 0 && post_curiosity_val > 0"
         }
     ],
     "losses": [
         {
             "text": "Ha perso la prima sfida nella competizione",
-            "condition": "pre_curiosity_val == 0 && post_curiosity_val \u003E 0"
+            "condition": "pre_curiosity_val == 0 && post_curiosity_val > 0"
         }
     ]
 }

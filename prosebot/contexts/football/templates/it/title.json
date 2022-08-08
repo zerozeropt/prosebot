@@ -7,32 +7,32 @@
     ],
     "defeated": [
         {
-            "text": "ha battuto",
-            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+            "text": "{il%team.name} {team.name} ha battuto {il%team.name} {il%team.name}",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
-            "text": "ha sconfitto",
-            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+            "text": "{il%team.name} {team.name} ha sconfitto {il%team.name} {team.name}",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
-            "text": "ha trionfato su",
-            "condition": "final_score_diff\u003E0 || extra_time==\"PEN\""
+            "text": "{il%team.name} {team.name} ha superato {il%team.name} {team.name}",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
-            "text": "ha spezzatto",
-            "condition": "final_score_diff\u003E3"
+            "text": "{il%team.name} {team.name} ha spezzatto {il%team.name} {team.name}",
+            "condition": "final_score_diff>3"
         },
         {
-            "text": "ha dominato",
-            "condition": "final_score_diff\u003E3"
+            "text": "{il%team.name} {team.name} ha dominato {il%team.name} {team.name}",
+            "condition": "final_score_diff>3"
         },
         {
-            "text": "ha spaccato",
-            "condition": "final_score_diff\u003E3"
+            "text": "{il%team.name} {team.name} ha spaccato {il%team.name} {team.name}",
+            "condition": "final_score_diff>3"
         },
         {
-            "text": "ha vinto",
-            "condition": "final_score_diff\u003E0  || extra_time==\"PEN\""
+            "text": "{il%team.name} {team.name} ha vinto {il%team.name} {team.name}",
+            "condition": "final_score_diff>0  || extra_time==\"PEN\""
         }
     ],
     "pen_winner": [
@@ -62,39 +62,39 @@
     "normal_title": [
         {
             "text": "{winner.name} ha battuto {loser.name}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} ha vinto {loser.name}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} vince strepitosamente",
-            "condition": "final_score_diff\u003E4"
+            "condition": "final_score_diff>4"
         },
         {
-            "text": "{winner.name} disf\u00e0",
-            "condition": "final_score_diff\u003E2 && dominance "
+            "text": "{winner.name} disfà",
+            "condition": "final_score_diff>2 && dominance "
         },
         {
             "text": "{winner.name} domina",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "Pareggio {winner.name} tra {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "Sfida tra {winner.name} e {loser.name} \u00e8 finita in parit\u00e0",
+            "text": "Sfida tra {winner.name} e {loser.name} è finita in parità",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "Parit\u00e0 tra {winner.name} e {loser.name}",
+            "text": "Parità tra {winner.name} e {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
             "text": "{winner.name} ha battuto {loser.name}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} ha vinto {loser.name} il casalingo",
@@ -102,15 +102,15 @@
         },
         {
             "text": "{loser.name} sconfitto {da%winner.name} {winner.name}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} ha spezzatto {loser.name}",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "{loser.name} battuto autoritariamente {da%winner.name} {winner.name}",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "{winner.name} e {loser.name} sono finiti a reti bianchi",
@@ -118,30 +118,30 @@
         },
         {
             "text": "{winner.name} ha vinto {loser.name} strepitosamente",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "Vittoria {di%winner.name} {winner.name} in sconfitta pesante per {il%loser.name} {loser.name}",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "{winner.name} ha spaccato {loser.name}",
-            "condition": "final_score_diff\u003E4"
+            "condition": "final_score_diff>4"
         },
         {
             "text": "{winner.name} batte {loser.name} in sconfitta pesante",
-            "condition": "final_score_diff\u003E4"
+            "condition": "final_score_diff>4"
         },
         {
             "text": "{winner.name} supera {il%loser.name} {loser.name}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} ospita e batte {il%loser.name} {loser.name}",
             "condition": "home_win"
         },
         {
-            "text": "{winner.name} ha trionfato a {loser.name}",
+            "text": "{winner.name} ha vinto a {loser.name}",
             "condition": "!home_win"
         },
         {
@@ -158,7 +158,7 @@
         },
         {
             "text": "{winner.name} batte {loser.name}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} ha vinto di misura",
@@ -166,7 +166,7 @@
         },
         {
             "text": "{winner.name} ha battuto {loser.name} {final_score}",
-            "condition": "final_score_diff\u003E0"
+            "condition": "final_score_diff>0"
         }
     ],
     "competition": [
