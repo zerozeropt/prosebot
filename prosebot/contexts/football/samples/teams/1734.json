@@ -1,0 +1,24 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "1734",
+            "NAME": "Grupo Desportivo Estoril Praia",
+            "SHORT_NAME": "Estoril Praia",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Estoril Praia"
+            },
+            "FOUNDATION": "1939-05-17",
+            "COUNTRY": "Portugal",
+            "COUNTRYID": "1",
+            "PRESIDENT": "Alexandre Faria",
+            "CITY": "Cascais",
+            "REGIONID": "2",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "0"
+        }
+    }
+}

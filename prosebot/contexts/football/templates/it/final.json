@@ -15,7 +15,7 @@
     ],
     "classification": [
         {
-            "text": "Dopo questo risultato {il%team_best_after.name} {team_best_after.name} {s:si incontra|p:si incontrano%team_best_after.name} nel {ORDINALE%team_best_after.pos_classification} posto in {template.classification_content}, {team_best_after.points} {s:punto|p:punti%team_best_after.points}, trovandosi {il%team_worst_after.name} {team_worst_after.name} al {ORDINALE%team_worst_after.pos_classification} posto, {team_worst_after.points} {s:ponto|p:pontos%team_worst_after.points}.",
+            "text": "Dopo questo risultato {il%team_best_after.name} {team_best_after.name} {s:si incontra|p:si incontrano%team_best_after.name} nel {ORDINALE%team_best_after.pos_classification} posto in {template.classification_content}, {team_best_after.points} {s:punto|p:punti%team_best_after.points}, trovandosi {il%team_worst_after.name} {team_worst_after.name} al {ORDINALE%team_worst_after.pos_classification} posto, {team_worst_after.points} {s:punto|p:punti%team_worst_after.points}.",
             "condition": "has_classification"
         }
     ],

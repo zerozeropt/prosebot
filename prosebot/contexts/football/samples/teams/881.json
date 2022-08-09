@@ -1,0 +1,32 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "881",
+            "NAME": "Qatar Football Association",
+            "SHORT_NAME": "Qatar",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Qatar",
+                "br": "Catar",
+                "de": "Katar",
+                "en": "Qatar",
+                "es": "Qatar",
+                "fr": "Qatar",
+                "it": "Qatar",
+                "uk": "Qatar",
+                "us": "Qatar"
+            },
+            "FOUNDATION": "1960-01-01",
+            "COUNTRY": "Catar",
+            "COUNTRYID": "74",
+            "PRESIDENT": "Sheikh Hamad Bin Khalifa Al-Thani",
+            "CITY": "Doha",
+            "REGIONID": "0",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "0"
+        }
+    }
+}

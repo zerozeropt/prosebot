@@ -1,0 +1,32 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "1016",
+            "NAME": "Football Association of Serbia",
+            "SHORT_NAME": "Sérvia",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Sérvia",
+                "br": "Sérvia",
+                "de": "Serbia",
+                "en": "Serbia",
+                "es": "Serbia",
+                "fr": "Serbie",
+                "it": "Serbia",
+                "uk": "Serbia",
+                "us": "Serbia"
+            },
+            "FOUNDATION": "1919-01-01",
+            "COUNTRY": "Sérvia",
+            "COUNTRYID": "210",
+            "PRESIDENT": "Tomislav Karadzic",
+            "CITY": "Belgrado",
+            "REGIONID": "0",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "1",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "0"
+        }
+    }
+}

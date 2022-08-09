@@ -1,0 +1,24 @@
+{
+    "data": {
+        "PROFILE": {
+            "ID": "84",
+            "NAME": "Leeds United Association Football Club",
+            "SHORT_NAME": "Leeds United",
+            "SHORT_NAME_ARRAY": {
+                "pt": "Leeds United"
+            },
+            "FOUNDATION": "1919-10-17",
+            "COUNTRY": "Inglaterra",
+            "COUNTRYID": "16",
+            "PRESIDENT": "Andrea Radrizzani",
+            "CITY": "Leeds",
+            "REGIONID": "486",
+            "REGION2ID": "0",
+            "SHORT_NAME_GENDER": "0",
+            "SHORT_NAME_PLURAL": "0",
+            "OTHERNAME": "",
+            "OTHERNAME_GENDER": "0",
+            "OTHERNAME_PLURAL": "0"
+        }
+    }
+}
