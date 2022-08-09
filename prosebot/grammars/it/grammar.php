@@ -208,7 +208,7 @@ class GrammarIT extends Grammar
 			$res = static::cardinale($text, $number, $gender);
 			$last_char = mb_substr($res, -1);
 			$not_end_tre = mb_substr($res, -3) !== "tre";
-			if ($last_char === "a" || ($last_char === "e" && $not_end_tre) || $last_char === "o" || $last_char === "i") {
+			if ($last_char === "a" || ($last_char === "e" && $not_end_tre) || $last_char === "o") {
 				$res = mb_substr($res, 0, strlen($res) - 1);
 			}
 			if ($gender === NameGender::MALE) {
@@ -289,8 +289,8 @@ class GrammarIT extends Grammar
 	 */
 	private static function composite_connector($text, $number, $gender, $variations)
 	{
-		$first_char = mb_substr($text, 0, 1);
-		$second_char = mb_substr($text, 1, 1);
+		$first_char = mb_strtolower(mb_substr($text, 0, 1));
+		$second_char = mb_strtolower(mb_substr($text, 1, 1));
 		$res = "";
 
 		// Singular

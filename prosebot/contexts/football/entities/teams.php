@@ -397,8 +397,9 @@ class TeamData extends EntityData
 	{
 		foreach ($data as $game) {
 			if ($competition === null || $competition === $game["descr_edition"]) {
-				$name_array = FootballFetcher::get_team_json($game["fk_opponent"])["data"]["PROFILE"]["SHORT_NAME_ARRAY"];
-				$name = $entities_manager->get_entity_lang_name($entities_manager::get_elem($game, "opponent_descr"), $name_array);
+				$team_json= FootballFetcher::get_team_json($game["fk_opponent"])["data"]["PROFILE"];
+				$name_array = $team_json["SHORT_NAME_ARRAY"];
+				$name = $entities_manager->get_entity_lang_name($entities_manager::get_elem($team_json, "SHORT_NAME"), $name_array);
 				return array($name, $game["where"], $game["id"], $game["fixture"], $game["neutral_field"]);
 			}
 		}
