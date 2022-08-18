@@ -222,6 +222,22 @@ abstract class Grammar
 	}
 
 	/**
+	 * Get correct element from an array according to the gender
+	 * @param array 	 $array  Array of elements
+	 * @param NameGender $gender Gender
+	 * @param int	     $num    Key of the array
+	 * @return string Correct element from an array according to the gender
+	 */
+	protected static function get_gender_form($array, $gender, $num)
+	{
+		$res = $array[$num];
+		if (is_array($res)) {
+			return $res[(int)$gender - 1];
+		}
+		return $res;
+	}
+
+	/**
 	 * Get connectors list in corresponding language
 	 * @return array List of connectors
 	 */

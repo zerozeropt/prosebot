@@ -90,18 +90,14 @@ class GrammarIT extends Grammar
 		}
 
 		if (array_key_exists($int, static::$cardinals)) {
-			$res = static::$cardinals[$int];
-			if (is_array($res)) {
-				if ($gender === NameGender::FEMALE) {
-					return $res[1];
-				}
-				return $res[0];
-			}
-			return $res;
+			return parent::get_gender_form(static::$cardinals, $gender, $int);
 		}
 
 		$div = pow(10, $exp);
-		$left = static::$cardinals[intdiv($int, $div) * $div];
+		$left = "";
+		if (array_key_exists($int, static::$cardinals)) {
+			$left = parent::get_gender_form(static::$cardinals, $gender, intdiv($int, $div) * $div);
+		}
 		$right = static::get_cardinal($int % $div, $gender, $min_val, $exp - 1);
 
 		if ($exp === 1 && ($right === "un" || $right === "una" || $right === "otto")) {
@@ -159,7 +155,7 @@ class GrammarIT extends Grammar
 	 * List of ordinal numbers
 	 * @var array
 	 */
-	private static $ordinali = array(
+	private static $ordinals = array(
 		0 => '',
 		1 => 'prim',
 		2 => 'second',
@@ -202,8 +198,8 @@ class GrammarIT extends Grammar
 			NameGender::FEMALE => ["a", "e"]
 		);
 
-		if ($num <= 20 || array_key_exists($num, static::$ordinali)) {
-			$res = static::$ordinali[$num] . $article[$gender][(int)$number - 4];
+		if ($num <= 20 || array_key_exists($num, static::$ordinals)) {
+			$res = static::$ordinals[$num] . $article[$gender][(int)$number - 4];
 		} else {
 			$res = static::cardinale($text, $number, $gender);
 			$last_char = mb_substr($res, -1);

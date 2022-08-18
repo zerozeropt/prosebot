@@ -92,18 +92,14 @@ class GrammarPT extends Grammar
 
 
 		if (array_key_exists($int, static::$cardinals)) {
-			$res = static::$cardinals[$int];
-			if (is_array($res)) {
-				if ($gender === NameGender::FEMALE) {
-					return $res[1];
-				}
-				return $res[0];
-			}
-			return $res;
+			return parent::get_gender_form(static::$cardinals, $gender, $int);
 		}
 
 		$div = pow(10, $exp);
-		$left = static::$cardinals[intdiv($int, $div) * $div];
+		$left = "";
+		if (array_key_exists($int, static::$cardinals)) {
+			$left = parent::get_gender_form(static::$cardinals, $gender, intdiv($int, $div) * $div);
+		}
 		$right = static::get_cardinal($int % $div, $gender, $min_val, $exp - 1);
 
 		return $left . ($left === "" ? "" : static::$st_connector) . $right;
