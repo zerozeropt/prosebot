@@ -1,21 +1,21 @@
 {
     "entry_point": [
         {
-            "text": "So it's been a pretty {template.temperature%main} day.",
+            "text": "Si tratta quindi di una giornata piuttosto {template.temperature%main}.",
             "condition": ""
         }
     ],
     "temperature": [
         {
-            "text": "hot",
+            "text": "calda",
             "condition": "#arg.is_hot"
         },
         {
-            "text": "cold",
+            "text": "fredda",
             "condition": "#arg.is_cold"
         },
         {
-            "text": "mild",
+            "text": "mite",
             "condition": "#arg.is_neutral"
         }
     ]
