@@ -141,14 +141,6 @@
     ],
     "teams_form": [
         {
-            "text": "Na primeira mão {o%prev_match_winner.name} {prev_match_winner.name} tinha vencido {o%prev_match_loser.name} {prev_match_loser.name}, {prev_match_score}.",
-            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff!=0"
-        },
-        {
-            "text": "Na primeira mão as equipas tinham empatado, {prev_match_score}.",
-            "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"
-        },
-        {
             "text": "In this competition, {template.team_form%home_team}, and {template.team_form%away_team}.",
             "condition": "!first_competition_game && is_league"
         },

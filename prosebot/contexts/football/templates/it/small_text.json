@@ -7,26 +7,22 @@
     ],
     "score": [
         {
-            "text": "{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
-            "condition": "extra_time==\"PEN\""
-        },
-        {
             "text": "{template.normal_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "extra_time!=\"PEN\""
+        },
+        {
+            "text": "{template.pen_score} {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "condition": "extra_time==\"PEN\""
         }
     ],
     "defeated": [
         {
-            "text": "ha battuto",
-            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+            "text": "ha spaccato",
+            "condition": "final_score_diff>3"
         },
         {
-            "text": "ha sconfitto",
-            "condition": "final_score_diff>0 || extra_time==\"PEN\""
-        },
-        {
-            "text": "ha superato",
-            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+            "text": "ha dominato",
+            "condition": "final_score_diff>3"
         },
         {
             "text": "ha spezzato",
@@ -37,12 +33,16 @@
             "condition": "final_score_diff>0  || extra_time==\"PEN\""
         },
         {
-            "text": "ha spaccato",
-            "condition": "final_score_diff>3"
+            "text": "ha superato",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         },
         {
-            "text": "ha dominato",
-            "condition": "final_score_diff>3"
+            "text": "ha battuto",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
+        },
+        {
+            "text": "ha sconfitto",
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         }
     ],
     "draw_adjective": [
@@ -53,34 +53,34 @@
     ],
     "match_adjective": [
         {
-            "text": "in una elettrizzante vittoria",
-            "condition": "match_goals>5"
-        },
-        {
-            "text": "in una stupenda vittoria",
-            "condition": "match_goals>6 || final_score_diff>4"
+            "text": "in una strepitosa rimontata",
+            "condition": "has_turn_around"
         },
         {
             "text": "in una vittoria serrata",
             "condition": "final_score_diff==1"
         },
         {
-            "text": "in una strepitosa rimontata",
-            "condition": "has_turn_around"
+            "text": "in una stupenda vittoria",
+            "condition": "match_goals>6 || final_score_diff>4"
+        },
+        {
+            "text": "in una elettrizzante vittoria",
+            "condition": "match_goals>5"
         }
     ],
     "goals": [
         {
-            "text": "{template.home_team_goals}, mentre {template.away_team_goals}.",
-            "condition": "match_goals!=0 && home_team_goal && away_team_goal"
+            "text": "{template.away_team_goals}.",
+            "condition": "match_goals!=0 && !home_team_goal && away_team_goal"
         },
         {
             "text": "{template.home_team_goals}.",
             "condition": "match_goals!=0 && home_team_goal && !away_team_goal"
         },
         {
-            "text": "{template.away_team_goals}.",
-            "condition": "match_goals!=0 && !home_team_goal && away_team_goal"
+            "text": "{template.home_team_goals}, mentre {template.away_team_goals}.",
+            "condition": "match_goals!=0 && home_team_goal && away_team_goal"
         }
     ],
     "home_team_goals": [
@@ -97,11 +97,11 @@
     ],
     "red_card": [
         {
-            "text": "{il%#arg.name} {#arg.name} finisce la partita con {#arg.final_players} giocatori.",
+            "text": "{il%#arg.name} {#arg.name} finisce la partita {#arg.final_players} giocatori in meno.",
             "condition": "#arg.has_red_card"
         },
         {
-            "text": "{il%#arg.name} {#arg.name} finisce la partita {#arg.final_players} giocatori in meno.",
+            "text": "{il%#arg.name} {#arg.name} finisce la partita con {#arg.final_players} giocatori.",
             "condition": "#arg.has_red_card"
         }
     ],
@@ -132,19 +132,7 @@
     ],
     "normal_score": [
         {
-            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.match_adjective} {weekday}, {final_score}.",
-            "condition": "final_score_diff>0"
-        },
-        {
-            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name} {weekday} è finita a reti inviolati {template.draw_adjective}, {final_score}.",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.streak%winner} {template.match_adjective} {weekday}, {final_score}.",
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {weekday}.",
             "condition": "final_score_diff>0"
         },
         {
@@ -152,12 +140,24 @@
             "condition": "final_score_diff>0"
         },
         {
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.streak%winner} {template.match_adjective} {weekday}, {final_score}.",
+            "condition": "final_score_diff>0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name} {template.match_adjective} {weekday}, {final_score}.",
+            "condition": "final_score_diff>0"
+        },
+        {
             "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{il%winner.name} {winner.name} {template.defeated} {il%loser.name} {loser.name}  {template.match_adjective}, {final_score}, {weekday}.",
-            "condition": "final_score_diff>0"
+            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name} {weekday} è finita a reti inviolati {template.draw_adjective}, {final_score}.",
+            "condition": "final_score_diff==0"
         }
     ]
 }

@@ -88,7 +88,7 @@
     "commentary_scorer": [
         {
             "text": "Fue el {ORDINAL%#arg.season_goals} gol {de%#arg.name} {#arg.name} en esta temporada.",
-            "condition": "#arg.season_goals%5===0"
+            "condition": "#arg.report_num_goals"
         },
         {
             "text": "Con el gol anotado, {#arg.name} alcanzó la marca de {CARDINAL%#arg.season_goals} goles en la temporada.",

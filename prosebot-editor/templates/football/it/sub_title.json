@@ -11,7 +11,27 @@
     ],
     "draw": [
         {
-            "text": ", in una partita senza gol",
+            "text": "in una pioggia di gol",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "dopo un zero-a-zero",
+            "condition": "match_goals==0"
+        },
+        {
+            "text": "in una partita piena di gol",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "in una partita combattuta",
+            "condition": "match_goals==2"
+        },
+        {
+            "text": "in una sfida piena di gol",
+            "condition": "match_goals>3"
+        },
+        {
+            "text": "dopo una sfida a reti bianchi",
             "condition": "match_goals==0"
         },
         {
@@ -20,40 +40,20 @@
         },
         {
             "text": "in una sfida con {match_goals} gol",
-            "condition": "match_goals\u003E3"
+            "condition": "match_goals>3"
+        },
+        {
+            "text": ", in una partita senza gol",
+            "condition": "match_goals==0"
         },
         {
             "text": ", a reti inviolati",
             "condition": "match_goals==0"
-        },
-        {
-            "text": "in una sfida piena di gol",
-            "condition": "match_goals\u003E3"
-        },
-        {
-            "text": "dopo una sfida a reti bianchi",
-            "condition": "match_goals==0"
-        },
-        {
-            "text": "in una partita combattuta",
-            "condition": "match_goals==2"
-        },
-        {
-            "text": "dopo un zero-a-zero",
-            "condition": "match_goals==0"
-        },
-        {
-            "text": "in una partita piena di gol",
-            "condition": "match_goals\u003E3"
-        },
-        {
-            "text": "in una pioggia di gol",
-            "condition": "match_goals\u003E3"
         }
     ],
     "win": [
         {
-            "text": "degli ospiti",
+            "text": "in casa {di_il%winner.name} {winner.name}",
             "condition": "home_win"
         },
         {
@@ -61,11 +61,11 @@
             "condition": "!home_win"
         },
         {
-            "text": "in casa {di%winner.name} {winner.name}",
+            "text": "degli ospiti",
             "condition": "home_win"
         },
         {
-            "text": "in casa {di%loser.name} {loser.name}",
+            "text": "in casa {di_il%loser.name} {loser.name}",
             "condition": "!home_win"
         },
         {
@@ -75,66 +75,66 @@
     ],
     "pen": [
         {
-            "text": "La gara solo \u00e8 stata decisa ai tiri di rigore",
+            "text": "La gara solo è stata decisa ai tiri di rigore",
             "condition": ""
         }
     ],
     "normal": [
         {
-            "text": "Vittoria di misura {template.win}",
-            "condition": "final_score_diff==1"
-        },
-        {
-            "text": "Vittoria per un soffio {template.win}",
-            "condition": "final_score_diff==1"
-        },
-        {
-            "text": "Comoda vittoria {template.win}",
-            "condition": "final_score_diff==2"
-        },
-        {
-            "text": "Vittoria netta {template.win}",
-            "condition": "final_score_diff\u003E2"
-        },
-        {
-            "text": "{loser.name} {f:sorpresa|m:sorpreso%loser.name} in gara casalinga",
-            "condition": "has_suprise"
-        },
-        {
-            "text": "Sorpresa a {loser.name}",
-            "condition": "has_suprise"
-        },
-        {
-            "text": "Vittoria di misura {template.win} {template.draw}",
-            "condition": "final_score_diff==1"
-        },
-        {
-            "text": "Vittoria per un soffio {template.win} {template.draw}",
-            "condition": "final_score_diff==1"
-        },
-        {
-            "text": "Comoda vittoria {template.win} {template.draw}",
-            "condition": "final_score_diff==2"
-        },
-        {
-            "text": "Reti inviolati {template.draw}",
-            "condition": "final_score_diff==0"
+            "text": "Vittoria giusto prima al triplice fischio {template.win} {template.draw}",
+            "condition": "decisive_goal_stoppage_time && final_score_diff==1"
         },
         {
             "text": "Vittoria netta {template.win} {template.draw}",
-            "condition": "final_score_diff\u003E2"
+            "condition": "final_score_diff>2"
         },
         {
             "text": "Pareggio giusto prima al triplice fischio {template.draw}",
             "condition": "decisive_goal_stoppage_time && final_score_diff==0"
         },
         {
-            "text": "Vittoria giusto prima al triplice fischio {template.win} {template.draw}",
-            "condition": "decisive_goal_stoppage_time && final_score_diff==1"
+            "text": "Reti inviolati {template.draw}",
+            "condition": "final_score_diff==0"
+        },
+        {
+            "text": "Comoda vittoria {template.win} {template.draw}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "Vittoria di misura {template.win} {template.draw}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "Sorpresa a {loser.name}",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "{loser.name} {f:sorpresa|m:sorpreso%loser.name} in gara casalinga",
+            "condition": "has_suprise"
+        },
+        {
+            "text": "Vittoria di misura {template.win}",
+            "condition": "final_score_diff==1"
         },
         {
             "text": "Sorpresa al {stadium}",
             "condition": "has_suprise"
+        },
+        {
+            "text": "Vittoria netta {template.win}",
+            "condition": "final_score_diff>2"
+        },
+        {
+            "text": "Comoda vittoria {template.win}",
+            "condition": "final_score_diff==2"
+        },
+        {
+            "text": "Vittoria per un soffio {template.win}",
+            "condition": "final_score_diff==1"
+        },
+        {
+            "text": "Vittoria per un soffio {template.win} {template.draw}",
+            "condition": "final_score_diff==1"
         }
     ]
 }

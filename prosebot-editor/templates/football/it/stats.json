@@ -4,83 +4,83 @@
     "match_stats": [],
     "ballpo": [
         {
-            "text": "ha ottenuto il migliore registro di possesso palla di tutte le squadre questa stagione, con {stat_val}% in totale",
-            "condition": "is_stat_positive && is_stat_global"
-        },
-        {
-            "text": "ha ottenuto il suo migliore registro di possesso palla questa stagione, con {stat_val}% in totale",
-            "condition": "is_stat_positive && !is_stat_global"
+            "text": "ha ottenuto il suo peggiore registro di possesso questa stagione, {stat_val}% in totale",
+            "condition": "!is_stat_positive && !is_stat_global"
         },
         {
             "text": "ha ottenuto il peggiore registro di possesso palla di tutte le squadre questa stagione, con {stat_val}% in totale",
             "condition": "!is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha ottenuto il suo peggiore registro di possesso questa stagione, {stat_val}% in totale",
-            "condition": "!is_stat_positive && !is_stat_global"
+            "text": "ha ottenuto il suo migliore registro di possesso palla questa stagione, con {stat_val}% in totale",
+            "condition": "is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "ha ottenuto il migliore registro di possesso palla di tutte le squadre questa stagione, con {stat_val}% in totale",
+            "condition": "is_stat_positive && is_stat_global"
         }
     ],
     "shots": [],
     "totpas": [
         {
-            "text": "sono stati registrati {stat_val} passaggi, il maggiore numero di questa stagione",
-            "condition": "!has_stat_team && is_stat_positive"
-        },
-        {
-            "text": "ha stabilito un record globale di {stat_val} passaggi",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
-        },
-        {
-            "text": "ha stabilito un record personale di {stat_val} passaggi",
-            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+            "text": "sono stati registrati solo {stat_val} passaggi, il numero più basso di questa stagione",
+            "condition": "!has_stat_team && !is_stat_positive"
         },
         {
             "text": "ha solo fatto {stat_val} passaggi, battendo il peggiore registro nella competizione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha fatto il suo peggiore registro di passaggi, {stat_val} in totale",
-            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+            "text": "ha stabilito un record personale di {stat_val} passaggi",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "sono stati registrati solo {stat_val} passaggi, il numero pi\u00f9 basso di questa stagione",
-            "condition": "!has_stat_team && !is_stat_positive"
+            "text": "ha stabilito un record globale di {stat_val} passaggi",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "sono stati registrati {stat_val} passaggi, il maggiore numero di questa stagione",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "ha fatto il suo peggiore registro di passaggi, {stat_val} in totale",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         }
     ],
     "faltas": [
         {
-            "text": "\u00e8 diventato quello con meno infrazioni commesse questa stagione, {stat_val} in totale",
-            "condition": "!has_stat_team && !is_stat_positive"
-        },
-        {
-            "text": "\u00e8 diventato quello con pi\u00f9 infrazioni commesse questa stagione, {stat_val} in totale",
-            "condition": "!has_stat_team && is_stat_positive"
-        },
-        {
-            "text": "ha subito {stat_val} falli, registro massimo di tutta la competizione",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
-        },
-        {
-            "text": "ha subito {stat_val} falli, il suo registro massimo finora",
-            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+            "text": "ha subito solo {stat_val} falli, il suo minore registro finora",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
             "text": "ha subito solo {stat_val} falli, il minore registro di tutta la competizione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha subito solo {stat_val} falli, il suo minore registro finora",
-            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+            "text": "ha subito {stat_val} falli, il suo registro massimo finora",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "ha subito {stat_val} falli, registro massimo di tutta la competizione",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "è diventato quello con più infrazioni commesse questa stagione, {stat_val} in totale",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "è diventato quello con meno infrazioni commesse questa stagione, {stat_val} in totale",
+            "condition": "!has_stat_team && !is_stat_positive"
         }
     ],
     "foul": [
         {
-            "text": "ha commesso il maggiore numero d'infrazioni della stagione, {stat_val} in totale",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+            "text": "si sono solo registrate {stat_val} infrazioni, il numero più basso nella competizione",
+            "condition": "!has_stat_team && !is_stat_positive"
         },
         {
-            "text": "ha commesso il minore numero d'infrazioni della stagione, solo {stat_val}",
-            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+            "text": "si sono registrati {stat_val} falli, diventando la sfida con più infrazioni della stagione",
+            "condition": "!has_stat_team && is_stat_positive"
         },
         {
             "text": "ha commesso il suo maggiore numero d'infrazioni della stagione, {stat_val} in totale",
@@ -88,181 +88,177 @@
         },
         {
             "text": "ha commesso il minore numero d'infrazioni della stagione, solo {stat_val}",
-            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "si sono registrati {stat_val} falli, diventando la sfida con pi\u00f9 infrazioni della stagione",
-            "condition": "!has_stat_team && is_stat_positive"
-        },
-        {
-            "text": "si sono solo registrate {stat_val} infrazioni, il numero pi\u00f9 basso nella competizione",
-            "condition": "!has_stat_team && !is_stat_positive"
+            "text": "ha commesso il maggiore numero d'infrazioni della stagione, {stat_val} in totale",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
         }
     ],
     "corner": [
         {
-            "text": "solo sono stati battuti {stat_val} calci d'angolo, il numero pi\u00f9 basso della stagione",
-            "condition": "!has_stat_team && is_stat_positive"
+            "text": "sono stati battuti solo {stat_val} calci d'angolo, il minore registro di questa stagione",
+            "condition": "!has_stat_team && !is_stat_positive"
         },
         {
-            "text": "fu battuto il record di calci d'angolo, un totale di {stat_val}",
-            "condition": "!has_stat_team && is_stat_positive"
+            "text": "ha solo battuto {stat_val} calci d'angolo, il suo registro più basso nella competizione",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "ha superato il record di calci d'angolo battuti nella competizione, con {stat_val} in totale",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+            "text": "ha solo battuti {stat_val} calci d'angolo, il registro più basso di tutta la competizione",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
             "text": "ha superato il suo stesso record di calci d'angolo battuti nella competizione, con {stat_val} in totale",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "ha solo battuti {stat_val} calci d'angolo, il registro pi\u00f9 basso di tutta la competizione",
-            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+            "text": "ha superato il record di calci d'angolo battuti nella competizione, con {stat_val} in totale",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha solo battuto {stat_val} calci d'angolo, il suo registro pi\u00f9 basso nella competizione",
-            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+            "text": "fu battuto il record di calci d'angolo, un totale di {stat_val}",
+            "condition": "!has_stat_team && is_stat_positive"
         },
         {
-            "text": "sono stati battuti solo {stat_val} calci d'angolo, il minore registro di questa stagione",
-            "condition": "!has_stat_team && !is_stat_positive"
+            "text": "solo sono stati battuti {stat_val} calci d'angolo, il numero più basso della stagione",
+            "condition": "!has_stat_team && is_stat_positive"
         }
     ],
     "offs": [
         {
-            "text": "si ha registrato il maggiore numero de fuorigioco - {stat_val}",
-            "condition": "!has_stat_team && !is_stat_positive"
+            "text": "è spostato in fuorigioco {stat_val} volte, il migliore registro nella competizione",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "si ha registrato il pi\u00f9 grande numero di fuorigioco - {stat_val}",
-            "condition": "!has_stat_team && is_stat_positive"
-        },
-        {
-            "text": "si \u00e8 trovato in fuorigioco {stat_val} volte, il pi\u00f9 grosso registro finora nella competizione",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
-        },
-        {
-            "text": "\u00e8 spostato in fuorigioco {stat_val} volte, il registro pi\u00f9 alto nella competizione",
-            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
-        },
-        {
-            "text": "\u00e8 spostato in fuorigioco {stat_val} volte, il registro pi\u00f9 basso nella competizione",
+            "text": "è spostato in fuorigioco {stat_val} volte, il registro più basso nella competizione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "\u00e8 spostato in fuorigioco {stat_val} volte, il migliore registro nella competizione",
-            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+            "text": "è spostato in fuorigioco {stat_val} volte, il registro più alto nella competizione",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "si è trovato in fuorigioco {stat_val} volte, il più grosso registro finora nella competizione",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "si ha registrato il più grande numero di fuorigioco - {stat_val}",
+            "condition": "!has_stat_team && is_stat_positive"
+        },
+        {
+            "text": "si ha registrato il maggiore numero de fuorigioco - {stat_val}",
+            "condition": "!has_stat_team && !is_stat_positive"
         }
     ],
     "shot": [
         {
-            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record di {stat_val} tiri nella competizione",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+            "text": "fu superato il record di tiri nella stagione, {stat_val} tiri in totale",
+            "condition": "!has_stat_team && is_stat_positive"
         },
         {
-            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record personale di {stat_val} tiri",
-            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
-        },
-        {
-            "text": "ha solo fatto {stat_val} tiri, il peggiore registro nella competizione",
-            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+            "text": "solo sono stati registrati {stat_val} tiri, il registro più basso di questa stagione",
+            "condition": "!has_stat_team && !is_stat_positive"
         },
         {
             "text": "ha solo fatto {stat_val} tiri, il suo peggiore registro questa stagione",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "fu superato il record di tiri nella stagione, {stat_val} tiri in totale",
-            "condition": "!has_stat_team && is_stat_positive"
+            "text": "ha solo fatto {stat_val} tiri, il peggiore registro nella competizione",
+            "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "solo sono stati registrati {stat_val} tiri, il registro pi\u00f9 basso di questa stagione",
-            "condition": "!has_stat_team && !is_stat_positive"
+            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record personale di {stat_val} tiri",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record di {stat_val} tiri nella competizione",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
         }
     ],
     "winningless_streak": [
         {
-            "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza vincere",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza vincere",
+            "condition": "post_curiosity_val > 3"
         },
         {
-            "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza vincere",
-            "condition": "post_curiosity_val \u003E 3"
+            "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza vincere",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "losing_streak": [
         {
-            "text": "Ha ampliato una seguenza di {post_curiosity_val} sconfitte",
-            "condition": "post_curiosity_val \u003E 3"
+            "text": "Ha interrotto una seguenza di {pre_curiosity_val} sconfitte",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         },
         {
-            "text": "Ha interrotto una seguenza di {pre_curiosity_val} sconfitte",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "text": "Ha ampliato una seguenza di {post_curiosity_val} sconfitte",
+            "condition": "post_curiosity_val > 3"
         }
     ],
     "winning_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} vittorie",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} vittorie",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "drawing_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} pareggi",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} pareggi",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "lossless_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza perdere",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza perdere",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "no_goals_conceded_streak": [
         {
+            "text": "Ha nuovamente subito gol dopo una seguenza di {pre_curiosity_val} porte inviolate",
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
+        },
+        {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} sfide senza subire gol",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} sfide senza gol subiti",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
-        },
-        {
-            "text": "Ha nuovamente subito gol dopo una seguenza di {pre_curiosity_val} porte inviolate",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "goals_scored_streak": [
         {
             "text": "Ha ampliato una seguenza di {post_curiosity_val} gare di fila segnando",
-            "condition": "post_curiosity_val \u003E 3"
+            "condition": "post_curiosity_val > 3"
         },
         {
             "text": "Ha interrotto una seguenza di {pre_curiosity_val} gare di fila segnando",
-            "condition": "pre_curiosity_val \u003E 3 && post_curiosity_val == 0"
+            "condition": "pre_curiosity_val > 3 && post_curiosity_val == 0"
         }
     ],
     "shotgo": [
         {
-            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record di {stat_val} tiri in porta nella competizione",
-            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+            "text": "solo sono stati registrati {stat_val} tiri in porta, il registro più basso di questa stagione",
+            "condition": "!has_stat_team && !is_stat_positive"
         },
         {
-            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record personale di {stat_val} tiri in porta",
-            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
+            "text": "fu superato il record di tiri in porta nella stagione, {stat_val} in totale",
+            "condition": "!has_stat_team && is_stat_positive"
         },
         {
             "text": "ha solo fatto {stat_val} tiri in porta, il peggiore registro nella competizione",
@@ -273,42 +269,42 @@
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "fu superato il record di tiri in porta nella stagione, {stat_val} in totale",
-            "condition": "!has_stat_team && is_stat_positive"
-        },
-        {
-            "text": "solo sono stati registrati {stat_val} tiri in porta, il registro pi\u00f9 basso di questa stagione",
-            "condition": "!has_stat_team && !is_stat_positive"
-        }
-    ],
-    "gksave": [
-        {
-            "text": "ha battuto il suo record di parate nella stagione, con {stat_val} parate",
+            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record personale di {stat_val} tiri in porta",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         },
         {
-            "text": "ha registrato solo {stat_val} parate, il suo numero pi\u00f9 basso di questa stagione",
-            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
-        },
+            "text": "ha dimostrato di essere una minaccia per i portieri, avendo stabilito un record di {stat_val} tiri in porta nella competizione",
+            "condition": "has_stat_team && is_stat_positive && is_stat_global"
+        }
+    ],
+    "gksave": [
         {
             "text": "ha battuto il record di parate nella stagione, con {stat_val} parate",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha registrato solo {stat_val} parate, il numero pi\u00f9 basso di questa stagione",
+            "text": "ha registrato solo {stat_val} parate, il numero più basso di questa stagione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
+        },
+        {
+            "text": "ha registrato solo {stat_val} parate, il suo numero più basso di questa stagione",
+            "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
+        },
+        {
+            "text": "ha battuto il suo record di parate nella stagione, con {stat_val} parate",
+            "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         }
     ],
     "games_without_winning": [
         {
             "text": "Ha perso punti per la prima volta",
-            "condition": "pre_curiosity_val == 0 && post_curiosity_val \u003E 0"
+            "condition": "pre_curiosity_val == 0 && post_curiosity_val > 0"
         }
     ],
     "losses": [
         {
             "text": "Ha perso la prima sfida nella competizione",
-            "condition": "pre_curiosity_val == 0 && post_curiosity_val \u003E 0"
+            "condition": "pre_curiosity_val == 0 && post_curiosity_val > 0"
         }
     ]
 }
