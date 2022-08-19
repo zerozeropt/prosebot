@@ -241,7 +241,7 @@ class GrammarIT extends Grammar
 	 * @param string     $text   Ordinal number
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
-	 * @return string Full ordinal number in "no/na/ni/ne" form
+	 * @return string Ordinal number in "no/na/ni/ne" form
 	 */
 	public static function ordinale_num($text, $number, $gender)
 	{
@@ -268,7 +268,7 @@ class GrammarIT extends Grammar
 	 * Get ordinal number in "na/ne" form
 	 * @param string     $text   Ordinal number
 	 * @param NameNumber $number Number (Singular or Plural)
-	 * @return string Full ordinal number in "na/ne" form
+	 * @return string Ordinal number in "na/ne" form
 	 */
 	public static function ordinale_fem_num($text, $number)
 	{
@@ -276,8 +276,22 @@ class GrammarIT extends Grammar
 	}
 
 	/**
+	 * Get correct "e/ed" form
+	 * @param string  $text Text
+	 * @return string Correct "e/ed" form
+	 */
+	public static function e($text)
+	{
+		$first_char = mb_substr($text, 0, 1);
+		if ($first_char === "i" || $first_char === "e") {
+			return "ed";
+		}
+		return "e";
+	}
+
+	/**
 	 * Get correct "preposition + il" form according to context
-	 * @param string     $text   	 Ordinal number
+	 * @param string     $text   	 Text
 	 * @param NameNumber $number 	 Number (Singular or Plural)
 	 * @param NameGender $gender 	 Gender
 	 * @param string[]   $variations List of different variations for the composite connector
@@ -333,7 +347,7 @@ class GrammarIT extends Grammar
 
 	/**
 	 * Get correct "il" form according to context
-	 * @param string     $text   Ordinal number
+	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
 	 * @return string Correct "il" form according to context
@@ -354,7 +368,7 @@ class GrammarIT extends Grammar
 
 	/**
 	 * Get correct "a + il" form according to context
-	 * @param string     $text   Ordinal number
+	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
 	 * @return string Correct "a + il" form according to context
@@ -375,7 +389,7 @@ class GrammarIT extends Grammar
 
 	/**
 	 * Get correct "da + il" form according to context
-	 * @param string     $text   Ordinal number
+	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
 	 * @return string Correct "da + il" form according to context
@@ -396,7 +410,7 @@ class GrammarIT extends Grammar
 
 	/**
 	 * Get correct "di + il" form according to context
-	 * @param string     $text   Ordinal number
+	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
 	 * @return string Correct "di + il" form according to context
@@ -417,7 +431,7 @@ class GrammarIT extends Grammar
 
 	/**
 	 * Get correct "in + il" form according to context
-	 * @param string     $text   Ordinal number
+	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
 	 * @return string Correct "in + il" form according to context
@@ -438,7 +452,7 @@ class GrammarIT extends Grammar
 
 	/**
 	 * Get correct "su + il" form according to context
-	 * @param string     $text   Ordinal number
+	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
 	 * @param NameGender $gender Gender
 	 * @return string Correct "su + il" form according to context
@@ -468,13 +482,14 @@ class GrammarIT extends Grammar
 		"da" => ["dal", "dalla", "da", "dai", "dalle"],
 		"in" => ["nel", "nella", "in", "nei", "nelle"],
 		// Name => composite_connector_function
-		"il" => "il",
 		"a_il" => "a_il",
 		"da_il" => "da_il",
 		"di_il" => "di_il",
 		"in_il" => "in_il",
 		"su_il" => "su_il",
 		// Name => linguistic_function
+		"il" => "il",
+		"e" => "e",
 		"cardinale" => "cardinale",
 		"cardinale_fem" => "cardinale_fem",
 		"ordinale" => "ordinale",
