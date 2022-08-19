@@ -282,7 +282,7 @@ class GrammarIT extends Grammar
 	 */
 	public static function e($text)
 	{
-		$first_char = mb_substr($text, 0, 1);
+		$first_char = mb_strtolower(mb_substr($text, 0, 1));
 		if ($first_char === "i" || $first_char === "e") {
 			return "ed";
 		}
@@ -481,15 +481,15 @@ class GrammarIT extends Grammar
 		"di" => ["del", "della", "di", "dei", "delle"],
 		"da" => ["dal", "dalla", "da", "dai", "dalle"],
 		"in" => ["nel", "nella", "in", "nei", "nelle"],
-		// Name => composite_connector_function
+		// Name => grammar_function
+		"il" => "il",
+		"e" => "e",
 		"a_il" => "a_il",
 		"da_il" => "da_il",
 		"di_il" => "di_il",
 		"in_il" => "in_il",
 		"su_il" => "su_il",
 		// Name => linguistic_function
-		"il" => "il",
-		"e" => "e",
 		"cardinale" => "cardinale",
 		"cardinale_fem" => "cardinale_fem",
 		"ordinale" => "ordinale",
