@@ -367,6 +367,27 @@ class GrammarIT extends Grammar
 	}
 
 	/**
+	 * Get correct "e + il" form according to context
+	 * @param string     $text   Text
+	 * @param NameNumber $number Number (Singular or Plural)
+	 * @param NameGender $gender Gender
+	 * @return string Correct "e + il" form according to context
+	 */
+	public static function e_il($text, $number, $gender)
+	{
+		$variations = array(
+			"l'" => "e l'",
+			"la" => "e la",
+			"lo" => "e lo",
+			"il" => "ed il",
+			"le" => "e le",
+			"gli" => "e gli",
+			"i" => "ed i"
+		);
+		return static::composite_connector($text, $number, $gender, $variations);
+	}
+
+	/**
 	 * Get correct "a + il" form according to context
 	 * @param string     $text   Text
 	 * @param NameNumber $number Number (Singular or Plural)
@@ -484,6 +505,7 @@ class GrammarIT extends Grammar
 		// Name => grammar_function
 		"il" => "il",
 		"e" => "e",
+		"e_il" => "e_il",
 		"a_il" => "a_il",
 		"da_il" => "da_il",
 		"di_il" => "di_il",
