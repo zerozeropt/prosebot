@@ -152,7 +152,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}. {template.goals} {template.red_card%winner} {template.red_card%loser}",
+            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
             "condition": "final_score_diff==0"
         },
         {

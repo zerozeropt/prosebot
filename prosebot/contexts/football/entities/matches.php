@@ -800,7 +800,7 @@ class MatchData extends MainEntityData
 		return new TeamData(
 			$this->entities_manager,
 			intval($match_data["MATCHREPORT"]["game"]["fk_".$team_place."_team"]), // team id
-			$match_data["".$caps_place."GOALS"], //goals
+			$match_data[$caps_place."GOALS"], //goals
 			Utils::null_if_empty($match_data["MATCHREPORT"]["coach_".$team_place]["abrev"]), // coach
 			Utils::null_if_empty($match_data["LEAGUE"]), // league
 			intval($match_data["CLASSIF".$caps_place."_PRE"]), // pre_classification
@@ -1558,7 +1558,7 @@ class MatchData extends MainEntityData
 	private function compute_match_goals()
 	{
 		$this->compute_match_team_goals($this->home_players, $this->home_goals, $this->away_goals);
-		$this->compute_match_team_goals($this->home_players, $this->away_goals, $this->home_goals);
+		$this->compute_match_team_goals($this->away_players, $this->away_goals, $this->home_goals);
 	}
 
 	/**
