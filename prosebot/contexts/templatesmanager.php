@@ -307,6 +307,8 @@ abstract class TemplatesManager
 		$result = preg_replace("/,\s*,/", ',', $result);
 		$result = preg_replace("/\.\s*\./", '.', $result);
 		$result = preg_replace("/\s+\./", '.', $result);
+		$result = preg_replace("/l'\s+/", 'l\'', $result);
+		$result = preg_replace("/L'\s+/", 'L\'', $result);
 		$result = trim($result);
 		
 		//tokenize sentences
