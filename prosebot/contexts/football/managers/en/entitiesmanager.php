@@ -1,7 +1,6 @@
 <?php
 
 require_once(__DIR__.'/../entitiesmanagers.php');
-require_once(__DIR__.'/../../../../grammars/en/grammar.php');
 
 /**
  * Class for entities data management for Football context in English
