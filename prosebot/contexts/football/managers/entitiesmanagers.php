@@ -319,7 +319,7 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 			}
 		}
 
-		$number = null;
+		$number = NameNumber::SINGULAR;
 		$new_key = $key . "_PLURAL";
 		if (array_key_exists($new_key, $array)) {
 			$elem = $array[$new_key];

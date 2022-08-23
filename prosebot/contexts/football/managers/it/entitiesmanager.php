@@ -51,7 +51,7 @@ class EntitiesManagerFootballIT extends EntitiesManagerFootball
 							$team_term = "";
 							if ($team->get_type() == 1) {
 								$team_term = "nazionale ";
-								$connector = GrammarIT::di_il($origin, NameNumber::SINGULAR, $team->get_name_gender());
+								$connector = GrammarIT::di_il($origin, $origin->get_number(), $origin->get_gender());
 								$team_term .= $connector . " %s";
 							}
 							else {
