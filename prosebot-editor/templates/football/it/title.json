@@ -73,7 +73,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{il%loser.name} {loser.name} è {f:sconfitta|m:sconfitto%loser.name_gender} in casa propria contro {il%winner.name} {winner.name}",
+            "text": "{il%loser.name} {loser.name} è {f:sconfitta|m:sconfitto%loser.name} in casa propria contro {il%winner.name} {winner.name}",
             "condition": "!home_win"
         },
         {

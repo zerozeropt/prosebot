@@ -183,11 +183,11 @@
             "condition": "#arg.is_positive && #arg.key==\"ballpo\""
         },
         {
-            "text": "ha battuto il suo record di parate nella stagione, con {#arg.value} {s:parata|p:parate%arg.value} in totale",
+            "text": "ha battuto il suo record di parate nella stagione, con {#arg.value} {s:parata|p:parate%#arg.value} in totale",
             "condition": "#arg.is_positive && #arg.key==\"gksave\""
         },
         {
-            "text": "ha registrato solo {#arg.value} {s:parata|p:parate%arg.value}, il numero più basso della stagione",
+            "text": "ha registrato solo {#arg.value} {s:parata|p:parate%#arg.value}, il numero più basso della stagione",
             "condition": "!#arg.is_positive && #arg.key==\"gksave\""
         }
     ],
