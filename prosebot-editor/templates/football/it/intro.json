@@ -51,7 +51,7 @@
     ],
     "commentary": [
         {
-            "text": "in una {template.match_adjective} vittoria",
+            "text": "in una vittoria {template.match_adjective}",
             "condition": "final_score_diff!=0 && final_score_diff!=2"
         }
     ],
@@ -105,7 +105,7 @@
             "condition": "same_competition_form_sequence && is_league"
         },
         {
-            "text": "{template.team_form%home_team}, e {template.team_form%away_team} arrivano a questa sfida.",
+            "text": "{template.team_form%home_team}, e {template.team_form%away_team} prima di questa sfida.",
             "condition": "!first_competition_game && is_league"
         },
         {
@@ -125,7 +125,7 @@
             "condition": "is_elim_game && has_two_hands && has_previous_match && prev_match_final_score_diff==0"
         },
         {
-            "text": "{template.team_form%home_team}, e {template.team_form%away_team} arrivano a questa giornata.",
+            "text": "{template.team_form%home_team}, e {template.team_form%away_team} prima di questa giornata.",
             "condition": "!first_competition_game && is_league"
         },
         {
@@ -139,7 +139,7 @@
             "condition": "#arg.competition_form_sequence_bool"
         },
         {
-            "text": "{Il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} {s:arrivato|p:arrivati%#arg.name} da {template.form_type%#arg}",
+            "text": "{Il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} {f:arrivata|m:arrivato%#arg.name} da {template.form_type%#arg}",
             "condition": "#arg.competition_form_sequence_bool"
         },
         {
@@ -147,7 +147,7 @@
             "condition": "!#arg.competition_form_sequence_bool"
         },
         {
-            "text": "curiosamente, {il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} anche {s:arrivato|p:arrivati%#arg.name} da {template.form_type%#arg}",
+            "text": "curiosamente, {il%#arg.name} {#arg.name} era{s:|p:no%#arg.name} anche {f:arrivata|m:arrivato%#arg.name} da {template.form_type%#arg}",
             "condition": "same_competition_form_sequence && #arg.is_away_team"
         }
     ],
@@ -373,11 +373,11 @@
     ],
     "normal_score": [
         {
-            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.match_adjective}, {weekday}, {final_score}, {template.fixture}",
+            "text": "{il%winner.name} {winner.name} {e_il%loser.name} {il%loser.name} {loser.name} hanno pareggiato {template.match_adjective}, {weekday}, {final_score}, {template.fixture}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name}, {template.fixture}, {weekday}, è finita a reti bianchi {template.match_adjective}, {final_score}",
+            "text": "La sfida tra {il%winner.name} {winner.name} {e_il%loser.name} {il%loser.name} {loser.name}, {template.fixture}, {weekday}, è finita a reti bianchi {template.match_adjective}, {final_score}",
             "condition": "final_score_diff==0"
         },
         {
@@ -389,7 +389,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} non vanno oltre il pari {template.match_adjective} {final_score}, {weekday}",
+            "text": "{il%winner.name} {winner.name} {e_il%loser.name} {il%loser.name} {loser.name} non vanno oltre il pari {template.match_adjective} {final_score}, {weekday}",
             "condition": "final_score_diff==0"
         }
     ],

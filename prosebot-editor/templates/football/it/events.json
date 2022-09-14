@@ -560,11 +560,11 @@
     "again": [],
     "half_time": [
         {
-            "text": "Il primo tempo finisce senza nessun gol.",
+            "text": "Il primo tempo è finito senza nessun gol.",
             "condition": "total_goals==0"
         },
         {
-            "text": "Il primo tempo finisce senza nessun gol di ciasciuna squadra.",
+            "text": "Il primo tempo è finito senza nessun gol di ciasciuna squadra.",
             "condition": "total_goals==0"
         }
     ],

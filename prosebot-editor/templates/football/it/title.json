@@ -73,7 +73,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{il%loser.name} {loser.name} è {f:sconfitta|m:sconfitto%loser.name} in casa propria contro {il%winner.name} {winner.name}",
+            "text": "{il%loser.name} {loser.name} è {f:sconfitta|m:sconfitto%loser.name_gender} in casa propria contro {il%winner.name} {winner.name}",
             "condition": "!home_win"
         },
         {
@@ -121,15 +121,15 @@
             "condition": "home_win"
         },
         {
-            "text": "Parità tra {winner.name} e {loser.name}",
+            "text": "Parità tra {winner.name} {e%loser.name} {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name} è finita in parità",
+            "text": "La sfida tra {il%winner.name} {winner.name} {il%loser.name} {il%loser.name} {loser.name} è finita in parità",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "Pareggio tra {winner.name} e {loser.name}",
+            "text": "Pareggio tra {winner.name} {e%loser.name} {loser.name}",
             "condition": "final_score_diff==0"
         },
         {
@@ -153,11 +153,11 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{winner.name} e {loser.name} sono finiti a reti bianchi",
+            "text": "{winner.name} {e%loser.name} {loser.name} sono finiti a reti bianchi",
             "condition": "final_score_diff==0"
         },
         {
-            "text": "{winner.name} e {loser.name} pareggiano",
+            "text": "{winner.name} {e%loser.name} {loser.name} pareggiano",
             "condition": "final_score_diff==0"
         },
         {

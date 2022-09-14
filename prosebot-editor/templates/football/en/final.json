@@ -178,10 +178,6 @@
         {
             "text": ". Meanwhile, ",
             "condition": "has_home_team_next_match && has_away_team_next_match"
-        },
-        {
-            "text": ". Meanwhile,",
-            "condition": "has_home_team_next_match && has_away_team_next_match"
         }
     ],
     "knockouts_result": [

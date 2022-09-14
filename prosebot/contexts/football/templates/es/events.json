@@ -293,10 +293,6 @@
         {
             "text": "en los minutos finales",
             "condition": "minute>85"
-        },
-        {
-            "text": "En la reanudación del partido",
-            "condition": "minute>45 && minute<50"
         }
     ],
     "red_card": [

@@ -223,7 +223,7 @@
     ],
     "goal_status": [
         {
-            "text": "três gols em no jogo",
+            "text": "três gols no jogo",
             "condition": "player_goal==3"
         },
         {
@@ -309,10 +309,6 @@
         {
             "text": "com um chute de pé esquerdo {template.zone_goal}",
             "condition": "is_running_ball_goal && is_left_foot_goal"
-        },
-        {
-            "text": "com um chute de pé direito {template.zone_goal}",
-            "condition": "is_running_ball_goal && is_right_foot_goal"
         },
         {
             "text": "com um chute de pé direito {template.zone_goal}",

@@ -121,20 +121,12 @@
             "condition": "final_score_diff>2"
         },
         {
-            "text": "{winner.name} cruise past {loser.name}",
-            "condition": "final_score_diff>4"
-        },
-        {
             "text": "{winner.name} inflict heavy defeat on {loser.name}",
             "condition": "final_score_diff>4"
         },
         {
             "text": "{winner.name} beat {loser.name} with a massive win",
             "condition": "final_score_diff>4"
-        },
-        {
-            "text": "{winner.name} defeat {loser.name}",
-            "condition": "final_score_diff>0"
         },
         {
             "text": "{winner.name} edge past {loser.name}",
@@ -155,10 +147,6 @@
         {
             "text": "{winner.name} hammer {loser.name}",
             "condition": "final_score_diff>2"
-        },
-        {
-            "text": "{winner.name} hammer {loser.name}",
-            "condition": "final_score_diff>4"
         },
         {
             "text": "{loser.name} edged out by {winner.name}",

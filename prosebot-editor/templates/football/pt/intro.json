@@ -46,7 +46,7 @@
         },
         {
             "text": "venceu",
-            "condition": "final_score_diff>0  || extra_time==\"PEN\""
+            "condition": "final_score_diff>0 || extra_time==\"PEN\""
         }
     ],
     "commentary": [

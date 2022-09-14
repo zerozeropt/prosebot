@@ -152,10 +152,6 @@
     ],
     "normal_score": [
         {
-            "text": "{winner.name} {template.defeated} {loser.name} {template.match_adjective} on {weekday}, {final_score}.",
-            "condition": "final_score_diff>0"
-        },
-        {
             "text": "the game between {winner.name} and {loser.name} on {weekday} ended in a draw, {final_score}.",
             "condition": "final_score_diff==0"
         },

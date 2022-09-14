@@ -144,7 +144,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
+            "text": "{il%winner.name} {winner.name} {e_il%loser.name} {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
             "condition": "final_score_diff==0"
         },
         {
@@ -152,11 +152,7 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{il%winner.name} {winner.name} e {il%loser.name} {loser.name} hanno pareggiato {template.draw_adjective} {weekday}, {final_score}.",
-            "condition": "final_score_diff==0"
-        },
-        {
-            "text": "La sfida tra {il%winner.name} {winner.name} e {il%loser.name} {loser.name} {weekday} è finita a reti inviolati {template.draw_adjective}, {final_score}.",
+            "text": "La sfida tra {il%winner.name} {winner.name} {e_il%loser.name} {il%loser.name} {loser.name} {weekday} è finita a reti inviolati {template.draw_adjective}, {final_score}.",
             "condition": "final_score_diff==0"
         }
     ]

@@ -131,23 +131,23 @@
     ],
     "commentary_scorer": [
         {
-            "text": "It was his {ORDINAL_NUM%#arg.season_goals} goal of the season.",
+            "text": "With his {ORDINAL_NUM%#arg.season_goals} goal of the season.",
             "condition": "#arg.report_num_goals"
         },
         {
-            "text": "With this goal, {#arg.name} reached the {ORDINAL_NUM%#arg.season_goals} goal of the season.",
+            "text": "With this strike, {#arg.name} reached {ORDINAL_NUM%#arg.season_goals} goals for the season.",
             "condition": "#arg.report_num_goals"
         },
         {
-            "text": "With this goal, {#arg.name} recorded his {CARDINAL%#arg.season_goals} goal this season.",
+            "text": "With this goal, {#arg.name} recorded his {CARDINAL%#arg.season_goals} goal of the current campaign.",
             "condition": "#arg.report_num_goals"
         },
         {
-            "text": "With this goal, {#arg.name} reached the landmark of {CARDINAL%#arg.season_goals} goals this season",
+            "text": "{#arg.name} reaching the landmark of {CARDINAL%#arg.season_goals} goals for the season.",
             "condition": "#arg.report_num_goals"
         },
         {
-            "text": "{#arg.name} is on a scoring streak of {#arg.consecutive_matches_scoring} consecutive games scoring.",
+            "text": "{#arg.name} now on a scoring streak of {#arg.consecutive_matches_scoring} consecutive games.",
             "condition": "#arg.consecutive_matches_scoring > 2 && #arg.player_goals == #arg.player_goal"
         }
     ],
@@ -218,6 +218,26 @@
         },
         {
             "text": "after an assist provided by {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "set up by {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "fashioned by {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "which followed great work by {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "created by {assist_maker.name}",
+            "condition": "has_assist && is_running_ball_goal"
+        },
+        {
+            "text": "supplied by {assist_maker.name}",
             "condition": "has_assist && is_running_ball_goal"
         }
     ],

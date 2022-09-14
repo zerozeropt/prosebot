@@ -293,10 +293,6 @@
             "condition": "final_score_diff>2"
         },
         {
-            "text": "{winner.name} outclass opponents {template.win} {template.draw}",
-            "condition": "final_score_diff>2"
-        },
-        {
             "text": "{winner.name} put in excellent display {template.win} {template.draw}",
             "condition": "final_score_diff==2"
         },

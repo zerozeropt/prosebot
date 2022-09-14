@@ -279,19 +279,19 @@
     ],
     "gksave": [
         {
-            "text": "ha battuto il record di parate nella stagione, con {stat_val} parate",
+            "text": "ha battuto il record di parate nella stagione, con {stat_val} {s:parata|p:parate%stat_val}",
             "condition": "has_stat_team && is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha registrato solo {stat_val} parate, il numero più basso di questa stagione",
+            "text": "ha registrato solo {stat_val} {s:parata|p:parate%stat_val}, il numero più basso di questa stagione",
             "condition": "has_stat_team && !is_stat_positive && is_stat_global"
         },
         {
-            "text": "ha registrato solo {stat_val} parate, il suo numero più basso di questa stagione",
+            "text": "ha registrato solo {stat_val} {s:parata|p:parate%stat_val}, il suo numero più basso di questa stagione",
             "condition": "has_stat_team && !is_stat_positive && !is_stat_global"
         },
         {
-            "text": "ha battuto il suo record di parate nella stagione, con {stat_val} parate",
+            "text": "ha battuto il suo record di parate nella stagione, con {stat_val} {s:parata|p:parate%stat_val}",
             "condition": "has_stat_team && is_stat_positive && !is_stat_global"
         }
     ],

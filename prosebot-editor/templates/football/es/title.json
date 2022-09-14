@@ -172,10 +172,6 @@
             "condition": "winner_moves_on && !is_final"
         },
         {
-            "text": "{knockouts_winner.name} sigue adelante en {competition.name}",
-            "condition": "winner_moves_on && !is_final"
-        },
-        {
             "text": "{knockouts_winner.name} gana y elimina {knockouts_loser.name}",
             "condition": "winner_moves_on && !is_final"
         },

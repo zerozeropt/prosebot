@@ -152,10 +152,6 @@
             "condition": "final_score_diff>0"
         },
         {
-            "text": "{el%winner.name} {winner.name} y {el%loser.name} {loser.name} empataron su partido {template.draw_adjective} {el%weekday} {weekday}, {final_score}.",
-            "condition": "final_score_diff==0"
-        },
-        {
             "text": "{el%winner.name} {winner.name} {template.defeated} {el%loser.name} {loser.name} {template.match_adjective}, {final_score}, {el%weekday} {weekday}.",
             "condition": "final_score_diff>0"
         }

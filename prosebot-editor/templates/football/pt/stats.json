@@ -49,7 +49,7 @@
     ],
     "faltas": [
         {
-            "text": "tournou-se o menos faltoso esta época, com {stat_val} faltas",
+            "text": "tornou-se o menos faltoso esta época, com {stat_val} faltas",
             "condition": "!has_stat_team && !is_stat_positive"
         },
         {
