@@ -15,7 +15,7 @@
             "condition": "#arg.is_cold"
         },
         {
-            "text": "mite",
+            "text": "amena",
             "condition": "#arg.is_neutral"
         }
     ]

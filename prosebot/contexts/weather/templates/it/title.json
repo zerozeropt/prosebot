@@ -11,7 +11,7 @@
             "condition": "#arg.is_cloudy"
         },
         {
-            "text": "di neve",
+            "text": "nevosa",
             "condition": "#arg.is_snowy"
         },
         {
@@ -19,7 +19,7 @@
             "condition": "#arg.is_clear"
         },
         {
-            "text": "di tempesta",
+            "text": "tempestosa",
             "condition": "#arg.is_stormy"
         },
         {

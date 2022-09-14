@@ -27,7 +27,7 @@
             "condition": "#arg.is_snowy"
         },
         {
-            "text": "avverso",
+            "text": "brutto",
             "condition": "#arg.is_atmosphere"
         }
     ]

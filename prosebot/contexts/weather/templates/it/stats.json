@@ -7,7 +7,7 @@
     ],
     "main": [
         {
-            "text": "La temperatura attuale in città è di {main.temperature}º,  valori massimi e minimi della giornata sono {main.max_temperature}º e {main.min_temperature}º.<br>I valori di umidità e pressione sono rispettivamente di circa il {main.humidity}% e {main.pressure}hPa.",
+            "text": "La temperatura attuale in città è di {main.temperature}º, i valori massimi e minimi per la giornata sono di {main.max_temperature}º e {main.min_temperature}º.<br>I valori d'umidità e pressione sono rispettivamente circa di {main.humidity}% e {main.pressure}hPa.",
             "condition": ""
         }
     ],
