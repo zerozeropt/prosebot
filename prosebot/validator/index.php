@@ -52,10 +52,10 @@ header('Content-Type: text/html; charset=utf8');
 				<label for="full">Full</label>
 
 				<input type="radio" id="no_entities" name="validation_option" value="no_entities">
-				<label for="full">Without checking entities definition</label>
+				<label for="no_entities">Without checking entities definition</label>
 
 				<input type="radio" id="get_entities" name="validation_option" value="get_entities">
-				<label for="full">Get entities</label>
+				<label for="get_entities">Get entities</label>
 			</fieldset>
 			<fieldset style="margin-bottom: 2rem;">
 				<legend>Actions</legend>
