@@ -848,7 +848,7 @@ class TemplatesValidator
 	private function is_property_defined($path, $property, $type)
 	{
 		$this->validate_variable($path, $property);
-		if ($this->check_entities && $type == self::TEXT_TYPE && !in_array($property, $this->vars_array->properties->{$type})) {
+		if ($this->check_entities && !in_array($property, $this->vars_array->properties->{$type})) {
 			$this->throw_error_bad_construct($path, $property, "property not defined for [" . $type . "]", "token");
 		}
 
