@@ -90,15 +90,15 @@ class GrammarPT extends Grammar
 			return "cem";
 		}
 
-
 		if (array_key_exists($int, static::$cardinals)) {
 			return parent::get_gender_form(static::$cardinals, $gender, $int);
 		}
 
 		$div = pow(10, $exp);
 		$left = "";
-		if (array_key_exists($int, static::$cardinals)) {
-			$left = parent::get_gender_form(static::$cardinals, $gender, intdiv($int, $div) * $div);
+		$key = intdiv($int, $div) * $div;
+		if (array_key_exists($key, static::$cardinals)) {
+			$left = parent::get_gender_form(static::$cardinals, $gender, $key);
 		}
 		$right = static::get_cardinal($int % $div, $gender, $min_val, $exp - 1);
 
