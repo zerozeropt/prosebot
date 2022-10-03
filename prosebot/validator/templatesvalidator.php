@@ -1005,13 +1005,13 @@ class TemplatesValidator
 			return;
 		}
 
-		if ($this->check_entities && !in_array(strtolower($connector), $this->vars_array->connectors->{$this->language})) {
+		if ($this->check_entities && !in_array(mb_strtolower($connector), $this->vars_array->connectors->{$this->language})) {
 			$this->throw_error_bad_construct($path, $connector, "connector not defined", "token");
 		}
 
 		// Push to connectors list
-		if ($this->get_entities && !in_array(strtolower($connector), $this->vars_array->connectors)) {
-			array_push($this->vars_array->connectors, strtolower($connector));
+		if ($this->get_entities && !in_array(mb_strtolower($connector), $this->vars_array->connectors)) {
+			array_push($this->vars_array->connectors, mb_strtolower($connector));
 		}
 	}
 
