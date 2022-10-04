@@ -288,7 +288,7 @@ class PlayerData extends PersonData
 
 		$this->season_goals = 0;
 		$this->consecutive_matches_scoring = 0;
-		$this->country_id = intval($json_data["fk_player_parents"]);
+		$this->country_id = intval($json_data["fk_player_country"]);
 		$this->club_country_id = null;
 	}
 
