@@ -36,8 +36,8 @@
         },
         "ALLMATCHES": [
             {
-                "SCORED": "1",
-                "CONCEDED": "0",
+                "SCORED": "0",
+                "CONCEDED": "1",
                 "hometeam_id": "4",
                 "awayteam_id": "9",
                 "competition": "Liga Portugal bwin 21\/22"

@@ -31,8 +31,8 @@
                 "competition": "WC2022 UEFA"
             },
             {
-                "SCORED": "0",
-                "CONCEDED": "1",
+                "SCORED": "1",
+                "CONCEDED": "0",
                 "hometeam_id": "811",
                 "awayteam_id": "996",
                 "competition": "WC2022 UEFA"
