@@ -413,7 +413,7 @@ class PropertiesManagerFootball extends PropertiesManager
 				return Utils::boolstr($arg->has_red_card());
 			}),
 			new Property('#arg.minute_in', function ($arg) {
-				return strval($arg->get_minute_in());
+				return strval(!$arg->is_coach() ? $arg->get_minute_in() : -1);
 			}),
 			new Property('#arg.report_num_goals', function ($arg, $match, $n) {
 				$season_goals = $arg->get_entity(null, "season_goals", PHP_INT_MAX, $n, $match->get_events()[$n]);

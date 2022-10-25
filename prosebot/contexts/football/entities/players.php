@@ -139,7 +139,7 @@ class CoachData extends PersonData
 	{
 		parent::__construct($json_data, $gender);
 		parent::set_id($json_data["id"]);
-		$this->link = FootballFetcher::COACH_LINK . $this->id . ">" . $this->name . "</a>";
+		parent::set_link(FootballFetcher::COACH_LINK . $this->id . ">");
 	}
 
 	/**

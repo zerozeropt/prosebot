@@ -469,11 +469,11 @@
         },
         {
             "text": "{template.time}, {player.name} left his team with 10-man, after seeing a direct red card.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{template.time}, {team.name} saw {player.name} leave the game early with a direct red card.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ],
     "second_yellow_card": [
@@ -483,11 +483,11 @@
         },
         {
             "text": "{template.time}, {player.name} saw a red card after receiving his second yellow",
-            "condition": "#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "After seeing his second yellow card {template.time}, {player.name} was sent off and left {team.name} with 10-man.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ]
 }

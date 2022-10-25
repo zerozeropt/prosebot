@@ -612,7 +612,7 @@
         },
         {
             "text": "Após receber o segundo amarelo {template.time}, {player.name} foi expulso e deixou {o%team.name} {team.name} em inferioridade numérica.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ]
 }

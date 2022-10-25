@@ -394,7 +394,7 @@
     "direct_red_card": [
         {
             "text": "{template.time}, {EL%team.name} {team.name} {s:ha visto|p:han visto%team.name} {player.name} ser expulsado con roja directa.",
-            "condition": "!#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "{template.time}, {player.name} fue expulsado con roja directa.",
@@ -402,11 +402,11 @@
         },
         {
             "text": "{template.time}, {player.name} dejó a su equipo con un hombre menos, después de ver la tarjeta roja directa.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{player.name}, {template.time}, recibió orden de expulsión y dejó {a%team.name} {team.name} superado en número.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ],
     "second_yellow_card": [
@@ -416,7 +416,7 @@
         },
         {
             "text": "Después de ver la segunda amarilla {template.time}, {player.name} fue expulsado y dejó {a%team.name} {team.name} superado en número.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{template.time}, {player.name} fue expulsado del banquillo.",
@@ -424,7 +424,7 @@
         },
         {
             "text": "Después de ver la segunda amarilla {template.time}, {player.name} fue expulsado y dejó {a%team.name} {team.name} jugando con uno menos.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "El técnico {player.name} ha sido expulsado {template.time}.",
@@ -432,11 +432,11 @@
         },
         {
             "text": "{player.name} vio la segunda amarilla y posterior roja {template.time}.",
-            "condition": "!#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "{player.name} vio la segunda amarilla y la posterior roja {template.time} y dejó al equipo con uno menos.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ]
 }

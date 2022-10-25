@@ -577,7 +577,7 @@
     "direct_red_card": [
         {
             "text": "{template.time}, {player.name} ha visto il cartellino rosso e lasciato la squadra in inferiorità.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{template.time}, {player.name} fu espulso dopo vedere il cartellino rosso.",
@@ -585,17 +585,17 @@
         },
         {
             "text": "{player.name}, {template.time}, fu espulso e lasciò {il%team.name} {team.name} in inferiorità numerica.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ],
     "second_yellow_card": [
         {
             "text": "{player.name} riceve il secondo cartellino giallo e conseguentemente anche il rosso {template.time} e lascia la squadra una unità in meno.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{player.name} riceve il cartellino giallo per la seconda volta e conseguentemente anche il rosso {template.time}.",
-            "condition": "!#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "Il tecnico {player.name} viene espulso {template.time}.",
@@ -603,7 +603,7 @@
         },
         {
             "text": "Dopo ricevere il secondo cartellino giallo {template.time}, {player.name} viene espulso e lascia {il%team.name} {team.name} una unità in meno.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{template.time}, {player.name} fu espulso dalla panchina.",
@@ -611,11 +611,11 @@
         },
         {
             "text": "Dopo essere ammonito per la seconda volta {template.time}, {player.name} viene espulso e lascia {il%team.name} {team.name} in inferiorità numerica.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{template.time}, {il%team.name} {team.name} {s:viene|p:vengono%team.name} {player.name} espulso dopo il secondo cartellino giallo.",
-            "condition": "!#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "{template.time}, {player.name} viene espulso dopo essere ammonito per la seconda volta.",

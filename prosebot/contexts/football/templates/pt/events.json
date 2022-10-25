@@ -609,17 +609,17 @@
         },
         {
             "text": "{template.time}, {player.name} deixou a sua equipa com menos uma unidade, depois de ver vermelho direto.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{player.name}, {template.time}, recebeu ordem de expulsão e deixou {o%team.name} {team.name} em inferioridade numérica.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ],
     "second_yellow_card": [
         {
             "text": "{template.time}, {player.name} recebeu ordem de expulsão por acumulação de amarelos.",
-            "condition": "#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "{template.time}, {o%team.name} {team.name} {s:viu|p:viram%team.name} {player.name} ser expulso devido à acumulação de amarelos.",
@@ -627,7 +627,7 @@
         },
         {
             "text": "Depois de ter visto o segundo amarelo {template.time}, {player.name} foi expulso e deixou {o%team.name} {team.name} em inferioridade numérica.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "{template.time}, {player.name} foi expulso do banco.",
@@ -635,19 +635,19 @@
         },
         {
             "text": "Depois de ter visto o segundo amarelo {template.time}, {player.name} foi expulso e deixou {o%team.name} {team.name} com menos uma unidade.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         },
         {
             "text": "O técnico {player.name} recebeu ordem de expulsão {template.time}.",
-            "condition": "#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "{player.name} viu o segundo amarelo e consequente vermelho {template.time}.",
-            "condition": "!#arg.is_coach"
+            "condition": ""
         },
         {
             "text": "{player.name} viu o segundo amarelo e consequente vermelho {template.time} e deixou a equipa com menos uma unidade.",
-            "condition": "!#arg.is_coach && #arg.minute_in > 0"
+            "condition": "#arg.minute_in > 0"
         }
     ]
 }
