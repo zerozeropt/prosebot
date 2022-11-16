@@ -23,7 +23,7 @@ class CompetitionData extends EntityData
     private $name_array;
     /**
 	 * Other name for the competition
-	 * @var string
+	 * @var string|TextStructure
 	 */
     private $other_name;
     /**
@@ -77,7 +77,7 @@ class CompetitionData extends EntityData
 
     /**
      * Get the other name of the competition
-     * @return string Competition other name
+     * @return string|TextStructure Competition other name
      */
     public function get_other_name()
     {

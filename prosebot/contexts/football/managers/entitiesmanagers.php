@@ -80,9 +80,12 @@ abstract class EntitiesManagerFootball extends EntitiesManager
 	public function get_competition_name($competition)
 	{
 		$options = array(
-			$competition->get_name(),
-			$competition->get_other_name()
+			$competition->get_name()
 		);
+		$other_name = $competition->get_other_name();
+		if (is_string($other_name) || ($other_name instanceof TextStructure && $other_name->get_text())) {
+			array_push($options, $other_name);
+		}
 
 		$term = array("%s", "%s");
 
