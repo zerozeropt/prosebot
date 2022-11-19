@@ -23,7 +23,7 @@
             "condition": "#arg.is_rainy"
         },
         {
-            "text": "the kids enjoyed is free time building snow men and playing",
+            "text": "the kids enjoyed their free time building snow men and playing",
             "condition": "#arg.is_snowy"
         },
         {
