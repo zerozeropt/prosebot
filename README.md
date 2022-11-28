@@ -66,9 +66,7 @@ npm start
 
 ### Demo
 
-<video width="320" height="240" controls>
-  <source src="./Prosebot.mp4" type="video/mp4">
-</video>
+![Video](./Prosebot.mp4)
 
 # Documentation
 
