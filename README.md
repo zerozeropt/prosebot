@@ -37,7 +37,7 @@ The Prosebot system is composed of the following components as depicted [here](h
 - Node.js (tested with version 16.15.0).
 - npm (tested with version 8.5.5).
 
-## Prosebot
+### Prosebot
 
 Prosebot was developed under PHP version 7.4.28.
 To start the Prosebot application run:
@@ -63,6 +63,12 @@ cd web-app
 npm install
 npm start
 ```
+
+### Demo
+
+<video width="320" height="240" controls>
+  <source src="./Prosebot.mp4" type="video/mp4">
+</video>
 
 # Documentation
 
