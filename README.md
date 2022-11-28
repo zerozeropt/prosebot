@@ -66,7 +66,7 @@ npm start
 
 ### Demo
 
-[Video file](https://github.com/zerozeropt/prosebot/blob/main/Prosebot.mp4)
+[Video file](https://github.com/zerozeropt/prosebot/blob/main/Prosebot.mp4).
 
 # Documentation
 
