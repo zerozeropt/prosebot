@@ -58,7 +58,7 @@
         },
         {
             "text": "della squadra in trasferta",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "degli ospiti",
@@ -66,11 +66,15 @@
         },
         {
             "text": "in casa {di_il%loser.name} {loser.name}",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "il casalingo",
             "condition": "home_win"
+        },
+        {
+            "text": "per {il%winner.name} {winner.name}",
+            "condition": "!home_win && !away_win"
         }
     ],
     "pen": [

@@ -66,11 +66,11 @@
         },
         {
             "text": "da equipa forasteira",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "fora de portas",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "no terreno {de%winner.name} {winner.name}",
@@ -78,15 +78,19 @@
         },
         {
             "text": "da equipa visitante",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "no terreno {de%loser.name} {loser.name}",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "em casa",
             "condition": "home_win"
+        },
+        {
+            "text": "{de%winner.name} {winner.name}",
+            "condition": "!home_win && !away_win"
         }
     ],
     "pen": [
@@ -105,7 +109,7 @@
             "condition": "final_score_diff==1"
         },
         {
-            "text": "Vitória confortavel {template.win}",
+            "text": "Vitória confortável {template.win}",
             "condition": "final_score_diff==2"
         },
         {

@@ -110,7 +110,7 @@
     "win": [
         {
             "text": "away",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "on home soil",
@@ -118,7 +118,7 @@
         },
         {
             "text": "over visitors",
-            "condition": "!home_win"
+            "condition": "away_win"
         },
         {
             "text": "at home",
@@ -126,7 +126,11 @@
         },
         {
             "text": "on the road",
-            "condition": "!home_win"
+            "condition": "away_win"
+        },
+        {
+            "text": "for {winner.name}",
+            "condition": "!home_win && !away_win"
         }
     ],
     "pen": [

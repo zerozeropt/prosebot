@@ -34,7 +34,11 @@
         },
         {
             "text": "del equipo forastero",
-            "condition": "!home_win"
+            "condition": "away_win"
+        },
+        {
+            "text": "{de%winner.name} {winner.name}",
+            "condition": "!home_win && !away_win"
         }
     ],
     "pen": [
