@@ -43,7 +43,7 @@ Prosebot was developed under PHP version 7.4.28.
 To start the Prosebot application run:
 ```
 cd prosebot
-php -S localhost 8080
+php -S localhost 8081
 ```
 
 ### Prosebot Editor
@@ -51,7 +51,7 @@ php -S localhost 8080
 To start the Prosebot Editor API run:
 ```
 cd prosebot-editor
-php -S localhost 8081
+php -S localhost 8080
 ```
 
 ### Templates Management Platform
